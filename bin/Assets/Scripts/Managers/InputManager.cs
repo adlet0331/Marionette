@@ -2,16 +2,36 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager
+public class InputManager : Singleton<InputManager>
 {
-    public bool isActive = true;
-
-    private Dictionary<KeyCode, Action> keyDictionary;
-    public InputManager(Dictionary<KeyCode, Action> keyDictionary, bool isActive) {
-        this.keyDictionary = keyDictionary;
-        this.isActive = isActive;
+    [SerializeField] private bool isMoveable = true;
+    public bool IsMoveable {
+        get { return isMoveable; }
+        set { isMoveable = value; }
     }
-    public void Update() {
+
+    [SerializeField] private int moveH, moveV;
+    [SerializeField] private bool isRun, isSlowWalk;
+    [SerializeField] private Dictionary<KeyCode, Action> keyDictionary;
+    [SerializeField] private MovingObject movingComponent;
+
+    private void Start() {
+        keyDictionary = new Dictionary<KeyCode, Action> {
+            { KeyCode.Z, KeyDown_Z },
+            { KeyCode.Escape, KeyDown_ESC },
+        };
+    }
+
+    private void Update() {
+        if (isMoveable) {
+            moveH = (int)Input.GetAxisRaw("Horizontal");
+            moveV = (int)Input.GetAxisRaw("Vertical");
+            isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+            isSlowWalk = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+            movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
+        }
+
         if (Input.anyKeyDown) {
             foreach (var dic in keyDictionary) {
                 if (Input.GetKeyDown(dic.Key))
@@ -19,7 +39,17 @@ public class InputManager
             }
         }
     }
-    public void RefreshInputActive(bool isActive) {
-        this.isActive = isActive;
+
+    private void KeyDown_ESC() {
+        Debug.Log("ESC");
+        if (WindowManager.Instance.settingWindow.activeSelf) {
+            WindowManager.Instance.settingWindow.SetActive(false);
+        }
+        else {
+            WindowManager.Instance.settingWindow.SetActive(true);
+        }
+    }
+    private void KeyDown_Z() {
+
     }
 }

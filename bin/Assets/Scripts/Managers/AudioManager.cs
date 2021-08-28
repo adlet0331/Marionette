@@ -12,30 +12,20 @@ public class Sound {
     [SerializeField]private bool loop;
 }
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : Singleton<AudioManager> {
     [SerializeField] private Sound[] effects;
     [SerializeField] private Sound[] bgms;
 
-    public static AudioManager instance;
-
-    #region Singleton
-    private void Awake() {
-        if (instance != null) {
-            Destroy(this.gameObject);
-        }
-        else {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-    }
-    #endregion Singleton
-
     [SerializeField] private float MasterVolume, BgmVolume, EffectVolume;
-    
+
     [SerializeField] private bool isPlaying;
     private AudioSource audioPlayer;
+
+    protected AudioManager(){}
+
     private void Start() {
         audioPlayer = GetComponent<AudioSource>();
+        ChangeBGM(0);
     }
 
     public void ChangeBGM(int index) {

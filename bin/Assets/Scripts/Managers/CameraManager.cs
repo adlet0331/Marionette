@@ -1,48 +1,39 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : Singleton<CameraManager>
 {
-    public static CameraManager instance;
-    #region Singleton
-    private void Awake() {
-        if (instance == null) {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else {
-            Destroy(this.gameObject);
-        }
-    }
-    #endregion Singleton
-
-    [System.Serializable]
-    private class CameraMode {
-        public string name;
-    }
-
     [SerializeField] private string currentModeString;
+
     [SerializeField] private Camera currentCamera;
-    [SerializeField] private GameObject followingObject;
     [SerializeField] private GameObject currentMap;
-
     private BoxCollider2D currentMapCollider;
+    [SerializeField] private GameObject followingObject;
 
-    [SerializeField] private CameraMode[] modeList;
+    [SerializeField] private string[] modeList;
     private int currentMode;
     private Resolution currentResolution;
-
     private void Start() {
         SetCameraMode(0);
         SetMap(0);
     }
     private void Update() {
-        if(currentMode == 0) {
+        _debug();
+        if (currentMode == 0) {
             currentCamera.transform.position = GetFinalPosition();
             return;
         }
+    }
+
+    [SerializeField] private double CameraSize_X;
+    [SerializeField] private double CameraSize_Y;
+    [SerializeField] private double ScreenSize_X;
+    [SerializeField] private double ScreenSize_Y;
+
+    private void _debug() {
+        CameraSize_X = currentCamera.orthographicSize * Screen.width / Screen.height;
+        CameraSize_Y = currentCamera.orthographicSize;
+        ScreenSize_X = Screen.width;
+        ScreenSize_Y = Screen.height;
     }
 
     public void SetCameraMode(int mode) {
@@ -50,32 +41,26 @@ public class CameraManager : MonoBehaviour
             return;
 
         currentMode = mode;
-        currentModeString = modeList[mode].name;
+        currentModeString = modeList[mode];
         return;
     }
 
     public void SetMap(int index) {
-        currentMap = MapManager.instance.GetMap(index);
+        currentMap = MapManager.Instance.GetMap(index);
         currentMapCollider = currentMap.GetComponent<BoxCollider2D>();
     }
 
     private Vector3 GetFinalPosition() {
         double posx = followingObject.transform.position.x;
         double posy = followingObject.transform.position.y;
-        double cameraWidth = currentCamera.scaledPixelWidth * 0.5;
-        double cameraHeight = currentCamera.scaledPixelHeight * 0.5;
+        double cameraWidth = currentCamera.orthographicSize * Screen.width / Screen.height;
+        double cameraHeight = currentCamera.orthographicSize;
 
         Vector3 mapScale = currentMap.transform.localScale;
         double colliderx = currentMapCollider.transform.position.x;
         double collidery = currentMapCollider.transform.position.y;
         double colliderxWidth = currentMapCollider.size.x * mapScale.x * 0.5;
         double collideryWidth = currentMapCollider.size.y * mapScale.y * 0.5;
-
-        Debug.Log("posx, posy" + posx + " " + posy);
-        Debug.Log("cameraWidth, cameraHeight" + cameraWidth + " " + cameraHeight);
-
-        Debug.Log("colliderx, collidery" + colliderx + " " + collidery);
-        Debug.Log("colliderxWidth, collideryWidth" + colliderxWidth + " " + collideryWidth);
 
         if (posx + cameraWidth > colliderx + colliderxWidth) {
             posx = colliderx + colliderxWidth - cameraWidth;
