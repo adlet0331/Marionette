@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
-    [SerializeField] private bool canMove;
-    [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float runSpeed = 10.0f;
-    [SerializeField] private Rigidbody body;
+    [SerializeField] private bool isActive = true;
+    [SerializeField] private float slowWalkSpeed = 300.0f;
+    [SerializeField] private float moveSpeed = 500.0f;
+    [SerializeField] private float runSpeed = 1000.0f;
 
-    public bool isMoving, isRunning;
+    public bool isMoving, isRunning, isSlowWalking;
     private int dirH, dirV;
 
     private void Start() {
-        body = GetComponent<Rigidbody>();
+        
     }
     private void FixedUpdate() {
-        if (canMove && isMoving) {
-            if (isRunning) {
+        if (isActive && isMoving) {
+            if (isSlowWalking) {
+                this.transform.Translate((Vector2.right * dirH + Vector2.up * dirV) * Time.deltaTime * slowWalkSpeed);
+            }
+            else if (isRunning) {
                 this.transform.Translate((Vector2.right * dirH + Vector2.up * dirV) * Time.deltaTime * runSpeed);
             }
             else {
@@ -25,26 +28,23 @@ public class MovingObject : MonoBehaviour
             }
         }
     }
-    public void Move(int hor, int ver, bool isShift)
+    public void Move(int hor, int ver, bool isCtrl, bool isShift)
     {
         if (hor == 0 && ver == 0)
         {
             isMoving = false;
             isRunning = false;
+            isSlowWalking = false;
             return;
         }
         isMoving = true;
-        isRunning = isShift;
+        isRunning = isCtrl;
+        isSlowWalking = isShift;
         dirH = hor;
         dirV = ver;
         return;
     }
-    public void StopMove() {
-        isMoving = false;
-        isRunning = false;
-        return;
-    }
-    public void SetCanMove(bool canMove) {
-        this.canMove = canMove;
+    public void SetCanMove(bool isActive) {
+        this.isActive = isActive;
     }
 }
