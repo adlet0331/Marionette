@@ -1,12 +1,28 @@
 using System;
-
-public class Event {
-    public event EventHandler scriptEvent;
-    public void OnScriptEvent() {
-        scriptEvent(this, EventArgs.Empty);
-    }
-}
-
 public class EventManager : Singleton<EventManager> {
-    
+    //Collider Object
+    private EventHandler _Collide;
+    public event EventHandler Collide
+    {
+        add
+        {
+            _Collide += value;
+        }
+        remove
+        {
+            _Collide -= value;
+        }
+    }
+    public void PlayerCollide()
+    {
+        if(this._Collide != null)
+        {
+            _Collide(this, EventArgs.Empty);
+        }
+    }
+
+    private void Start()
+    {
+        
+    }
 }

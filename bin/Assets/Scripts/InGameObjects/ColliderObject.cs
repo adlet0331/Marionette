@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class ColliderObject : InteractionObject
 {
-    private void Update() {
-        if (CheckPlayerCollided()) {
-            Debug.Log("moveablePlayerCollider Collided");
-            
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.gameObject == PlayerManager.Instance.moveablePlayerObject)
+        {
+            PlayerManager.Instance.AddInteractionList(this.gameObject);
         }
     }
-    public override void Interact() {
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject == PlayerManager.Instance.moveablePlayerObject)
+        {
+            PlayerManager.Instance.RemoveInteractionObj(this.gameObject);
+        }
+    }
+
+    private void Update() 
+    {
+        
+    }
+    public override void Interact() 
+    {
         throw new System.NotImplementedException();
         
     }
