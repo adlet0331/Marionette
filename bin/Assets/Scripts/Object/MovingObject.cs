@@ -9,23 +9,34 @@ public class MovingObject : MonoBehaviour
     [SerializeField] private float moveSpeed = 500.0f;
     [SerializeField] private float runSpeed = 1000.0f;
 
+    private Animator animator;
+
     public bool isMoving, isRunning, isSlowWalking;
-    private int dirH, dirV;
+    private int dirX, dirY;
 
     private void Start() {
-        
+        animator = GetComponent<Animator>();
     }
     private void FixedUpdate() {
         if (isActive && isMoving) {
             if (isSlowWalking) {
-                this.transform.Translate((Vector2.right * dirH + Vector2.up * dirV) * Time.deltaTime * slowWalkSpeed);
+                this.transform.Translate((Vector2.right * dirX + Vector2.up * dirY) * Time.deltaTime * slowWalkSpeed);
             }
-            else if (isRunning) {
-                this.transform.Translate((Vector2.right * dirH + Vector2.up * dirV) * Time.deltaTime * runSpeed);
+            else if (isRunning)
+            {
+                this.transform.Translate((Vector2.right * dirX + Vector2.up * dirY) * Time.deltaTime * runSpeed);
             }
             else {
-                this.transform.Translate((Vector2.right * dirH + Vector2.up * dirV) * Time.deltaTime * moveSpeed);
+                this.transform.Translate((Vector2.right * dirX + Vector2.up * dirY) * Time.deltaTime * moveSpeed);
             }
+        }
+        if (animator != null)
+        {
+            animator.SetBool("IsMoving", isMoving);
+            animator.SetBool("IsRunning", isRunning);
+            animator.SetBool("IsSlowWalking", isSlowWalking);
+            animator.SetFloat("DirX", dirX);
+            animator.SetFloat("DirY", dirY);
         }
     }
     public void Move(int hor, int ver, bool isCtrl, bool isShift)
@@ -40,11 +51,11 @@ public class MovingObject : MonoBehaviour
         isMoving = true;
         isRunning = isCtrl;
         isSlowWalking = isShift;
-        dirH = hor;
-        dirV = ver;
+        dirX = hor;
+        dirY = ver;
         return;
     }
-    public void SetCanMove(bool isActive) {
+    public void SetActive(bool isActive) {
         this.isActive = isActive;
     }
 }
