@@ -42,14 +42,14 @@ public class InputManager : Singleton<InputManager>
 
     private void KeyDown_ESC() {
         Debug.Log("ESC");
-        if (WindowManager.Instance.settingWindow.activeSelf) {
-            WindowManager.Instance.settingWindow.SetActive(false);
+        if (WindowManager.Instance.settingWindow.gameObject.activeSelf) {
+            WindowManager.Instance.settingWindow.gameObject.SetActive(false);
         }
         else {
-            WindowManager.Instance.settingWindow.SetActive(true);
+            WindowManager.Instance.settingWindow.gameObject.SetActive(true);
         }
     }
     private void KeyDown_Z() {
-
+        
     }
 }

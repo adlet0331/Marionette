@@ -2,11 +2,19 @@ using UnityEngine;
 
 public abstract class InteractionObject : MonoBehaviour
 {
-    [SerializeField] protected BoxCollider2D[] objectBoxColliders;
-    [SerializeField] private bool canInteract;
+    [SerializeField] protected bool canInteract;
+    [SerializeField] private int idx;
 
-    private void Awake() {
-        objectBoxColliders = this.GetComponents<BoxCollider2D>();
+    public int GetIdx()
+    {
+        if (canInteract)
+        {
+            return idx;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
     public abstract void Interact();

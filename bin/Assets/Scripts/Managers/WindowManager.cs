@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class WindowManager : Singleton<WindowManager>
 {
-    public GameObject settingWindow;
+    public SettingWindow settingWindow;
     public GameObject scriptWindow;
-
-
+    public InteractionWindow interactionWindow;
 }

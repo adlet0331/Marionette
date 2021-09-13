@@ -6,16 +6,54 @@ public class PlayerManager : Singleton<PlayerManager>
     public GameObject moveablePlayerObject;
     public BoxCollider2D moveablePlayerCollider;
 
-    [SerializeField] private List<GameObject> interactionList;
+    [SerializeField] private List<InteractionObject> interactionList;
 
     private void Start()
     {
-        interactionList = new List<GameObject>();
+        interactionList = new List<InteractionObject>();
     }
 
-    public void AddInteractionList(GameObject gameObject)
+    private void Update()
     {
-        interactionList.Add(gameObject);
+        int idx = GetObjectIDX();
+        if(idx == -1)
+        {
+            WindowManager.Instance.interactionWindow.gameObject.SetActive(false);
+        }
+        else
+        {
+            WindowManager.Instance.interactionWindow.gameObject.SetActive(true);
+            WindowManager.Instance.interactionWindow.SetInteractionObject(idx);
+        }
+    }
+
+    public int GetObjectIDX()
+    {
+        if(interactionList.Count == 0)
+        {
+            return -1;
+        }
+        else
+        {
+            int idx = -1;
+            float distance = -1;
+            float cnt;
+            foreach(InteractionObject interObj in interactionList)
+            {
+                cnt = Vector2.Distance(interObj.transform.position, moveablePlayerObject.transform.position);
+                if(cnt < distance || idx == -1)
+                {
+                    distance = cnt;
+                    idx = interObj.GetIdx();
+                }
+            }
+            return idx;
+        }
+    }
+
+    public void AddInteractionList(InteractionObject interactionObj)
+    {
+        interactionList.Add(interactionObj);
     }
 
     public bool CheckInteractionObj(GameObject gameObject)
@@ -30,8 +68,8 @@ public class PlayerManager : Singleton<PlayerManager>
         }
     }
 
-    public void RemoveInteractionObj(GameObject gameObject)
+    public void RemoveInteractionObj(InteractionObject interactionObj)
     {
-        interactionList.Remove(gameObject);
+        interactionList.Remove(interactionObj);
     }
 }

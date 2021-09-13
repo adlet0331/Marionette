@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D playerRigidBody;
+
     [SerializeField] private bool isActive = true;
     [SerializeField] private float slowWalkSpeed = 300.0f;
     [SerializeField] private float moveSpeed = 500.0f;
@@ -13,22 +15,28 @@ public class MovingObject : MonoBehaviour
 
     public bool isMoving, isRunning, isSlowWalking;
     private int dirX, dirY;
+    private Vector2 zeroVector;
 
     private void Start() {
         animator = GetComponent<Animator>();
+        zeroVector = new Vector2(0, 0);
     }
     private void FixedUpdate() {
         if (isActive && isMoving) {
             if (isSlowWalking) {
-                this.transform.Translate((Vector2.right * dirX + Vector2.up * dirY) * Time.deltaTime * slowWalkSpeed);
+                playerRigidBody.velocity = (Vector2.right * dirX + Vector2.up * dirY) * slowWalkSpeed;
             }
             else if (isRunning)
             {
-                this.transform.Translate((Vector2.right * dirX + Vector2.up * dirY) * Time.deltaTime * runSpeed);
+                playerRigidBody.velocity = (Vector2.right * dirX + Vector2.up * dirY) * runSpeed;
             }
             else {
-                this.transform.Translate((Vector2.right * dirX + Vector2.up * dirY) * Time.deltaTime * moveSpeed);
+                playerRigidBody.velocity = (Vector2.right * dirX + Vector2.up * dirY) * moveSpeed;
             }
+        }
+        else
+        {
+            playerRigidBody.velocity = new Vector2(0, 0);
         }
         if (animator != null)
         {
