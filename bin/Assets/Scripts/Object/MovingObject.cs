@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 움직이는 오브젝트 관리
+ * 
+ */
 public class MovingObject : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D playerRigidBody;

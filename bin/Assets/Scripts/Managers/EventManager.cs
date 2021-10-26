@@ -1,4 +1,9 @@
 using System;
+/* Event 제어 매니저
+ * 
+ * 잘 몰?루
+ * 
+ */
 public class EventManager : Singleton<EventManager> {
     //Collider Object
     private EventHandler _Collide;

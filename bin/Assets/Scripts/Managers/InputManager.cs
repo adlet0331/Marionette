@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 플레이어의 KeyBoard 입력을 받아서 처리하는 매니저
+ * 
+ */
 public class InputManager : Singleton<InputManager>
 {
     [SerializeField] private bool isMoveable = true;
@@ -50,6 +53,14 @@ public class InputManager : Singleton<InputManager>
         }
     }
     private void KeyDown_Z() {
-        
+        Debug.Log("Z");
+        if (WindowManager.Instance.scriptWindow.gameObject.activeSelf)
+        {
+            WindowManager.Instance.scriptWindow.gameObject.SetActive(false);
+        }
+        else
+        {
+            WindowManager.Instance.scriptWindow.gameObject.SetActive(true);
+        }
     }
 }

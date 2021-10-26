@@ -1,16 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+/* 플레이어 관리
+ * 
+ * 범위내에 있는 Scriptable Object를 List로 가지고 있음 
+ * -> 가장 가까운 애가 Scriptable Window로 뜸
+ * 
+ */
 public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject moveablePlayerObject;
     public BoxCollider2D moveablePlayerCollider;
 
-    [SerializeField] private List<InteractionObject> interactionList;
+    [SerializeField] private InteractionObject currentInteractObj;
+    [SerializeField] private List<InteractionObject> scriptableObjList;
 
     private void Start()
     {
-        interactionList = new List<InteractionObject>();
+        scriptableObjList = new List<InteractionObject>();
     }
 
     private void Update()
@@ -29,7 +35,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public int GetObjectIDX()
     {
-        if(interactionList.Count == 0)
+        if(scriptableObjList.Count == 0)
         {
             return -1;
         }
@@ -38,7 +44,7 @@ public class PlayerManager : Singleton<PlayerManager>
             int idx = -1;
             float distance = -1;
             float cnt;
-            foreach(InteractionObject interObj in interactionList)
+            foreach(InteractionObject interObj in scriptableObjList)
             {
                 cnt = Vector2.Distance(interObj.transform.position, moveablePlayerObject.transform.position);
                 if(cnt < distance || idx == -1)
@@ -53,23 +59,11 @@ public class PlayerManager : Singleton<PlayerManager>
 
     public void AddInteractionList(InteractionObject interactionObj)
     {
-        interactionList.Add(interactionObj);
-    }
-
-    public bool CheckInteractionObj(GameObject gameObject)
-    {
-        if(interactionList.Find(x => x == gameObject) == null)
-        {
-            return false;
-        }
-        else
-        {
-            return false;
-        }
+        scriptableObjList.Add(interactionObj);
     }
 
     public void RemoveInteractionObj(InteractionObject interactionObj)
     {
-        interactionList.Remove(interactionObj);
+        scriptableObjList.Remove(interactionObj);
     }
 }

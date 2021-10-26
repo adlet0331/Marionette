@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class ResolutionManager : Singleton<ResolutionManager>
+/* 해상도 관리
+ * 
+ */
+public class ScreenManager : Singleton<ScreenManager>
 {
     [System.Serializable]
     private class Resolution {

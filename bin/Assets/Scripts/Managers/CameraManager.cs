@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/* Camera 제어
+ * - 캐릭터 따라가기
+ * 
+ */
 public class CameraManager : Singleton<CameraManager>
 {
     [SerializeField] private string currentModeString;

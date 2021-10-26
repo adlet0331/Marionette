@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/* 게임 전체에서 한 개만 존재하는 Singleton 오브젝트에 부착
+ * 씬이 넘어가도 파괴 안됨
+ * 
+ */
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
     private static bool _shutdown = false;
     private static object _lock = new object();
