@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* BoxCollider °¡Áö°í ÀÖ´Â ¾Ö (Trigger ²¨Á®ÀÖ´Â)
- * ºÎµóÈ÷¸é ÀÛµ¿
+/* BoxCollider ê°€ì§€ê³  ìˆëŠ” ì•  (Trigger êº¼ì ¸ìˆëŠ”)
+ * ë¶€ë”›íˆë©´ ì‘ë™
  * 
  */
 

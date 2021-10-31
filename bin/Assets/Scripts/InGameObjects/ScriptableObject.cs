@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* BoxCollider2D (Trigger X) ºÙ¾îÀÖ´Â ¾Öµé
+/* BoxCollider2D (Trigger X) ë¶™ì–´ìˆëŠ” ì• ë“¤
  * 
- * ºÎµóÈ÷¸é InteractionList¿¡ ³Ö¾îÁà¼­ InteractionWindow ¶ç¿öÁÜ
+ * ë¶€ë”›íˆë©´ InteractionListì— ë„£ì–´ì¤˜ì„œ InteractionWindow ë„ì›Œì¤Œ
  */
 public class ScriptableObject : InteractionObject
 {
@@ -12,7 +12,7 @@ public class ScriptableObject : InteractionObject
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerManager.Instance.AddInteractionList(this);
+            PlayerManager.Instance.playerInteractObject.AddInteractionList(this);
         }
     }
 
@@ -20,11 +20,11 @@ public class ScriptableObject : InteractionObject
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerManager.Instance.RemoveInteractionObj(this);
+            PlayerManager.Instance.playerInteractObject.RemoveInteractionObj(this);
         }
     }
 
     public override void Interact() {
-        throw new System.NotImplementedException();
+        WindowManager.Instance.scriptWindow.Activate();
     }
 }

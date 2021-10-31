@@ -1,9 +1,9 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 
-/* °ÔÀÓ ³» Script¸¦ °¡Áö´Â ¿ÀºêÁ§Æ®ÀÇ µ¥ÀÌÅÍ List
+/* ê²Œì„ ë‚´ Scriptë¥¼ ê°€ì§€ëŠ” ì˜¤ë¸Œì íŠ¸ì˜ ë°ì´í„° List
  * 
- * ScriptableObjectDataÀÇ List
- * µ¥ÀÌÅÍº£ÀÌ½º ºñ½ÁÇÏ°Ô »ç¿ë
+ * ScriptableObjectDataì˜ List
+ * ë°ì´í„°ë² ì´ìŠ¤ ë¹„ìŠ·í•˜ê²Œ ì‚¬ìš©
  * 
  */
 public class ScriptObjDataManager : Singleton<ScriptObjDataManager>
