@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-/* ½ºÅ©¸³Æ®°¡ ÀÖ´Â ÀÎ°ÔÀÓ ¿ÀºêÁ§Æ® (ÀÎÅÍÆäÀÌ½º)
- * InGameObjectManager¿¡ idx°¡ ÀÖÀ½
+/* ìŠ¤í¬ë¦½íŠ¸ê°€ ìˆëŠ” ì¸ê²Œì„ ì˜¤ë¸Œì íŠ¸ (ì¸í„°í˜ì´ìŠ¤)
+ * InGameObjectManagerì— idxê°€ ìˆìŒ
  */
 public abstract class InteractionObject : MonoBehaviour
 {

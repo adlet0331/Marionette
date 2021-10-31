@@ -1,9 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/* º¼·ı ¹× ÇØ»óµµ ¼³Á¤ Ã¢. ESC ´©¸£¸é ³ª¿È
+/* ë³¼ë¥¨ ë° í•´ìƒë„ ì„¤ì • ì°½. ESC ëˆ„ë¥´ë©´ ë‚˜ì˜´
  */
-public class SettingWindow : DraggableObject
+public class SettingWindow : WindowObject
 {
-    
+    public override void Activate()
+    {
+
+    }
 }

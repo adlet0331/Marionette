@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
-/* »óÈ£ÀÛ¿ë °¡´ÉÇÑ °¡Àå °¡±î¿î ¿ÀºêÁ§Æ® Á¤º¸ ¶ç¿öÁÖ´Â Ã¢
- * PlayerManager¿¡¼­ È£Ãâ
+/* ìƒí˜¸ì‘ìš© ê°€ëŠ¥í•œ ê°€ì¥ ê°€ê¹Œìš´ ì˜¤ë¸Œì íŠ¸ ì •ë³´ ë„ì›Œì£¼ëŠ” ì°½
+ * PlayerManagerì—ì„œ í˜¸ì¶œ
  * 
- * ¾Æ·¡ 2°³ Ãâ·Â
- * - ¿ÀºêÁ§Æ® ÀÌ¸§
- * - InGameObjectManager index = 0 ÀÎ String
+ * ì•„ë˜ 2ê°œ ì¶œë ¥
+ * - ì˜¤ë¸Œì íŠ¸ ì´ë¦„
+ * - InGameObjectManager index = 0 ì¸ String
  */
 public class ScriptableWindow : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class ScriptableWindow : MonoBehaviour
             isDummy = true;
         }
         nameText.text = currentObject.name;
-        explanationText.text = currentObject.scripts[0];
+        explanationText.text = currentObject.scriptableScript;
 
         if (isDummy)
         {

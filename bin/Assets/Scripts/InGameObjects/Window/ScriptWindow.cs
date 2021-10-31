@@ -1,15 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
-/* ´ë»ç ³ª¿À´Â Ã¢
- * InputManager¿¡¼­ È£Ãâ
- * 
- * Ãâ·ÂÇÏ´Â °Í
- * - IngameObject ÀÌ¸§
- * - Scripts index = 1 ~ n±îÁö Ãâ·Â
- * 
- */
-public class ScriptWindow : MonoBehaviour
+using UnityEngine.UI;
+/* ëŒ€ì‚¬ ë‚˜ì˜¤ëŠ” ì°½
+* InputManagerì—ì„œ í˜¸ì¶œ
+* 
+* ì¶œë ¥í•˜ëŠ” ê²ƒ
+* - IngameObject ì´ë¦„
+* - Scripts index = 1 ~ nê¹Œì§€ ì¶œë ¥. ë²„íŠ¼ ì…ë ¥ ë°›ìœ¼ë©´ ë‹¤ìŒìœ¼ë¡œ ë„˜ì–´ê°
+* 
+*/
+public class ScriptWindow : WindowObject
 {
-    private bool isActive;
+    [SerializeField] private Text NameText;
+    [SerializeField] private Text ScriptText;
+    private int currentScriptIdx;
+    
+    private void checkAvaliableIdx(int idx)
+    {
+        Debug.Assert(idx < 0 || idx > ScriptObjDataManager.Instance.ScriptObjDataList.Count, "Valid í•˜ì§€ ì•Šì€ ScriptObjectData IDX ì…ë‹ˆë‹¤.");
+        return;
+    }
+    private void Open(int idx)
+    {
+        ScriptableObjData obj = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
+        
+        this.ActivateObject();
+        Debug.Assert(!gameObject.activeSelf, "ScriptWindowê°€ ë‹«í˜€ìˆì§€ ì•ŠìŠµë‹ˆë‹¤. ë²„ê·¸ì„!!");
+
+        NameText.text = obj.name;
+        ScriptText.text = obj.scripts[0];
+    }
+    private void Next(int idx)
+    {
+
+    }
+    private void Close()
+    {
+        currentScriptIdx = 0;
+        gameObject.SetActive(false);
+    }
+    public override void Activate()
+    {
+        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstScrObj();
+
+    }
 }

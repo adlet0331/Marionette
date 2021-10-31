@@ -1,8 +1,8 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* ÇÃ·¹ÀÌ¾îÀÇ KeyBoard ÀÔ·ÂÀ» ¹Ş¾Æ¼­ Ã³¸®ÇÏ´Â ¸Å´ÏÀú
+/* í”Œë ˆì´ì–´ì˜ KeyBoard ì…ë ¥ì„ ë°›ì•„ì„œ ì²˜ë¦¬í•˜ëŠ” ë§¤ë‹ˆì €
  * 
  */
 public class InputManager : Singleton<InputManager>
@@ -13,12 +13,19 @@ public class InputManager : Singleton<InputManager>
         set { isMoveable = value; }
     }
 
+    public void SetInputAvaliable(bool isAv)
+    {
+        inputAvaliable = isAv;
+    }
+
+    [SerializeField] private bool inputAvaliable;
     [SerializeField] private int moveH, moveV;
     [SerializeField] private bool isRun, isSlowWalk;
     [SerializeField] private Dictionary<KeyCode, Action> keyDictionary;
     [SerializeField] private MovingObject movingComponent;
 
     private void Start() {
+        inputAvaliable = true;
         keyDictionary = new Dictionary<KeyCode, Action> {
             { KeyCode.Z, KeyDown_Z },
             { KeyCode.Escape, KeyDown_ESC },
@@ -35,7 +42,7 @@ public class InputManager : Singleton<InputManager>
             movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
         }
 
-        if (Input.anyKeyDown) {
+        if (inputAvaliable && Input.anyKeyDown) {
             foreach (var dic in keyDictionary) {
                 if (Input.GetKeyDown(dic.Key))
                     dic.Value();
@@ -54,13 +61,6 @@ public class InputManager : Singleton<InputManager>
     }
     private void KeyDown_Z() {
         Debug.Log("Z");
-        if (WindowManager.Instance.scriptWindow.gameObject.activeSelf)
-        {
-            WindowManager.Instance.scriptWindow.gameObject.SetActive(false);
-        }
-        else
-        {
-            WindowManager.Instance.scriptWindow.gameObject.SetActive(true);
-        }
+        WindowManager.Instance.scriptWindow.Activate();
     }
 }
