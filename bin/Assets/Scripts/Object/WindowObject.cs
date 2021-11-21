@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
  */
 public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler {
     //For Opening Window
+    [SerializeField] private bool isDraggable;
     public abstract void Activate();
-
     public bool ActivateObject()
     {
         if (gameObject.activeSelf)
@@ -34,14 +34,20 @@ public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHa
     private Vector3 _dragBeginCursorPos;
     private Vector3 _dragBeginWindowPos;
     public void OnBeginDrag(PointerEventData eventData) {
+        if (!isDraggable) 
+            return;
         _dragBeginCursorPos = eventData.position;
         _dragBeginWindowPos = transform.position;
     }
     public void OnDrag(PointerEventData eventData) {
+        if (!isDraggable) 
+            return;
         transform.position = _dragBeginWindowPos + (Vector3)eventData.position - _dragBeginCursorPos;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!isDraggable) 
+            return;
         transform.SetAsLastSibling();
     }
 }

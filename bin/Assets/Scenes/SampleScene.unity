@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5dd7cc2e33ab764bbc78766197aa84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,8 +1336,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aade6a586c64aec41b71ac21f5bf8c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 0
   NameText: {fileID: 1510639522}
   ScriptText: {fileID: 737130304}
+  currObj:
+    name: "\uB354\uBBF8"
+    sprite: {fileID: 0}
+    scriptableScript: "\uC774\uAC74 \uB354\uBBF8\uC785\uB2C8\uB2E4"
+    scripts:
+    - "\uB354\uBBF8 \uB300\uC0AC 1\uC785\uB2C8\uB2E4"
+    - "\uB354\uBBF8 \uB300\uC0AC 2\n\uD558\uD558 \uC904\uC744 \uBC14\uAFC0\uC904\uC740
+      \uBAB0\uB790\uACA0\uC9C0!"
+  currentScriptIdx: -1
+  currentScriptLength: 0
+  blocked: 0
 --- !u!1 &973270721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,7 +2746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116117383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30, y: 5, z: 0}
+  m_LocalPosition: {x: 94, y: -258, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
