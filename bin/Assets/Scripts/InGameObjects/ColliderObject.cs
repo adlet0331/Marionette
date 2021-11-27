@@ -7,13 +7,13 @@ using UnityEngine;
  * 
  */
 
-public class ColliderObject : InteractionObject
+public abstract class ColliderObject : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-
+            InteractIn();
         }
     }
 
@@ -21,13 +21,10 @@ public class ColliderObject : InteractionObject
     {
         if (collision.gameObject.tag == "Player")
         {
-
+            InteractOut();
         }
     }
 
-    public override void Interact() 
-    {
-        throw new System.NotImplementedException();
-        
-    }
+    public abstract void InteractIn();
+    public abstract void InteractOut();
 }

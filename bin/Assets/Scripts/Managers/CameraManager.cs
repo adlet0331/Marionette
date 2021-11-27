@@ -19,6 +19,8 @@ public class CameraManager : Singleton<CameraManager>
     private void Start() {
         SetCameraMode(0);
         SetMap(0);
+        DontDestroyOnLoad(currentCamera);
+        DontDestroyOnLoad(followingObject);
     }
     private void Update() {
         _debug();
