@@ -16,14 +16,31 @@ public class CameraManager : Singleton<CameraManager>
     [SerializeField] private string[] modeList;
     private int currentMode;
     private Resolution currentResolution;
+
+    public void SetCameraMode(int mode)
+    {
+        if (modeList[mode] == null)
+            return;
+
+        currentMode = mode;
+        currentModeString = modeList[mode];
+        return;
+    }
+
+    public void UpdateMap()
+    {
+        currentMap = GameObject.FindWithTag("Map");
+        currentMapCollider = currentMap.GetComponent<BoxCollider2D>();
+    }
+
     private void Start() {
         SetCameraMode(0);
-        SetMap(0);
-        DontDestroyOnLoad(currentCamera);
-        DontDestroyOnLoad(followingObject);
+        UpdateMap();
     }
     private void Update() {
-        _debug();
+        //_debug();
+        if (currentMap == null)
+            UpdateMap();
         if (currentMode == 0) {
             currentCamera.transform.position = GetFinalPosition();
             return;
@@ -40,20 +57,6 @@ public class CameraManager : Singleton<CameraManager>
         CameraSize_Y = currentCamera.orthographicSize;
         ScreenSize_X = Screen.width;
         ScreenSize_Y = Screen.height;
-    }
-
-    public void SetCameraMode(int mode) {
-        if (modeList[mode] == null)
-            return;
-
-        currentMode = mode;
-        currentModeString = modeList[mode];
-        return;
-    }
-
-    public void SetMap(int index) {
-        currentMap = MapManager.Instance.GetMap(index);
-        currentMapCollider = currentMap.GetComponent<BoxCollider2D>();
     }
 
     private Vector3 GetFinalPosition() {

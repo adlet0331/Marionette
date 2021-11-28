@@ -50,6 +50,12 @@ TagManager:
   - name: BackGround
     uniqueID: 3558424685
     locked: 0
+  - name: Object
+    uniqueID: 54199903
+    locked: 0
   - name: Character
     uniqueID: 639321795
+    locked: 0
+  - name: Load Card
+    uniqueID: 3343983359
     locked: 0
