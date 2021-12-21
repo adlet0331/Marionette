@@ -7,12 +7,17 @@ using UnityEngine;
  */
 public class InputManager : Singleton<InputManager>
 {
-    [SerializeField] private bool isMoveable = true;
+    [SerializeField] private bool isCharacterable = false; 
+    [SerializeField] private bool isMoveable = false;
     public bool IsMoveable {
         get { return isMoveable; }
         set { isMoveable = value; }
     }
-
+    public bool IsCharacterable
+    {
+        get { return isCharacterable; }
+        set { isCharacterable = value; }
+    }
     public void SetInputAvaliable(bool isAv)
     {
         inputAvaliable = isAv;
@@ -52,12 +57,7 @@ public class InputManager : Singleton<InputManager>
 
     private void KeyDown_ESC() {
         Debug.Log("ESC");
-        if (WindowManager.Instance.settingWindow.gameObject.activeSelf) {
-            WindowManager.Instance.settingWindow.gameObject.SetActive(false);
-        }
-        else {
-            WindowManager.Instance.settingWindow.gameObject.SetActive(true);
-        }
+        WindowManager.Instance.settingWindow.Activate();
     }
     private void KeyDown_Z() {
         Debug.Log("Z");

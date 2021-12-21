@@ -8,7 +8,6 @@ public class SceneObjManager : Singleton<SceneObjManager>
 
     private void Start()
     {
-        Debug.Log("SceneObjManager Start Called");
         foreach(GameObject gameObject in dontDestroyObj)
         {
             DontDestroyOnLoad(gameObject);

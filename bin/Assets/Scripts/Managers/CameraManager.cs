@@ -39,9 +39,17 @@ public class CameraManager : Singleton<CameraManager>
     }
     private void Update() {
         //_debug();
-        if (currentMap == null)
-            UpdateMap();
-        if (currentMode == 0) {
+        if (currentMode == 0)
+        {
+            return;
+        }
+        if (currentMode == 1) {
+            if (currentMap == null)
+            {
+                MapManager.Instance.UpdateMapCollection();
+                currentMap = MapManager.Instance.GetMap(0);
+                currentMapCollider = currentMap.GetComponent<BoxCollider2D>();
+            }
             currentCamera.transform.position = GetFinalPosition();
             return;
         }
