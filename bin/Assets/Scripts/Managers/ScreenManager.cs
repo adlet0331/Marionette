@@ -20,7 +20,7 @@ public class ScreenManager : Singleton<ScreenManager>
     [SerializeField] private Camera currentCamera;
     [SerializeField] private Resolution currentResolution;
     private void Start() {
-        SetResolution(0);
+        //SetResolution(0);
     }
     public void SetResolution(int index) {
         currentResolution = resolutionList[index];

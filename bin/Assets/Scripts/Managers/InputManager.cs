@@ -7,16 +7,10 @@ using UnityEngine;
  */
 public class InputManager : Singleton<InputManager>
 {
-    [SerializeField] private bool isCharacterable = false; 
     [SerializeField] private bool isMoveable = false;
     public bool IsMoveable {
         get { return isMoveable; }
         set { isMoveable = value; }
-    }
-    public bool IsCharacterable
-    {
-        get { return isCharacterable; }
-        set { isCharacterable = value; }
     }
     public void SetInputAvaliable(bool isAv)
     {

@@ -6,7 +6,7 @@ public class SceneObjManager : Singleton<SceneObjManager>
 {
     [SerializeField] private List<GameObject> dontDestroyObj;
 
-    private void Start()
+    private void Start()    
     {
         foreach(GameObject gameObject in dontDestroyObj)
         {

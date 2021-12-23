@@ -17,6 +17,10 @@ public class CameraManager : Singleton<CameraManager>
     private int currentMode;
     private Resolution currentResolution;
 
+    public int GetCameraMode()
+    {
+        return currentMode;
+    }
     public void SetCameraMode(int mode)
     {
         if (modeList[mode] == null)
@@ -35,7 +39,6 @@ public class CameraManager : Singleton<CameraManager>
 
     private void Start() {
         SetCameraMode(0);
-        UpdateMap();
     }
     private void Update() {
         //_debug();

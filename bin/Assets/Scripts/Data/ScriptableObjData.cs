@@ -21,7 +21,7 @@ public class ScriptableObjData
         scriptableScript = "이건 더미입니다";
         scripts = new List<string>();
         scripts.Add("더미 대사 1입니다");
-        scripts.Add("더미 대사 2\n하하 줄을 바꿀줄은 몰랐겠지!");
+        scripts.Add("더미 대사 2 \n하하 줄을 바꿀줄은 몰랐겠지!");
     }
     public ScriptableObjData(string name, string scriptableScript, List<string> scripts)
     {
