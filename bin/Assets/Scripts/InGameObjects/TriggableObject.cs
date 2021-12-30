@@ -6,7 +6,7 @@ using UnityEngine;
  * 
  * 부딛히면 InteractionList에 넣어줘서 InteractionWindow 띄워줌
  */
-public class ScriptableObject : InteractionObject
+public class TriggableObject : InteractionObject
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {

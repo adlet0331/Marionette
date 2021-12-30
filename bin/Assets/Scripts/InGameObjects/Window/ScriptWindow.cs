@@ -17,6 +17,7 @@ public class ScriptWindow : WindowObject
     [SerializeField] private ScriptableObjData currObj = null;
     [SerializeField] private int currentScriptIdx = -1;
     [SerializeField] private int currentScriptLength;
+    private IEnumerator currentCoroutine;
 
     [SerializeField] private bool blocked;
     private void Open(int idx)
@@ -29,26 +30,40 @@ public class ScriptWindow : WindowObject
         currentScriptLength = currObj.scripts.Count;
 
         NameText.text = currObj.name;
-        StartCoroutine(_printScript(ScriptText, currObj.scripts[0]));
+        currentCoroutine = _printScript(ScriptText, currObj.scripts[0]);
+        StartCoroutine(currentCoroutine);
     }
     private void Next(int idx)
     {
         currentScriptIdx++;
         NameText.text = currObj.name;
-        StartCoroutine(_printScript(ScriptText, currObj.scripts[currentScriptIdx]));
+        currentCoroutine = _printScript(ScriptText, currObj.scripts[currentScriptIdx]);
+        StartCoroutine(currentCoroutine);
     }
     private void Close()
     {
         currentScriptIdx = -1;
         gameObject.SetActive(false);
     }
+    private void Stop()
+    {
+        StopCoroutine(currentCoroutine);
+        blocked = false;
+        currentCoroutine = null;
+        ScriptText.text = currObj.scripts[currentScriptIdx];
+    }
     // 초기화
     public override void Activate()
     {
         InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstScrObj();
         int idx = obj.GetIdx();
-        Debug.Assert(idx >= 0 && idx <= ScriptObjDataManager.Instance.ScriptObjDataList.Count, 
-            "Valid 하지 않은 ScriptObjectData IDX 입니다.");   
+        Debug.Assert(idx >= 0 && idx <= ScriptObjDataManager.Instance.ScriptObjDataList.Count,
+            "Valid 하지 않은 ScriptObjectData IDX 입니다.");
+        if (blocked)
+        {
+            Stop();
+            return;
+        }
         if (currentScriptIdx == -1)
             this.Open(idx);
         else if (currObj != null && currentScriptIdx == currObj.scripts.Count - 1)
@@ -64,8 +79,9 @@ public class ScriptWindow : WindowObject
         for (int i = 0; i <= script.Length; i++)
         {
             textObj.text = script.Substring(0, i);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
         blocked = false;
+        currentCoroutine = null;
     }
 }

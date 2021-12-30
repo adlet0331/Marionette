@@ -15,6 +15,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void UpdatePlayerManager(GameObject mPO)
     {
         moveablePlayerObject = mPO;
+        playerInteractObject = mPO.GetComponent<InteractObject>();
         moveablePlayerCollider = moveablePlayerObject.GetComponent<BoxCollider2D>();
         InputManager.Instance.SetMovingComponent(mPO.GetComponent<MovingObject>());
     }

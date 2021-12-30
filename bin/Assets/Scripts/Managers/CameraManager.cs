@@ -21,7 +21,6 @@ public class CameraManager : Singleton<CameraManager>
         currentMapCollider = map.GetComponent<BoxCollider2D>();
     }
 
-
     [SerializeField] private GameObject followingObject;
     public void SetFollowingObject(GameObject go)
     {
@@ -57,10 +56,6 @@ public class CameraManager : Singleton<CameraManager>
             return;
         }
         if (currentMode == 1) {
-            if(followingObject == null)
-            {
-                followingObject = PlayerManager.Instance.moveablePlayerObject;
-            }
             currentCamera.transform.position = CameraMode1GetPosition();
             return;
         }
