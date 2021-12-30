@@ -8,23 +8,23 @@ using UnityEngine;
 public class InputManager : Singleton<InputManager>
 {
     [SerializeField] private bool isMoveable = false;
-    public bool IsMoveable {
-        get { return isMoveable; }
-        set { isMoveable = value; }
-    }
-    public void SetInputAvaliable(bool isAv)
+    [SerializeField] private bool isInputAvaliable = true;
+    public void SetOptions(bool isMv, bool isAv)
     {
-        inputAvaliable = isAv;
+        isMoveable = isMv;
+        isInputAvaliable = isAv;
+    }
+    [SerializeField] private MovingObject movingComponent;
+    public void SetMovingComponent(MovingObject mo)
+    {
+        movingComponent = mo;
     }
 
-    [SerializeField] private bool inputAvaliable;
     [SerializeField] private int moveH, moveV;
     [SerializeField] private bool isRun, isSlowWalk;
     [SerializeField] private Dictionary<KeyCode, Action> keyDictionary;
-    [SerializeField] private MovingObject movingComponent;
-
     private void Start() {
-        inputAvaliable = true;
+        isInputAvaliable = true;
         keyDictionary = new Dictionary<KeyCode, Action> {
             { KeyCode.Z, KeyDown_Z },
             { KeyCode.Escape, KeyDown_ESC },
@@ -32,7 +32,7 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void Update() {
-        if (isMoveable) {
+        if (isMoveable && movingComponent != null) {
             moveH = (int)Input.GetAxisRaw("Horizontal");
             moveV = (int)Input.GetAxisRaw("Vertical");
             isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
@@ -41,7 +41,7 @@ public class InputManager : Singleton<InputManager>
             movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
         }
 
-        if (inputAvaliable && Input.anyKeyDown) {
+        if (isInputAvaliable && Input.anyKeyDown) {
             foreach (var dic in keyDictionary) {
                 if (Input.GetKeyDown(dic.Key))
                     dic.Value();

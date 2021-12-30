@@ -10,6 +10,7 @@ TagManager:
   - Wall (Map)
   - Map
   - Interaction Object
+  - Manager
   layers:
   - Default
   - TransparentFX

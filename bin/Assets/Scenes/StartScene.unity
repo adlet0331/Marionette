@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 20761485}
   m_Layer: 0
   m_Name: CameraManager
-  m_TagString: MainCamera
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719b4a4d62b682b45a637577edf8780e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentModeString: 0
   currentCamera: {fileID: 0}
   currentMap: {fileID: 0}
   followingObject: {fileID: 0}
+  currentModeString: 0
   modeList:
   - Static
   - Following Charcater
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 49168388}
   m_Layer: 0
   m_Name: InputManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &49168388
 MonoBehaviour:
@@ -220,13 +220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15af4369f7074a748a4097046ddd4b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoveable: 1
-  inputAvaliable: 0
+  isMoveable: 0
+  isInputAvaliable: 1
+  movingComponent: {fileID: 0}
   moveH: 0
   moveV: 0
   isRun: 0
   isSlowWalk: 0
-  movingComponent: {fileID: 0}
 --- !u!1 &53038364
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 111054150}
   m_Layer: 0
   m_Name: Managers
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,13 +401,13 @@ Transform:
   m_Children:
   - {fileID: 1161215982}
   - {fileID: 20761484}
-  - {fileID: 930490645}
   - {fileID: 49168387}
   - {fileID: 984387923}
   - {fileID: 1170230718}
   - {fileID: 1086037461}
   - {fileID: 1112820118}
   - {fileID: 1653487928}
+  - {fileID: 930490645}
   - {fileID: 1610439650}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -697,7 +697,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 930490646}
         m_TargetAssemblyTypeName: SceneInitManager, Assembly-CSharp
-        m_MethodName: ChangeScene
+        m_MethodName: SwitchScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1732,8 +1732,8 @@ GameObject:
   - component: {fileID: 930490645}
   - component: {fileID: 930490646}
   m_Layer: 0
-  m_Name: SceneInitManager
-  m_TagString: Untagged
+  m_Name: SceneSwitchManager
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1750,7 +1750,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &930490646
 MonoBehaviour:
@@ -1764,11 +1764,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d68b2b721a79004a8534e1d6a6d01ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneCharacterableList:
-  - SampleScene
-  - AnotherScene
-  sceneNCharacterableList:
-  - StartScene
+  sceneInfoList:
+  - SceneName: StartScene
+    isMovable: 0
+    isInputAvaliable: 1
+    CameraMode: 0
+  - SceneName: SampleScene
+    isMovable: 1
+    isInputAvaliable: 1
+    CameraMode: 1
   currentScene: 
 --- !u!1 &937994714
 GameObject:
@@ -2063,7 +2067,7 @@ GameObject:
   - component: {fileID: 984387924}
   m_Layer: 0
   m_Name: MapManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2080,7 +2084,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &984387924
 MonoBehaviour:
@@ -2094,8 +2098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d374d6d4da070488604085ba1375ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCollection:
-  - {fileID: 0}
 --- !u!1 &990673788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,7 +2466,7 @@ GameObject:
   - component: {fileID: 1086037462}
   m_Layer: 0
   m_Name: ResolutionManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2481,7 +2483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1086037462
 MonoBehaviour:
@@ -2652,7 +2654,7 @@ GameObject:
   - component: {fileID: 1112820119}
   m_Layer: 0
   m_Name: ScriptableObjectDataManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2669,7 +2671,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1112820119
 MonoBehaviour:
@@ -2788,7 +2790,7 @@ GameObject:
   - component: {fileID: 1161215983}
   m_Layer: 0
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2837,7 +2839,7 @@ GameObject:
   - component: {fileID: 1170230719}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2854,7 +2856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1170230719
 MonoBehaviour:
@@ -3275,6 +3277,7 @@ GameObject:
   - component: {fileID: 1544665234}
   - component: {fileID: 1544665233}
   - component: {fileID: 1544665232}
+  - component: {fileID: 1544665235}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3347,6 +3350,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544665235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544665231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2082b6273a6dd4eaa0eb1866f2db14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMainCamera: 1
 --- !u!1 &1610439649
 GameObject:
   m_ObjectHideFlags: 0
@@ -3359,7 +3375,7 @@ GameObject:
   - component: {fileID: 1610439651}
   m_Layer: 0
   m_Name: WindowManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3406,7 +3422,7 @@ GameObject:
   - component: {fileID: 1653487929}
   m_Layer: 0
   m_Name: SceneObjManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3423,7 +3439,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 111054151}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1653487929
 MonoBehaviour:

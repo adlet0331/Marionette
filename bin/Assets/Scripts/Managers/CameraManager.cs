@@ -6,17 +6,32 @@
  */
 public class CameraManager : Singleton<CameraManager>
 {
-    [SerializeField] private string currentModeString;
-
     [SerializeField] private Camera currentCamera;
+    public void SetCamera(Camera camera)
+    {
+        currentCamera = camera;
+    }
+
     [SerializeField] private GameObject currentMap;
     private BoxCollider2D currentMapCollider;
+    public void SetMap(GameObject map)
+    {
+        currentMap = map;
+        // 첫번째 콜라이더만. Map의 사이즈를 위함 - Istrigger = true
+        currentMapCollider = map.GetComponent<BoxCollider2D>();
+    }
+
+
     [SerializeField] private GameObject followingObject;
+    public void SetFollowingObject(GameObject go)
+    {
+        followingObject = go;
+    }
 
-    [SerializeField] private string[] modeList;
     private int currentMode;
+    [SerializeField] private string currentModeString;
+    [SerializeField] private string[] modeList;
     private Resolution currentResolution;
-
     public int GetCameraMode()
     {
         return currentMode;
@@ -24,36 +39,29 @@ public class CameraManager : Singleton<CameraManager>
     public void SetCameraMode(int mode)
     {
         if (modeList[mode] == null)
+        {
             return;
+        }
 
         currentMode = mode;
         currentModeString = modeList[mode];
         return;
     }
 
-    public void UpdateMap()
-    {
-        currentMap = GameObject.FindWithTag("Map");
-        currentMapCollider = currentMap.GetComponent<BoxCollider2D>();
-    }
-
     private void Start() {
         SetCameraMode(0);
     }
     private void Update() {
-        //_debug();
         if (currentMode == 0)
         {
             return;
         }
         if (currentMode == 1) {
-            if (currentMap == null)
+            if(followingObject == null)
             {
-                MapManager.Instance.UpdateMapCollection();
-                currentMap = MapManager.Instance.GetMap(0);
-                currentMapCollider = currentMap.GetComponent<BoxCollider2D>();
+                followingObject = PlayerManager.Instance.moveablePlayerObject;
             }
-            currentCamera.transform.position = GetFinalPosition();
+            currentCamera.transform.position = CameraMode1GetPosition();
             return;
         }
     }
@@ -70,7 +78,7 @@ public class CameraManager : Singleton<CameraManager>
         ScreenSize_Y = Screen.height;
     }
 
-    private Vector3 GetFinalPosition() {
+    private Vector3 CameraMode1GetPosition() {
         double posx = followingObject.transform.position.x;
         double posy = followingObject.transform.position.y;
         double cameraWidth = currentCamera.orthographicSize * Screen.width / Screen.height;

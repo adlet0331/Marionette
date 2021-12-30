@@ -20,20 +20,25 @@ public class MovingObject : MonoBehaviour
     private int dirX, dirY;
     private Vector2 zeroVector;
 
-    private void Start() {
+    public void Start() 
+    {
         animator = GetComponent<Animator>();
         zeroVector = new Vector2(0, 0);
     }
-    private void FixedUpdate() {
-        if (isActive && isMoving) {
-            if (isSlowWalking) {
+    private void FixedUpdate() 
+    {
+        if (isActive && isMoving) 
+        {
+            if (isSlowWalking) 
+            {
                 playerRigidBody.velocity = (Vector2.right * dirX + Vector2.up * dirY) * slowWalkSpeed;
             }
             else if (isRunning)
             {
                 playerRigidBody.velocity = (Vector2.right * dirX + Vector2.up * dirY) * runSpeed;
             }
-            else {
+            else 
+            {
                 playerRigidBody.velocity = (Vector2.right * dirX + Vector2.up * dirY) * moveSpeed;
             }
         }
@@ -66,7 +71,8 @@ public class MovingObject : MonoBehaviour
         dirY = ver;
         return;
     }
-    public void SetActive(bool isActive) {
+    public void SetActive(bool isActive) 
+    {
         this.isActive = isActive;
     }
 }
