@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Interact 하는 주체 (주로 플레이어)
+ * 
+ */
 public class InteractObject : MonoBehaviour
 {
     //확장성을 위해 InteractionObject로
