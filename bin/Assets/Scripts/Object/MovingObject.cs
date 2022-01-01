@@ -18,12 +18,10 @@ public class MovingObject : MonoBehaviour
 
     public bool isMoving, isRunning, isSlowWalking;
     private int dirX, dirY;
-    private Vector2 zeroVector;
 
-    public void Start() 
+    public void MovingObjectStart() 
     {
         animator = GetComponent<Animator>();
-        zeroVector = new Vector2(0, 0);
     }
     private void FixedUpdate() 
     {

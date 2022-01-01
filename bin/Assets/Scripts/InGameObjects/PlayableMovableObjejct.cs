@@ -13,7 +13,7 @@ public class PlayableMovableObjejct : MovingObject
 {
     private void Start()
     {
-        base.Start();
+        base.MovingObjectStart();
         PlayerManager.Instance.UpdatePlayerManager(this.gameObject);
         CameraManager.Instance.SetFollowingObject(this.gameObject);
     }

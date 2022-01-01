@@ -1,28 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SLManager : Singleton<SLManager>
 {
-    [SerializeField] private string sceneName;
+    [SerializeField] private SaveData currentSaveData;
 
+    [Serializable]
     public class SaveData
     {
-        float posx;
-        float posy;
+        public float posx;
+        public float posy;
 
-        string facing;
-        string currentScene;
+        public string facing;
+        public string currentScene;
+
+        public List<int> ItemIdxList;
     }
 
-    private void NewGame()
+    public void NewGame()
     {
 
     }
-
-    private void LoadGame(int sectorN)
+    public void Save(int idx) 
     {
-
+        string json = JsonUtility.ToJson(currentSaveData);
+        string path = Application.persistentDataPath + "/" + "SaveData" + idx;
+        File.WriteAllText(path, json);
+    }
+    public void Load(int idx) 
+    {
+        string path = Application.persistentDataPath + "/" + "SaveData" + idx;
+        if (File.Exists(path)) 
+        {
+            string json = File.ReadAllText(path);
+            currentSaveData = JsonUtility.FromJson<SaveData>(json);
+            return;
+        }
     }
 
     private SaveData CreateNewSaveData()
@@ -35,14 +51,6 @@ public class SLManager : Singleton<SLManager>
     private void Update()
     {
         
-    }
-    private void SaveAll()
-    {
-
-    }
-    private void LoadAll()
-    {
-
     }
 
 }
