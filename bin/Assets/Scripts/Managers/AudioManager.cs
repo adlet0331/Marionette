@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /* 환경설정 창에서 마스터 볼륨, BGM 볼륨, SE 볼륨 조절
  * BGM 플레이, SE 플레이 조절 - Audio Source는 플레이어한테 부착
@@ -17,18 +19,26 @@ public class Sound {
 }
 
 public class AudioManager : Singleton<AudioManager> {
+    [SerializeField] private Slider MasterSlider;
+    [SerializeField] private Text MasterText;
+    [SerializeField] private Slider BgmSlider;
+    [SerializeField] private Text BgmText;
+    [SerializeField] private Slider SESlider;
+    [SerializeField] private Text SEText;
+
     [SerializeField] private Sound[] effects;
     [SerializeField] private Sound[] bgms;
 
-    [SerializeField] private float MasterVolume, BgmVolume, SEVolume;
+    [SerializeField] private double masterVolume, bgmVolume, sEVolume;
 
     [SerializeField] private bool isPlaying;
     private AudioSource audioPlayer;
 
-    protected AudioManager(){}
-
     private void Start() {
         audioPlayer = GetComponent<AudioSource>();
+        MasterSlider.onValueChanged.AddListener(delegate { updateMasterVolume(); });
+        BgmSlider.onValueChanged.AddListener(delegate { updateBgmVolume(); });
+        SESlider.onValueChanged.AddListener(delegate { updateSEVolume(); });
         ChangeBGM(0);
     }
 
@@ -38,5 +48,21 @@ public class AudioManager : Singleton<AudioManager> {
 
     public void PlayCurrentBGM() {
         
+    }
+
+    private void updateMasterVolume()
+    {
+        masterVolume = Math.Round(MasterSlider.value, 2);
+        MasterText.text = (masterVolume * 100).ToString();
+    }
+    private void updateBgmVolume()
+    {
+        bgmVolume = Math.Round(BgmSlider.value, 2);
+        BgmText.text = (bgmVolume * 100).ToString();
+    }
+    private void updateSEVolume()
+    {
+        sEVolume = Math.Round(MasterSlider.value, 2);
+        SEText.text = (sEVolume* 100).ToString();
     }
 }
