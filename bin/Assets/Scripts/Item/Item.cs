@@ -6,7 +6,8 @@ using UnityEngine;
 [Serializable]
 public class Item
 {
+    public int id;
     public string name;
-    public Sprite inventorySprite;
-    public string inventoryInfo;
+    public Sprite itemSprite;
+    public string itemInfo;
 }
