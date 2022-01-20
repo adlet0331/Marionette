@@ -3,5 +3,25 @@ using UnityEngine;
 
 public class InventoryManager : Singleton<InventoryManager>
 {
-    [SerializeField] public List<Item> itemList;
+    [SerializeField] private List<Item> itemList;
+    public List<Item> GetItemList()
+    {
+        return itemList.ConvertAll(o => new Item(o));
+    }
+    public void AddItem(Item item)
+    {
+        itemList.Add(item);
+        return;
+    }
+    public void DeleteItem(Item item)
+    {
+        foreach(Item it in itemList)
+        {
+            if (it.id == item.id)
+            {
+                itemList.Remove(it);
+            }
+        }
+        return;
+    }
 }
