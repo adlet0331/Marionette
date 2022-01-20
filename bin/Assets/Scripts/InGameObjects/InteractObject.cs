@@ -49,15 +49,15 @@ public class InteractObject : MonoBehaviour
         int idx = updateFstIdx();
         if (idx == -1)
         {
-            WindowManager.Instance.interactionWindow.gameObject.SetActive(false);
+            WindowManager.Instance.interactableWindow.gameObject.SetActive(false);
         }
         else
         {
-            WindowManager.Instance.interactionWindow.SetInteractionObject(idx);
-            WindowManager.Instance.interactionWindow.gameObject.SetActive(true);
+            WindowManager.Instance.interactableWindow.SetInteractionObject(idx);
+            WindowManager.Instance.interactableWindow.gameObject.SetActive(true);
         }
     }
-    public InteractionObject GetFstScrObj()
+    public InteractionObject GetFstInteractObj()
     {
         if (checkIfListEmpty())
             return null;
@@ -69,7 +69,10 @@ public class InteractObject : MonoBehaviour
             return obj;
         }
     }
-
+    public void InteractWithObject()
+    {
+        
+    }
     public void AddInteractionList(InteractionObject interactionObj)
     {
         scriptableObjList.Add(interactionObj);

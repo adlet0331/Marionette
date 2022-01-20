@@ -1185,7 +1185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f50e177b308ca74f8b10f06cfc8704b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isScriptable: 1
+  isInteractable: 1
+  objectType: 0
   idx: 1
 --- !u!61 &912619386
 BoxCollider2D:
@@ -1733,7 +1734,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f50e177b308ca74f8b10f06cfc8704b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isScriptable: 1
+  isInteractable: 1
+  objectType: 0
   idx: 0
 --- !u!212 &1283064404
 SpriteRenderer:

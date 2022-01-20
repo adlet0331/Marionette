@@ -57,7 +57,7 @@ public class ScriptWindow : WindowObject
     {
         if (PlayerManager.Instance.playerInteractObject == null)
             return;
-        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstScrObj();
+        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
         if (obj == null)
             return;
         int idx = obj.GetIdx();
@@ -72,6 +72,7 @@ public class ScriptWindow : WindowObject
             this.Close();
         else
             this.Next(idx);
+        return;
     }
     IEnumerator _printScript(Text textObj, string script)
     {

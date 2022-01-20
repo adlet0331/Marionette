@@ -8,7 +8,7 @@ using UnityEngine.UI;
  * - 오브젝트 이름
  * - InGameObjectManager index = 0 인 String
  */
-public class ScriptableWindow : MonoBehaviour
+public class InteractableWindow : MonoBehaviour
 {
     [SerializeField] private Text nameText;
     [SerializeField] private Text explanationText;
