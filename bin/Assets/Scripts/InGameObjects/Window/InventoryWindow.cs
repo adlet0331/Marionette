@@ -8,22 +8,17 @@ public class InventoryWindow : WindowObject
 {
     [SerializeField] private List<Slot> slotList;
     [SerializeField] private List<Item> itemList;
-
-    private void Start()
-    {
-        UpdateInventory();
-    }
-
     public void UpdateInventory()
     {
         int slotNum = slotList.Count;
+        itemList = InventoryManager.Instance.GetItemList();
         int itemNum = itemList.Count;
         int cnt = 0;
         for (int i = 0; i < slotNum; i++)
         {
             if (i < itemNum)
             {
-
+                slotList[i].SetImage(itemList[i].itemSprite);
             }
             else
             {
@@ -33,6 +28,8 @@ public class InventoryWindow : WindowObject
     }
     public override void Activate()
     {
+        UpdateInventory();
+        ActivateObject();
         return;
     }
 }

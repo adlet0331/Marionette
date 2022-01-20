@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * ÇÃ·¹ÀÌ¾î°¡ Á¶Á¾ÇØ¼­ ¿òÁ÷ÀÌ´Â Ä³¸¯ÅÍ
+ * í”Œë ˆì´ì–´ê°€ ì¡°ì¢…í•´ì„œ ì›€ì§ì´ëŠ” ìºë¦­í„°
  * 
- * ÇÑ ¾À¿¡ ÇÏ³ª¸¸ Á¸ÀçÇØ¾ßÇÔ
+ * í•œ ì”¬ì— í•˜ë‚˜ë§Œ ì¡´ì¬í•´ì•¼í•¨
  * 
  */
 

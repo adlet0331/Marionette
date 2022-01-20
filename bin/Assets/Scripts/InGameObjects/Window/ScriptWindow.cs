@@ -55,10 +55,12 @@ public class ScriptWindow : WindowObject
     // 초기화
     public override void Activate()
     {
+        if (PlayerManager.Instance.playerInteractObject == null)
+            return;
         InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstScrObj();
+        if (obj == null)
+            return;
         int idx = obj.GetIdx();
-        Debug.Assert(idx >= 0 && idx <= ScriptObjDataManager.Instance.ScriptObjDataList.Count,
-            "Valid 하지 않은 ScriptObjectData IDX 입니다.");
         if (blocked)
         {
             Stop();

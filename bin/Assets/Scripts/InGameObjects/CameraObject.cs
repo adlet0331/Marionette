@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * ¾À¿¡ ÀÖ´Â ¸ŞÀÎ Ä«¸Ş¶ó
+ * ì”¬ì— ìˆëŠ” ë©”ì¸ ì¹´ë©”ë¼
  */
 public class CameraObject : MonoBehaviour
 {

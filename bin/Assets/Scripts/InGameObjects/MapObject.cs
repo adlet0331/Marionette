@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Map ¿ÀºêÁ§Æ®
- * Camera °æ°è ¹üÀ§¸¦ Á¤ÇÏ´Â ¿ÀºêÁ§Æ®ÀÓ
- * 1 ¾À¿¡ 1 °³
+ * Map ì˜¤ë¸Œì íŠ¸
+ * Camera ê²½ê³„ ë²”ìœ„ë¥¼ ì •í•˜ëŠ” ì˜¤ë¸Œì íŠ¸ì„
+ * 1 ì”¬ì— 1 ê°œ
  * 
  */
 

@@ -9,4 +9,5 @@ public class WindowManager : Singleton<WindowManager>
     public SettingWindow settingWindow;
     public ScriptWindow scriptWindow;
     public ScriptableWindow interactionWindow;
+    public InventoryWindow inventoryWindow;
 }

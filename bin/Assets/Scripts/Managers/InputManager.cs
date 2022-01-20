@@ -28,6 +28,7 @@ public class InputManager : Singleton<InputManager>
         keyDictionary = new Dictionary<KeyCode, Action> {
             { KeyCode.Z, KeyDown_Z },
             { KeyCode.Escape, KeyDown_ESC },
+            { KeyCode.X, KeyDown_X }, 
         };
     }
 
@@ -56,5 +57,10 @@ public class InputManager : Singleton<InputManager>
     private void KeyDown_Z() {
         Debug.Log("Z");
         WindowManager.Instance.scriptWindow.Activate();
+    }
+    private void KeyDown_X()
+    {
+        Debug.Log("X");
+        WindowManager.Instance.inventoryWindow.Activate();
     }
 }
