@@ -22,7 +22,7 @@ public class ScriptWindow : WindowObject
     [SerializeField] private bool blocked;
     private void Open(int idx)
     {
-        Debug.Assert(!gameObject.activeSelf, "ScriptWindow가 닫혀있지 않습니다. 버그임!!");
+        Debug.Assert(!gameObject.activeSelf, "ScriptWindow가 닫혀있지 않습니다.");
         this.ActivateObject();
 
         currObj = ScriptObjDataManager.Instance.ScriptObjDataList[idx];

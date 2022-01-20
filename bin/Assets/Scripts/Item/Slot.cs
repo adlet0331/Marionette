@@ -5,12 +5,16 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public bool isEmpty;
-    private Image image;
+    [SerializeField] bool isEmpty;
+    [SerializeField] Image image;
 
+    public void SetIsEmpty(bool isEmpty)
+    {
+        this.isEmpty = isEmpty;
+    }
     public void SetImage(Sprite itemSprite)
     {
-
+        image.sprite = itemSprite;
         return;
     }
 }
