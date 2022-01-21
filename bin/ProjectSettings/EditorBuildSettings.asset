@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AnotherScene.unity
     guid: c2c0310463f65214c98bf688d725bd88
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 739d80127ba02ed4688e853f61b2dea0
+  - enabled: 1
+    path: Assets/Scenes/girl_room.unity
+    guid: 5935c51489bdbb94081be0a04fc27812
   m_configObjects: {}

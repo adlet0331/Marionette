@@ -13,4 +13,9 @@ public class SceneObjManager : Singleton<SceneObjManager>
             DontDestroyOnLoad(gameObject);
         }
     }
+    public void AddDontDestroyObj(GameObject gameObject)
+    {
+        dontDestroyObj.Add(gameObject);
+        this.Start();
+    }
 }

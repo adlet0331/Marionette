@@ -16,5 +16,6 @@ public class PlayableMovableObjejct : MovingObject
         base.MovingObjectStart();
         PlayerManager.Instance.UpdatePlayerManager(this.gameObject);
         CameraManager.Instance.SetFollowingObject(this.gameObject);
+        SceneObjManager.Instance.AddDontDestroyObj(this.gameObject);
     }
 }
