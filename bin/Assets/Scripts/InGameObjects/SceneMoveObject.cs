@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SceneSwitchManager;
 
 public class SceneMoveObject : ColliderObject
 {
-    [SerializeField] private string sceneName;
+    [SerializeField] private SceneName sceneName;
     public override void InteractIn()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneSwitchManager.Instance.SwitchScene(sceneName);
     }
 
     public override void InteractOut()
     {
-        SceneManager.LoadScene(sceneName);
+        return;
     }
 }

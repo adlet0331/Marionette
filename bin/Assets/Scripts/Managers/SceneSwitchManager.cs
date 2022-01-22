@@ -1,48 +1,84 @@
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Assets.Scripts.InGameObjects.DontDestroyObject;
 
 public class SceneSwitchManager : Singleton<SceneSwitchManager>
 {
+    public enum SceneName
+    {
+        StartScene = 0,
+        SampleScene = 1,
+        AnotherScene = 2,
+    }
     [Serializable]
     public class SceneInfo
     {
-        public string SceneName;
+        public SceneName sceneName;
+        public bool isCharacterExist;
         public bool isMovable;
         public bool isInputAvaliable;
         public int CameraMode;
     }
 
+    [SerializeField] private SceneName currentScene;
+    [ArrayElementTitle("sceneName")]
     [SerializeField] private List<SceneInfo> sceneInfoList;
-    [SerializeField] string currentScene;
-
     private void Start()
     {
-        currentScene = "StartScene";
+        currentScene = SceneName.StartScene;
     }
-
-    public string GetScene()
-    {
-        return currentScene;
-    }
-
-    public void SwitchScene(string sceneName)
+    private SceneInfo FindSceneInfo(SceneName sceneName)
     {
         foreach (SceneInfo sceneInfo in sceneInfoList)
         {
-            if (sceneInfo.SceneName == sceneName)
+            if (sceneInfo.sceneName == sceneName)
             {
-                InputManager.Instance.SetOptions(sceneInfo.isMovable, sceneInfo.isInputAvaliable);
-                CameraManager.Instance.SetCameraMode(sceneInfo.CameraMode);
-                goto success;
+                return sceneInfo;
             }
         }
-        Debug.Assert(false, "SceneName : " + sceneName + " is not Exist in this game");
-        return;
-    success:
-        SceneManager.LoadScene(sceneName);
+        return null;
+    }
+    private void setSceneOptions(SceneInfo sceneInfo)
+    {
+        // Input Manager 옵션 설정
+        InputManager.Instance.SetOptions(sceneInfo.isMovable, sceneInfo.isInputAvaliable);
+        // 카메라 매니저 모드 설정
+        CameraManager.Instance.SetCameraMode(sceneInfo.CameraMode);
+        if (sceneInfo.isCharacterExist)
+        {
+            if (!SceneObjManager.Instance.getPlayerExist())
+            {
+                // SceneObjManager에서 PlayerObj가 없으면 생성해줌
+                GameObject prefab = Resources.Load("Prefabs/Moving Character") as GameObject;
+                GameObject movingCharacter = MonoBehaviour.Instantiate(prefab) as GameObject;
+                // 좌표 설정 및 SceneManager에 넣어줌
+                SceneObjManager.Instance.AddObject(ObjectType.PlayerObject, movingCharacter);
+                movingCharacter.transform.position = new Vector3(0, 0, 0);
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+
+        }
+    }
+    public void NewGameButton()
+    {
+        SwitchScene(SceneName.SampleScene);
+    }
+    public void SwitchScene(SceneName sceneName)
+    {
+        SceneInfo sceneInfo = FindSceneInfo(sceneName);
+        if (sceneInfo == null)
+            Debug.Assert(false, "SceneName : " + sceneName.ToString() + " is not Exist in this game");
+        SceneManager.LoadScene(sceneName.ToString());
+        setSceneOptions(sceneInfo);
+        Debug.Log("SceneName : " + sceneName.ToString());
         currentScene = sceneName;
         return;
     }

@@ -5,6 +5,11 @@ public class SceneObjManager : Singleton<SceneObjManager>
 {
     [SerializeField] private GameObject canvasObj;
     [SerializeField] private GameObject playerObj;
+    public bool getPlayerExist()
+    {
+        return playerObj != null;
+    }
+
 
     private void Start()    
     {
