@@ -4441,23 +4441,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneInfoList:
-  - SceneName: StartScene
+  - sceneName: 0
+    isCharacterExist: 0
     isMovable: 0
     isInputAvaliable: 1
     CameraMode: 0
-  - SceneName: SampleScene
+  - sceneName: 1
+    isCharacterExist: 1
     isMovable: 1
     isInputAvaliable: 1
     CameraMode: 1
-  - SceneName: AnotherScene
+  - sceneName: 2
+    isCharacterExist: 1
     isMovable: 1
     isInputAvaliable: 1
     CameraMode: 1
-  - SceneName: girl_room
-    isMovable: 1
-    isInputAvaliable: 1
-    CameraMode: 1
-  currentScene: 
 --- !u!1 &937994714
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,8 +8146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db38c0944dcfa5741b5cc74f76ca2574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyObj:
-  - {fileID: 1843908518}
+  canvasObj: {fileID: 0}
+  playerObj: {fileID: 0}
 --- !u!1 &1667070615
 GameObject:
   m_ObjectHideFlags: 0
@@ -8966,6 +8964,7 @@ GameObject:
   - component: {fileID: 1843908521}
   - component: {fileID: 1843908520}
   - component: {fileID: 1843908519}
+  - component: {fileID: 1843908523}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9060,6 +9059,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1843908523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843908518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ab935abcd7cfe4a9d35e1cc099147d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &1854297558
 GameObject:
   m_ObjectHideFlags: 0

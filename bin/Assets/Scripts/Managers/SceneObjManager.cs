@@ -1,21 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static Assets.Scripts.InGameObjects.DontDestroyObject;
 
 public class SceneObjManager : Singleton<SceneObjManager>
 {
-    [SerializeField] private List<GameObject> dontDestroyObj;
+    [SerializeField] private GameObject canvasObj;
+    [SerializeField] private GameObject playerObj;
 
     private void Start()    
     {
-        foreach(GameObject gameObject in dontDestroyObj)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        if (canvasObj != null)
+            DontDestroyOnLoad(canvasObj);
+        if (playerObj != null)
+            DontDestroyOnLoad(playerObj);
     }
-    public void AddDontDestroyObj(GameObject gameObject)
+
+    public void AddObject(ObjectType type, GameObject gameObject)
     {
-        dontDestroyObj.Add(gameObject);
+        if (type == ObjectType.CanvasObject)
+            canvasObj = gameObject;
+        else if (type == ObjectType.PlayerObject)    
+            playerObj = gameObject;
         this.Start();
+    }
+
+    public void UpdatePlayerPos(Vector3 pos)
+    {
+        playerObj.transform.position = pos;
     }
 }

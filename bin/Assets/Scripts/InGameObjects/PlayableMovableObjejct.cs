@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using static Assets.Scripts.InGameObjects.DontDestroyObject;
 
 /*
  * 플레이어가 조종해서 움직이는 캐릭터
@@ -16,6 +14,6 @@ public class PlayableMovableObjejct : MovingObject
         base.MovingObjectStart();
         PlayerManager.Instance.UpdatePlayerManager(this.gameObject);
         CameraManager.Instance.SetFollowingObject(this.gameObject);
-        SceneObjManager.Instance.AddDontDestroyObj(this.gameObject);
+        SceneObjManager.Instance.AddObject(ObjectType.PlayerObject, this.gameObject);
     }
 }

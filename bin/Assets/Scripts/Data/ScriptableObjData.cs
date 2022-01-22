@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* °ÔÀÓ ³» Script¸¦ °¡Áö´Â ¿ÀºêÁ§Æ®ÀÇ µ¥ÀÌÅÍ (idx·Î »ç¿ë)
- * -> ÀÌ¸§, ÀÌ¹ÌÁö, scriptableScript, Scripts
+/* ê²Œì„ ë‚´ Scriptë¥¼ ê°€ì§€ëŠ” ì˜¤ë¸Œì íŠ¸ì˜ ë°ì´í„° (idxë¡œ ì‚¬ìš©)
+ * -> ì´ë¦„, ì´ë¯¸ì§€, scriptableScript, Scripts
  * 
  */
 [Serializable]
@@ -16,12 +16,12 @@ public class ScriptableObjData
     public List<string> scripts;
     public ScriptableObjData()
     {
-        name = "´õ¹Ì";
+        name = "ë”ë¯¸";
         sprite = null;
-        scriptableScript = "ÀÌ°Ç ´õ¹ÌÀÔ´Ï´Ù";
+        scriptableScript = "ì´ê±´ ë”ë¯¸ì…ë‹ˆë‹¤";
         scripts = new List<string>();
-        scripts.Add("´õ¹Ì ´ë»ç 1ÀÔ´Ï´Ù");
-        scripts.Add("´õ¹Ì ´ë»ç 2 \nÇÏÇÏ ÁÙÀ» ¹Ù²ÜÁÙÀº ¸ô¶ú°ÚÁö!");
+        scripts.Add("ë”ë¯¸ ëŒ€ì‚¬ 1ì…ë‹ˆë‹¤");
+        scripts.Add("ë”ë¯¸ ëŒ€ì‚¬ 2 \ní•˜í•˜ ì¤„ì„ ë°”ê¿€ì¤„ì€ ëª°ëê² ì§€!");
     }
     public ScriptableObjData(string name, string scriptableScript, List<string> scripts)
     {
