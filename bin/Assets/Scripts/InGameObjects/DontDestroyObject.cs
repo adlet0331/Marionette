@@ -14,7 +14,7 @@ namespace Assets.Scripts.InGameObjects
         private void Start()
         {
             SceneObjManager.Instance.AddObject(type, this.gameObject);
-            Debug.Log("DontDestroyable Object : " + this.ToString());
+            //Debug.Log("DontDestroyable Object : " + this.ToString());
         }
     }
 }

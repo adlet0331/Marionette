@@ -11,15 +11,21 @@ using UnityEngine;
 
 public class SceneStartPoint : MonoBehaviour
 {
-    public enum ObjectType
+    [SerializeField] private bool isMain;
+    public enum StartPointType
     {
         Player = 0,
         Doll1 = 1,
     }
-    [SerializeField] private ObjectType thisType;
+    [SerializeField] private StartPointType thisType;
+    public StartPointType GetObjType()
+    {
+        return thisType;
+    }
     private void Start()
     {
-        if (thisType == ObjectType.Player)
+        SceneObjManager.Instance.AddStartPoint(this);
+        if (isMain)
         {
             SceneObjManager.Instance.UpdatePlayerPos(this.transform.position);
         }

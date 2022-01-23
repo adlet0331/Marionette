@@ -11,6 +11,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         StartScene = 0,
         SampleScene = 1,
         AnotherScene = 2,
+        Girl_room = 3,
     }
     [Serializable]
     public class SceneInfo
@@ -48,23 +49,16 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         CameraManager.Instance.SetCameraMode(sceneInfo.CameraMode);
         if (sceneInfo.isCharacterExist)
         {
+            // 캐릭터가 존재 X, 생성해줌
             if (!SceneObjManager.Instance.getPlayerExist())
             {
                 // SceneObjManager에서 PlayerObj가 없으면 생성해줌
-                GameObject prefab = Resources.Load("Prefabs/Moving Character") as GameObject;
+                GameObject prefab = Resources.Load("Moving Character") as GameObject;
                 GameObject movingCharacter = MonoBehaviour.Instantiate(prefab) as GameObject;
-                // 좌표 설정 및 SceneManager에 넣어줌
+                movingCharacter.name = "Moving Character";
+                // SceneManager에 넣어줌
                 SceneObjManager.Instance.AddObject(ObjectType.PlayerObject, movingCharacter);
-                movingCharacter.transform.position = new Vector3(0, 0, 0);
             }
-            else
-            {
-
-            }
-        }
-        else
-        {
-
         }
     }
     public void NewGameButton()
@@ -78,7 +72,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
             Debug.Assert(false, "SceneName : " + sceneName.ToString() + " is not Exist in this game");
         SceneManager.LoadScene(sceneName.ToString());
         setSceneOptions(sceneInfo);
-        Debug.Log("SceneName : " + sceneName.ToString());
+        Debug.Log("SwitchScene : " + sceneName.ToString());
         currentScene = sceneName;
         return;
     }

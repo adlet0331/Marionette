@@ -11,6 +11,7 @@ TagManager:
   - Map
   - Interaction Object
   - Manager
+  - StartPoint
   layers:
   - Default
   - TransparentFX
@@ -18,11 +19,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - InGameObject
-  - Player
-  - NPC
   - Map
+  - InGameObject
+  - 
+  - NPC
+  - Character
   - 
   - 
   - 

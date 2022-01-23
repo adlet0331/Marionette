@@ -4457,6 +4457,11 @@ MonoBehaviour:
     isMovable: 1
     isInputAvaliable: 1
     CameraMode: 1
+  - sceneName: 3
+    isCharacterExist: 1
+    isMovable: 1
+    isInputAvaliable: 1
+    CameraMode: 1
 --- !u!1 &937994714
 GameObject:
   m_ObjectHideFlags: 0
