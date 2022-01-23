@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/* 플레이어의 KeyBoard 입력을 받아서 처리하는 매니저
+/* 
+ * 플레이어의 KeyBoard 입력을 받아서 처리하는 매니저
  * 
  */
 public class InputManager : Singleton<InputManager>
@@ -41,7 +42,6 @@ public class InputManager : Singleton<InputManager>
 
             movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
         }
-
         if (isInputAvaliable && Input.anyKeyDown) {
             foreach (var dic in keyDictionary) {
                 if (Input.GetKeyDown(dic.Key))
