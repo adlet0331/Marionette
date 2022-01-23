@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Item Áö±Ş / »èÁ¦ °¡´ÉÇÑ ¿ÀºêÁ§Æ®
+ * Item ì§€ê¸‰ / ì‚­ì œ ê°€ëŠ¥í•œ ì˜¤ë¸Œì íŠ¸
  * 
  */
 public class ItemableObject : InteractionObject
