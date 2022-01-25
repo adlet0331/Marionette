@@ -1439,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1347561138099279658, guid: d9f1eab8509cab84c8deac6f16b2db0c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1347561139538502235, guid: d9f1eab8509cab84c8deac6f16b2db0c, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
@@ -2668,11 +2668,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1447909994910681931, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1447909995818662229, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2862193243416251059, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
       propertyPath: m_Color.b
@@ -2776,15 +2776,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2862193243416251071, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8597048305705803960, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8597048306812170334, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9388a690e3af3a4eb91e6679ea0affd, type: 3}
