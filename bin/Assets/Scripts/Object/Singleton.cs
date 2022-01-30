@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-/* °ÔÀÓ ÀüÃ¼¿¡¼­ ÇÑ °³¸¸ Á¸ÀçÇÏ´Â Singleton ¿ÀºêÁ§Æ®¿¡ ºÎÂø
- * ¾ÀÀÌ ³Ñ¾î°¡µµ ÆÄ±« ¾ÈµÊ
+/* ê²Œì„ ì „ì²´ì—ì„œ í•œ ê°œë§Œ ì¡´ì¬í•˜ëŠ” Singleton ì˜¤ë¸Œì íŠ¸ì— ë¶€ì°©
+ * ì”¬ì´ ë„˜ì–´ê°€ë„ íŒŒê´´ ì•ˆë¨
  * 
  */
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {

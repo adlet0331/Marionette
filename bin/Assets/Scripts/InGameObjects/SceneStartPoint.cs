@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SceneSwitchManager;
 
 /*
  * 플레이어가 시작하는 좌표를 지정해주는 오브젝트
@@ -11,7 +12,7 @@ using UnityEngine;
 
 public class SceneStartPoint : MonoBehaviour
 {
-    [SerializeField] private bool isMain;
+    [SerializeField] private SceneName beforeSceneName;
     public enum StartPointType
     {
         Player = 0,
@@ -25,7 +26,7 @@ public class SceneStartPoint : MonoBehaviour
     private void Start()
     {
         SceneObjManager.Instance.AddStartPoint(this);
-        if (isMain)
+        if (beforeSceneName == SceneSwitchManager.Instance.beforeScene)
         {
             SceneObjManager.Instance.UpdatePlayerPos(this.transform.position);
         }

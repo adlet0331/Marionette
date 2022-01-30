@@ -6,13 +6,13 @@ using UnityEngine;
 [Serializable]
 public class Item
 {
-    public int id;
     public string name;
+    public int idx;
     public Sprite itemSprite;
     public string itemInfo;
     public Item(Item item)
     {
-        this.id = item.id;
+        this.idx = item.idx;
         this.name = item.name;
         this.itemSprite = item.itemSprite;
         this.itemInfo = item.itemInfo;

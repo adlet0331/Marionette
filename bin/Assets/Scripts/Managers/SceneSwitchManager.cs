@@ -24,6 +24,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     }
 
     [SerializeField] private SceneName currentScene;
+    [SerializeField] public SceneName beforeScene;
     [ArrayElementTitle("sceneName")]
     [SerializeField] private List<SceneInfo> sceneInfoList;
     private void Start()
@@ -70,10 +71,10 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         SceneInfo sceneInfo = FindSceneInfo(sceneName);
         if (sceneInfo == null)
             Debug.Assert(false, "SceneName : " + sceneName.ToString() + " is not Exist in this game");
+        beforeScene = currentScene;
+        currentScene = sceneName;
         SceneManager.LoadScene(sceneName.ToString());
         setSceneOptions(sceneInfo);
-        Debug.Log("SwitchScene : " + sceneName.ToString());
-        currentScene = sceneName;
         return;
     }
 }

@@ -17,7 +17,7 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         foreach(Item it in itemList)
         {
-            if (it.id == item.id)
+            if (it.idx == item.idx)
             {
                 itemList.Remove(it);
             }

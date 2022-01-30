@@ -74,6 +74,8 @@ public class CameraManager : Singleton<CameraManager>
     }
 
     private Vector3 CameraMode1GetPosition() {
+        if (followingObject == null)
+            return new Vector3(0,0,-1);
         double posx = followingObject.transform.position.x;
         double posy = followingObject.transform.position.y;
         double cameraWidth = currentCamera.orthographicSize * Screen.width / Screen.height;
