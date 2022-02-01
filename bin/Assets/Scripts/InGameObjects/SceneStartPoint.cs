@@ -25,7 +25,6 @@ public class SceneStartPoint : MonoBehaviour
     }
     private void Start()
     {
-        SceneObjManager.Instance.AddStartPoint(this);
         if (beforeSceneName == SceneSwitchManager.Instance.beforeScene)
         {
             SceneObjManager.Instance.UpdatePlayerPos(this.transform.position);

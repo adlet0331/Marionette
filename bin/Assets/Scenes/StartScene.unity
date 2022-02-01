@@ -4441,6 +4441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 0
+  beforeScene: 0
   sceneInfoList:
   - sceneName: 0
     isCharacterExist: 0
@@ -8153,6 +8154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasObj: {fileID: 0}
+  playerExist: 0
   playerObj: {fileID: 0}
 --- !u!1 &1667070615
 GameObject:

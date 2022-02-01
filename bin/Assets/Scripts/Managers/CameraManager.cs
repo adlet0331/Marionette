@@ -50,17 +50,20 @@ public class CameraManager : Singleton<CameraManager>
     private void Start() {
         SetCameraMode(0);
     }
-    private void Update() {
+    private void LateUpdate()
+    {
+        if (currentCamera == null)
+            return;
         if (currentMode == 0)
         {
             return;
         }
-        if (currentMode == 1) {
+        if (currentMode == 1)
+        {
             currentCamera.transform.position = CameraMode1GetPosition();
             return;
         }
     }
-
     [SerializeField] private double CameraSize_X;
     [SerializeField] private double CameraSize_Y;
     [SerializeField] private double ScreenSize_X;
@@ -74,7 +77,7 @@ public class CameraManager : Singleton<CameraManager>
     }
 
     private Vector3 CameraMode1GetPosition() {
-        if (followingObject == null)
+        if (followingObject == null || currentMap == null)
             return new Vector3(0,0,-1);
         double posx = followingObject.transform.position.x;
         double posy = followingObject.transform.position.y;

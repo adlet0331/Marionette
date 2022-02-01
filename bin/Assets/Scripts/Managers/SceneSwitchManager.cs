@@ -48,19 +48,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         InputManager.Instance.SetOptions(sceneInfo.isMovable, sceneInfo.isInputAvaliable);
         // 카메라 매니저 모드 설정
         CameraManager.Instance.SetCameraMode(sceneInfo.CameraMode);
-        if (sceneInfo.isCharacterExist)
-        {
-            // 캐릭터가 존재 X, 생성해줌
-            if (!SceneObjManager.Instance.getPlayerExist())
-            {
-                // SceneObjManager에서 PlayerObj가 없으면 생성해줌
-                GameObject prefab = Resources.Load("Moving Character") as GameObject;
-                GameObject movingCharacter = MonoBehaviour.Instantiate(prefab) as GameObject;
-                movingCharacter.name = "Moving Character";
-                // SceneManager에 넣어줌
-                SceneObjManager.Instance.AddObject(ObjectType.PlayerObject, movingCharacter);
-            }
-        }
+        SceneObjManager.Instance.PlayerObjectExist = sceneInfo.isCharacterExist;
     }
     public void NewGameButton()
     {
@@ -69,11 +57,10 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     public void SwitchScene(SceneName sceneName)
     {
         SceneInfo sceneInfo = FindSceneInfo(sceneName);
-        if (sceneInfo == null)
-            Debug.Assert(false, "SceneName : " + sceneName.ToString() + " is not Exist in this game");
+        Debug.Assert(sceneInfo != null, "SceneName : " + sceneName.ToString() + " is not Exist in this game");
         beforeScene = currentScene;
         currentScene = sceneName;
-        SceneManager.LoadScene(sceneName.ToString());
+        SceneManager.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single);
         setSceneOptions(sceneInfo);
         return;
     }

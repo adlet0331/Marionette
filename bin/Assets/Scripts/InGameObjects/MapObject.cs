@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class MapObject : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         CameraManager.Instance.SetMap(this.gameObject);
     }
