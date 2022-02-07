@@ -1,20 +1,18 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class Item
 {
-    public string name;
     public int idx;
-    public Sprite itemSprite;
+    public string name;
     public string itemInfo;
-    public Item(Item item)
+    public Sprite itemSprite;
+    public Item(int idx, string name, string info, Sprite itemSprite)
     {
-        this.idx = item.idx;
-        this.name = item.name;
-        this.itemSprite = item.itemSprite;
-        this.itemInfo = item.itemInfo;
+        this.idx = idx;
+        this.name = name;
+        this.itemInfo = info;
+        this.itemSprite = itemSprite;
     }
 }

@@ -10,21 +10,13 @@ using UnityEngine;
 [Serializable]
 public class ScriptableObjData
 {
+    public int idx;
     public string name;
-    public Sprite sprite;
     public string scriptableScript;
     public List<string> scripts;
-    public ScriptableObjData()
+    public ScriptableObjData(int idx, string name, string scriptableScript, List<string> scripts)
     {
-        name = "더미";
-        sprite = null;
-        scriptableScript = "이건 더미입니다";
-        scripts = new List<string>();
-        scripts.Add("더미 대사 1입니다");
-        scripts.Add("더미 대사 2 \n하하 줄을 바꿀줄은 몰랐겠지!");
-    }
-    public ScriptableObjData(string name, string scriptableScript, List<string> scripts)
-    {
+        this.idx = idx;
         this.name = name;
         this.scriptableScript = scriptableScript;
         this.scripts = new List<string>();

@@ -6,7 +6,7 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] private List<Item> itemList;
     public List<Item> GetItemList()
     {
-        return itemList.ConvertAll(o => new Item(o));
+        return itemList.ConvertAll(o => new Item(o.idx, o.name, o.itemInfo, o.itemSprite));
     }
     public void AddItem(Item item)
     {

@@ -3899,8 +3899,8 @@ MonoBehaviour:
   NameText: {fileID: 861756064}
   ScriptText: {fileID: 1487416740}
   currObj:
+    idx: 0
     name: "\uB354\uBBF8"
-    sprite: {fileID: 0}
     scriptableScript: "\uC774\uAC74 \uB354\uBBF8\uC785\uB2C8\uB2E4"
     scripts:
     - "\uB354\uBBF8 \uB300\uC0AC 1\uC785\uB2C8\uB2E4"
@@ -5952,15 +5952,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptObjDataList:
-  - name: "\uB354\uBBF8"
-    sprite: {fileID: 0}
+  - idx: 0
+    name: "\uB354\uBBF8"
     scriptableScript: "\uB354\uBBF8"
     scripts:
     - "\uC548\uB155 \uB098\uB294 \uB354\uBBF8\uC57C"
     - "\uC548\uB155 \uB098\uB294 \uB354\uBBF8\uC57C 2"
     - "\uC548\uB155 \uB098\uB294 \uB354\uBBF8\uC57C 3"
-  - name: NPC
-    sprite: {fileID: 0}
+  - idx: 0
+    name: NPC
     scriptableScript: "NPC\uB2E4"
     scripts:
     - "NPC \uB300\uC0AC 1"
@@ -10188,6 +10188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117610463}
+  - component: {fileID: 2117610464}
   m_Layer: 0
   m_Name: ItemableObjectDataManager
   m_TagString: Untagged
@@ -10209,6 +10210,19 @@ Transform:
   m_Father: {fileID: 111054151}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2117610464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117610462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea6c31dcb4572b43abe22b2e808f93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemDataList: []
 --- !u!1 &2119520463
 GameObject:
   m_ObjectHideFlags: 0
