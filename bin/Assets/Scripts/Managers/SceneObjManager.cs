@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Assets.Scripts.InGameObjects.DontDestroyObject;
@@ -54,11 +54,11 @@ public class SceneObjManager : Singleton<SceneObjManager>
     }
     private void createPlayerObject()
     {
-        // SceneObjManager¿¡¼­ PlayerObj°¡ ¾øÀ¸¸é »ı¼ºÇØÁÜ
-        GameObject prefab = Resources.Load("Prefabs/Moving Character") as GameObject;
+        // SceneObjManagerì—ì„œ PlayerObjê°€ ì—†ìœ¼ë©´ ìƒì„±í•´ì¤Œ
+        GameObject prefab = Resources.Load("Prefabs/Moving Character Variant") as GameObject;
         GameObject movingCharacter = MonoBehaviour.Instantiate(prefab) as GameObject;
         movingCharacter.name = "Moving Character";
-        // SceneManager¿¡ ³Ö¾îÁÜ
+        // SceneManagerì— ë„£ì–´ì¤Œ
         AddObject(ObjectType.PlayerObject, movingCharacter);
         return;
     }

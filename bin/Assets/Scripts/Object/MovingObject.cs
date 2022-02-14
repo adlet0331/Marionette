@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 /* 움직이는 오브젝트 관리
  * 
@@ -8,6 +7,8 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D playerRigidBody;
+    [SerializeField] private Light2D aroundLight;
+    [SerializeField] private Light2D handLight;
 
     [SerializeField] private bool isActive = true;
     [SerializeField] private float slowWalkSpeed = 300.0f;
@@ -17,11 +18,33 @@ public class MovingObject : MonoBehaviour
     private Animator animator;
 
     public bool isMoving, isRunning, isSlowWalking;
-    private int dirX, dirY;
+    [SerializeField] private int dirX, dirY;
 
     public void MovingObjectStart() 
     {
         animator = GetComponent<Animator>();
+    }
+    private void UpdateHandLightRotate()
+    {
+        int rotate = 0;
+        if (dirX == 0 && dirY == 1)
+            rotate = 0;
+        if (dirX == -1 && dirY == 1)
+            rotate = 45;
+        if (dirX == -1 && dirY == 0)
+            rotate = 90;
+        if (dirX == -1 && dirY == -1)
+            rotate = 135;
+        if (dirX == 0 && dirY == -1)
+            rotate = 180;
+        if (dirX == 1 && dirY == -1)
+            rotate = 225;
+        if (dirX == 1 && dirY == 0)
+            rotate = 270;
+        if (dirX == 1 && dirY == 1)
+            rotate = 315;
+        handLight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotate));
+        return;
     }
     private void FixedUpdate() 
     {
@@ -52,6 +75,7 @@ public class MovingObject : MonoBehaviour
             animator.SetFloat("DirX", dirX);
             animator.SetFloat("DirY", dirY);
         }
+        UpdateHandLightRotate();
     }
     public void Move(int hor, int ver, bool isCtrl, bool isShift)
     {
