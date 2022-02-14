@@ -12,6 +12,11 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         SampleScene = 1,
         AnotherScene = 2,
         Girl_room = 3,
+        Lab_1_1 = 4,
+        Lab_1_2 = 5,
+        RestArea = 6,
+        Prison1 = 7,
+        Control1 = 8,
     }
     [Serializable]
     public class SceneInfo
@@ -52,7 +57,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     }
     public void NewGameButton()
     {
-        SwitchScene(SceneName.SampleScene);
+        SwitchScene(SceneName.Girl_room);
     }
     public void SwitchScene(SceneName sceneName)
     {
