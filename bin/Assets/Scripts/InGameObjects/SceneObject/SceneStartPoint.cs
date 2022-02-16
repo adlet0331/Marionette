@@ -6,8 +6,6 @@ using static SceneSwitchManager;
 /*
  * 플레이어가 시작하는 좌표를 지정해주는 오브젝트
  * 
- * 한 씬에 하나만
- * 
  */
 
 public class SceneStartPoint : MonoBehaviour

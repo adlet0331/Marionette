@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using static SceneSwitchManager;
 
 public class SceneMoveObject : ColliderObject

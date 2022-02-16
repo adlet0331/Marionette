@@ -30,6 +30,8 @@ public abstract class InteractionObject : MonoBehaviour
     {
         ScriptableObject = 0,
         ItemableObject = 1,
+        LockObject = 2,
+
     }
     // 스크립트가 있는가 (대화창이 뜨는가)
     [SerializeField] public bool isInteractable;

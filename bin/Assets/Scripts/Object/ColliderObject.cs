@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/* BoxCollider 가지고 있는 애 (Trigger 꺼져있는)
+/* 
+ * BoxCollider 가지고 있는 애 (Trigger 꺼져있는)
  * 부딛히면 작동
  * 
  */

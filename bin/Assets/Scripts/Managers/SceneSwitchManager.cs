@@ -9,14 +9,13 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     public enum SceneName
     {
         StartScene = 0,
-        SampleScene = 1,
-        AnotherScene = 2,
-        Girl_room = 3,
-        Lab_1_1 = 4,
-        Lab_1_2 = 5,
-        RestArea = 6,
-        Prison1 = 7,
-        Control1 = 8,
+        Girl_room = 1,
+        Lab_1_1 = 2,
+        Lab_1_2 = 3,
+        RestArea = 4,
+        Prison1 = 5,
+        Control1 = 6,
+        Corrider = 7,
     }
     [Serializable]
     public class SceneInfo
