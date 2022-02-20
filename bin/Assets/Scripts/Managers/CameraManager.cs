@@ -27,7 +27,7 @@ public class CameraManager : Singleton<CameraManager>
         followingObject = go;
     }
 
-    private int currentMode;
+    [SerializeField] private int currentMode;
     [SerializeField] private string currentModeString;
     [SerializeField] private string[] modeList;
     private Resolution currentResolution;

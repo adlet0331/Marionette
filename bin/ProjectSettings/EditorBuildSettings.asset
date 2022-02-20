@@ -5,16 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/AnotherScene.unity
-    guid: c2c0310463f65214c98bf688d725bd88
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 739d80127ba02ed4688e853f61b2dea0
   - enabled: 1
     path: Assets/Scenes/girl_room.unity
     guid: 5935c51489bdbb94081be0a04fc27812
+  - enabled: 1
+    path: Assets/Scenes/Lab_1_1.unity
+    guid: ed21f82010c5a44449e5547d932bcea7
+  - enabled: 1
+    path: Assets/Scenes/Lab_1_2.unity
+    guid: 7c8eb11ce1edd9d4ea2b9646f790dcc8
+  - enabled: 1
+    path: Assets/Scenes/Prison1.unity
+    guid: f92462824de19cc408db3ab8a590148f
+  - enabled: 1
+    path: Assets/Scenes/Control1.unity
+    guid: 065f374f5f018e54c8eceb26276b12b7
+  - enabled: 1
+    path: Assets/Scenes/Corridor.unity
+    guid: 3bd46eff86cd86e4ea2ae48d1d110db9
+  - enabled: 1
+    path: Assets/Scenes/RestArea.unity
+    guid: 43a82f94438f65a40b1a78590543906b
   m_configObjects: {}
