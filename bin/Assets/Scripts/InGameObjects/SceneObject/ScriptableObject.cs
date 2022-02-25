@@ -10,10 +10,10 @@ public class ScriptableObject : InteractionObject
 {
     private void Start()
     {
-        this.objectType = Type.ScriptableObject;
+        this.objectType = InteractionObjectType.ScriptableObject;
     }
     public override void Interact() 
     {
-        WindowManager.Instance.scriptWindow.Activate();
+        WindowManager.Instance.scriptWindow.Activate(this.idx, this.objectType);
     }
 }
