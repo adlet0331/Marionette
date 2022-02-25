@@ -4689,21 +4689,49 @@ MonoBehaviour:
   beforeScene: 0
   sceneInfoList:
   - sceneName: 0
+    isProfileActivate: 0
     isCharacterExist: 0
     isMovable: 0
     isInputAvaliable: 1
     CameraMode: 0
   - sceneName: 1
+    isProfileActivate: 1
     isCharacterExist: 1
     isMovable: 1
     isInputAvaliable: 1
     CameraMode: 1
   - sceneName: 2
+    isProfileActivate: 1
     isCharacterExist: 1
     isMovable: 1
     isInputAvaliable: 1
     CameraMode: 1
   - sceneName: 3
+    isProfileActivate: 1
+    isCharacterExist: 1
+    isMovable: 1
+    isInputAvaliable: 1
+    CameraMode: 1
+  - sceneName: 4
+    isProfileActivate: 1
+    isCharacterExist: 1
+    isMovable: 1
+    isInputAvaliable: 1
+    CameraMode: 1
+  - sceneName: 5
+    isProfileActivate: 1
+    isCharacterExist: 1
+    isMovable: 1
+    isInputAvaliable: 1
+    CameraMode: 1
+  - sceneName: 6
+    isProfileActivate: 1
+    isCharacterExist: 1
+    isMovable: 1
+    isInputAvaliable: 1
+    CameraMode: 1
+  - sceneName: 7
+    isProfileActivate: 1
     isCharacterExist: 1
     isMovable: 1
     isInputAvaliable: 1
@@ -7443,7 +7471,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -180}
+  m_AnchoredPosition: {x: -300, y: -150}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486109552
@@ -7881,7 +7909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -120}
+  m_AnchoredPosition: {x: -300, y: -105}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1583403101
@@ -9642,7 +9670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1808516998
 RectTransform:
   m_ObjectHideFlags: 0

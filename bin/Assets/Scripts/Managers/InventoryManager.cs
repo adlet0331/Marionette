@@ -4,6 +4,16 @@ using UnityEngine;
 public class InventoryManager : Singleton<InventoryManager>
 {
     [SerializeField] private List<Item> itemList;
+
+    public bool CheckItemIsIn(int idx)
+    {
+        foreach (Item item in itemList)
+        {
+            if (idx == item.idx)
+                return true;
+        }
+        return false;
+    }
     public List<Item> GetItemList()
     {
         return itemList.ConvertAll(o => new Item(o.idx, o.name, o.itemInfo, o.itemSprite));

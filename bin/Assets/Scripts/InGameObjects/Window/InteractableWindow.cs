@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using static InteractionObject;
 
@@ -16,8 +17,20 @@ public class InteractableWindow : WindowObject
     [SerializeField] private int currentIdx;
     [SerializeField] private InteractionObjectType interactionItemType;
 
+    IEnumerator SetLockedWindow(string str)
+    {
+        yield return null;
+    }
+
     public override void Activate()
     {
+        return;
+    }
+
+    public void SetIsLockedWindow(string str)
+    {
+
+
         return;
     }
 
@@ -39,6 +52,13 @@ public class InteractableWindow : WindowObject
 
             nameText.text = currentData.name;
             explanationText.text = currentData.itemInfo;
+            return;
+        }
+
+        else if (type == InteractionObjectType.LockObject)
+        {
+
+
             return;
         }
 

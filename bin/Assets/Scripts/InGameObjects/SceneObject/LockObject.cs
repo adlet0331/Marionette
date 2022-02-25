@@ -1,11 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+
+[Serializable]
+public class LockInfo
+{
+    public int needItemIdx;
+    public string ifNotString;
+}
 
 public class LockObject : InteractionObject
 {
+    [SerializeField] private LockInfo[] needItemIndexList;
     public override void Interact()
     {
-        throw new System.NotImplementedException();
+        foreach (LockInfo lockInfo in needItemIndexList)
+        {
+            if (!InventoryManager.Instance.CheckItemIsIn(lockInfo.needItemIdx))
+            {
+
+            }
+        }
+    }
+
+    private void Start()
+    {
+        this.objectType = InteractionObjectType.LockObject;
     }
 }
