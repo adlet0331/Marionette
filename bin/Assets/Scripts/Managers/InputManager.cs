@@ -51,11 +51,11 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void KeyDown_ESC() {
-        Debug.Log("ESC");
+        //Debug.Log("ESC");
         WindowManager.Instance.settingWindow.Activate();
     }
     private void KeyDown_Z() {
-        Debug.Log("Z");
+        //Debug.Log("Z");
 
         InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
         InteractionObjectType type = obj.objectType;
@@ -66,7 +66,7 @@ public class InputManager : Singleton<InputManager>
     }
     private void KeyDown_X()
     {
-        Debug.Log("X");
+        //Debug.Log("X");
         WindowManager.Instance.inventoryWindow.Activate();
     }
 }
