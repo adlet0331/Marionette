@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static InteractionObject;
 /* 대사 나오는 창
 * InputManager에서 호출
 * 
@@ -19,11 +20,13 @@ public class ScriptWindow : WindowObject
     [SerializeField] private int currentScriptLength;
     private IEnumerator currentCoroutine;
 
-    [SerializeField] private bool blocked;
+    [SerializeField] private bool blocked = false;
     private void Open(int idx)
     {
         Debug.Assert(!gameObject.activeSelf, "ScriptWindow가 닫혀있지 않습니다.");
         this.ActivateObject();
+
+        Debug.Log("Open");
 
         currObj = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
         currentScriptIdx = 0;
@@ -43,7 +46,7 @@ public class ScriptWindow : WindowObject
     private void Close()
     {
         currentScriptIdx = -1;
-        gameObject.SetActive(false);
+        CloseWindow();
     }
     private void Stop()
     {
@@ -55,17 +58,27 @@ public class ScriptWindow : WindowObject
     // 초기화
     public override void Activate()
     {
+        return;
+    }
+    public void Activate(int idx, InteractionObjectType type)
+    {
         if (PlayerManager.Instance.playerInteractObject == null)
             return;
-        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
-        if (obj == null)
+
+        if (type != InteractionObjectType.ScriptableObject)
             return;
-        int idx = obj.GetIdx();
+
         if (blocked)
         {
             Stop();
             return;
         }
+
+        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
+
+        if (obj == null)
+            return;
+
         if (currentScriptIdx == -1)
             this.Open(idx);
         else if (currObj != null && currentScriptIdx == currObj.scripts.Count - 1)

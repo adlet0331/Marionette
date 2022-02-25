@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using static InteractionObject;
 
 /* 상호작용 가능한 가장 가까운 오브젝트 정보 띄워주는 창
  * PlayerManager에서 호출
@@ -8,29 +9,42 @@ using UnityEngine.UI;
  * - 오브젝트 이름
  * - InGameObjectManager index = 0 인 String
  */
-public class InteractableWindow : MonoBehaviour
+public class InteractableWindow : WindowObject
 {
     [SerializeField] private Text nameText;
     [SerializeField] private Text explanationText;
     [SerializeField] private int currentIdx;
+    [SerializeField] private InteractionObjectType interactionItemType;
 
-    public bool SetInteractionObject(int idx)
+    public override void Activate()
     {
-        currentIdx = idx;
-        ScriptableObjData currentObject = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
-        bool isDummy = false;
-        if(currentObject == null)
-        {
-            currentObject = ScriptObjDataManager.Instance.ScriptObjDataList[0];
-            isDummy = true;
-        }
-        nameText.text = currentObject.name;
-        explanationText.text = currentObject.scriptableScript;
+        return;
+    }
 
-        if (isDummy)
+    public void SetInteractionObject(int idx, InteractionObjectType type)
+    {
+        this.currentIdx = idx;
+        if(type == InteractionObjectType.ScriptableObject)
         {
-            return false;
+            ScriptableObjData currentData = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
+
+            nameText.text = currentData.name;
+            explanationText.text = currentData.scriptableScript;
+            return;
         }
-        return true;
+            
+        else if (type == InteractionObjectType.ItemableObject)
+        {
+            Item currentData = ItemDataManager.Instance.ItemDataList[idx];
+
+            nameText.text = currentData.name;
+            explanationText.text = currentData.itemInfo;
+            return;
+        }
+
+        else
+        {
+            return;
+        }
     }
 }
