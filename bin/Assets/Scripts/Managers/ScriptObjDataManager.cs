@@ -24,7 +24,7 @@ public class ScriptObjDataManager : Singleton<ScriptObjDataManager>
     public List<ScriptableObjData> ScriptObjDataList;
     private void Start()
     {
-        //LoadJson();
+        LoadJson();
     }
 
     public void LoadJson()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /* Interact 되는 객체
  * 
@@ -7,8 +8,18 @@
  * Z 로 Interact 발동
  * 
  */
+public enum InteractionObjectType
+{
+    ScriptableObject = 0,
+    ItemableObject = 1,
+    LockObject = 2,
+}
 public abstract class InteractionObject : MonoBehaviour
 {
+    // 스크립트가 있는가 (대화창이 뜨는가)
+    [SerializeField] public bool isInteractable;
+    [SerializeField] public int idx;
+    [NonSerialized] public InteractionObjectType objectType;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isInteractable)
@@ -26,29 +37,5 @@ public abstract class InteractionObject : MonoBehaviour
             PlayerManager.Instance.playerInteractObject.RemoveInteractionObj(this);
         }
     }
-    public enum Type
-    {
-        ScriptableObject = 0,
-        ItemableObject = 1,
-        LockObject = 2,
-
-    }
-    // 스크립트가 있는가 (대화창이 뜨는가)
-    [SerializeField] public bool isInteractable;
-    [SerializeField] public Type objectType;
-    // 데이터 인덱스 (없으면 -1)
-    [SerializeField] private int idx;
-    public int GetIdx()
-    {
-        if (isInteractable)
-        {
-            return idx;
-        }
-        else
-        {
-            return -1;
-        }
-    }
-
     public abstract void Interact();
 }

@@ -93,7 +93,7 @@ public class MovingObject : MonoBehaviour
         dirY = ver;
         return;
     }
-    public void SetActive(bool isActive) 
+    public void SetIsActive(bool isActive) 
     {
         this.isActive = isActive;
     }

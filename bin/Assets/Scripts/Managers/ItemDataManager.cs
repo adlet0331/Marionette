@@ -22,7 +22,7 @@ public class ItemDataManager : Singleton<ItemDataManager>
     public List<Item> ItemDataList;
     private void Start()
     {
-        //LoadJson();
+        LoadJson();
     }
 
     public void LoadJson()

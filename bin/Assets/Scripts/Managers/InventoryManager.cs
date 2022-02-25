@@ -20,6 +20,7 @@ public class InventoryManager : Singleton<InventoryManager>
             if (it.idx == item.idx)
             {
                 itemList.Remove(it);
+                return;
             }
         }
         return;

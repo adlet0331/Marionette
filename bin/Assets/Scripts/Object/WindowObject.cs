@@ -16,17 +16,17 @@ public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHa
             return true;
         }
         else
-        {
+        {   
             OpenWindow();
             return false;
         }
     }
-    private void OpenWindow()
+    public void OpenWindow()
     {
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
     }
-    private void CloseWindow()
+    public void CloseWindow()
     {
         gameObject.SetActive(false);
     }
