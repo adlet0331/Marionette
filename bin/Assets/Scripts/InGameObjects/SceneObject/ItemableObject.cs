@@ -31,6 +31,7 @@ public class ItemableObject : InteractionObject
                 Debug.Assert(i <= itemDataList.Count && i>= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
                 Item item = itemDataList[i];
                 InventoryManager.Instance.AddItem(item);
+                WindowManager.Instance.inventoryWindow.UpdateInventory();
             }
         }
         else if (itemType == ItemableObjectType.DeleteItem)
@@ -40,6 +41,7 @@ public class ItemableObject : InteractionObject
                 Debug.Assert(i <= itemDataList.Count && i >= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
                 Item item = itemDataList[i];
                 InventoryManager.Instance.DeleteItem(item);
+                WindowManager.Instance.inventoryWindow.UpdateInventory();
             }
         }
     }

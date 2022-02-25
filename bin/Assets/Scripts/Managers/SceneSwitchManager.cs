@@ -21,6 +21,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     public class SceneInfo
     {
         public SceneName sceneName;
+        public bool isProfileActivate;
         public bool isCharacterExist;
         public bool isMovable;
         public bool isInputAvaliable;
@@ -53,6 +54,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         // 카메라 매니저 모드 설정
         CameraManager.Instance.SetCameraMode(sceneInfo.CameraMode);
         SceneObjManager.Instance.PlayerObjectExist = sceneInfo.isCharacterExist;
+        PlayerManager.Instance.SetProfileShowing(sceneInfo.isProfileActivate);
     }
     public void NewGameButton()
     {
