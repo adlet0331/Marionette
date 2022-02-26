@@ -57,12 +57,14 @@ public class InteractObject : MonoBehaviour
         updateFstIdx();
         if (currentIdx == -1)
         {
-            WindowManager.Instance.interactableWindow.CloseWindow();
+            if (WindowManager.Instance.interactableWindow.gameObject.activeSelf)
+                WindowManager.Instance.interactableWindow.CloseWindow();
         }
         else
         {
             WindowManager.Instance.interactableWindow.SetInteractionObject(currentIdx, currentType);
-            WindowManager.Instance.interactableWindow.OpenWindow();
+            if (!WindowManager.Instance.interactableWindow.gameObject.activeSelf)
+                WindowManager.Instance.interactableWindow.OpenWindow();
         }
     }
     public void BlockInteract()

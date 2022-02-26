@@ -34,7 +34,10 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void Update() {
-        if (isMoveable && movingComponent != null) {
+        if (movingComponent == null)
+            return;
+
+        if (isMoveable) {
             moveH = (int)Input.GetAxisRaw("Horizontal");
             moveV = (int)Input.GetAxisRaw("Vertical");
             isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
@@ -42,6 +45,11 @@ public class InputManager : Singleton<InputManager>
 
             movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
         }
+        else
+        {
+            movingComponent.Move(0, 0, false, false);
+        }
+
         if (isInputAvaliable && Input.anyKeyDown) {
             foreach (var dic in keyDictionary) {
                 if (Input.GetKeyDown(dic.Key))
