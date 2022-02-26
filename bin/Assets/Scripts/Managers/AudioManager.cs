@@ -40,6 +40,10 @@ public class AudioManager : Singleton<AudioManager> {
         BgmSlider.onValueChanged.AddListener(delegate { updateBgmVolume(); });
         SESlider.onValueChanged.AddListener(delegate { updateSEVolume(); });
         ChangeBGM(0);
+
+        updateMasterVolume();
+        updateBgmVolume();
+        updateSEVolume();
     }
 
     public void ChangeBGM(int index) {

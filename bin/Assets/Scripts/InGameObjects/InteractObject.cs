@@ -7,6 +7,7 @@ using UnityEngine;
  */
 public class InteractObject : MonoBehaviour
 {
+    [SerializeField] private bool isBlocked = false;
     //확장성을 위해 InteractionObject로
     [SerializeField] private int currentIdx;
     [SerializeField] private InteractionObjectType currentType;
@@ -50,6 +51,9 @@ public class InteractObject : MonoBehaviour
     }
     private void Update()
     {
+        if (this.isBlocked)
+            return;
+
         updateFstIdx();
         if (currentIdx == -1)
         {
@@ -60,6 +64,14 @@ public class InteractObject : MonoBehaviour
             WindowManager.Instance.interactableWindow.SetInteractionObject(currentIdx, currentType);
             WindowManager.Instance.interactableWindow.OpenWindow();
         }
+    }
+    public void BlockInteract()
+    {
+        this.isBlocked = true;
+    }
+    public void UnblockInteract()
+    {
+        this.isBlocked = false;
     }
     public InteractionObject GetFstInteractObj()
     {

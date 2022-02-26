@@ -10,6 +10,7 @@ public class LockInfo
 
 public class LockObject : InteractionObject
 {
+    [SerializeField] private string nameStr = "";
     [SerializeField] private LockInfo[] needItemIndexList;
     public override void Interact()
     {
@@ -17,9 +18,17 @@ public class LockObject : InteractionObject
         {
             if (!InventoryManager.Instance.CheckItemIsIn(lockInfo.needItemIdx))
             {
-
+                WindowManager.Instance.interactableWindow.SetIsLockedWindow(nameStr, lockInfo.ifNotString);
+                return;
             }
         }
+        return;
+    }
+
+    private void UnLock()
+    {
+
+        return;
     }
 
     private void Start()

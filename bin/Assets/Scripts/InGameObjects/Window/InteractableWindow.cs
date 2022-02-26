@@ -27,7 +27,7 @@ public class InteractableWindow : WindowObject
         return;
     }
 
-    public void SetIsLockedWindow(string str)
+    public void SetIsLockedWindow(string name, string str)
     {
 
 
