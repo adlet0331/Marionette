@@ -57,7 +57,10 @@ public class InteractableWindow : WindowObject
 
         else if (type == InteractionObjectType.LockObject)
         {
+            LockData currentData = LockDataManager.Instance.LockDataList[idx];
 
+            nameText.text = currentData.interactName;
+            explanationText.text = currentData.interactString;
 
             return;
         }

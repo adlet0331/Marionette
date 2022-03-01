@@ -8,12 +8,14 @@ using UnityEngine;
  */
 public class ScriptableObject : InteractionObject
 {
+    [SerializeField] private bool isScriptable;
     private void Start()
     {
         this.objectType = InteractionObjectType.ScriptableObject;
     }
     public override void Interact() 
     {
-        WindowManager.Instance.scriptWindow.Activate(this.idx, this.objectType);
+        if (isScriptable)
+            WindowManager.Instance.scriptWindow.Activate(this.idx, this.objectType);
     }
 }

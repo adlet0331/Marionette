@@ -10,8 +10,14 @@ public class LockInfo
 
 public class LockObject : InteractionObject
 {
+    [SerializeField] private bool isUnLocked = false;
     [SerializeField] private string nameStr = "";
     [SerializeField] private LockInfo[] needItemIndexList;
+    [SerializeField] private InteractionObject lockedObject;
+    public void SetIsUnLocked(bool isunlocked)
+    {
+        isUnLocked = isunlocked;
+    }
     public override void Interact()
     {
         foreach (LockInfo lockInfo in needItemIndexList)
@@ -22,12 +28,13 @@ public class LockObject : InteractionObject
                 return;
             }
         }
+        unLock();
         return;
     }
 
-    private void UnLock()
+    private void unLock()
     {
-
+        lockedObject.Interact();
         return;
     }
 
