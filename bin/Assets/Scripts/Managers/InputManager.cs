@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static InteractionObject;
 
 /* 
  * 플레이어의 KeyBoard 입력을 받아서 처리하는 매니저
@@ -20,7 +21,6 @@ public class InputManager : Singleton<InputManager>
     {
         movingComponent = mo;
     }
-
     [SerializeField] private int moveH, moveV;
     [SerializeField] private bool isRun, isSlowWalk;
     [SerializeField] private Dictionary<KeyCode, Action> keyDictionary;
@@ -34,7 +34,10 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void Update() {
-        if (isMoveable && movingComponent != null) {
+        if (movingComponent == null)
+            return;
+
+        if (isMoveable) {
             moveH = (int)Input.GetAxisRaw("Horizontal");
             moveV = (int)Input.GetAxisRaw("Vertical");
             isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
@@ -42,6 +45,11 @@ public class InputManager : Singleton<InputManager>
 
             movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
         }
+        else
+        {
+            movingComponent.Move(0, 0, false, false);
+        }
+
         if (isInputAvaliable && Input.anyKeyDown) {
             foreach (var dic in keyDictionary) {
                 if (Input.GetKeyDown(dic.Key))
@@ -51,16 +59,22 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void KeyDown_ESC() {
-        Debug.Log("ESC");
+        //Debug.Log("ESC");
         WindowManager.Instance.settingWindow.Activate();
     }
     private void KeyDown_Z() {
-        Debug.Log("Z");
-        WindowManager.Instance.scriptWindow.Activate();
+        //Debug.Log("Z");
+
+        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
+        InteractionObjectType type = obj.objectType;
+
+        PlayerManager.Instance.playerInteractObject.InteractWithObject();
+
+        return;
     }
     private void KeyDown_X()
     {
-        Debug.Log("X");
+        //Debug.Log("X");
         WindowManager.Instance.inventoryWindow.Activate();
     }
 }

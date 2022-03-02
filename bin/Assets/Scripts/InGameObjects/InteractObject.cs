@@ -7,7 +7,10 @@ using UnityEngine;
  */
 public class InteractObject : MonoBehaviour
 {
+    [SerializeField] private bool isBlocked = false;
     //확장성을 위해 InteractionObject로
+    [SerializeField] private int currentIdx;
+    [SerializeField] private InteractionObjectType currentType;
     [SerializeField] private InteractionObject currentInteractObj;
     [SerializeField] private List<InteractionObject> scriptableObjList;
 
@@ -20,58 +23,73 @@ public class InteractObject : MonoBehaviour
         if (scriptableObjList.Count == 0) return true;
         return false;
     }
-    private int updateFstIdx()
+    private void updateFstIdx()
     {
         if (checkIfListEmpty())
         {
-            return -1;
+            this.currentIdx = -1;
+            return;
         }
         else
         {
             int idx = -1;
-            float distance = -1;
-            float cnt;
+            float distance = -1, cnt;
+            InteractionObject currentFirstObj = scriptableObjList[0];
             foreach (InteractionObject interObj in scriptableObjList)
             {
                 cnt = Vector2.Distance(interObj.transform.position, gameObject.transform.position);
                 if (cnt < distance || idx == -1)
                 {
                     distance = cnt;
-                    idx = interObj.GetIdx();
+                    currentFirstObj = interObj;
                 }
             }
-            currentInteractObj = scriptableObjList[0];
-            return idx;
+            currentInteractObj = currentFirstObj;
+            currentIdx = currentFirstObj.idx;
+            currentType = currentFirstObj.objectType;
         }
     }
     private void Update()
     {
-        int idx = updateFstIdx();
-        if (idx == -1)
+        if (this.isBlocked)
+            return;
+
+        updateFstIdx();
+        if (currentIdx == -1)
         {
-            WindowManager.Instance.interactableWindow.gameObject.SetActive(false);
+            if (WindowManager.Instance.interactableWindow.gameObject.activeSelf)
+                WindowManager.Instance.interactableWindow.CloseWindow();
         }
         else
         {
-            WindowManager.Instance.interactableWindow.SetInteractionObject(idx);
-            WindowManager.Instance.interactableWindow.gameObject.SetActive(true);
+            WindowManager.Instance.interactableWindow.SetInteractionObject(currentIdx, currentType);
+            if (!WindowManager.Instance.interactableWindow.gameObject.activeSelf)
+                WindowManager.Instance.interactableWindow.OpenWindow();
         }
+    }
+    public void BlockInteract()
+    {
+        this.isBlocked = true;
+    }
+    public void UnblockInteract()
+    {
+        this.isBlocked = false;
     }
     public InteractionObject GetFstInteractObj()
     {
         if (checkIfListEmpty())
             return null;
+
         else
         {
             Update();
-            InteractionObject obj = scriptableObjList[0];
 
-            return obj;
+            return currentInteractObj;
         }
     }
     public void InteractWithObject()
     {
-        
+        currentInteractObj.Interact();
     }
     public void AddInteractionList(InteractionObject interactionObj)
     {
