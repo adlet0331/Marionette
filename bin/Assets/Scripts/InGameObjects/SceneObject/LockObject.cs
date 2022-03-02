@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -12,7 +13,6 @@ public class LockObject : InteractionObject
 {
     [SerializeField] private bool isUnLocked = false;
     [SerializeField] private string nameStr = "";
-    [SerializeField] private LockInfo[] needItemIndexList;
     [SerializeField] private InteractionObject lockedObject;
     public void SetIsUnLocked(bool isunlocked)
     {
@@ -20,11 +20,13 @@ public class LockObject : InteractionObject
     }
     public override void Interact()
     {
+        LockData lockData = LockDataManager.Instance.LockDataList[idx];
+        List<LockInfo> needItemIndexList = lockData.lockInfoList;
         foreach (LockInfo lockInfo in needItemIndexList)
         {
             if (!InventoryManager.Instance.CheckItemIsIn(lockInfo.needItemIdx))
             {
-                WindowManager.Instance.interactableWindow.SetIsLockedWindow(nameStr, lockInfo.ifNotString);
+                WindowManager.Instance.interactableWindow.SetIsLockedWindow(lockInfo.ifNotString);
                 return;
             }
         }
