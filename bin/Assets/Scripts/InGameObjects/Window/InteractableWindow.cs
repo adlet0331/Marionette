@@ -20,7 +20,7 @@ public class InteractableWindow : WindowObject
     [SerializeField] private InteractionObjectType interactionItemType;
     
     private IEnumerator currentCoroutine;
-    private bool blocked;
+    [SerializeField] private bool blocked;
 
     IEnumerator _printScript(Text textObj, string script)
     {
@@ -32,7 +32,8 @@ public class InteractableWindow : WindowObject
             textObj.text = script.Substring(0, i);
             yield return new WaitForSeconds(0.02f);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("End Couroutine");
         blocked = false;
         currentCoroutine = null;
     }
@@ -61,11 +62,19 @@ public class InteractableWindow : WindowObject
         return;
     }
 
+    public void CloseWindow()
+    {
+        blocked = false;
+        base.CloseWindow();
+    }
+
     public void SetInteractionObject(int idx, InteractionObjectType type)
     {
         if (blocked)
             return;
+
         this.currentIdx = idx;
+        this.interactionItemType = type;
         if(type == InteractionObjectType.ScriptableObject)
         {
             ScriptableObjData currentData = ScriptObjDataManager.Instance.ScriptObjDataList[idx];

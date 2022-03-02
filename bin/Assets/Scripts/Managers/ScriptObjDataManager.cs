@@ -29,9 +29,10 @@ public class ScriptObjDataManager : Singleton<ScriptObjDataManager>
 
     public void LoadJson()
     {
+        ScriptObjDataList = new List<ScriptableObjData>();
+
         TextAsset jsonData = Resources.Load<TextAsset>("IngameData/Scripts");
         ScriptObjDataStruct[] Datas = JsonHelper.FromJson<ScriptObjDataStruct>("{\"resources\":" + jsonData.text + "}");
-        ScriptObjDataList = new List<ScriptableObjData>();
         foreach (ScriptObjDataStruct scriptDataStruct in Datas)
         {
             ScriptObjDataList.Add(new ScriptableObjData(scriptDataStruct.idx, scriptDataStruct.name, scriptDataStruct.scriptableScript, scriptDataStruct.scripts.ToList()));

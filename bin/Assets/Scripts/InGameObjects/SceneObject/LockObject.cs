@@ -7,6 +7,11 @@ public class LockInfo
 {
     public int needItemIdx;
     public string ifNotString;
+    public LockInfo(int idx, string str)
+    {
+        needItemIdx = idx;
+        ifNotString = str;
+    }
 }
 
 public class LockObject : InteractionObject
