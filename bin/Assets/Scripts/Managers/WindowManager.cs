@@ -13,4 +13,6 @@ public class WindowManager : Singleton<WindowManager>
     public ItemGotWindow itemGotWindow;
     public LockWindow lockWindow;
     public InventoryWindow inventoryWindow;
+    public ItemSelectionWindow itemSelectionWindow;
+    public ItemInfoWindow itemInfoWindow;
 }

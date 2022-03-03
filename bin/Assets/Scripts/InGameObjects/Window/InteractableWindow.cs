@@ -62,7 +62,7 @@ public class InteractableWindow : WindowObject
         return;
     }
 
-    public void CloseWindow()
+    public new void CloseWindow()
     {
         blocked = false;
         base.CloseWindow();

@@ -20,6 +20,10 @@ public class InventoryManager : Singleton<InventoryManager>
     }
     public void AddItem(Item item)
     {
+        if (itemList.Count == 10)
+            // ²Ë Ã¡´Ù´Â ¿¡·¯? ¶ç¿ö¾ßÇÔ
+            return;
+
         itemList.Add(item);
         return;
     }

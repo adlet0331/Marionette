@@ -11,10 +11,15 @@ public class InputManager : Singleton<InputManager>
 {
     [SerializeField] private bool isMoveable = false;
     [SerializeField] private bool isInputAvaliable = true;
+    [SerializeField] private bool isInventoryWindowOn = false;
     public void SetOptions(bool isMv, bool isAv)
     {
         isMoveable = isMv;
         isInputAvaliable = isAv;
+    }
+    public void SetInventWind(bool tf)
+    {
+        isInventoryWindowOn = tf;
     }
     [SerializeField] private MovingObject movingComponent;
     public void SetMovingComponent(MovingObject mo)
@@ -56,25 +61,35 @@ public class InputManager : Singleton<InputManager>
                     dic.Value();
             }
         }
+
+        if (!isMoveable && isInputAvaliable && isInventoryWindowOn)
+        {
+            int moveInt = 0;
+            moveInt += (int)Input.GetAxisRaw("Horizontal");
+            moveInt += (int)Input.GetAxisRaw("Vertical") * 2;
+            WindowManager.Instance.inventoryWindow.UpdateSelectSlot(moveInt);
+        }
+
     }
 
     private void KeyDown_ESC() {
-        //Debug.Log("ESC");
+        if (WindowManager.Instance.inventoryWindow.gameObject.activeSelf)
+        {
+            WindowManager.Instance.inventoryWindow.CloseWindow();
+            return;
+        }
         WindowManager.Instance.settingWindow.Activate();
     }
     private void KeyDown_Z() {
-        //Debug.Log("Z");
-
         InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
         InteractionObjectType type = obj.objectType;
 
-        PlayerManager.Instance.playerInteractObject.InteractWithObject();
+        obj.Interact();
 
         return;
     }
     private void KeyDown_X()
     {
-        //Debug.Log("X");
         WindowManager.Instance.inventoryWindow.Activate();
     }
 }

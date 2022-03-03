@@ -87,10 +87,6 @@ public class InteractObject : MonoBehaviour
             return currentInteractObj;
         }
     }
-    public void InteractWithObject()
-    {
-        currentInteractObj.Interact();
-    }
     public void AddInteractionList(InteractionObject interactionObj)
     {
         scriptableObjList.Add(interactionObj);
