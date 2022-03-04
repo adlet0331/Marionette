@@ -86,7 +86,7 @@ public class InteractableWindow : WindowObject
             
         else if (type == InteractionObjectType.ItemableObject)
         {
-            Item currentData = ItemDataManager.Instance.ItemDataList[idx];
+            ItemData currentData = ItemDataManager.Instance.ItemDataList[idx];
 
             nameText.text = currentData.name;
             explanationText.text = currentData.itemInfo;

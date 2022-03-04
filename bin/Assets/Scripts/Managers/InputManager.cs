@@ -65,8 +65,15 @@ public class InputManager : Singleton<InputManager>
         if (!isMoveable && isInputAvaliable && isInventoryWindowOn)
         {
             int moveInt = 0;
-            moveInt += (int)Input.GetAxisRaw("Horizontal");
-            moveInt += (int)Input.GetAxisRaw("Vertical") * 2;
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+                moveInt += 1;
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                moveInt -= 1;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                moveInt -= 2;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                moveInt += 2;
+
             WindowManager.Instance.inventoryWindow.UpdateSelectSlot(moveInt);
         }
 

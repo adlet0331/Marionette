@@ -6,13 +6,13 @@ using UnityEngine.EventSystems;
 public class InventoryWindow : WindowObject
 {
     [SerializeField] private List<Slot> slotList;
-    [SerializeField] private List<Item> itemList;
+    [SerializeField] private List<ItemData> itemList;
     [SerializeField] private int selectedInt;
     [SerializeField] private int equipedInt;
 
     private void updateSelectUI()
     {
-        List<Item> itemList = InventoryManager.Instance.GetItemList();
+        List<ItemData> itemList = InventoryManager.Instance.GetItemList();
         for (int i=0; i<10; i++)
         {
             if (i >= itemList.Count)
@@ -55,11 +55,15 @@ public class InventoryWindow : WindowObject
 
     public void UpdateSelectSlot(int moveInt)
     {
-        if (selectedInt == 0 || selectedInt == 9)
-            return;
+        selectedInt += moveInt;
 
+        if (selectedInt < 0)
+            selectedInt = 0;
+        else if (selectedInt > 9)
+            selectedInt = 9;
 
-
+        updateSelectUI();
+        return;
     }
 
     public override void Activate()
