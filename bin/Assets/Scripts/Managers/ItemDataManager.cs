@@ -16,10 +16,11 @@ public class ItemDataStruct
     public string name;
     public string itemInfo;
     public string spriteName;
+    public string itemDescription;
 }
 public class ItemDataManager : Singleton<ItemDataManager>
 {
-    public List<Item> ItemDataList;
+    public List<ItemData> ItemDataList;
     private void Start()
     {
         LoadJson();
@@ -29,11 +30,11 @@ public class ItemDataManager : Singleton<ItemDataManager>
     {
         TextAsset jsonData = Resources.Load<TextAsset>("IngameData/Items");
         ItemDataStruct[] Datas = JsonHelper.FromJson<ItemDataStruct>("{\"resources\":" + jsonData.text + "}");
-        ItemDataList = new List<Item>();
+        ItemDataList = new List<ItemData>();
         foreach (ItemDataStruct itemDataStruct in Datas)
         {
             Sprite itemSprite = Resources.Load<Sprite>("Sprites/Items/" + itemDataStruct.spriteName);
-            ItemDataList.Add(new Item(itemDataStruct.idx, itemDataStruct.name, itemDataStruct.itemInfo, itemSprite));
+            ItemDataList.Add(new ItemData(itemDataStruct.idx, itemDataStruct.name, itemDataStruct.itemInfo, itemSprite, itemDataStruct.itemDescription));
         }
         return;
     }

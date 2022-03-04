@@ -6984,14 +6984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3c0a9c381207042b7dde8e820d8fd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LockDataList:
-  - idx: 0
-    interactName: "\uBB38"
-    interactString: "\uBB34\uC5B8\uAC00\uB85C \uB9C9\uD600\uC788\uB2E4"
-    lockInfoList:
-    - needItemIdx: 1
-      ifNotString: "\uBB54\uAC00 \uB0A0\uCE74\uB85C\uC6B4\uAC8C \uD544\uC694\uD560
-        \uAC83 \uAC19\uB2E4.."
+  LockDataList: []
 --- !u!1 &1170230717
 GameObject:
   m_ObjectHideFlags: 0
@@ -11708,11 +11701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea6c31dcb4572b43abe22b2e808f93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemDataList:
-  - idx: 0
-    name: "\uB354\uBBF8"
-    itemInfo: "\uB354\uBBF8\uB2E4"
-    itemSprite: {fileID: 21300008, guid: d85a2912631bb7a4f81e11536ee2c10b, type: 3}
+  ItemDataList: []
 --- !u!1 &2120090681
 GameObject:
   m_ObjectHideFlags: 0

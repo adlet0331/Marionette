@@ -7708,7 +7708,7 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!43 &789422118
+--- !u!43 &1351651509
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9163,8 +9163,8 @@ MonoBehaviour:
   - {x: -96.27249, y: 94.11245, z: 0}
   - {x: -128.4484, y: 94.37041, z: 0}
   m_ShapePathHash: 624973715
-  m_Mesh: {fileID: 789422118}
-  m_InstanceId: 54916
+  m_Mesh: {fileID: 1351651509}
+  m_InstanceId: 58116
 --- !u!1001 &4442375397253533533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9289,6 +9289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LockObject
       objectReference: {fileID: 0}
+    - target: {fileID: 5364604079337313051, guid: f2ff3dfaa8ce6104383cf9d1c0255b58, type: 3}
+      propertyPath: idx
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2ff3dfaa8ce6104383cf9d1c0255b58, type: 3}
 --- !u!1001 &7553926536848278361
@@ -9300,6 +9304,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7553926536803686476, guid: 033d1ebc507a0d249a50cd89cde239a0, type: 3}
       propertyPath: idx
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553926536803686476, guid: 033d1ebc507a0d249a50cd89cde239a0, type: 3}
+      propertyPath: itemIndexList.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7553926536803686477, guid: 033d1ebc507a0d249a50cd89cde239a0, type: 3}
