@@ -62,9 +62,9 @@ public class InteractObject : MonoBehaviour
         }
         else
         {
-            WindowManager.Instance.interactableWindow.SetInteractionObject(currentIdx, currentType);
             if (!WindowManager.Instance.interactableWindow.gameObject.activeSelf)
                 WindowManager.Instance.interactableWindow.OpenWindow();
+            WindowManager.Instance.interactableWindow.SetInteractionObject(currentIdx, currentType);
         }
     }
     public void BlockInteract()
@@ -86,10 +86,6 @@ public class InteractObject : MonoBehaviour
 
             return currentInteractObj;
         }
-    }
-    public void InteractWithObject()
-    {
-        currentInteractObj.Interact();
     }
     public void AddInteractionList(InteractionObject interactionObj)
     {

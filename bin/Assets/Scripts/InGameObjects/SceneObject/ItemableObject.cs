@@ -23,13 +23,14 @@ public class ItemableObject : InteractionObject
     }
     public override void Interact()
     {
-        List<Item> itemDataList = ItemDataManager.Instance.ItemDataList;
+        List<ItemData> itemDataList = ItemDataManager.Instance.ItemDataList;
         if(itemType == ItemableObjectType.AddItem)
         {
+            Debug.Log("Add Item");
             foreach (int i in itemIndexList)
             {
                 Debug.Assert(i <= itemDataList.Count && i>= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
-                Item item = itemDataList[i];
+                ItemData item = itemDataList[i];
                 InventoryManager.Instance.AddItem(item);
                 WindowManager.Instance.inventoryWindow.UpdateInventory();
             }
@@ -39,7 +40,7 @@ public class ItemableObject : InteractionObject
             foreach (int i in itemIndexList)
             {
                 Debug.Assert(i <= itemDataList.Count && i >= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
-                Item item = itemDataList[i];
+                ItemData item = itemDataList[i];
                 InventoryManager.Instance.DeleteItem(item);
                 WindowManager.Instance.inventoryWindow.UpdateInventory();
             }
