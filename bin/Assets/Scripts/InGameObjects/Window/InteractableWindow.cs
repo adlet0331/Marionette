@@ -12,14 +12,41 @@ using static InteractionObject;
  */
 public class InteractableWindow : WindowObject
 {
+    [SerializeField] private bool isLockPrinting;
+
     [SerializeField] private Text nameText;
     [SerializeField] private Text explanationText;
     [SerializeField] private int currentIdx;
     [SerializeField] private InteractionObjectType interactionItemType;
+    
+    private IEnumerator currentCoroutine;
+    [SerializeField] private bool blocked;
 
-    IEnumerator SetLockedWindow(string str)
+    IEnumerator _printScript(Text textObj, string script)
     {
-        yield return null;
+        blocked = true;
+        textObj.text = "";
+        yield return new WaitForSeconds(0.02f);
+        for (int i = 0; i <= script.Length; i++)
+        {
+            textObj.text = script.Substring(0, i);
+            yield return new WaitForSeconds(0.02f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("End Couroutine");
+        blocked = false;
+        currentCoroutine = null;
+    }
+
+    public void SetIsLockedWindow(string str)
+    {
+        isLockPrinting = true;
+
+        currentCoroutine = _printScript(explanationText, str);
+        StartCoroutine(currentCoroutine);
+
+        isLockPrinting = false;
+        return;
     }
 
     public override void Activate()
@@ -29,14 +56,25 @@ public class InteractableWindow : WindowObject
 
     public void SetIsLockedWindow(string name, string str)
     {
-
+        nameText.text = name;
+        explanationText.text = str;
 
         return;
     }
 
+    public new void CloseWindow()
+    {
+        blocked = false;
+        base.CloseWindow();
+    }
+
     public void SetInteractionObject(int idx, InteractionObjectType type)
     {
+        if (blocked)
+            return;
+
         this.currentIdx = idx;
+        this.interactionItemType = type;
         if(type == InteractionObjectType.ScriptableObject)
         {
             ScriptableObjData currentData = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
@@ -48,7 +86,7 @@ public class InteractableWindow : WindowObject
             
         else if (type == InteractionObjectType.ItemableObject)
         {
-            Item currentData = ItemDataManager.Instance.ItemDataList[idx];
+            ItemData currentData = ItemDataManager.Instance.ItemDataList[idx];
 
             nameText.text = currentData.name;
             explanationText.text = currentData.itemInfo;

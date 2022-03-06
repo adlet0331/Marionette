@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler {
     //For Opening Window
     [SerializeField] private bool isDraggable;
-    [SerializeField] private bool isMoveable;
+    [SerializeField] private bool notMoveableWhileOpen;
     public abstract void Activate();
     public bool ActivateObject()
     {
@@ -26,8 +26,10 @@ public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHa
     {
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
-        if (!isMoveable)
+        if (notMoveableWhileOpen)
             InputManager.Instance.SetOptions(false, true);
+        else
+            InputManager.Instance.SetOptions(true, true);
     }
     public void CloseWindow()
     {

@@ -88,11 +88,11 @@ public class ScriptWindow : WindowObject
     {
         blocked = true;
         textObj.text = "";
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.02f);
         for (int i = 0; i <= script.Length; i++)
         {
             textObj.text = script.Substring(0, i);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.02f);
         }
         blocked = false;
         currentCoroutine = null;
