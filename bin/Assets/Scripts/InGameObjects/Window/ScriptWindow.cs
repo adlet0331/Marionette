@@ -23,7 +23,7 @@ public class ScriptWindow : WindowObject
     [SerializeField] private bool blocked = false;
     private void Open(int idx)
     {
-        this.ActivateObject();
+        this.OpenWindow();
 
         currObj = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
         currentScriptIdx = 0;

@@ -1,31 +1,33 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-/* 드래그 가능한 오브젝트
- * 
+/*
+ * 게임 내 Window 오브젝트 
  */
 public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler {
     //For Opening Window
     [SerializeField] private bool isDraggable;
     [SerializeField] private bool notMoveableWhileOpen;
     public abstract void Activate();
-    public bool ActivateObject()
+    public void OpenWindowWithoutSetting()
     {
-        if (gameObject.activeSelf)
-        {
-            CloseWindow();
-            return true;
-        }
-        else
-        {   
-            OpenWindow();
-            return false;
-        }
+        gameObject.SetActive(true);
+        transform.SetAsLastSibling();
+    }
+    public void CloseWindowWithoutOption()
+    {
+        gameObject.SetActive(false);
     }
     public void OpenWindow()
     {
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
+        WindowManager.Instance.currentOpenWindowNum += 1;
+        if (WindowManager.Instance.currentOpenWindowNum > 1)
+        {
+            OpenWindowWithoutSetting();
+            return;
+        }
         if (notMoveableWhileOpen)
             InputManager.Instance.SetOptions(false, true);
         else
@@ -33,6 +35,12 @@ public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHa
     }
     public void CloseWindow()
     {
+        WindowManager.Instance.currentOpenWindowNum -= 1;
+        if (WindowManager.Instance.currentOpenWindowNum >= 1)
+        {
+            CloseWindowWithoutOption();
+            return;
+        }
         gameObject.SetActive(false);
         InputManager.Instance.SetOptions(true, true);
     }

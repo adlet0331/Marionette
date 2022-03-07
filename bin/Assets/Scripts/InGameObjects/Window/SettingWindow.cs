@@ -7,6 +7,6 @@ public class SettingWindow : WindowObject
 {
     public override void Activate()
     {
-        this.ActivateObject();
+        this.OpenWindow();
     }
 }

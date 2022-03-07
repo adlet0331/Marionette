@@ -5,6 +5,7 @@ using UnityEngine;
  */
 public class WindowManager : Singleton<WindowManager>
 {
+    [SerializeField] public int currentOpenWindowNum;
     public WindowObject sLWindow;
     public SettingWindow settingWindow;
     public ProfileWindow profileWindow;
@@ -13,6 +14,4 @@ public class WindowManager : Singleton<WindowManager>
     public ItemGotWindow itemGotWindow;
     public LockWindow lockWindow;
     public InventoryWindow inventoryWindow;
-    public ItemSelectionWindow itemSelectionWindow;
-    public ItemInfoWindow itemInfoWindow;
 }

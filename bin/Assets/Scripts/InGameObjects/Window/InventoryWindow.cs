@@ -5,19 +5,22 @@ using UnityEngine.EventSystems;
 
 public class InventoryWindow : WindowObject
 {
+    [SerializeField] private ItemSelectionPannel itemSelectionPannel;
+    [SerializeField] private ItemInfoPannel itemInfoPannel;
+
     [SerializeField] private List<Slot> slotList;
-    [SerializeField] private List<ItemData> itemList;
-    [SerializeField] private int selectedInt;
-    [SerializeField] private int equipedInt;
+    [SerializeField] private List<ItemData> currentItemList;
+    [SerializeField] private int selectedInt = -1;
+    [SerializeField] private int equipedInt = -1;
 
     private void updateSelectUI()
     {
         List<ItemData> itemList = InventoryManager.Instance.GetItemList();
-        for (int i=0; i<10; i++)
+        for (int i=0; i < 10; i++)
         {
             if (i >= itemList.Count)
             {
-                slotList[i].SetSlotStatus(i == selectedInt, false);
+                slotList[i].SetSlotStatus(false, false);
                 slotList[i].SetImage(null);
             }
             else
@@ -26,6 +29,17 @@ public class InventoryWindow : WindowObject
                 slotList[i].SetImage(itemList[i].itemSprite);
             }
         }
+    }
+
+    private void openIteminfoUI()
+    {
+        itemInfoPannel.gameObject.SetActive(true);
+        itemInfoPannel.OpenWindow(currentItemList[selectedInt].itemSprite, currentItemList[selectedInt].itemInfo);
+    }
+
+    private void closeItemInfoUI()
+    {
+        itemInfoPannel.gameObject.SetActive(false);
     }
 
     public new void CloseWindow()
@@ -38,13 +52,13 @@ public class InventoryWindow : WindowObject
     public void UpdateInventory()
     {
         int slotNum = slotList.Count;
-        itemList = InventoryManager.Instance.GetItemList();
-        int itemNum = itemList.Count;
+        currentItemList = InventoryManager.Instance.GetItemList();
+        int itemNum = currentItemList.Count;
         for (int i = 0; i < slotNum; i++)
         {
             if (i < itemNum)
             {
-                slotList[i].SetImage(itemList[i].itemSprite);
+                slotList[i].SetImage(currentItemList[i].itemSprite);
             }
             else
             {
@@ -57,10 +71,36 @@ public class InventoryWindow : WindowObject
     {
         selectedInt += moveInt;
 
-        if (selectedInt < 0)
-            selectedInt = 0;
-        else if (selectedInt > 9)
-            selectedInt = 9;
+        if (currentItemList.Count == 0)
+        {
+            selectedInt = -1;
+            return;
+        }
+        else if (selectedInt < 0)
+        {
+            if (moveInt == -1)
+                selectedInt = currentItemList.Count + selectedInt;
+            if (moveInt == -2)
+                if (currentItemList.Count % 2 == 0)
+                    selectedInt = currentItemList.Count + selectedInt;
+                else
+                    selectedInt = currentItemList.Count - (3 + selectedInt);
+        }
+        else if (selectedInt >= currentItemList.Count)
+            if (currentItemList.Count % 2 == 0)
+                selectedInt = currentItemList.Count + selectedInt;
+            else
+                selectedInt = currentItemList.Count - (3 + selectedInt); //asdfasdfasdf
+
+        if (selectedInt <= currentItemList.Count)
+        {
+            slotList[selectedInt].SetSlotStatus(true, false);
+            openIteminfoUI();
+        }
+        else
+        {
+            closeItemInfoUI();
+        }
 
         updateSelectUI();
         return;
@@ -68,10 +108,16 @@ public class InventoryWindow : WindowObject
 
     public override void Activate()
     {
+        if (gameObject.activeSelf)
+        {
+            CloseWindow();
+            return;
+        }
+
         InputManager.Instance.SetOptions(false, true);
         InputManager.Instance.SetInventWind(true);
         UpdateInventory();
-        ActivateObject();
+        OpenWindow();
 
         selectedInt = 0;
         updateSelectUI();

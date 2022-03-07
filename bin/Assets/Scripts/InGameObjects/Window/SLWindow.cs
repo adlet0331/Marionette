@@ -6,6 +6,6 @@ public class SLWindow : WindowObject
 {
     public override void Activate()
     {
-        this.ActivateObject();
+        this.OpenWindow();
     }
 }
