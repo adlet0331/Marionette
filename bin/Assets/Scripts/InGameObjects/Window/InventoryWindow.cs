@@ -87,10 +87,13 @@ public class InventoryWindow : WindowObject
                     selectedInt = currentItemList.Count - (3 + selectedInt);
         }
         else if (selectedInt >= currentItemList.Count)
-            if (currentItemList.Count % 2 == 0)
-                selectedInt = currentItemList.Count + selectedInt;
+            if (currentItemList.Count % 2 == 1 && moveInt == 2)
+                if (selectedInt == currentItemList.Count)
+                    selectedInt = 1;
+                else
+                    selectedInt = 0;
             else
-                selectedInt = currentItemList.Count - (3 + selectedInt); //asdfasdfasdf
+                selectedInt = currentItemList.Count % currentItemList.Count;
 
         if (selectedInt <= currentItemList.Count)
         {
