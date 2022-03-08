@@ -17,7 +17,6 @@ public class LockInfo
 public class LockObject : InteractionObject
 {
     [SerializeField] private bool isUnLocked = false;
-    [SerializeField] private string nameStr = "";
     [SerializeField] private InteractionObject lockedObject;
     public void SetIsUnLocked(bool isunlocked)
     {

@@ -12,6 +12,7 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private bool isMoveable = false;
     [SerializeField] private bool isInputAvaliable = true;
     [SerializeField] private bool isInventoryWindowOn = false;
+    [SerializeField] private bool isItemSelectionPannelOn = false;
     public void SetOptions(bool isMv, bool isAv)
     {
         isMoveable = isMv;
@@ -20,6 +21,10 @@ public class InputManager : Singleton<InputManager>
     public void SetInventWind(bool tf)
     {
         isInventoryWindowOn = tf;
+    }
+    public void SetItemSelectionPannel(bool tf)
+    {
+        isItemSelectionPannelOn = tf;
     }
     [SerializeField] private MovingObject movingComponent;
     public void SetMovingComponent(MovingObject mo)
@@ -74,7 +79,18 @@ public class InputManager : Singleton<InputManager>
             else if (Input.GetKeyDown(KeyCode.DownArrow))
                 moveInt += 2;
 
-            WindowManager.Instance.inventoryWindow.UpdateSelectSlot(moveInt);
+            WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(moveInt);
+        }
+
+        if (!isMoveable && isInputAvaliable && isItemSelectionPannelOn)
+        {
+            int moveInt = 0;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                moveInt -= 1;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                moveInt += 1;
+
+            WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt); 
         }
 
     }
@@ -88,6 +104,12 @@ public class InputManager : Singleton<InputManager>
         WindowManager.Instance.settingWindow.Activate();
     }
     private void KeyDown_Z() {
+        if (WindowManager.Instance.inventoryWindow.gameObject.activeSelf)
+        {
+            WindowManager.Instance.inventoryWindow.PressInteract();
+            return;
+        }
+
         InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
         InteractionObjectType type = obj.objectType;
 

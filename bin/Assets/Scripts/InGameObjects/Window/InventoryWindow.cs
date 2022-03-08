@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class InventoryWindow : WindowObject
 {
+    [SerializeField] public bool isSelPannelOpen;
+    [SerializeField] public bool isInfoPannelOpen;
+
     [SerializeField] private ItemSelectionPannel itemSelectionPannel;
     [SerializeField] private ItemInfoPannel itemInfoPannel;
 
@@ -12,6 +15,7 @@ public class InventoryWindow : WindowObject
     [SerializeField] private List<ItemData> currentItemList;
     [SerializeField] private int selectedInt = -1;
     [SerializeField] private int equipedInt = -1;
+    [SerializeField] private int selectionPannelInt = -1;
 
     private void updateSelectUI()
     {
@@ -31,15 +35,34 @@ public class InventoryWindow : WindowObject
         }
     }
 
-    private void openIteminfoUI()
+    private void updateSelectionUI()
+    {
+
+    }
+
+    public void OpenIteminfoUI()
     {
         itemInfoPannel.gameObject.SetActive(true);
         itemInfoPannel.OpenWindow(currentItemList[selectedInt].itemSprite, currentItemList[selectedInt].itemInfo);
+        isInfoPannelOpen = true;
     }
 
-    private void closeItemInfoUI()
+    public void CloseItemInfoUI()
     {
         itemInfoPannel.gameObject.SetActive(false);
+        isInfoPannelOpen = false;
+    }
+
+    public void OpenSelectionPannel()
+    {
+        itemSelectionPannel.gameObject.SetActive(true);
+        isSelPannelOpen = true;
+    }
+
+    public void CloseSelectionPannel()
+    {
+        itemSelectionPannel.gameObject.SetActive(false);
+        isSelPannelOpen = false;
     }
 
     public new void CloseWindow()
@@ -47,6 +70,31 @@ public class InventoryWindow : WindowObject
         InputManager.Instance.SetOptions(true, true);
         InputManager.Instance.SetInventWind(false);
         base.CloseWindow();
+    }
+
+    public void PressInteract()
+    {
+        if (!itemSelectionPannel.gameObject.activeSelf)
+        {
+            selectionPannelInt = 0;
+            itemSelectionPannel.gameObject.SetActive(true);
+            isSelPannelOpen = true;
+        }
+        else
+        {
+            itemSelectionPannel.Interact(selectionPannelInt);
+        }
+    }
+
+    public void MoveEquipWindowIdx(int moveInt)
+    {
+        selectionPannelInt += moveInt;
+        if (selectionPannelInt < 0)
+            selectionPannelInt += 3;
+        else if (selectionPannelInt > 2)
+            selectionPannelInt %= 3;
+
+
     }
 
     public void UpdateInventory()
@@ -67,7 +115,7 @@ public class InventoryWindow : WindowObject
         }
     }
 
-    public void UpdateSelectSlot(int moveInt)
+    public void MoveInventoryUIdx(int moveInt)
     {
         selectedInt += moveInt;
 
@@ -98,11 +146,6 @@ public class InventoryWindow : WindowObject
         if (selectedInt <= currentItemList.Count)
         {
             slotList[selectedInt].SetSlotStatus(true, false);
-            openIteminfoUI();
-        }
-        else
-        {
-            closeItemInfoUI();
         }
 
         updateSelectUI();

@@ -468,6 +468,7 @@ MonoBehaviour:
   isMoveable: 0
   isInputAvaliable: 1
   isInventoryWindowOn: 0
+  isItemSelectionPannelOn: 0
   movingComponent: {fileID: 0}
   moveH: 0
   moveV: 0
@@ -4759,6 +4760,7 @@ MonoBehaviour:
   currentItemList: []
   selectedInt: -1
   equipedInt: -1
+  selectionPannelInt: -1
 --- !u!1001 &873048611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10038,6 +10040,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6b09412fc945145bf015310f571512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEquip: 0
+  itemInvenIdx: 0
+  EquipOrUn: {fileID: 1058517996}
+  AvalibleImage1: {fileID: 1606283251}
+  AvalibleImage2: {fileID: 578330241}
+  AvalibleImage3: {fileID: 981914805}
 --- !u!1 &1843908518
 GameObject:
   m_ObjectHideFlags: 0
@@ -10917,7 +10925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0
