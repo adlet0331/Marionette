@@ -7,6 +7,9 @@ public class SettingWindow : WindowObject
 {
     public override void Activate()
     {
-        this.OpenWindow();
+        if (gameObject.activeSelf)
+            this.CloseWindow();
+        else
+            this.OpenWindow();
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class ItemSelectionPannel : MonoBehaviour
 {
     [SerializeField] private bool isEquip;
-    [SerializeField] private int itemInvenIdx;
     [SerializeField] private int currentSelection;
     [SerializeField] private Text EquipOrUn; 
     [SerializeField] private GameObject AvalibleImage1;
@@ -34,52 +33,19 @@ public class ItemSelectionPannel : MonoBehaviour
         return;
     }
 
-    public void OpenPannel(bool bl, int itemInventoryIdx)
+    public void UpdatePannel(bool bl)
     {
         isEquip = bl;
-        itemInvenIdx = itemInventoryIdx;
 
         setEquipText();
-        
-    }
-
-    public void Interact(int idx)
-    {
-        if (idx == 0)
-        {
-            BtnFirst_Equip();
-        }
-        else if (idx == 1)
-        {
-            BtnSecond_SeeClose();
-        }
-        else if (idx == 2)
-        {
-            BtnThird_Close();
-        }
-    }
-
-    public void BtnFirst_Equip()
-    {
-
-    }
-
-    public void BtnSecond_SeeClose()
-    {
-
-    }
-
-    public void BtnThird_Close()
-    {
-
     }
 
     private void setEquipText()
     {
         if (isEquip)
-            EquipOrUn.text = "장착하기";
+            EquipOrUn.text = "장착";
         else
-            EquipOrUn.text = "해제하기";
+            EquipOrUn.text = "해제";
         return;
     }
 }

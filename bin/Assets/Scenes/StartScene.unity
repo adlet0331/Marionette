@@ -4744,6 +4744,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDraggable: 0
   notMoveableWhileOpen: 1
+  isSelPannelOpen: 0
+  isInfoPannelOpen: 0
   itemSelectionPannel: {fileID: 1808517001}
   itemInfoPannel: {fileID: 758366673}
   slotList:
@@ -10042,6 +10044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEquip: 0
   itemInvenIdx: 0
+  currentSelection: 0
   EquipOrUn: {fileID: 1058517996}
   AvalibleImage1: {fileID: 1606283251}
   AvalibleImage2: {fileID: 578330241}
@@ -10925,7 +10928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0

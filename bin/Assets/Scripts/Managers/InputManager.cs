@@ -67,7 +67,18 @@ public class InputManager : Singleton<InputManager>
             }
         }
 
-        if (!isMoveable && isInputAvaliable && isInventoryWindowOn)
+        if (!isMoveable && isInputAvaliable && isItemSelectionPannelOn)
+        {
+            int moveInt = 0;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                moveInt -= 1;
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+                moveInt += 1;
+
+            WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt);
+        }
+
+        else if (!isMoveable && isInputAvaliable && isInventoryWindowOn)
         {
             int moveInt = 0;
             if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -80,17 +91,6 @@ public class InputManager : Singleton<InputManager>
                 moveInt += 2;
 
             WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(moveInt);
-        }
-
-        if (!isMoveable && isInputAvaliable && isItemSelectionPannelOn)
-        {
-            int moveInt = 0;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                moveInt -= 1;
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-                moveInt += 1;
-
-            WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt); 
         }
 
     }

@@ -13,11 +13,12 @@ public class InventoryWindow : WindowObject
 
     [SerializeField] private List<Slot> slotList;
     [SerializeField] private List<ItemData> currentItemList;
-    [SerializeField] private int selectedInt = -1;
-    [SerializeField] private int equipedInt = -1;
+
+    [SerializeField] private int selectedIdx = -1;
+    [SerializeField] private int equipedIdx = -1;
     [SerializeField] private int selectionPannelInt = -1;
 
-    private void updateSelectUI()
+    private void updateInventoryUI()
     {
         List<ItemData> itemList = InventoryManager.Instance.GetItemList();
         for (int i=0; i < 10; i++)
@@ -29,21 +30,16 @@ public class InventoryWindow : WindowObject
             }
             else
             {
-                slotList[i].SetSlotStatus(i == selectedInt, i == equipedInt);
+                slotList[i].SetSlotStatus(i == selectedIdx, i == equipedIdx);
                 slotList[i].SetImage(itemList[i].itemSprite);
             }
         }
     }
 
-    private void updateSelectionUI()
-    {
-
-    }
-
     public void OpenIteminfoUI()
     {
         itemInfoPannel.gameObject.SetActive(true);
-        itemInfoPannel.OpenWindow(currentItemList[selectedInt].itemSprite, currentItemList[selectedInt].itemInfo);
+        itemInfoPannel.OpenWindow(currentItemList[selectedIdx].itemSprite, currentItemList[selectedIdx].itemInfo);
         isInfoPannelOpen = true;
     }
 
@@ -55,34 +51,62 @@ public class InventoryWindow : WindowObject
 
     public void OpenSelectionPannel()
     {
-        itemSelectionPannel.gameObject.SetActive(true);
+        selectionPannelInt = 0;
         isSelPannelOpen = true;
+        InputManager.Instance.SetItemSelectionPannel(true);
+        itemSelectionPannel.gameObject.SetActive(true);
+        itemSelectionPannel.UpdatePannel(equipedIdx != selectedIdx);
     }
 
     public void CloseSelectionPannel()
     {
-        itemSelectionPannel.gameObject.SetActive(false);
         isSelPannelOpen = false;
+        itemSelectionPannel.gameObject.SetActive(false);
+        InputManager.Instance.SetItemSelectionPannel(false);
     }
 
     public new void CloseWindow()
     {
         InputManager.Instance.SetOptions(true, true);
         InputManager.Instance.SetInventWind(false);
+        InputManager.Instance.SetItemSelectionPannel(false);
+
+        CloseItemInfoUI();
+        CloseSelectionPannel();
         base.CloseWindow();
+    }
+
+    private void equipCurrentSelectedItem(bool isEquip)
+    {
+        if (isEquip)
+            equipedIdx = selectedIdx;
+        else
+            equipedIdx = -1;
+        itemSelectionPannel.UpdatePannel(!isEquip);
+        updateInventoryUI();
     }
 
     public void PressInteract()
     {
-        if (!itemSelectionPannel.gameObject.activeSelf)
+        if (!isSelPannelOpen)
         {
-            selectionPannelInt = 0;
-            itemSelectionPannel.gameObject.SetActive(true);
-            isSelPannelOpen = true;
+            OpenSelectionPannel();
         }
         else
         {
-            itemSelectionPannel.Interact(selectionPannelInt);
+            if (selectionPannelInt == 0)
+            {
+                equipCurrentSelectedItem(selectedIdx != equipedIdx);
+            }
+            else if (selectionPannelInt == 1)
+            {
+                OpenIteminfoUI();
+            }
+            else if (selectionPannelInt == 2)
+            {
+                CloseSelectionPannel();
+                CloseItemInfoUI();
+            }
         }
     }
 
@@ -94,7 +118,7 @@ public class InventoryWindow : WindowObject
         else if (selectionPannelInt > 2)
             selectionPannelInt %= 3;
 
-
+        itemSelectionPannel.UpdateUI(selectionPannelInt);
     }
 
     public void UpdateInventory()
@@ -117,43 +141,50 @@ public class InventoryWindow : WindowObject
 
     public void MoveInventoryUIdx(int moveInt)
     {
-        selectedInt += moveInt;
+        selectedIdx += moveInt;
 
         if (currentItemList.Count == 0)
         {
-            selectedInt = -1;
+            selectedIdx = -1;
             return;
         }
-        else if (selectedInt < 0)
+        else if (selectedIdx < 0)
         {
             if (moveInt == -1)
-                selectedInt = currentItemList.Count + selectedInt;
+                selectedIdx = currentItemList.Count + selectedIdx;
             if (moveInt == -2)
                 if (currentItemList.Count % 2 == 0)
-                    selectedInt = currentItemList.Count + selectedInt;
+                    selectedIdx = currentItemList.Count + selectedIdx;
                 else
-                    selectedInt = currentItemList.Count - (3 + selectedInt);
+                    selectedIdx = currentItemList.Count - (3 + selectedIdx);
         }
-        else if (selectedInt >= currentItemList.Count)
+        else if (selectedIdx >= currentItemList.Count)
             if (currentItemList.Count % 2 == 1 && moveInt == 2)
-                if (selectedInt == currentItemList.Count)
-                    selectedInt = 1;
+                if (selectedIdx == currentItemList.Count)
+                    selectedIdx = 1;
                 else
-                    selectedInt = 0;
+                    selectedIdx = 0;
             else
-                selectedInt = currentItemList.Count % currentItemList.Count;
+                selectedIdx = currentItemList.Count % currentItemList.Count;
 
-        if (selectedInt <= currentItemList.Count)
+        if (selectedIdx <= currentItemList.Count)
         {
-            slotList[selectedInt].SetSlotStatus(true, false);
+            slotList[selectedIdx].SetSlotStatus(true, false);
         }
 
-        updateSelectUI();
+        updateInventoryUI();
         return;
     }
 
     public override void Activate()
     {
+        if (itemSelectionPannel.gameObject.activeSelf)
+        {
+            CloseSelectionPannel();
+            CloseItemInfoUI();
+            return;
+        }
+
         if (gameObject.activeSelf)
         {
             CloseWindow();
@@ -165,8 +196,8 @@ public class InventoryWindow : WindowObject
         UpdateInventory();
         OpenWindow();
 
-        selectedInt = 0;
-        updateSelectUI();
+        selectedIdx = 0;
+        updateInventoryUI();
 
         return;
     }
