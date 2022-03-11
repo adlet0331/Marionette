@@ -18,6 +18,18 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         return itemList.ConvertAll(o => new ItemData(o.idx, o.name, o.itemInfo, o.itemSprite, o.itemDescription));
     }
+    public ItemData GetItem(int idx)
+    {
+        if (idx < 0)
+        {
+            return null;
+        }
+        else
+        {
+            ItemData itemData = itemList[idx];
+            return itemData;
+        }
+    }
     public void AddItem(ItemData item)
     {
         if (itemList.Count == 10)

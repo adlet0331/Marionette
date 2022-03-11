@@ -53,7 +53,9 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         InputManager.Instance.SetOptions(sceneInfo.isMovable, sceneInfo.isInputAvaliable);
         // 카메라 매니저 모드 설정
         CameraManager.Instance.SetCameraMode(sceneInfo.CameraMode);
+        // 플레이어 캐릭터 생성
         SceneObjManager.Instance.PlayerObjectExist = sceneInfo.isCharacterExist;
+        // 플레이어 프로필 On / Off
         PlayerManager.Instance.SetProfileShowing(sceneInfo.isProfileActivate);
     }
     public void NewGameButton()

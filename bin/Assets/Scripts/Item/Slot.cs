@@ -8,7 +8,9 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 {
     [SerializeField] bool isSelected;
     [SerializeField] bool isEquiped;
+
     [SerializeField] private int index;
+
     [SerializeField] Image itemImage;
     [SerializeField] Image isSelectedImage;
     [SerializeField] Image isEquippedImage;

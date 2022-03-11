@@ -12,7 +12,6 @@ public class PlayerManager : Singleton<PlayerManager>
     public BoxCollider2D moveablePlayerCollider;
     public InteractObject playerInteractObject;
     [SerializeField] private bool profileShowing = false;
-
     public void UpdatePlayerManager(GameObject mPO)
     {
         moveablePlayerObject = mPO;
@@ -23,17 +22,9 @@ public class PlayerManager : Singleton<PlayerManager>
     public void SetProfileShowing(bool tf)
     {
         profileShowing = tf;
-        UpdateProfileShowing();
-    }
-    public void UpdateProfileShowing()
-    {
         if (profileShowing)
-        {
             WindowManager.Instance.profileWindow.OpenWindow();
-        }
         else
-        {
             WindowManager.Instance.profileWindow.CloseWindow();
-        }
     }
 }

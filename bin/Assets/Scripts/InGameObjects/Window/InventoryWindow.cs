@@ -84,6 +84,10 @@ public class InventoryWindow : WindowObject
             equipedIdx = -1;
         itemSelectionPannel.UpdatePannel(!isEquip);
         updateInventoryUI();
+        if (isEquip)
+            WindowManager.Instance.profileWindow.UpdateEquipItem(1);
+        else
+            WindowManager.Instance.profileWindow.UpdateEquipItem(-1);
     }
 
     public void PressInteract()

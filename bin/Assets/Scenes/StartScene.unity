@@ -4760,8 +4760,8 @@ MonoBehaviour:
   - {fileID: 1684834474}
   - {fileID: 2065822235}
   currentItemList: []
-  selectedInt: -1
-  equipedInt: -1
+  selectedIdx: -1
+  equipedIdx: -1
   selectionPannelInt: -1
 --- !u!1001 &873048611
 PrefabInstance:
@@ -8079,6 +8079,8 @@ MonoBehaviour:
   notMoveableWhileOpen: 0
   equipedItemSlot: {fileID: 1715067197}
   profileImage: {fileID: 1541550299}
+  equipedItemIdx: -1
+  currentStatus: -1
 --- !u!114 &1530197703 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756950653789702673, guid: 0f5d2334921ae8844ab5e5bbec4e390c, type: 3}
@@ -8199,8 +8201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9, y: -23.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -6.8, y: -16.3}
+  m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541550299
 MonoBehaviour:
@@ -9443,7 +9445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -56.3, y: -43.9}
+  m_AnchoredPosition: {x: -70.8, y: -79.8}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1715067197
@@ -9461,7 +9463,7 @@ MonoBehaviour:
   isSelected: 0
   isEquiped: 0
   index: 0
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 1532862440}
   isSelectedImage: {fileID: 0}
   isEquippedImage: {fileID: 0}
 --- !u!222 &1715067198
@@ -10043,7 +10045,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEquip: 0
-  itemInvenIdx: 0
   currentSelection: 0
   EquipOrUn: {fileID: 1058517996}
   AvalibleImage1: {fileID: 1606283251}
