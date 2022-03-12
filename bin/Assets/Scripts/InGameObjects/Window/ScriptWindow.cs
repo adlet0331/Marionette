@@ -25,7 +25,7 @@ public class ScriptWindow : WindowObject
     {
         this.OpenWindow();
 
-        currObj = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
+        currObj = DataBaseManager.Instance.ScriptDataBase.ScriptObjDataList[idx];
         currentScriptIdx = 0;
         currentScriptLength = currObj.scripts.Count;
 
@@ -76,10 +76,15 @@ public class ScriptWindow : WindowObject
         if (obj == null)
             return;
 
+        //InputManager.Instance.SetOptions(false, true);  스크립트 진행 중 움직임 막기
+
         if (currentScriptIdx == -1)
             this.Open(idx);
         else if (currObj != null && currentScriptIdx == currObj.scripts.Count - 1)
+        {   
+            InputManager.Instance.SetOptions(true, true);
             this.Close();
+        }
         else
             this.Next(idx);
         return;

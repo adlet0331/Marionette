@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /* BoxCollider2D (Trigger X) 붙어있는 애들
  * 
  * 부딛히면 InteractionList에 넣어줘서 InteractionWindow 띄워줌
  */
-public class ScriptableObject : InteractionObject
+public class ScriptObject : InteractionObject
 {
     [SerializeField] private bool isScriptable;
     private void Start()

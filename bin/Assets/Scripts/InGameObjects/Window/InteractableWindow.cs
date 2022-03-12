@@ -77,7 +77,7 @@ public class InteractableWindow : WindowObject
         this.interactionItemType = type;
         if(type == InteractionObjectType.ScriptableObject)
         {
-            ScriptableObjData currentData = ScriptObjDataManager.Instance.ScriptObjDataList[idx];
+            ScriptableObjData currentData = DataBaseManager.Instance.ScriptDataBase.ScriptObjDataList[idx];
 
             nameText.text = currentData.name;
             explanationText.text = currentData.scriptableScript;
@@ -86,7 +86,7 @@ public class InteractableWindow : WindowObject
             
         else if (type == InteractionObjectType.ItemableObject)
         {
-            ItemData currentData = ItemDataManager.Instance.ItemDataList[idx];
+            ItemData currentData = DataBaseManager.Instance.ItemDataBase.ItemDataList[idx];
 
             nameText.text = currentData.name;
             explanationText.text = currentData.itemInfo;
@@ -95,7 +95,7 @@ public class InteractableWindow : WindowObject
 
         else if (type == InteractionObjectType.LockObject)
         {
-            LockData currentData = LockDataManager.Instance.LockDataList[idx];
+            LockData currentData = DataBaseManager.Instance.LockDataBase.LockDataList[idx];
 
             nameText.text = currentData.interactName;
             explanationText.text = currentData.interactString;
