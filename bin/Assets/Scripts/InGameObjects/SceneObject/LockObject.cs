@@ -24,7 +24,7 @@ public class LockObject : InteractionObject
     }
     public override void Interact()
     {
-        LockData lockData = LockDataManager.Instance.LockDataList[idx];
+        LockData lockData = DataBaseManager.Instance.LockDataBase.LockDataList[idx];
         List<LockInfo> needItemIndexList = lockData.lockInfoList;
         foreach (LockInfo lockInfo in needItemIndexList)
         {

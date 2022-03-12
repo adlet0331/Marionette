@@ -1,5 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [Serializable]
@@ -27,17 +29,12 @@ public struct LockDataFromJson
     public int[] needItemIdxArray;
     public string[] noItemString;
 }
-
-public class LockDataManager : Singleton<LockDataManager>
+[CreateAssetMenu(fileName = "LockDataBase", menuName = "ScriptableObjects/LockDataBase", order = 1)]
+public class LockDataBase : DataBase
 {
     public List<LockData> LockDataList;
 
-    private void Start()
-    {
-        LoadJson();
-    }
-
-    public void LoadJson()
+    public override void LoadJson()
     {
         LockDataList = new List<LockData>();
 
@@ -46,7 +43,7 @@ public class LockDataManager : Singleton<LockDataManager>
         foreach (LockDataFromJson lockDataFromJson in Datas)
         {
             List<LockInfo> lst = new List<LockInfo>();
-            for (int i=0; i<lockDataFromJson.needItemIdxArray.Length; i++)
+            for (int i = 0; i < lockDataFromJson.needItemIdxArray.Length; i++)
             {
                 lst.Add(new LockInfo(lockDataFromJson.needItemIdxArray[i], lockDataFromJson.noItemString[i]));
             }
@@ -55,3 +52,5 @@ public class LockDataManager : Singleton<LockDataManager>
         return;
     }
 }
+[CustomEditor(typeof(LockDataBase))]
+public class LockDataBaseEditor : DataBaseEditor<LockDataBase>{ }

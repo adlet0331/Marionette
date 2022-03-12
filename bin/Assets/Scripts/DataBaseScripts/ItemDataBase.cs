@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 /*
@@ -18,15 +18,12 @@ public class ItemDataStruct
     public string spriteName;
     public string itemDescription;
 }
-public class ItemDataManager : Singleton<ItemDataManager>
+[CreateAssetMenu(fileName = "ItemDataBase", menuName = "ScriptableObjects/ItemDataBase", order = 1)]
+public class ItemDataBase : DataBase
 {
     public List<ItemData> ItemDataList;
-    private void Start()
-    {
-        LoadJson();
-    }
 
-    public void LoadJson()
+    public override void LoadJson()
     {
         TextAsset jsonData = Resources.Load<TextAsset>("IngameData/Items");
         ItemDataStruct[] Datas = JsonHelper.FromJson<ItemDataStruct>("{\"resources\":" + jsonData.text + "}");
@@ -39,3 +36,6 @@ public class ItemDataManager : Singleton<ItemDataManager>
         return;
     }
 }
+
+[CustomEditor(typeof(ItemDataBase))]
+public class ItemDataBaseEditor : DataBaseEditor<ItemDataBase> { }

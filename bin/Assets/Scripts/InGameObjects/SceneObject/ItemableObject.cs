@@ -23,7 +23,7 @@ public class ItemableObject : InteractionObject
     }
     public override void Interact()
     {
-        List<ItemData> itemDataList = ItemDataManager.Instance.ItemDataList;
+        List<ItemData> itemDataList = DataBaseManager.Instance.ItemDataBase.ItemDataList;
         if(itemType == ItemableObjectType.AddItem)
         {
             Debug.Log("Add Item");

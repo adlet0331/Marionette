@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9116604665075978810}
   - component: {fileID: 9116604665075978811}
   m_Layer: 0
-  m_Name: ScriptableObject
+  m_Name: ScriptObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
