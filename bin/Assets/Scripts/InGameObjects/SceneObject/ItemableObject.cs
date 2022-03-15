@@ -45,5 +45,8 @@ public class ItemableObject : InteractionObject
                 WindowManager.Instance.inventoryWindow.UpdateInventory();
             }
         }
+
+        if (deleteAfterInteract)
+            this.gameObject.SetActive(false);
     }
 }

@@ -17,7 +17,7 @@ public class LockInfo
 public class LockObject : InteractionObject
 {
     [SerializeField] private bool isUnLocked = false;
-    [SerializeField] private InteractionObject lockedObject;
+    [SerializeField] private LockAttatchObject lockedObject;
     public void SetIsUnLocked(bool isunlocked)
     {
         isUnLocked = isunlocked;
@@ -34,18 +34,13 @@ public class LockObject : InteractionObject
                 return;
             }
         }
-        unLock();
-        return;
-    }
-
-    private void unLock()
-    {
-        lockedObject.Interact();
+        lockedObject.UnLock();
         return;
     }
 
     private void Start()
     {
         this.objectType = InteractionObjectType.LockObject;
+        this.lockedObject = this.gameObject.GetComponent<LockAttatchObject>();
     }
 }

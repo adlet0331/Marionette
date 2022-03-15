@@ -21,9 +21,8 @@ MonoBehaviour:
   - idx: 1
     name: "\uC5F0\uAD6C\uC2E41\uC758 \uCE74\uB4DC\uD0A4"
     itemInfo: "\uC5F0\uAD6C\uC2E41\uC758 \uBB38\uC744 \uC5EC\uB294 \uCE74\uB4DC\uD0A4\uB2E4"
-    itemDescription: "\uB0A0\uC774 \uC798 \uB4E0 \uB2E8\uAC80\uC774\uB2E4\n\uAC00\uBCBC\uC6CC\uC11C
-      \uC27D\uAC8C \uD718\uB450\uB97C \uC218 \uC788\uC744 \uAC83 \uAC19\uB2E4"
-    itemSprite: {fileID: 0}
+    itemDescription: "\uC5F0\uAD6C\uC2E41\uC758 \uBB38\uC744 \uC5EC\uB294 \uCE74\uB4DC\uD0A4\uB2E4"
+    itemSprite: {fileID: 21300000, guid: 72d250db13d8af84dab718680d55e3fa, type: 3}
   - idx: 2
     name: "A\uAD6C\uC5ED \uCE74\uB4DC\uD0A4"
     itemInfo: 

@@ -39,7 +39,7 @@ public class InventoryWindow : WindowObject
     public void OpenIteminfoUI()
     {
         itemInfoPannel.gameObject.SetActive(true);
-        itemInfoPannel.OpenWindow(currentItemList[selectedIdx].itemSprite, currentItemList[selectedIdx].itemInfo);
+        itemInfoPannel.OpenWindow(currentItemList[selectedIdx].itemSprite, currentItemList[selectedIdx].itemInfo, currentItemList[selectedIdx].name);
         isInfoPannelOpen = true;
     }
 
@@ -85,7 +85,7 @@ public class InventoryWindow : WindowObject
         itemSelectionPannel.UpdatePannel(!isEquip);
         updateInventoryUI();
         if (isEquip)
-            WindowManager.Instance.profileWindow.UpdateEquipItem(1);
+            WindowManager.Instance.profileWindow.UpdateEquipItem(equipedIdx);
         else
             WindowManager.Instance.profileWindow.UpdateEquipItem(-1);
     }
