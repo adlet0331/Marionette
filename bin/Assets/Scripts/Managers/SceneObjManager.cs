@@ -55,7 +55,7 @@ public class SceneObjManager : Singleton<SceneObjManager>
     private void createPlayerObject()
     {
         // SceneObjManager에서 PlayerObj가 없으면 생성해줌
-        GameObject prefab = Resources.Load("Prefabs/Moving Character Variant") as GameObject;
+        GameObject prefab = Resources.Load("Prefabs/Character") as GameObject;
         GameObject movingCharacter = MonoBehaviour.Instantiate(prefab) as GameObject;
         movingCharacter.name = "Moving Character";
         // SceneManager에 넣어줌
