@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -53,6 +56,22 @@ public class ScriptDataBase : DataBase
             ScriptObjDataList.Add(new ScriptableObjData(scriptDataStruct.idx, scriptDataStruct.name, scriptDataStruct.scriptableScript, scriptDataStruct.scripts.ToList()));
         }
         return;
+    }
+
+    public override void SaveJson()
+    {
+        foreach (ScriptableObjData scriptableObjData in ScriptObjDataList)
+        {
+            JObject itemJson = new JObject(
+                new JProperty("idx", scriptableObjData.idx),
+                new JProperty("name", scriptableObjData.name),
+                new JProperty("scriptableScript", scriptableObjData.scriptableScript),
+                new JProperty("scripts", scriptableObjData.scripts)
+            );
+        }
+        string json = JsonConvert.SerializeObject(ScriptObjDataList.ToArray(), Formatting.Indented);
+        File.WriteAllText(@"..Resources\ImgameData\Scripts.json", json);
+        
     }
 }
 

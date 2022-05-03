@@ -27,7 +27,7 @@ public class DataBaseEditor<T> : Editor where T : DataBase
         }
         if (GUILayout.Button("Save Json", GUILayout.Width(120), GUILayout.Height(20)))
         {
-            scriptDataManager.LoadJson();
+            scriptDataManager.SaveJson();
         }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,13 +9,13 @@ using UnityEngine;
 public class LockData
 {
     public int idx;
-    public string interactName;
+    public string name;
     public string interactString;
     public List<LockInfo> lockInfoList;
     public LockData(int idx, string name, string str, List<LockInfo> lst)
     {
         this.idx = idx;
-        this.interactName = name;
+        this.name = name;
         this.interactString = str;
         this.lockInfoList = lst;
     }
@@ -50,6 +51,18 @@ public class LockDataBase : DataBase
             LockDataList.Add(new LockData(lockDataFromJson.idx, lockDataFromJson.name, lockDataFromJson.firstInteractString, lst));
         }
         return;
+    }
+
+    public override void SaveJson()
+    {
+        foreach (LockData lockData in LockDataList){
+            JObject itemJson = new JObject(
+                new JProperty("idx", lockData.idx),
+                new JProperty("name", lockData.name),
+                new JProperty("itemInfo", lockData.interactString),
+                new JProperty("lockInfoList", lockData.lockInfoList)
+            );
+        }
     }
 }
 [CustomEditor(typeof(LockDataBase))]

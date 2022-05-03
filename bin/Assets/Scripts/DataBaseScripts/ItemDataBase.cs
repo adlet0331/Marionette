@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -34,6 +35,19 @@ public class ItemDataBase : DataBase
             ItemDataList.Add(new ItemData(itemDataStruct.idx, itemDataStruct.name, itemDataStruct.itemInfo, itemSprite, itemDataStruct.itemDescription));
         }
         return;
+    }
+
+    public override void SaveJson()
+    {
+        foreach (ItemData itemDataStruct in ItemDataList){
+            JObject itemJson = new JObject(
+                new JProperty("idx", itemDataStruct.idx),
+                new JProperty("name", itemDataStruct.name),
+                new JProperty("itemInfo", itemDataStruct.itemInfo),
+                new JProperty("spriteName", itemDataStruct.itemSprite),
+                new JProperty("itemDescription", itemDataStruct.itemDescription)
+            );
+        }
     }
 }
 
