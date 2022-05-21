@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5364604079337313044}
-  - component: {fileID: 5364604079337313051}
   - component: {fileID: 5364604079337313050}
   - component: {fileID: 5364604079337313045}
+  - component: {fileID: 1679191264152555998}
   m_Layer: 0
   m_Name: LockObject
   m_TagString: Untagged
@@ -33,23 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5364604079337313051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5364604079337313049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bda351f44a077748abb83123b80090a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInteractable: 1
-  idx: 0
-  isUnLocked: 0
-  nameStr: 
-  lockedObject: {fileID: 0}
 --- !u!61 &5364604079337313050
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -102,3 +85,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 50}
   m_EdgeRadius: 0
+--- !u!114 &1679191264152555998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5364604079337313049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407687d02eff84b4c81eb92b8584dcbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInteractable: 1
+  idx: 0
+  isUnLocked: 0
+  lockedObject: {fileID: 0}

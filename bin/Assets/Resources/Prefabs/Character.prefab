@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6927452530067636989}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1279005166784142146
 MonoBehaviour:
@@ -147,12 +147,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6927452530067636989}
   - component: {fileID: 807036641600955373}
-  - component: {fileID: 5551502241878774102}
   - component: {fileID: 3063910708417624632}
   - component: {fileID: 5476571666832849565}
   - component: {fileID: 4006004372816002481}
-  - component: {fileID: 5986842944419418013}
-  - component: {fileID: 4772831505729674100}
+  - component: {fileID: 118655422644480479}
+  - component: {fileID: 8162524609169412}
   m_Layer: 10
   m_Name: Character
   m_TagString: Player
@@ -171,8 +170,8 @@ Transform:
   m_LocalPosition: {x: 105.2, y: -2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 608520595639371968}
   - {fileID: 3684013465169289675}
+  - {fileID: 608520595639371968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -228,22 +227,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5551502241878774102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967143027729125128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a614421891d29484fa075a24184ceac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentIdx: 0
-  currentType: 0
-  currentInteractObj: {fileID: 0}
-  scriptableObjList: []
 --- !u!61 &3063910708417624632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,7 +293,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5986842944419418013
+--- !u!114 &118655422644480479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,7 +302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1967143027729125128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20490a25cb3f7247bffa274d0649347, type: 3}
+  m_Script: {fileID: 11500000, guid: c9c9d37a831250a4785a775825ee05e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidBody: {fileID: 5476571666832849565}
@@ -327,14 +310,14 @@ MonoBehaviour:
   handLight: {fileID: 6708401639352339111}
   isActive: 1
   slowWalkSpeed: 100
-  moveSpeed: 200
-  runSpeed: 300
+  moveSpeed: 300
+  runSpeed: 500
   isMoving: 0
   isRunning: 0
   isSlowWalking: 0
   dirX: 0
   dirY: 0
---- !u!114 &4772831505729674100
+--- !u!114 &8162524609169412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,10 +326,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1967143027729125128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ab935abcd7cfe4a9d35e1cc099147d, type: 3}
+  m_Script: {fileID: 11500000, guid: f6e9998e18c4a4441b59d27073434063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  isBlocked: 0
+  currentIdx: 0
+  currentType: 0
+  currentInteractObj: {fileID: 0}
+  scriptableObjList: []
 --- !u!1 &8676774519356842051
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6927452530067636989}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &6708401639352339111
 MonoBehaviour:

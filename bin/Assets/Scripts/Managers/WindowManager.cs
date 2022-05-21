@@ -1,6 +1,6 @@
 using UnityEngine;
 
-/* Window °´Ã¼µé ¸ð¾ÆµÐ Singleton
+/* Window ë§¤ë‹ˆì € Singleton
  * 
  */
 public class WindowManager : Singleton<WindowManager>
