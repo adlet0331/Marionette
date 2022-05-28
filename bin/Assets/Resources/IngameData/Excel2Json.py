@@ -3,10 +3,40 @@
 # python .\Assets\Scripts\excel_to_json.py path to file
 # Example: python .\Assets\Scripts\excel_to_json.py Assets data UnitData EnemyData
 
+from posixpath import split
+import string
+from xml.etree.ElementInclude import DEFAULT_MAX_INCLUSION_DEPTH
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 import json
 import os
+
+ROW_INDEX = 'B1'
+COLUMN_INDEX = 'C1'
+START_ALPHABET = 'B'
+KEY_START_NUM = 3
+DATA_START_NUM = 5
+AV_DATA_TYPE_STR = ["int", "string", "bool", "int[]", "string[]", "bool[]"]
+
+def getData(typestr, data):
+    if typestr == "int":
+        return int(data)
+    if typestr == "string":
+        return str(data)
+    if typestr == "bool":
+        if data == "true" or data == "1" or data == "True":
+            return True
+        if data == "False" or data == "0" or data == "false":
+            return False
+        else:
+            print("Data \"" + str(data) + "\" is converted to \"False\"")
+            return False
+    if typestr == "int[]":
+        return list(map(lambda x: getData("int", x), str(data).split("@")))
+    if typestr == "string[]":
+        return list(map(lambda x: getData("string", x), str(data).split("@")))
+    if typestr == "bool[]":
+        return list(map(lambda x: getData("bool", x), str(data).split("@")))
 
 file_path = os.getcwd()
 file_path = os.path.join(file_path, 'DataBase')
@@ -14,17 +44,38 @@ file_path = os.path.join(file_path, 'DataBase')
 excel_file_path =  file_path + '.xlsx'
 json_file_path = file_path + '.json'
 
-wb = load_workbook(excel_file_path)
-itemWS = wb.worksheets[0]
-scriptWS = wb.worksheets[1]
-lockObjectWS = wb.worksheets[2]
-talkWS = wb.worksheets[3]
+wb = load_workbook(excel_file_path, data_only=True)
+workbook_num = len(wb.worksheets)
 
-len_list = []
-len_list.append(int(itemWS['B1'].value))
-len_list.append(int(scriptWS['B1'].value  ))
-len_list.append(int(lockObjectWS['B1'].value  ))
-len_list.append(int(talkWS['B1'].value))
+for sheetidx in range(workbook_num):
+    worksheet = wb.worksheets[sheetidx]
+    sheetname = wb.sheetnames[sheetidx]
+    data_size = int(worksheet[ROW_INDEX].value)
+    datatype_len = int(worksheet[COLUMN_INDEX].value)
+
+    datatype_list = []
+    for i in range(datatype_len):
+        curr_datatype_key = str(chr(ord(START_ALPHABET) + i)) + str(KEY_START_NUM)
+        curr_datatype = worksheet[curr_datatype_key].value
+        assert (curr_datatype in AV_DATA_TYPE_STR), "\n\nINPUT DATA TYPE ERROR!\n" + "Worksheet name: " + wb.sheetnames[sheetidx] + "\nPosition: " + curr_datatype_key + "\n" + "\"" + curr_datatype + "\" is not avaliable input type\nAllowed Data Type:" + str(AV_DATA_TYPE_STR)
+        datatype_list.append(curr_datatype)
+    print(datatype_list)
+
+    key_list = []
+    for i in range(datatype_len):
+        curr_datatype_key = str(chr(ord(START_ALPHABET) + i)) + str(KEY_START_NUM + 1)
+        curr_datatype = worksheet[curr_datatype_key].value
+        key_list.append(curr_datatype)
+
+    data_list = []
+    for i in range(data_size):
+        data_list_list = []
+        for datatype_index in range(datatype_len):
+            curr_datatype_key = str(chr(ord(START_ALPHABET) + datatype_index)) + str(DATA_START_NUM + i)
+            data_list_list.append(getData(datatype_list[datatype_index], worksheet[curr_datatype_key].value))
+        data_list.append(data_list_list)
+    print(data_list)
+
 
 '''
 for row in range(1, last_row + 1): 
