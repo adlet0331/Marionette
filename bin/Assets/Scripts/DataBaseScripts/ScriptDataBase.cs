@@ -49,7 +49,7 @@ public class ScriptDataBase : DataBase
     {
         ScriptObjDataList = new List<ScriptableObjData>();
 
-        TextAsset jsonData = Resources.Load<TextAsset>("IngameData/Scripts");
+        TextAsset jsonData = Resources.Load<TextAsset>("IngameData/ScriptObject.json");
         ScriptObjDataStruct[] Datas = JsonHelper.FromJson<ScriptObjDataStruct>("{\"resources\":" + jsonData.text + "}");
         foreach (ScriptObjDataStruct scriptDataStruct in Datas)
         {
