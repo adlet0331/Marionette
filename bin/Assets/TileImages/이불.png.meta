@@ -96,6 +96,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -676,6 +677,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      "\uC774\uBD88_6": 8141310810462076964
+      "\uC774\uBD88_17": -640669621419356620
+      "\uC774\uBD88_1": 5617498061635808615
+      "\uC774\uBD88_15": 961869539608032216
+      "\uC774\uBD88_3": -3679394803980229500
+      "\uC774\uBD88_16": 8028682441927068678
+      "\uC774\uBD88_18": 7251790385100937107
+      "\uC774\uBD88_7": 5788820718151108074
+      "\uC774\uBD88_20": 3637227819614640529
+      "\uC774\uBD88_23": 6242887850184361461
+      "\uC774\uBD88_2": -8364531355121732266
+      "\uC774\uBD88_12": 2988827968148634069
+      "\uC774\uBD88_4": 2831771287161751762
+      "\uC774\uBD88_13": -5221507871787039943
+      "\uC774\uBD88_8": 1521984007427155378
+      "\uC774\uBD88_0": 707282658898909580
+      "\uC774\uBD88_21": 3900150444123643434
+      "\uC774\uBD88_11": -2483330178809720114
+      "\uC774\uBD88_22": -7010952664473816619
+      "\uC774\uBD88_9": -2937135840936243241
+      "\uC774\uBD88_5": 1673347848856384369
+      "\uC774\uBD88_14": -2385463065802879371
+      "\uC774\uBD88_10": 5380962401432129425
+      "\uC774\uBD88_19": -2801376791680745158
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
