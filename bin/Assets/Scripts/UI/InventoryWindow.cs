@@ -31,7 +31,7 @@ public class InventoryWindow : WindowObject
             else
             {
                 slotList[i].SetSlotStatus(i == selectedIdx, i == equipedIdx);
-                slotList[i].SetImage(itemList[i].itemSprite);
+                slotList[i].SetImage(itemList[i].spriteName);
             }
         }
     }
@@ -39,7 +39,7 @@ public class InventoryWindow : WindowObject
     public void OpenIteminfoUI()
     {
         itemInfoPannel.gameObject.SetActive(true);
-        itemInfoPannel.OpenWindow(currentItemList[selectedIdx].itemSprite, currentItemList[selectedIdx].itemInfo, currentItemList[selectedIdx].name);
+        itemInfoPannel.OpenWindow(currentItemList[selectedIdx].spriteName, currentItemList[selectedIdx].itemInfo, currentItemList[selectedIdx].name);
         isInfoPannelOpen = true;
     }
 
@@ -134,7 +134,7 @@ public class InventoryWindow : WindowObject
         {
             if (i < itemNum)
             {
-                slotList[i].SetImage(currentItemList[i].itemSprite);
+                slotList[i].SetImage(currentItemList[i].spriteName);
             }
             else
             {

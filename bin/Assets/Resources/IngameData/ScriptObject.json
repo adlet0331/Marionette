@@ -1,5 +1,5 @@
-{
-    "0": {
+[
+    {
         "idx": 0,
         "name": "\uc18c\ub140\uc758\ubc29_\uce68\ub300",
         "scriptableScript": "\uce68\ub300\ub2e4",
@@ -7,7 +7,7 @@
             "\uc774\ubd88\uc774 \ud750\ud2b8\ub7ec\uc838 \uc788\ub294 \uce68\ub300\ub2e4"
         ]
     },
-    "1": {
+    {
         "idx": 1,
         "name": "\uc18c\ub140\uc758\ubc29_\ubb381",
         "scriptableScript": "\ubb38\uc740 \uad73\uac8c \ub2eb\ud600\uc788\ub2e4",
@@ -15,4 +15,4 @@
             "\ubb54\uac00\uc5d0 \ub9c9\ud600 \uc788\uc5b4 \ubb38\uc774 \uc5f4\ub9ac\uc9c0 \uc54a\uc544"
         ]
     }
-}
+]

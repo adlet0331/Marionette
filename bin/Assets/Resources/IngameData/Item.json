@@ -1,16 +1,16 @@
-{
-    "0": {
+[
+    {
         "idx": 0,
         "itemDescription": "\ub354\ubbf8\uc774\ub2e4",
         "itemInfo": "\ub354\ubbf8\ub2e4",
         "name": "\ub354\ubbf8",
         "spriteName": "shortsword"
     },
-    "1": {
+    {
         "idx": 1,
         "itemDescription": "\ud53c\uac00 \ubb3b\uc740 \uce74\ub4dc\ub2e4\n\uc5f0\uad6c\uc2e4 1 \uc774\ub77c\ub294 \ub77c\ubca8\uc774 \ubd99\uc5b4\uc788\ub2e4",
         "itemInfo": "\uce74\ub4dc\ud0a4\ub2e4",
         "name": "\uc5f0\uad6c\uc2e41\uc758 \uce74\ub4dc\ud0a4",
         "spriteName": "card"
     }
-}
+]

@@ -7,7 +7,7 @@ public class ProfileWindow : WindowObject
     [SerializeField] private Image profileImage;
 
     [SerializeField] private int equipedItemIdx = -1;
-    [SerializeField] private int currentStatus = -1;
+    //[SerializeField] private int currentStatus = -1;
 
     private void updateEquipedSlot()
     {
@@ -18,7 +18,7 @@ public class ProfileWindow : WindowObject
     {
         equipedItemIdx = itemIdx;
         if (equipedItemIdx >= 0)
-            equipedItemSlot.SetImage(InventoryManager.Instance.GetItem(itemIdx).itemSprite);
+            equipedItemSlot.SetImage(InventoryManager.Instance.GetItem(itemIdx).spriteName);
         else
             equipedItemSlot.SetImage(null);
     }

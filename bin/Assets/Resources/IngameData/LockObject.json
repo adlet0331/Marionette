@@ -1,5 +1,5 @@
-{
-    "0": {
+[
+    {
         "firstInteractString": " \ub354\ubbf8\uc784",
         "idx": 0,
         "name": "\ub354\ubbf8",
@@ -11,7 +11,7 @@
             "\u3141\u3134\u3147\u3139\nasdf\n\ub9c8\ub098\uc624\ub9ac"
         ]
     },
-    "1": {
+    {
         "firstInteractString": "\uc870\uae08 \ucc0c\uadf8\ub7ec\uc9c4 \ubb38\uc774\ub2e4",
         "idx": 1,
         "name": "\ubb38",
@@ -22,7 +22,7 @@
             "\ubb34\uc5b8\uac00\ub85c \ub9c9\ud600\uc788\ub294 \uac83 \uac19\ub2e4.."
         ]
     },
-    "2": {
+    {
         "firstInteractString": "\uc190\uc804\ub4f1\uc774\ub2e4",
         "idx": 2,
         "name": "\uc190\uc804\ub4f1",
@@ -33,4 +33,4 @@
             "\ub108\ubb34 \ub192\uc544\uc11c \uc190\uc774 \ub2eb\uc9c8 \uc54a\uc544\u2026"
         ]
     }
-}
+]

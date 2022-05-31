@@ -1,5 +1,5 @@
-{
-    "0": {
+[
+    {
         "idx": 0,
         "itemInfo": [
             "\ub354\ubbf8\ub2e4",
@@ -7,11 +7,11 @@
         ],
         "name": "\ub354\ubbf8"
     },
-    "1": {
+    {
         "idx": 1,
         "itemInfo": [
             "\uce74\ub4dc\ud0a4\ub2e4"
         ],
         "name": "\uc5f0\uad6c\uc2e41\uc758 \uce74\ub4dc\ud0a4"
     }
-}
+]

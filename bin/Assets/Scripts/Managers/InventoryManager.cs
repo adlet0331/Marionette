@@ -16,24 +16,17 @@ public class InventoryManager : Singleton<InventoryManager>
     }
     public List<ItemData> GetItemList()
     {
-        return itemList.ConvertAll(o => new ItemData(o.idx, o.name, o.itemInfo, o.itemSprite, o.itemDescription));
+        return itemList;
     }
     public ItemData GetItem(int idx)
     {
-        if (idx < 0)
-        {
-            return null;
-        }
-        else
-        {
-            ItemData itemData = itemList[idx];
-            return itemData;
-        }
+        Debug.Assert(idx < 0, $"GetItem idx error: {idx}");
+        ItemData itemData = itemList[idx];
+        return itemData;
     }
     public void AddItem(ItemData item)
     {
         if (itemList.Count == 10)
-            // ²Ë Ã¡´Ù´Â ¿¡·¯? ¶ç¿ö¾ßÇÔ
             return;
 
         itemList.Add(item);
