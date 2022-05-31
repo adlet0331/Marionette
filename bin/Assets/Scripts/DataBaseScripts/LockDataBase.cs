@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 [Serializable]
-public struct LockData
+public class LockData
 {
     public int idx;
     public string name;

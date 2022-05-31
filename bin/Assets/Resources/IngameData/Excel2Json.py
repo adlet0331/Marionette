@@ -74,14 +74,29 @@ for sheetidx in range(workbook_num):
         data_list.append(data_list_list)
     print(data_list)
 
-    json_data_list = []
+    json_data_dict = {}
     for data_idx in range(data_size):
         idx_dict = {}
         datas = data_list[data_idx]
         for key_idx in range(datatype_len):
             idx_dict[key_list[key_idx]] = datas[key_idx]
-        json_data_list.append(idx_dict)
+        json_data_dict[data_idx] = idx_dict
 
     json_file_path = wb.sheetnames[sheetidx] + '.json'
     with open(json_file_path, 'w', encoding='UTF8') as fd:
-        json.dump(json_data_list, fd, sort_keys=True, indent=4)
+        json.dump(json_data_dict, fd, sort_keys=True, indent=4)
+
+'''
+for row in range(1, last_row + 1): 
+    my_dict = {}
+    for column in range(1, last_column + 1):
+        column_letter = get_column_letter(column)
+        if row > 1:
+            my_dict[excelWS[column_letter + str(1)].value] = excelWS[column_letter + str(row)].value
+    my_list.append(my_dict)
+my_list.remove({})
+
+data = json.dumps(my_list, sort_keys=True, indent=4)
+with open(json_file_path, 'w', encoding='utf-8') as f:
+    f.write(data)
+'''

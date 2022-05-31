@@ -13,6 +13,7 @@ using static InteractionObject;
 public class InteractableWindow : WindowObject
 {
     [SerializeField] private bool isLockPrinting;
+
     [SerializeField] private Text nameText;
     [SerializeField] private Text explanationText;
     [SerializeField] private int currentIdx;

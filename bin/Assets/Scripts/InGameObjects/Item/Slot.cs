@@ -30,15 +30,9 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         else
             isEquippedImage.gameObject.SetActive(false);
     }
-    public void SetImage(string spriteName)
+    public void SetImage(Sprite itemSprite)
     {
-        if(spriteName == null){
-            itemImage.sprite = null;
-            return;
-        }
-        string path = "Items/" + spriteName;
-        Sprite sprite = Resources.Load<Sprite>(path);
-        itemImage.sprite = sprite;
+        itemImage.sprite = itemSprite;
         return;
     }
 

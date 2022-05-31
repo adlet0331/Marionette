@@ -1,9 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
-using Newtonsoft.Json;
 
 /*
  * 
@@ -11,21 +11,13 @@ using Newtonsoft.Json;
  * 
  */
 [Serializable]
-public struct ItemData
+public class ItemDataStruct
 {
     public int idx;
     public string name;
     public string itemInfo;
     public string spriteName;
     public string itemDescription;
-    public ItemData (int idx, string name, string itemInfo, string spriteName, string itemDescription)
-    {
-        this.idx = idx;
-        this.name = name;
-        this.itemInfo = itemInfo;
-        this.spriteName = spriteName;
-        this.itemDescription = itemDescription;
-    }
 }
 [CreateAssetMenu(fileName = "ItemDataBase", menuName = "ScriptableObjects/ItemDataBase", order = 1)]
 public class ItemDataBase : DataBase
@@ -34,15 +26,28 @@ public class ItemDataBase : DataBase
 
     public override void LoadJson()
     {
-        string path = "IngameData/Item";
-        TextAsset json = Resources.Load<TextAsset>(path);
-        Debug.Log(json.ToString());
-        ItemDataList = JsonConvert.DeserializeObject<List<ItemData>>(json.ToString());
+        TextAsset jsonData = Resources.Load<TextAsset>("IngameData/Items");
+        ItemDataStruct[] Datas = JsonHelper.FromJson<ItemDataStruct>("{\"resources\":" + jsonData.text + "}");
+        ItemDataList = new List<ItemData>();
+        foreach (ItemDataStruct itemDataStruct in Datas)
+        {
+            Sprite itemSprite = Resources.Load<Sprite>("Sprites/Items/" + itemDataStruct.spriteName);
+            ItemDataList.Add(new ItemData(itemDataStruct.idx, itemDataStruct.name, itemDataStruct.itemInfo, itemSprite, itemDataStruct.itemDescription));
+        }
+        return;
     }
 
     public override void SaveJson()
     {
-        
+        foreach (ItemData itemDataStruct in ItemDataList){
+            JObject itemJson = new JObject(
+                new JProperty("idx", itemDataStruct.idx),
+                new JProperty("name", itemDataStruct.name),
+                new JProperty("itemInfo", itemDataStruct.itemInfo),
+                new JProperty("spriteName", itemDataStruct.itemSprite),
+                new JProperty("itemDescription", itemDataStruct.itemDescription)
+            );
+        }
     }
 }
 
