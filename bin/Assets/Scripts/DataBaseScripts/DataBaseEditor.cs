@@ -1,15 +1,15 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-public class DataBaseEditor<T> : Editor where T : DataBase
+public class DataBaseEditor<T1, T2> : Editor where T1 : DataBase<T2> where T2 : DataType
 {
-    public T scriptDataManager;
+    public T1 scriptDataManager;
 
     public void OnEnable()
     {
         if (AssetDatabase.Contains(target))
         {
-            scriptDataManager = (T)target;
+            scriptDataManager = (T1)target;
         }
         else
         {

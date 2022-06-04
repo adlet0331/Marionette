@@ -1,19 +1,20 @@
 [
     {
-        "firstInteractString": " \ub354\ubbf8\uc784",
         "idx": 0,
+        "interactString": " \ub354\ubbf8\uc784",
         "name": "\ub354\ubbf8",
         "needItemIdxArray": [
-            1,
+            0,
             -1
         ],
         "noItemString": [
-            "\u3141\u3134\u3147\u3139\nasdf\n\ub9c8\ub098\uc624\ub9ac"
+            "\ub354\ubbf8\uc784",
+            "\ub354\ubbf8\uc778\ub370 \uc5f4\ub9b4\ub9ac\uac00 \uc5c6\uc796\uc544"
         ]
     },
     {
-        "firstInteractString": "\uc870\uae08 \ucc0c\uadf8\ub7ec\uc9c4 \ubb38\uc774\ub2e4",
         "idx": 1,
+        "interactString": "\uc870\uae08 \ucc0c\uadf8\ub7ec\uc9c4 \ubb38\uc774\ub2e4",
         "name": "\ubb38",
         "needItemIdxArray": [
             -1
@@ -23,8 +24,8 @@
         ]
     },
     {
-        "firstInteractString": "\uc190\uc804\ub4f1\uc774\ub2e4",
         "idx": 2,
+        "interactString": "\uc190\uc804\ub4f1\uc774\ub2e4",
         "name": "\uc190\uc804\ub4f1",
         "needItemIdxArray": [
             4

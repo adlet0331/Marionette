@@ -76,16 +76,16 @@ public class InteractableWindow : WindowObject
         this.interactionItemType = type;
         if(type == InteractionObjectType.ScriptableObject)
         {
-            ScriptableObjData currentData = DataBaseManager.Instance.ScriptDataBase.ScriptObjDataList[idx];
+            var currentData = DataBaseManager.Instance.ScriptDataBase.dataList[idx];
 
             nameText.text = currentData.name;
-            explanationText.text = currentData.scriptableScript;
+            explanationText.text = currentData.interactString;
             return;
         }
             
         else if (type == InteractionObjectType.ItemableObject)
         {
-            ItemData currentData = DataBaseManager.Instance.ItemDataBase.ItemDataList[idx];
+            ItemData currentData = DataBaseManager.Instance.ItemDataBase.dataList[idx];
 
             nameText.text = currentData.name;
             explanationText.text = currentData.itemInfo;
@@ -94,7 +94,7 @@ public class InteractableWindow : WindowObject
 
         else if (type == InteractionObjectType.LockObject)
         {
-            LockData currentData = DataBaseManager.Instance.LockDataBase.LockDataList[idx];
+            LockData currentData = DataBaseManager.Instance.LockDataBase.dataList[idx];
 
             nameText.text = currentData.name;
             explanationText.text = currentData.interactString;

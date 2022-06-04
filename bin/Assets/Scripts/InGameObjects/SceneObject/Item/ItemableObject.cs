@@ -23,13 +23,13 @@ public class ItemableObject : InteractionObject
     }
     public override void Interact()
     {
-        List<ItemData> itemDataList = DataBaseManager.Instance.ItemDataBase.ItemDataList;
+        var itemDataList = DataBaseManager.Instance.ItemDataBase.dataList;
         if(itemType == ItemableObjectType.AddItem)
         {
             Debug.Log("Add Item");
             foreach (int i in itemIndexList)
             {
-                Debug.Assert(i <= itemDataList.Count && i>= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
+                // Debug.Assert(i <= itemDataList.Count && i>= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
                 ItemData item = itemDataList[i];
                 InventoryManager.Instance.AddItem(item);
                 WindowManager.Instance.inventoryWindow.UpdateInventory();
@@ -39,7 +39,7 @@ public class ItemableObject : InteractionObject
         {
             foreach (int i in itemIndexList)
             {
-                Debug.Assert(i <= itemDataList.Count && i >= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
+                // Debug.Assert(i <= itemDataList.Count && i >= -1, "Item idx " + i + " is not Defined. Object " + this.ToString());
                 ItemData item = itemDataList[i];
                 InventoryManager.Instance.DeleteItem(item);
                 WindowManager.Instance.inventoryWindow.UpdateInventory();

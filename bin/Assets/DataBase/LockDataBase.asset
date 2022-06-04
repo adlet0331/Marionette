@@ -12,22 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dcfc68cb7acf346b117537a7267fbf, type: 3}
   m_Name: LockDataBase
   m_EditorClassIdentifier: 
-  LockDataList:
-  - idx: 0
-    interactName: "\uB354\uBBF8"
-    interactString: " \uB354\uBBF8\uC784"
-    lockInfoList:
-    - needItemIdx: 1
-      ifNotString: "\u3141\u3134\u3147\u313B\u3134\u3147\u313B\u3134\u3147\u3139"
-  - idx: 1
-    interactName: "\uBB38"
-    interactString: "\uC870\uAE08 \uCC0C\uADF8\uB7EC\uC9C4 \uBB38\uC774\uB2E4"
-    lockInfoList:
-    - needItemIdx: -1
-      ifNotString: "\uBB34\uC5B8\uAC00\uB85C \uB9C9\uD600\uC788\uB294 \uAC83 \uAC19\uB2E4.."
-  - idx: 2
-    interactName: "\uC5F0\uAD6C\uC18C 1\uB85C \uAC00\uB294 \uBB38"
-    interactString: "\uC5F0\uAD6C\uC18C 1\uB85C \uAC00\uB294 \uBB38\uC774\uB2E4"
-    lockInfoList:
-    - needItemIdx: 1
-      ifNotString: "\uBB38\uC744 \uC5F4\uAE30 \uC704\uD574\uC120 \uD0A4\uAC00 \uD544\uC694\uD574\uBCF4\uC778\uB2E4"
+  databaseName: Lock
+  dataList: []

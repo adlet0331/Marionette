@@ -15,7 +15,7 @@ public class ScriptWindow : WindowObject
 {
     [SerializeField] private Text NameText;
     [SerializeField] private Text ScriptText;
-    [SerializeField] private ScriptableObjData currObj = null;
+    [SerializeField] private ScriptData currObj = null;
     [SerializeField] private int currentScriptIdx = -1;
     [SerializeField] private int currentScriptLength;
     private IEnumerator currentCoroutine;
@@ -25,7 +25,7 @@ public class ScriptWindow : WindowObject
     {
         this.OpenWindow();
 
-        currObj = DataBaseManager.Instance.ScriptDataBase.ScriptObjDataList[idx];
+        currObj = DataBaseManager.Instance.ScriptDataBase.dataList[idx];
         currentScriptIdx = 0;
         currentScriptLength = currObj.scripts.Count;
 
