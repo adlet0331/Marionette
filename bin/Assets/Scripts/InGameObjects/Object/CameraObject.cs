@@ -8,7 +8,7 @@ using UnityEngine;
 public class CameraObject : MonoBehaviour
 {
     [SerializeField] private bool isMainCamera;
-    private void Awake()
+    private void Start()
     {
         if (isMainCamera)
         {

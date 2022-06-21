@@ -7,13 +7,16 @@
  * 
  */
 
-public class PlayableMovableObjejct : MovingObject
+namespace InGameObjects.SceneObject.Player
 {
-    private void Start()
+    public class PlayableMovableObjejct : MovingObject
     {
-        base.MovingObjectStart();
-        PlayerManager.Instance.UpdatePlayerManager(this.gameObject);
-        CameraManager.Instance.SetFollowingObject(this.gameObject);
-        SceneObjManager.Instance.AddObject(ObjectType.PlayerObject, this.gameObject);
+        private void Start()
+        {
+            base.MovingObjectStart();
+            PlayerManager.Instance.UpdatePlayerManager(this.gameObject);
+            CameraManager.Instance.SetFollowingObject(this.gameObject);
+            SceneObjManager.Instance.AddObject(ObjectType.PlayerObject, this.gameObject);
+        }
     }
 }

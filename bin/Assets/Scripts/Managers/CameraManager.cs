@@ -48,7 +48,7 @@ public class CameraManager : Singleton<CameraManager>
     }
 
     private void Start() {
-        SetCameraMode(0);
+        SetCameraMode(1);
     }
     private void LateUpdate()
     {

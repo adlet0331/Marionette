@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * Map 오브젝트
@@ -9,10 +7,13 @@ using UnityEngine;
  * 
  */
 
-public class MapObject : MonoBehaviour
+namespace InGameObjects.Object
 {
-    void Awake()
+    public class MapObject : MonoBehaviour
     {
-        CameraManager.Instance.SetMap(this.gameObject);
+        private void Start()
+        {
+            CameraManager.Instance.SetMap(this.gameObject);
+        }
     }
 }
