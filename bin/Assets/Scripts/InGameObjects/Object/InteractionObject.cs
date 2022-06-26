@@ -26,7 +26,7 @@ public abstract class InteractionObject : MonoBehaviour
             return;
         if (collision.gameObject.tag == "Player")
         {
-            PlayerManager.Instance.playerInteractObject.AddInteractionList(this);
+            PlayerManager.Instance.playerInteracting.AddInteractionList(this);
         }
     }
 
@@ -34,13 +34,13 @@ public abstract class InteractionObject : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerManager.Instance.playerInteractObject.RemoveInteractionObj(this);
+            PlayerManager.Instance.playerInteracting.RemoveInteractionObj(this);
         }
     }
     public abstract void Interact();
 
     private void OnDestroy()
     {
-        PlayerManager.Instance.playerInteractObject.RemoveInteractionObj(this);
+        PlayerManager.Instance.playerInteracting.RemoveInteractionObj(this);
     }
 }

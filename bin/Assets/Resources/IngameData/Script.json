@@ -1,6 +1,7 @@
 [
     {
         "idx": 0,
+        "initStatus": 0,
         "interactString": "\ub354\ubbf8\ub2e4",
         "name": "\ub354\ubbf8",
         "scripts": [
@@ -10,6 +11,7 @@
     },
     {
         "idx": 1,
+        "initStatus": 0,
         "interactString": "\uce68\ub300\ub2e4",
         "name": "\uc18c\ub140\uc758\ubc29_\uce68\ub300",
         "scripts": [
@@ -19,6 +21,7 @@
     },
     {
         "idx": 2,
+        "initStatus": 0,
         "interactString": "\ubb38\uc740 \uad73\uac8c \ub2eb\ud600\uc788\ub2e4",
         "name": "\uc18c\ub140\uc758\ubc29_\ubb381",
         "scripts": [

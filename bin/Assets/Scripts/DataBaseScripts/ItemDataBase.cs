@@ -10,6 +10,7 @@ using UnityEngine;
 [Serializable]
 public class ItemData : DataType
 {
+    public int initStatus;
     public string itemInfo;
     public string spriteName;
     public string itemDescription;

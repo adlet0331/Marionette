@@ -8,6 +8,7 @@ using UnityEngine;
 [Serializable]
 public class LockData : DataType
 {
+    public int initStatus;
     public string interactString;
     public List<int> needItemIdxArray;
     public List<string> noItemString;

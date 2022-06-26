@@ -67,7 +67,7 @@ public class MovingObject : MonoBehaviour
         {
             playerRigidBody.velocity = new Vector2(0, 0);
         }
-        if (animator != null)
+        if (animator)
         {
             animator.SetBool("IsMoving", isMoving);
             animator.SetBool("IsRunning", isRunning);

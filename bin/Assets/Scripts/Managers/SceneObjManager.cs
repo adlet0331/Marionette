@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static Assets.Scripts.InGameObjects.DontDestroyObject;
-using static SceneStartPoint;
+﻿using UnityEngine;
 
 public class SceneObjManager : Singleton<SceneObjManager>
 {
-    [SerializeField] private GameObject canvasObj;
+    public GameObject canvas;
+    public GameObject eventSystem;
     [SerializeField] private bool playerExist;
     [SerializeField] private GameObject playerObj;
+
     public bool PlayerObjectExist 
     {
         get 
@@ -39,18 +37,10 @@ public class SceneObjManager : Singleton<SceneObjManager>
         playerObj.transform.position = pos;
         return;
     }
-    public void AddObject(ObjectType type, GameObject gameObject)
+    public void AddPlayerObject(GameObject gameObject)
     {
-        if (type == ObjectType.CanvasObject)
-        {
-            canvasObj = gameObject;
-            DontDestroyOnLoad(canvasObj);
-        }
-        else if (type == ObjectType.PlayerObject)
-        {
-            playerObj = gameObject;
-            DontDestroyOnLoad(playerObj);
-        }
+        playerObj = gameObject;
+        DontDestroyOnLoad(playerObj);
     }
     private void createPlayerObject()
     {
@@ -59,11 +49,13 @@ public class SceneObjManager : Singleton<SceneObjManager>
         GameObject movingCharacter = MonoBehaviour.Instantiate(prefab) as GameObject;
         movingCharacter.name = "Moving Character";
         // SceneManager에 넣어줌
-        AddObject(ObjectType.PlayerObject, movingCharacter);
+        AddPlayerObject(movingCharacter);
         return;
     }
     private void Start()
     {
         playerExist = false;
+        DontDestroyOnLoad(canvas);
+        DontDestroyOnLoad(eventSystem);
     }
 }

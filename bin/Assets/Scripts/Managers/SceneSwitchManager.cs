@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Assets.Scripts.InGameObjects.DontDestroyObject;
+using UnityEngine.UI;
 
 public class SceneSwitchManager : Singleton<SceneSwitchManager>
 {
@@ -28,6 +28,9 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         public int CameraMode;
     }
 
+    [SerializeField] private Button newGameButton;
+    [SerializeField] private Button saveButton;
+    [SerializeField] private Button loadButton;
     [SerializeField] private SceneName currentScene;
     [SerializeField] public SceneName beforeScene;
     [ArrayElementTitle("sceneName")]
@@ -35,6 +38,9 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     private void Start()
     {
         currentScene = SceneName.P_StartScene;
+        newGameButton.onClick.AddListener(NewGame);
+        saveButton.onClick.AddListener(SLManager.Instance.Save);
+        loadButton.onClick.AddListener(SLManager.Instance.Load);
     }
     private SceneInfo FindSceneInfo(SceneName sceneName)
     {
@@ -58,9 +64,15 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         // 플레이어 프로필 On / Off
         PlayerManager.Instance.SetProfileShowing(sceneInfo.isProfileActivate);
     }
-    public void NewGameButton()
+
+    private void setSceneObjects()
+    {
+        
+    }
+    public void NewGame()
     {
         SwitchScene(SceneName.P_Girl_room);
+        SLManager.Instance.InitSaveData(true);
     }
     public void SwitchScene(SceneName sceneName)
     {
@@ -70,6 +82,5 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         currentScene = sceneName;
         SceneManager.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single);
         setSceneOptions(sceneInfo);
-        return;
     }
 }

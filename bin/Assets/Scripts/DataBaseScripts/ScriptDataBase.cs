@@ -11,6 +11,7 @@ using UnityEngine;
 [Serializable]
 public class ScriptData : DataType
 {
+    public int initStatus;
     public string interactString;
     public List<string> scripts;
 }

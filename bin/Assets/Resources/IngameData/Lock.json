@@ -1,6 +1,7 @@
 [
     {
         "idx": 0,
+        "initStatus": 0,
         "interactString": " \ub354\ubbf8\uc784",
         "name": "\ub354\ubbf8",
         "needItemIdxArray": [
@@ -14,6 +15,7 @@
     },
     {
         "idx": 1,
+        "initStatus": 0,
         "interactString": "\uc870\uae08 \ucc0c\uadf8\ub7ec\uc9c4 \ubb38\uc774\ub2e4",
         "name": "\ubb38",
         "needItemIdxArray": [
@@ -25,6 +27,7 @@
     },
     {
         "idx": 2,
+        "initStatus": 0,
         "interactString": "\uc190\uc804\ub4f1\uc774\ub2e4",
         "name": "\uc190\uc804\ub4f1",
         "needItemIdxArray": [

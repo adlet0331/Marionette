@@ -13,6 +13,7 @@ public class CameraObject : MonoBehaviour
         if (isMainCamera)
         {
             CameraManager.Instance.SetCamera(this.GetComponent<Camera>());
+            SceneObjManager.Instance.canvas.GetComponent<Canvas>().worldCamera = this.GetComponent<Camera>();
         }
     }
 }

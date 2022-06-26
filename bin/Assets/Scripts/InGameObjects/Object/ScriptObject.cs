@@ -4,6 +4,9 @@
  * 
  * 부딛히면 InteractionList에 넣어줘서 InteractionWindow 띄워줌
  */
+
+[RequireComponent(typeof(BoxCollider2D))]
+
 public class ScriptObject : InteractionObject
 {
     [SerializeField] private bool isScriptable;

@@ -59,7 +59,7 @@ public class ScriptWindow : WindowObject
     }
     public void Activate(int idx, InteractionObjectType type)
     {
-        if (PlayerManager.Instance.playerInteractObject == null)
+        if (PlayerManager.Instance.playerInteracting == null)
             return;
 
         if (type != InteractionObjectType.ScriptableObject)
@@ -71,7 +71,7 @@ public class ScriptWindow : WindowObject
             return;
         }
 
-        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
+        InteractionObject obj = PlayerManager.Instance.playerInteracting.GetFstInteractObj();
 
         if (obj == null)
             return;

@@ -9,7 +9,7 @@
 
 namespace InGameObjects.Object
 {
-    public class MapObject : MonoBehaviour
+    public class CameraBorderWithCollider : MonoBehaviour
     {
         private void Start()
         {

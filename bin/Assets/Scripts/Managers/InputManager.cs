@@ -96,9 +96,9 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void KeyDown_ESC() {
-        if (WindowManager.Instance.inventoryWindow.gameObject.activeSelf)
+        if (WindowManager.Instance.settingWindow.gameObject.activeSelf)
         {
-            WindowManager.Instance.inventoryWindow.CloseWindow();
+            WindowManager.Instance.settingWindow.CloseWindow();
             return;
         }
         WindowManager.Instance.settingWindow.Activate();
@@ -110,7 +110,7 @@ public class InputManager : Singleton<InputManager>
             return;
         }
 
-        InteractionObject obj = PlayerManager.Instance.playerInteractObject.GetFstInteractObj();
+        InteractionObject obj = PlayerManager.Instance.playerInteracting.GetFstInteractObj();
         InteractionObjectType type = obj.objectType;
 
         obj.Interact();

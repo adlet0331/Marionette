@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json;
 
 public abstract class DataBase<T> : ScriptableObject
@@ -10,11 +11,10 @@ public abstract class DataBase<T> : ScriptableObject
     {
         string path = $"IngameData/{databaseName}";
         TextAsset json = Resources.Load<TextAsset>(path);
-        Debug.Log(json.ToString());
         dataList = JsonConvert.DeserializeObject<List<T>>(json.ToString());
-        return;
     }
     public void SaveJson(){
-        return;
+        string path = Path.Combine(Application.dataPath, $"Resources/IngameData/{databaseName}.json");
+        File.WriteAllText(path, JsonConvert.SerializeObject(dataList));
     }
 }

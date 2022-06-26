@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /*
  * Item 지급 / 삭제 가능한 오브젝트
@@ -14,12 +15,12 @@ public enum ItemableObjectType
 public class ItemableObject : InteractionObject
 {
     [SerializeField] private ItemableObjectType itemType;
-    [SerializeField] private bool deleteAfterInteract;
+    [FormerlySerializedAs("deleteAfterInteract")] [SerializeField] private bool disableAfterInteract;
     [SerializeField] private List<int> itemIndexList;
     private void Start()
     {
         this.objectType = InteractionObjectType.ItemableObject;
-        this.deleteAfterInteract = true;
+        this.disableAfterInteract = true;
     }
     public override void Interact()
     {
@@ -46,7 +47,7 @@ public class ItemableObject : InteractionObject
             }
         }
 
-        if (deleteAfterInteract)
+        if (disableAfterInteract)
             this.gameObject.SetActive(false);
     }
 }

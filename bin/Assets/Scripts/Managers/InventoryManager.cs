@@ -16,7 +16,7 @@ public class InventoryManager : Singleton<InventoryManager>
     }
     public List<ItemData> GetItemList()
     {
-        return itemList;
+        return itemList.ConvertAll(o => o);
     }
     public ItemData GetItem(int idx)
     {

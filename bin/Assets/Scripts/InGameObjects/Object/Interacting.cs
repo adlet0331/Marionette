@@ -5,10 +5,9 @@ using UnityEngine;
  * Interact 하는 주체 (주로 플레이어)
  * 
  */
-public class InteractObject : MonoBehaviour
+public class Interacting : MonoBehaviour
 {
     [SerializeField] private bool isBlocked = false;
-    //확장성을 위해 InteractionObject로
     [SerializeField] private int currentIdx;
     [SerializeField] private InteractionObjectType currentType;
     [SerializeField] private InteractionObject currentInteractObj;
