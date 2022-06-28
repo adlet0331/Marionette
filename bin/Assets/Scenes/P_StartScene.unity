@@ -1139,9 +1139,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1901255189}
-        m_TargetAssemblyTypeName: StartSceneButtons, Assembly-CSharp
-        m_MethodName: LoadGameButton
+      - m_Target: {fileID: 1010651754}
+        m_TargetAssemblyTypeName: SLManager, Assembly-CSharp
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8334,7 +8334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 86.399994, y: 94}
+  m_AnchoredPosition: {x: 86.400024, y: 94}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486109552
@@ -10622,7 +10622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed7c86c646cf744c84e7b576553755b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
 --- !u!1 &1887208350
 GameObject:
   m_ObjectHideFlags: 0

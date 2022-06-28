@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
 using Random = System.Random;
@@ -42,35 +43,59 @@ public class SLManager : Singleton<SLManager>
 
     private void saveCurrentFileAsJson()
     {
-        string path = $"IngameData/SaveData/{currentSaveDataName}.json";
-        string json = JsonConvert.SerializeObject(currentSaveData);
-        File.WriteAllTextAsync(path, json);
+        string path = Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{currentSaveDataName}.json");
+        File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData));
     }
-    public void Save() 
+
+    public void Save()
+    {
+        this.Save(1);
+    }
+    /// <summary>
+    /// Save to slot {index}. Overwrite data
+    /// </summary>
+    /// <param name="index"></param>
+    public void Save(int index) 
     {
         Debug.Log("SAVE");
-        string path = "IngameData/SaveData.json";
-        TextAsset json = Resources.Load<TextAsset>(path);
+        string sLDataPath = Path.Combine(Application.dataPath, "Resources/IngameData/SaveData.json");
+        TextAsset json = Resources.Load<TextAsset>(sLDataPath);
         sLDataBase.LoadJson();
         List<SLData> saveData = sLDataBase.dataList;
-        foreach (SLData var in saveData)
+        int slotIndex;
+        for (slotIndex = 0; slotIndex < sLDataBase.dataList.Count; slotIndex++)
         {
-            if (var.name == currentSaveDataName)
+            // Already Exist
+            if (sLDataBase.dataList[slotIndex].idx == index)
             {
+                File.Delete(Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{sLDataBase.dataList[slotIndex].name}.json"));
                 saveCurrentFileAsJson();
+                sLDataBase.dataList[slotIndex].name = currentSaveDataName;
+                File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
                 return;
             }
         }
+        // New
+        saveCurrentFileAsJson();
         SLData newData = new SLData();
-        newData.idx = saveData.Count;
+        newData.idx = slotIndex;
         newData.name = currentSaveDataName;
         sLDataBase.dataList.Add(newData);
-        path = Path.Combine(Application.dataPath, "Resources/" + path);
-        File.WriteAllText(path, JsonConvert.SerializeObject(saveData));
+        File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
     }
+
     public void Load()
     {
-        return;
+        this.Load(1);
+    }
+    public void Load(int index)
+    {
+        sLDataBase.LoadJson();
+        currentSaveDataName = sLDataBase.dataList[index].name;
+        string saveDataPath = Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{currentSaveDataName}.json");
+        string json = File.ReadAllText(saveDataPath);
+        Debug.Log(json.ToString());
+        currentSaveData = JsonConvert.DeserializeObject<SaveData>(json.ToString());
     }
 
     private string createRandomString(int length)
@@ -95,6 +120,10 @@ public class SLManager : Singleton<SLManager>
         newData.setting = "init";
         
         newData.itemList = InventoryManager.Instance.GetItemList();
+        
+        itemDataBase.LoadJson();
+        scriptDataBase.LoadJson();
+        lockDataBase.LoadJson();
 
         newData.sceneItemObjectStatusList = new List<SceneObjectStatus>();
         newData.sceneScriptObjectStatusList = new List<SceneObjectStatus>();

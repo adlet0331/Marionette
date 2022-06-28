@@ -41,6 +41,6 @@ public abstract class InteractionObject : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerManager.Instance.playerInteracting.RemoveInteractionObj(this);
+        //PlayerManager.Instance.playerInteracting.RemoveInteractionObj(this);
     }
 }
