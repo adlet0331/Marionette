@@ -474,7 +474,7 @@ MonoBehaviour:
   isInputAvaliable: 1
   isInventoryWindowOn: 0
   isItemSelectionPannelOn: 0
-  movingComponent: {fileID: 0}
+  playerMovingComponent: {fileID: 0}
   moveH: 0
   moveV: 0
   isRun: 0

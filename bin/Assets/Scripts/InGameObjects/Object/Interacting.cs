@@ -17,29 +17,28 @@ public class Interacting : MonoBehaviour
     {
         scriptableObjList = new List<InteractionObject>();
     }
-    private bool checkIfListEmpty()
-    {
-        if (scriptableObjList.Count == 0) return true;
-        return false;
-    }
     private void updateFstIdx()
     {
-        if (checkIfListEmpty())
+        if (scriptableObjList.Count == 0)
         {
             this.currentIdx = -1;
             return;
         }
         else
         {
-            int idx = -1;
-            float distance = -1, cnt;
+            float angle = 180.0f, cnt;
             InteractionObject currentFirstObj = scriptableObjList[0];
+            var pointerWorldVec2 = InputManager.Instance.GetWorldPointerVec2();
+
             foreach (InteractionObject interObj in scriptableObjList)
             {
-                cnt = Vector2.Distance(interObj.transform.position, gameObject.transform.position);
-                if (cnt < distance || idx == -1)
+                var objectWorldPosition = interObj.transform.localToWorldMatrix * interObj.transform.localPosition - transform.localToWorldMatrix * transform.localPosition;
+                var objectWorldVec2 = new Vector2(objectWorldPosition.x, objectWorldPosition.y);
+                cnt = Vector2.Angle(objectWorldVec2, pointerWorldVec2);
+                Debug.Log(cnt);
+                if (cnt < angle)
                 {
-                    distance = cnt;
+                    angle = cnt;
                     currentFirstObj = interObj;
                 }
             }
@@ -52,7 +51,7 @@ public class Interacting : MonoBehaviour
     {
         if (this.isBlocked)
             return;
-
+        
         updateFstIdx();
         if (currentIdx == -1)
         {
@@ -76,13 +75,12 @@ public class Interacting : MonoBehaviour
     }
     public InteractionObject GetFstInteractObj()
     {
-        if (checkIfListEmpty())
+        if (scriptableObjList.Count == 0)
             return null;
 
         else
         {
-            Update();
-
+            updateFstIdx();
             return currentInteractObj;
         }
     }

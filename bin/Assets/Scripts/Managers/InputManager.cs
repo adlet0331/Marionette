@@ -13,6 +13,9 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private bool isInputAvaliable = true;
     [SerializeField] private bool isInventoryWindowOn = false;
     [SerializeField] private bool isItemSelectionPannelOn = false;
+    [SerializeField] private int moveH, moveV;
+    [SerializeField] private bool isRun, isSlowWalk;
+    [SerializeField] private MovingObject playerMovingComponent;
     public void SetOptions(bool isMv, bool isAv)
     {
         isMoveable = isMv;
@@ -26,14 +29,21 @@ public class InputManager : Singleton<InputManager>
     {
         isItemSelectionPannelOn = tf;
     }
-    [SerializeField] private MovingObject playerMovingComponent;
     public void SetMovingComponent(MovingObject mo)
     {
         playerMovingComponent = mo;
     }
-    [SerializeField] private int moveH, moveV;
-    [SerializeField] private bool isRun, isSlowWalk;
-    [SerializeField] private Dictionary<KeyCode, Action> keyDictionary;
+
+    public Vector2 GetWorldPointerVec2()
+    {
+        var mouseCursorWorldPos = CameraManager.Instance.GetMouseCursorWorldPointVec2();
+        var characterTransform = playerMovingComponent.transform;
+        var characterWorldPos = characterTransform.localToWorldMatrix * characterTransform.localPosition;
+
+        return new Vector2(mouseCursorWorldPos.x - characterWorldPos.x, mouseCursorWorldPos.y - characterWorldPos.y);
+    }
+    
+    private Dictionary<KeyCode, Action> keyDictionary;
     private void Start() {
         isInputAvaliable = true;
         keyDictionary = new Dictionary<KeyCode, Action> {
@@ -54,13 +64,8 @@ public class InputManager : Singleton<InputManager>
             isSlowWalk = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
             playerMovingComponent.Move(moveH, moveV, isRun, isSlowWalk);
-
-            var mouseCursorWorldPos = CameraManager.Instance.getMouseCursorVector2();
-            var characterTransform = playerMovingComponent.transform;
-            var characterWorldPos = characterTransform.localToWorldMatrix * characterTransform.localPosition;
-
-            Vector2 mouseVec = new Vector2(mouseCursorWorldPos.x - characterWorldPos.x, mouseCursorWorldPos.y - characterWorldPos.y);
-            playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), mouseVec));
+            
+            playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), GetWorldPointerVec2()));
         }
         else
         {
@@ -108,18 +113,15 @@ public class InputManager : Singleton<InputManager>
         WindowManager.Instance.settingWindow.Activate();
     }
     private void KeyDown_Z() {
-        if (WindowManager.Instance.inventoryWindow.gameObject.activeSelf)
+        if (WindowManager.Instance.scriptWindow.gameObject.activeSelf)
         {
-            WindowManager.Instance.inventoryWindow.PressInteract();
-            return;
+            WindowManager.Instance.scriptWindow.Activate();
         }
 
         InteractionObject obj = PlayerManager.Instance.playerInteracting.GetFstInteractObj();
         InteractionObjectType type = obj.objectType;
 
         obj.Interact();
-
-        return;
     }
     private void KeyDown_X()
     {

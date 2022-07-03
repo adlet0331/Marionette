@@ -12,7 +12,7 @@ public class CameraManager : Singleton<CameraManager>
         currentCamera = camera;
     }
 
-    public Vector2 getMouseCursorVector2()
+    public Vector2 GetMouseCursorWorldPointVec2()
     {
         if (!currentCamera)
             return new Vector2(0, 0);

@@ -13,6 +13,7 @@ public enum InteractionObjectType
     ScriptableObject = 0,
     ItemableObject = 1,
     LockObject = 2,
+    SelectableScriptObject = 3,
 }
 public abstract class InteractionObject : MonoBehaviour
 {
