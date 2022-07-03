@@ -12,6 +12,14 @@ public class CameraManager : Singleton<CameraManager>
         currentCamera = camera;
     }
 
+    public Vector2 getMouseCursorVector2()
+    {
+        if (!currentCamera)
+            return new Vector2(0, 0);
+        var mouseCursorPos = Input.mousePosition;
+        return  (Vector2) currentCamera.ScreenToWorldPoint(mouseCursorPos);
+    }
+
     [SerializeField] private GameObject currentMap;
     private BoxCollider2D currentMapCollider;
     public void SetMap(GameObject map)

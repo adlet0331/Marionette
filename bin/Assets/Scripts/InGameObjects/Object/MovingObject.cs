@@ -24,27 +24,11 @@ public class MovingObject : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    private void UpdateHandLightRotate()
+    public void UpdateHandLightRotate(float zRotate)
     {
-        int rotate = 0;
-        if (dirX == 0 && dirY == 1)
-            rotate = 0;
-        if (dirX == -1 && dirY == 1)
-            rotate = 45;
-        if (dirX == -1 && dirY == 0)
-            rotate = 90;
-        if (dirX == -1 && dirY == -1)
-            rotate = 135;
-        if (dirX == 0 && dirY == -1)
-            rotate = 180;
-        if (dirX == 1 && dirY == -1)
-            rotate = 225;
-        if (dirX == 1 && dirY == 0)
-            rotate = 270;
-        if (dirX == 1 && dirY == 1)
-            rotate = 315;
-        handLight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotate));
-        return;
+        if (!handLight)
+            return;
+        handLight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRotate));
     }
     private void FixedUpdate() 
     {
@@ -75,7 +59,6 @@ public class MovingObject : MonoBehaviour
             animator.SetFloat("DirX", dirX);
             animator.SetFloat("DirY", dirY);
         }
-        UpdateHandLightRotate();
     }
     public void Move(int hor, int ver, bool isCtrl, bool isShift)
     {

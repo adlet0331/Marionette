@@ -55,7 +55,9 @@ public class SceneObjManager : Singleton<SceneObjManager>
     private void Start()
     {
         playerExist = false;
-        DontDestroyOnLoad(canvas);
-        DontDestroyOnLoad(eventSystem);
+        if (canvas)
+            DontDestroyOnLoad(canvas);
+        if (eventSystem)
+            DontDestroyOnLoad(eventSystem);
     }
 }

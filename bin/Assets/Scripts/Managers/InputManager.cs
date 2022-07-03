@@ -26,10 +26,10 @@ public class InputManager : Singleton<InputManager>
     {
         isItemSelectionPannelOn = tf;
     }
-    [SerializeField] private MovingObject movingComponent;
+    [SerializeField] private MovingObject playerMovingComponent;
     public void SetMovingComponent(MovingObject mo)
     {
-        movingComponent = mo;
+        playerMovingComponent = mo;
     }
     [SerializeField] private int moveH, moveV;
     [SerializeField] private bool isRun, isSlowWalk;
@@ -44,7 +44,7 @@ public class InputManager : Singleton<InputManager>
     }
 
     private void Update() {
-        if (movingComponent == null)
+        if (!playerMovingComponent)
             return;
 
         if (isMoveable) {
@@ -53,11 +53,18 @@ public class InputManager : Singleton<InputManager>
             isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
             isSlowWalk = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
-            movingComponent.Move(moveH, moveV, isRun, isSlowWalk);
+            playerMovingComponent.Move(moveH, moveV, isRun, isSlowWalk);
+
+            var mouseCursorWorldPos = CameraManager.Instance.getMouseCursorVector2();
+            var characterTransform = playerMovingComponent.transform;
+            var characterWorldPos = characterTransform.localToWorldMatrix * characterTransform.localPosition;
+
+            Vector2 mouseVec = new Vector2(mouseCursorWorldPos.x - characterWorldPos.x, mouseCursorWorldPos.y - characterWorldPos.y);
+            playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), mouseVec));
         }
         else
         {
-            movingComponent.Move(0, 0, false, false);
+            playerMovingComponent.Move(0, 0, false, false);
         }
 
         if (isInputAvaliable && Input.anyKeyDown) {
@@ -80,17 +87,14 @@ public class InputManager : Singleton<InputManager>
 
         else if (!isMoveable && isInputAvaliable && isInventoryWindowOn)
         {
-            int moveInt = 0;
             if (Input.GetKeyDown(KeyCode.RightArrow))
-                moveInt += 1;
+                WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(1);
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                moveInt -= 1;
+                WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-1);
             else if (Input.GetKeyDown(KeyCode.UpArrow))
-                moveInt -= 2;
+                WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-2);
             else if (Input.GetKeyDown(KeyCode.DownArrow))
-                moveInt += 2;
-
-            WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(moveInt);
+                WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
         }
 
     }
