@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,12 @@ public abstract class DataBase<T> : ScriptableObject
 {
     [SerializeField] protected string databaseName;
     [SerializeField] public List<T> dataList;
+
+    private void Awake()
+    {
+        LoadJson();
+    }
+
     public void LoadJson()
     {
         string path = $"IngameData/{databaseName}";

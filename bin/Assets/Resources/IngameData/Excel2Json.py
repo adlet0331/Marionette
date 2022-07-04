@@ -15,11 +15,17 @@ KEY_START_NUM = 3
 DATA_START_NUM = 5
 AV_DATA_TYPE_STR = ["int", "string", "bool", "int[]", "string[]", "bool[]"]
 
+def deleteFirstLineBreak(string):
+    if string[0] == '\n':
+        return string[1:]
+    else:
+        return string
+
 def getData(typestr, data):
     if typestr == "int":
         return int(data)
     if typestr == "string":
-        return str(data)
+        return deleteFirstLineBreak(str(data))
     if typestr == "bool":
         if data == "true" or data == "1" or data == "True":
             return True
@@ -31,7 +37,7 @@ def getData(typestr, data):
     if typestr == "int[]":
         return list(map(lambda x: getData("int", x), str(data).split(SELECTING_KEY)))
     if typestr == "string[]":
-        return list(map(lambda x: getData("string", x), str(data).split(SELECTING_KEY)))
+        return list(map(lambda x: getData("string", deleteFirstLineBreak(x)), str(data).split(SELECTING_KEY)))
     if typestr == "bool[]":
         return list(map(lambda x: getData("bool", x), str(data).split(SELECTING_KEY)))
 

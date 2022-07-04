@@ -1,10 +1,71 @@
 [
     {
         "idx": 0,
-        "itemInfo": [
-            "\ub354\ubbf8\ub2e4",
-            "\uc548\ub155 \ub0b4\uc774\ub984\uc740 \ub354\ubbf8\uc57c"
+        "length": 2,
+        "name": "\ub354\ubbf8",
+        "nextTalkIdx": [
+            1,
+            2
         ],
-        "name": "\ub354\ubbf8"
+        "selectIndex": [
+            0,
+            1
+        ],
+        "selectNum": [
+            2,
+            2
+        ],
+        "selectScript": [
+            "Adlet",
+            "\uc2ec\ud615\uc8fc",
+            "\uadf8\ub798 \ub098\ub3c4 \uc798 \ubd80\ud0c1\ud574.",
+            "\ub09c \ub108\uac00 \uc2eb\uc5b4."
+        ],
+        "talkScript": [
+            "\uc548\ub155 \ub10c \uc774\ub984\uc740 \ubb50\ub2c8",
+            "\uadf8\ub798, \ub09c \ub354\ubbf8\uc57c. \n\uc798 \ubd80\ud0c1\ud560\uac8c"
+        ],
+        "talkSprite": [
+            "dummy01",
+            "dummy02",
+            "dummy01",
+            "dummy02"
+        ],
+        "talkType": [
+            0,
+            1,
+            0,
+            1
+        ]
+    },
+    {
+        "idx": 1,
+        "length": 1,
+        "name": "\uc778\ud615\uacfc\uc758 \uccab\ub9cc\ub0a8",
+        "nextTalkIdx": [
+            0,
+            1
+        ],
+        "selectIndex": [
+            0
+        ],
+        "selectNum": [
+            2
+        ],
+        "selectScript": [
+            "\u2026\u2026\u2026",
+            "\u2026\u2026?"
+        ],
+        "talkScript": [
+            "\uc815\uc2e0\uc744 \ucc28\ub838\ub2c8?"
+        ],
+        "talkSprite": [
+            "dummy01",
+            "dummy02"
+        ],
+        "talkType": [
+            0,
+            1
+        ]
     }
 ]
