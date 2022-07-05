@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DataBaseScripts;
 using UnityEngine;
 
 public class InventoryManager : Singleton<InventoryManager>

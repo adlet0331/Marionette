@@ -40,7 +40,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         currentScene = SceneName.P_StartScene;
         newGameButton.onClick.AddListener(NewGame);
         saveButton.onClick.AddListener(SLManager.Instance.Save);
-        loadButton.onClick.AddListener(SLManager.Instance.Load);
+        loadButton.onClick.AddListener(LoadGame);
     }
     private SceneInfo FindSceneInfo(SceneName sceneName)
     {
@@ -64,15 +64,16 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
         // 플레이어 프로필 On / Off
         PlayerManager.Instance.SetProfileShowing(sceneInfo.isProfileActivate);
     }
-
-    private void setSceneObjects()
-    {
-        
-    }
     public void NewGame()
     {
         SwitchScene(SceneName.P_Girl_room);
         SLManager.Instance.InitSaveData(true);
+    }
+
+    public void LoadGame()
+    {
+        SwitchScene(SceneName.P_Girl_room);
+        SLManager.Instance.Load(1);
     }
     public void SwitchScene(SceneName sceneName)
     {

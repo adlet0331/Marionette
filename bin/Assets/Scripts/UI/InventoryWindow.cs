@@ -1,7 +1,6 @@
-
 using System.Collections.Generic;
+using DataBaseScripts;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InventoryWindow : WindowObject
 {

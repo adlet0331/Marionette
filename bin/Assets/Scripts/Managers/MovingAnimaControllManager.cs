@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimaControllManager : Singleton<AnimaControllManager>
+public class MovingAnimaControllManager : Singleton<MovingAnimaControllManager>
 {
     public MovingObject ControllingMainAnima;
     public List<MovingObject> ControllingSubAnimasList;

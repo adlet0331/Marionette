@@ -1,6 +1,7 @@
 [
     {
         "idx": 0,
+        "initStatus": 0,
         "length": 2,
         "name": "\ub354\ubbf8",
         "nextTalkIdx": [
@@ -40,6 +41,7 @@
     },
     {
         "idx": 1,
+        "initStatus": 0,
         "length": 1,
         "name": "\uc778\ud615\uacfc\uc758 \uccab\ub9cc\ub0a8",
         "nextTalkIdx": [

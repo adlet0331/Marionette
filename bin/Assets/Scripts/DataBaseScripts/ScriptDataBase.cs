@@ -8,16 +8,23 @@ using UnityEngine;
  * -> 이름, 이미지, scriptableScript, Scripts
  * 
  */
-[Serializable]
-public class ScriptData : DataType
+namespace DataBaseScripts
 {
-    public int initStatus;
-    public string interactString;
-    public List<string> scripts;
+    [Serializable]
+    public class ScriptData : DataType
+    {
+        public int initStatus;
+        public string interactString;
+        public List<string> scripts;
+    }
+
+    [CreateAssetMenu(fileName = "ScriptDataBase", menuName = "ScriptableObjects/ScriptDataBase", order = 1)]
+    public class ScriptDataBase : DataBase<ScriptData>
+    {
+    }
+
+    [CustomEditor(typeof(ScriptDataBase))]
+    public class ScriptDataBaseEditor : DataBaseEditor<ScriptDataBase, ScriptData>
+    {
+    }
 }
-
-[CreateAssetMenu(fileName = "ScriptDataBase", menuName = "ScriptableObjects/ScriptDataBase", order = 1)]
-public class ScriptDataBase : DataBase <ScriptData> { }
-
-[CustomEditor(typeof(ScriptDataBase))]
-public class ScriptDataBaseEditor : DataBaseEditor<ScriptDataBase, ScriptData> { }
