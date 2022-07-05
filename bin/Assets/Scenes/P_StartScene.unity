@@ -1962,12 +1962,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1569470506}
         m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
-        m_MethodName: changeTab3
-        m_Mode: 1
+        m_MethodName: changeWindow
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: changeWindow(3)
           m_BoolArgument: 0
@@ -3127,12 +3127,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1569470506}
         m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
-        m_MethodName: changeTab1
-        m_Mode: 1
+        m_MethodName: changeWindow
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: changeWindow(1)
           m_BoolArgument: 0
@@ -9179,7 +9179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1569470505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9213,8 +9213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa094744d56a2843a627d3532e1b664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDraggable: 1
+  isDraggable: 0
   notMoveableWhileOpen: 1
+  gameObject: {fileID: 1569470504}
   currentWindow: 1
   Object_AnimaLibrary: {fileID: 1537792403}
   Object_StoryLine: {fileID: 719118619}
@@ -11465,12 +11466,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1569470506}
         m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
-        m_MethodName: changeTab2
-        m_Mode: 1
+        m_MethodName: changeWindow
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: changeWindow(2)
           m_BoolArgument: 0
@@ -11611,7 +11612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class SettingWindow : WindowObject
 {
 
     [SerializeField]
+    private GameObject gameObject;
+    [SerializeField]
     private int currentWindow;
     [SerializeField]
     private GameObject Object_AnimaLibrary;
@@ -23,8 +25,8 @@ public class SettingWindow : WindowObject
             this.OpenWindow();
     }
 
-    public void tabInput()
-    {
+    public void tabInput() {
+        Debug.Log("Test");
         if (currentWindow <= 2)
             currentWindow += 1;
         else 
@@ -33,43 +35,25 @@ public class SettingWindow : WindowObject
 
         changeWindow(currentWindow);
     }
-    private void changeWindow(int cur)
+
+    public void changeWindow(int cur)
     {
-        Object_AnimaLibrary.active = false;
-        Object_StoryLine.active = false;
-        Object_Settings.active = false;
+        Object_AnimaLibrary.SetActive(false);
+        Object_StoryLine.SetActive(false);
+        Object_Settings.SetActive(false);
 
         if (cur == 1) {
-            Object_AnimaLibrary.active = true;
+            Object_AnimaLibrary.SetActive(true);
             currentWindow = 1;
-            Debug.Log("1");
         } else if (cur == 2) {
-            Object_StoryLine.active = true;
+            Object_StoryLine.SetActive(true);
             currentWindow = 2;
-            Debug.Log("2");
         } else if (cur == 3) {
-            Object_Settings.active = true;
+            Object_Settings.SetActive(true);
             currentWindow = 3;
-            Debug.Log(3);
+            Debug.Log("3");
         }
 
-    }
-    public void changeTab1()
-    {
-        currentWindow = 1;
-        changeWindow(1);
-    }
-
-    public void changeTab2()
-    {
-        currentWindow = 2;
-        changeWindow(2);
-    }
-
-    public void changeTab3()
-    {
-        currentWindow = 3;
-        changeWindow(3);
     }
     
 }

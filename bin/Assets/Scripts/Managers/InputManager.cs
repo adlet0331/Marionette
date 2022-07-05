@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static InteractionObject;
@@ -50,6 +50,7 @@ public class InputManager : Singleton<InputManager>
             { KeyCode.Space, Interact },
             { KeyCode.Escape, OpenSettings },
             { KeyCode.C, TalkWithDoll }, 
+            { KeyCode.Tab, SettingTabChange},
         };
     }
 
@@ -121,5 +122,13 @@ public class InputManager : Singleton<InputManager>
     private void TalkWithDoll()
     {
         WindowManager.Instance.inventoryWindow.Activate();
+    }
+
+    private void SettingTabChange()
+    {
+        if (WindowManager.Instance.settingWindow.gameObject.activeSelf)
+        {
+            WindowManager.Instance.settingWindow.tabInput();
+        }
     }
 }
