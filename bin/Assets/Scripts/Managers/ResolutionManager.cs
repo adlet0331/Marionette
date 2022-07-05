@@ -27,22 +27,22 @@ public class ResolutionManager : Singleton<ResolutionManager>
         }
 
         int optionNum = 0;
-        resolutionDropdown.options.Clear();
-        foreach (Resolution item in resolutionList)
-        {
-            Dropdown.OptionData option = new Dropdown.OptionData();
-            option.text = item.width + "x" + item.height;
-            resolutionDropdown.options.Add(option);
-
-            if (item.width == Screen.width && item.height == Screen.height)
-            {
-                resolutionDropdown.value = optionNum;
-                currIndex = optionNum;
-            }
-            optionNum++;
-        }
-
-        resolutionDropdown.RefreshShownValue();
+        // resolutionDropdown.options.Clear();
+        // foreach (Resolution item in resolutionList)
+        // {
+        //     Dropdown.OptionData option = new Dropdown.OptionData();
+        //     option.text = item.width + "x" + item.height;
+        //     resolutionDropdown.options.Add(option);
+        // 
+        //     if (item.width == Screen.width && item.height == Screen.height)
+        //     {
+        //         resolutionDropdown.value = optionNum;
+        //         currIndex = optionNum;
+        //     }
+        //     optionNum++;
+        // }
+        // 
+        // resolutionDropdown.RefreshShownValue();
     }
     public void DropboxOptionChange(int index)
     {

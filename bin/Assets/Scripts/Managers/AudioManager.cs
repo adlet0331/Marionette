@@ -35,15 +35,15 @@ public class AudioManager : Singleton<AudioManager> {
     private AudioSource audioPlayer;
 
     private void Start() {
-        audioPlayer = GetComponent<AudioSource>();
-        MasterSlider.onValueChanged.AddListener(delegate { updateMasterVolume(); });
-        BgmSlider.onValueChanged.AddListener(delegate { updateBgmVolume(); });
-        SESlider.onValueChanged.AddListener(delegate { updateSEVolume(); });
-        ChangeBGM(0);
-
-        updateMasterVolume();
-        updateBgmVolume();
-        updateSEVolume();
+        // audioPlayer = GetComponent<AudioSource>();
+        // MasterSlider.onValueChanged.AddListener(delegate { updateMasterVolume(); });
+        // BgmSlider.onValueChanged.AddListener(delegate { updateBgmVolume(); });
+        // SESlider.onValueChanged.AddListener(delegate { updateSEVolume(); });
+        // ChangeBGM(0);
+        // 
+        // updateMasterVolume();
+        // updateBgmVolume();
+        // updateSEVolume();
     }
 
     public void ChangeBGM(int index) {
