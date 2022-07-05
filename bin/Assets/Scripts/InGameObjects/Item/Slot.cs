@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] bool isInteractable;
     [SerializeField] bool isSelected;
     [SerializeField] bool isEquiped;
 
@@ -44,16 +45,19 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!isInteractable) return;
         throw new System.NotImplementedException();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!isInteractable) return;
         throw new System.NotImplementedException();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!isInteractable) return;
         throw new System.NotImplementedException();
     }
 }

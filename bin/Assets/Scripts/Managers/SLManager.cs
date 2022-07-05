@@ -9,9 +9,6 @@ using Random = System.Random;
 public class SLManager : Singleton<SLManager>
 {
     [SerializeField] private SLDataBase sLDataBase;
-    [SerializeField] private ItemDataBase itemDataBase;
-    [SerializeField] private ScriptDataBase scriptDataBase;
-    [SerializeField] private LockDataBase lockDataBase;
 
     [SerializeField] private string currentSaveDataName;
     [SerializeField] private SaveData currentSaveData;
@@ -120,24 +117,20 @@ public class SLManager : Singleton<SLManager>
         newData.setting = "init";
         
         newData.itemList = InventoryManager.Instance.GetItemList();
-        
-        itemDataBase.LoadJson();
-        scriptDataBase.LoadJson();
-        lockDataBase.LoadJson();
 
         newData.sceneItemObjectStatusList = new List<SceneObjectStatus>();
         newData.sceneScriptObjectStatusList = new List<SceneObjectStatus>();
         newData.sceneLockObjectStatusList = new List<SceneObjectStatus>();
         
-        foreach (ItemData var in itemDataBase.dataList)
+        foreach (ItemData var in DataBaseManager.Instance.ItemDataBase.dataList)
         {
             newData.sceneItemObjectStatusList.Add((SceneObjectStatus)var.initStatus);
         }
-        foreach (ScriptData var in scriptDataBase.dataList)
+        foreach (ScriptData var in DataBaseManager.Instance.ScriptDataBase.dataList)
         {
             newData.sceneScriptObjectStatusList.Add((SceneObjectStatus)var.initStatus);
         }
-        foreach (LockData var in lockDataBase.dataList)
+        foreach (LockData var in DataBaseManager.Instance.LockDataBase.dataList)
         {
             newData.sceneLockObjectStatusList.Add((SceneObjectStatus)var.initStatus);
         }

@@ -35,7 +35,6 @@ public class Interacting : MonoBehaviour
                 var objectWorldPosition = interObj.transform.localToWorldMatrix * interObj.transform.localPosition - transform.localToWorldMatrix * transform.localPosition;
                 var objectWorldVec2 = new Vector2(objectWorldPosition.x, objectWorldPosition.y);
                 cnt = Vector2.Angle(objectWorldVec2, pointerWorldVec2);
-                Debug.Log(cnt);
                 if (cnt < angle)
                 {
                     angle = cnt;
