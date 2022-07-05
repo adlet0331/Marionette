@@ -7,7 +7,6 @@
 public class MovingObject : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D playerRigidBody;
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D aroundLight;
     [SerializeField] private UnityEngine.Rendering.Universal.Light2D handLight;
 
     [SerializeField] private bool isActive = true;

@@ -23,11 +23,6 @@ public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHa
         gameObject.SetActive(true);
         transform.SetAsLastSibling();
         WindowManager.Instance.currentOpenWindowNum += 1;
-        if (WindowManager.Instance.currentOpenWindowNum > 1)
-        {
-            OpenWindowWithoutSetting();
-            return;
-        }
         if (notMoveableWhileOpen)
             InputManager.Instance.SetOptions(false, true);
         else
@@ -36,11 +31,6 @@ public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHa
     public void CloseWindow()
     {
         WindowManager.Instance.currentOpenWindowNum -= 1;
-        if (WindowManager.Instance.currentOpenWindowNum >= 1)
-        {
-            CloseWindowWithoutOption();
-            return;
-        }
         gameObject.SetActive(false);
         InputManager.Instance.SetOptions(true, true);
     }

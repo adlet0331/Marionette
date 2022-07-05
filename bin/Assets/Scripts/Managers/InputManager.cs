@@ -9,7 +9,7 @@ using static InteractionObject;
  */
 public class InputManager : Singleton<InputManager>
 {
-    [SerializeField] private bool isMoveable = false;
+    [SerializeField] private bool isMoveable = true;
     [SerializeField] private bool isInputAvaliable = true;
     [SerializeField] private bool isInventoryWindowOn = false;
     [SerializeField] private bool isItemSelectionPannelOn = false;
@@ -47,9 +47,9 @@ public class InputManager : Singleton<InputManager>
     private void Start() {
         isInputAvaliable = true;
         keyDictionary = new Dictionary<KeyCode, Action> {
-            { KeyCode.Z, KeyDown_Z },
-            { KeyCode.Escape, KeyDown_ESC },
-            { KeyCode.X, KeyDown_X }, 
+            { KeyCode.Space, Interact },
+            { KeyCode.Escape, OpenSettings },
+            { KeyCode.C, TalkWithDoll }, 
         };
     }
 
@@ -104,15 +104,10 @@ public class InputManager : Singleton<InputManager>
 
     }
 
-    private void KeyDown_ESC() {
-        if (WindowManager.Instance.settingWindow.gameObject.activeSelf)
-        {
-            WindowManager.Instance.settingWindow.CloseWindow();
-            return;
-        }
+    private void OpenSettings() {
         WindowManager.Instance.settingWindow.Activate();
     }
-    private void KeyDown_Z() {
+    private void Interact() {
         if (WindowManager.Instance.scriptWindow.gameObject.activeSelf)
         {
             WindowManager.Instance.scriptWindow.Activate();
@@ -123,7 +118,7 @@ public class InputManager : Singleton<InputManager>
 
         obj.Interact();
     }
-    private void KeyDown_X()
+    private void TalkWithDoll()
     {
         WindowManager.Instance.inventoryWindow.Activate();
     }
