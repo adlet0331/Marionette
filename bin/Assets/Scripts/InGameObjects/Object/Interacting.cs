@@ -9,7 +9,6 @@ public class Interacting : MonoBehaviour
 {
     [SerializeField] private bool isBlocked = false;
     [SerializeField] private int currentIdx;
-    [SerializeField] private InteractionObjectType currentType;
     [SerializeField] private InteractionObject currentInteractObj;
     [SerializeField] private List<InteractionObject> scriptableObjList;
 
@@ -43,7 +42,6 @@ public class Interacting : MonoBehaviour
             }
             currentInteractObj = currentFirstObj;
             currentIdx = currentFirstObj.idx;
-            currentType = currentFirstObj.objectType;
         }
     }
     private void Update()
@@ -61,7 +59,7 @@ public class Interacting : MonoBehaviour
         {
             if (!WindowManager.Instance.interactableWindow.gameObject.activeSelf)
                 WindowManager.Instance.interactableWindow.OpenWindow();
-            WindowManager.Instance.interactableWindow.SetInteractionObject(currentIdx, currentType);
+            WindowManager.Instance.interactableWindow.OpenWindow();
         }
     }
     public void BlockInteract()
