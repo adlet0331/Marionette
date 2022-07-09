@@ -17,8 +17,7 @@ public class InteractableWindow : WindowObject
     [SerializeField] private Text nameText;
     [SerializeField] private Text explanationText;
     [SerializeField] private int currentIdx;
-    [SerializeField] private InteractionObjectType interactionItemType;
-    
+
     private IEnumerator currentCoroutine;
     [SerializeField] private bool blocked;
 
@@ -66,46 +65,5 @@ public class InteractableWindow : WindowObject
     {
         blocked = false;
         base.CloseWindow();
-    }
-
-    public void SetInteractionObject(int idx, InteractionObjectType type)
-    {
-        if (blocked)
-            return;
-
-        this.currentIdx = idx;
-        this.interactionItemType = type;
-        if(type == InteractionObjectType.ScriptableObject)
-        {
-            var currentData = DataBaseManager.Instance.ScriptDataBase.dataList[idx];
-
-            nameText.text = currentData.name;
-            explanationText.text = currentData.interactString;
-            return;
-        }
-            
-        else if (type == InteractionObjectType.ItemableObject)
-        {
-            ItemData currentData = DataBaseManager.Instance.ItemDataBase.dataList[idx];
-
-            nameText.text = currentData.name;
-            explanationText.text = currentData.itemInfo;
-            return;
-        }
-
-        else if (type == InteractionObjectType.LockObject)
-        {
-            LockData currentData = DataBaseManager.Instance.LockDataBase.dataList[idx];
-
-            nameText.text = currentData.name;
-            explanationText.text = currentData.interactString;
-
-            return;
-        }
-
-        else
-        {
-            return;
-        }
     }
 }

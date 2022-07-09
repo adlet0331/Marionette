@@ -58,12 +58,9 @@ public class ScriptWindow : WindowObject
     {
         return;
     }
-    public void Activate(int idx, InteractionObjectType type)
+    public void Activate(int idx)
     {
         if (PlayerManager.Instance.playerInteracting == null)
-            return;
-
-        if (type != InteractionObjectType.ScriptableObject)
             return;
 
         if (blocked)

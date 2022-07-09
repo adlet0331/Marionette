@@ -115,7 +115,6 @@ public class InputManager : Singleton<InputManager>
         }
 
         InteractionObject obj = PlayerManager.Instance.playerInteracting.GetFstInteractObj();
-        InteractionObjectType type = obj.objectType;
 
         obj.Interact();
     }
