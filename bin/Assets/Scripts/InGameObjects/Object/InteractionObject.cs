@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 /* Interact 되는 객체
  * 
@@ -17,6 +16,7 @@ public class InteractionObject : MonoBehaviour
 
     private void Start()
     {
+        
         
     }
 
