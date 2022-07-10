@@ -1,4 +1,5 @@
 ﻿using DataBaseScripts;
+using InGameObjects.Object;
 using UnityEngine;
 
 public class AnimaObject : InteractionObject

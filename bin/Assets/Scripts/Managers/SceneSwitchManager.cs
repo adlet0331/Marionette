@@ -29,7 +29,6 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     }
 
     [SerializeField] private Button newGameButton;
-    [SerializeField] private Button saveButton;
     [SerializeField] private Button loadButton;
     [SerializeField] private SceneName currentScene;
     [SerializeField] public SceneName beforeScene;
@@ -39,7 +38,6 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     {
         currentScene = SceneName.P_StartScene;
         newGameButton.onClick.AddListener(NewGame);
-        saveButton.onClick.AddListener(SLManager.Instance.Save);
         loadButton.onClick.AddListener(LoadGame);
     }
     private SceneInfo FindSceneInfo(SceneName sceneName)

@@ -96,3 +96,5 @@ for sheetidx in range(workbook_num):
     json_file_path = os.path.join(SAVE_FILE_PATH, wb.sheetnames[sheetidx] + '.json')
     with open(json_file_path, 'w', encoding='UTF8') as fd:
         json.dump(json_data_list, fd, sort_keys=True, indent=4)
+
+os.system("pause")

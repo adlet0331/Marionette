@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using DataBaseScripts;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -31,7 +30,7 @@ public class SLManager : Singleton<SLManager>
 
     private void saveCurrentFileAsJson()
     {
-        string path = Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{currentSaveDataName}.json");
+        string path = Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{currentSaveDataName}.json");
         File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData));
     }
 
@@ -46,7 +45,7 @@ public class SLManager : Singleton<SLManager>
     public void Save(int index) 
     {
         Debug.Log("SAVE");
-        string sLDataPath = Path.Combine(Application.dataPath, "Resources/IngameData/SaveData.json");
+        string sLDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData.json");
         TextAsset json = Resources.Load<TextAsset>(sLDataPath);
         sLDataBase.LoadJson();
         List<SLData> saveData = sLDataBase.dataList;
@@ -56,7 +55,7 @@ public class SLManager : Singleton<SLManager>
             // Already Exist
             if (sLDataBase.dataList[slotIndex].idx == index)
             {
-                File.Delete(Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{sLDataBase.dataList[slotIndex].name}.json"));
+                File.Delete(Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{sLDataBase.dataList[slotIndex].name}.json"));
                 saveCurrentFileAsJson();
                 sLDataBase.dataList[slotIndex].name = currentSaveDataName;
                 File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
@@ -80,7 +79,7 @@ public class SLManager : Singleton<SLManager>
     {
         sLDataBase.LoadJson();
         currentSaveDataName = sLDataBase.dataList[index].name;
-        string saveDataPath = Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{currentSaveDataName}.json");
+        string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
         string json = File.ReadAllText(saveDataPath);
         Debug.Log(json.ToString());
         currentSaveData = JsonConvert.DeserializeObject<SaveData>(json.ToString());

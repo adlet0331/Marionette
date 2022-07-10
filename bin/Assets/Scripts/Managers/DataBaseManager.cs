@@ -7,5 +7,4 @@ public class DataBaseManager : Singleton<DataBaseManager>
     public InLockDataBase InLockDataBase;
     public InteractionDataBase InteractionDataBase;
     public ItemDataBase ItemDataBase;
-    public AnimaAbilityDataBase animaAbilityDataBase;
 }

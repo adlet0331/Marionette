@@ -1,1 +1,13 @@
-[{"maxLevel":4,"levelUpCount":[1,2,3],"initStatus":1,"idx":0,"name":"더미"}]
+[
+    {
+        "idx": 0,
+        "initStatus": 1,
+        "levelUpCount": [
+            1,
+            2,
+            3
+        ],
+        "maxLevel": 4,
+        "name": "\ub354\ubbf8"
+    }
+]

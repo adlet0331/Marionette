@@ -8,8 +8,8 @@ namespace DataBaseScripts
     [Serializable]
     public class InteractionData : DataType
     {
-        public List<int> interactType;
-        public List<int> interactIndex;
+        public List<int> typeList;
+        public List<int> idxList;
         public bool initStatus;
     }
     

@@ -12,12 +12,12 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     public GameObject moveablePlayerObject;
     public BoxCollider2D moveablePlayerCollider;
-    [FormerlySerializedAs("playerInteractObject")] public Interacting playerInteracting;
+    [FormerlySerializedAs("playerInteractObject")] public InteractingPlayer interactingPlayer;
     [SerializeField] private bool profileShowing = false;
     public void UpdatePlayerManager(GameObject mPO)
     {
         moveablePlayerObject = mPO;
-        playerInteracting = mPO.GetComponent<Interacting>();
+        interactingPlayer = mPO.GetComponent<InteractingPlayer>();
         moveablePlayerCollider = moveablePlayerObject.GetComponent<BoxCollider2D>();
         InputManager.Instance.SetMovingComponent(mPO.GetComponent<MovingObject>());
     }

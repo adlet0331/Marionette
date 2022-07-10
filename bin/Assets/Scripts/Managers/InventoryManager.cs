@@ -25,24 +25,48 @@ public class InventoryManager : Singleton<InventoryManager>
         ItemData itemData = itemList[idx];
         return itemData;
     }
-    public void AddItem(ItemData item)
+    public void AddItem(int itemIdx, int num)
     {
-        if (itemList.Count == 10)
-            return;
-
-        itemList.Add(item);
-        return;
-    }
-    public void DeleteItem(ItemData item)
-    {
-        foreach(ItemData it in itemList)
+        var item = DataBaseManager.Instance.ItemDataBase.dataList[itemIdx];
+        for (int i = 0; i < num; i++)
         {
-            if (it.idx == item.idx)
+            itemList.Add(item);
+        }
+    }
+
+    public bool DeleteSingleItem(int itemIdx)
+    {
+        if (CheckItemIsIn(itemIdx))
+        {
+            foreach (var itemData in itemList)
             {
-                itemList.Remove(it);
-                return;
+                if (itemData.idx == itemIdx)
+                {
+                    itemList.Remove(itemData);
+                    return true;
+                }
             }
         }
-        return;
+        return false;
+    }
+    public bool DeleteItem(int itemIdx, int num)
+    {
+        var cnt = 0;
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            if (itemList[i].idx == itemIdx)
+            {
+                cnt += 1;
+                if (num == cnt)
+                {
+                    for (int j = 0; j < num; j++)
+                    {
+                        DeleteSingleItem(itemIdx);
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

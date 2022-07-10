@@ -2,10 +2,10 @@
     {
         "idx": 0,
         "name": "\ub354\ubbf8",
-        "needItemArray": [
+        "needItemList": [
             -1
         ],
-        "needType": [
+        "needTypeList": [
             " \ub354\ubbf8\uc784"
         ],
         "noItemString": [
@@ -15,10 +15,10 @@
     {
         "idx": 1,
         "name": "\ubb38",
-        "needItemArray": [
+        "needItemList": [
             -1
         ],
-        "needType": [
+        "needTypeList": [
             "\uc870\uae08 \ucc0c\uadf8\ub7ec\uc9c4 \ubb38\uc774\ub2e4"
         ],
         "noItemString": [

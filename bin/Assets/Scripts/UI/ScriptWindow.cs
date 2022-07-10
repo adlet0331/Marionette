@@ -1,9 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using DataBaseScripts;
+using InGameObjects.Object;
 using UnityEngine;
 using UnityEngine.UI;
-using static InteractionObject;
 /* 대사 나오는 창
 * InputManager에서 호출
 * 
@@ -60,7 +59,7 @@ public class ScriptWindow : WindowObject
     }
     public void Activate(int idx)
     {
-        if (PlayerManager.Instance.playerInteracting == null)
+        if (PlayerManager.Instance.interactingPlayer == null)
             return;
 
         if (blocked)
@@ -69,7 +68,7 @@ public class ScriptWindow : WindowObject
             return;
         }
 
-        InteractionObject obj = PlayerManager.Instance.playerInteracting.GetFstInteractObj();
+        InteractionObject obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
 
         if (obj == null)
             return;

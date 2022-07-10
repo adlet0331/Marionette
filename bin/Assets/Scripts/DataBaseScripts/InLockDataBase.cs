@@ -8,8 +8,8 @@ namespace DataBaseScripts
     [Serializable]
     public class InLockData : DataType
     {
-        public List<string> needType;
-        public List<int> needItemArray;
+        public List<string> needTypeList;
+        public List<int> needItemList;
         public List<string> noItemString;
     };
 

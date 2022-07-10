@@ -9,7 +9,6 @@ namespace DataBaseScripts
     [Serializable]
     public class InChooseData : DataType
     {
-        public int length;
         public List<string> scriptList;
         public List<int> interactionList;
     }
