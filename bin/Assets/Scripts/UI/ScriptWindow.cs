@@ -1,9 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using DataBaseScripts;
+using InGameObjects.Object;
 using UnityEngine;
 using UnityEngine.UI;
-using static InteractionObject;
 /* 대사 나오는 창
 * InputManager에서 호출
 * 
@@ -16,7 +15,7 @@ public class ScriptWindow : WindowObject
 {
     [SerializeField] private Text NameText;
     [SerializeField] private Text ScriptText;
-    [SerializeField] private ScriptData currObj = null;
+    [SerializeField] private InScriptData currObj = null;
     [SerializeField] private int currentScriptIdx = -1;
     [SerializeField] private int currentScriptLength;
     private IEnumerator currentCoroutine;
@@ -26,19 +25,19 @@ public class ScriptWindow : WindowObject
     {
         this.OpenWindow();
 
-        currObj = DataBaseManager.Instance.ScriptDataBase.dataList[idx];
+        currObj = DataBaseManager.Instance.InScriptDataBase.dataList[idx];
         currentScriptIdx = 0;
-        currentScriptLength = currObj.scripts.Count;
+        currentScriptLength = currObj.scriptList.Count;
 
         NameText.text = currObj.name;
-        currentCoroutine = _printScript(ScriptText, currObj.scripts[0]);
+        currentCoroutine = _printScript(ScriptText, currObj.scriptList[0]);
         StartCoroutine(currentCoroutine);
     }
     private void Next(int idx)
     {
         currentScriptIdx++;
         NameText.text = currObj.name;
-        currentCoroutine = _printScript(ScriptText, currObj.scripts[currentScriptIdx]);
+        currentCoroutine = _printScript(ScriptText, currObj.scriptList[currentScriptIdx]);
         StartCoroutine(currentCoroutine);
     }
     private void Close()
@@ -51,19 +50,16 @@ public class ScriptWindow : WindowObject
         StopCoroutine(currentCoroutine);
         blocked = false;
         currentCoroutine = null;
-        ScriptText.text = currObj.scripts[currentScriptIdx];
+        ScriptText.text = currObj.scriptList[currentScriptIdx];
     }
     // 초기화
     public override void Activate()
     {
         return;
     }
-    public void Activate(int idx, InteractionObjectType type)
+    public void Activate(int idx)
     {
-        if (PlayerManager.Instance.playerInteracting == null)
-            return;
-
-        if (type != InteractionObjectType.ScriptableObject)
+        if (PlayerManager.Instance.interactingPlayer == null)
             return;
 
         if (blocked)
@@ -72,7 +68,7 @@ public class ScriptWindow : WindowObject
             return;
         }
 
-        InteractionObject obj = PlayerManager.Instance.playerInteracting.GetFstInteractObj();
+        InteractionObject obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
 
         if (obj == null)
             return;
@@ -81,7 +77,7 @@ public class ScriptWindow : WindowObject
 
         if (currentScriptIdx == -1)
             this.Open(idx);
-        else if (currObj != null && currentScriptIdx == currObj.scripts.Count - 1)
+        else if (currObj != null && currentScriptIdx == currObj.scriptList.Count - 1)
         {   
             InputManager.Instance.SetOptions(true, true);
             this.Close();

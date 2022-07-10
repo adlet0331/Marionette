@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using DataBaseScripts;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -13,14 +12,6 @@ public class SLManager : Singleton<SLManager>
 
     [SerializeField] private string currentSaveDataName;
     [SerializeField] private SaveData currentSaveData;
-    
-    [Serializable]
-    public enum SceneObjectStatus
-    {
-        NotAvaliable = 0,
-        Interactable = 1,
-        Showable = 2,
-    }
 
     [Serializable]
     public struct SaveData
@@ -34,14 +25,12 @@ public class SLManager : Singleton<SLManager>
         // Inventory
         public List<ItemData> itemList;
         // SceneObjects
-        public List<SceneObjectStatus> sceneItemObjectStatusList;
-        public List<SceneObjectStatus> sceneScriptObjectStatusList;
-        public List<SceneObjectStatus> sceneLockObjectStatusList;
+        public List<bool> interactObjectStatusList;
     }
 
     private void saveCurrentFileAsJson()
     {
-        string path = Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{currentSaveDataName}.json");
+        string path = Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{currentSaveDataName}.json");
         File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData));
     }
 
@@ -56,7 +45,7 @@ public class SLManager : Singleton<SLManager>
     public void Save(int index) 
     {
         Debug.Log("SAVE");
-        string sLDataPath = Path.Combine(Application.dataPath, "Resources/IngameData/SaveData.json");
+        string sLDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData.json");
         TextAsset json = Resources.Load<TextAsset>(sLDataPath);
         sLDataBase.LoadJson();
         List<SLData> saveData = sLDataBase.dataList;
@@ -66,7 +55,7 @@ public class SLManager : Singleton<SLManager>
             // Already Exist
             if (sLDataBase.dataList[slotIndex].idx == index)
             {
-                File.Delete(Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{sLDataBase.dataList[slotIndex].name}.json"));
+                File.Delete(Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{sLDataBase.dataList[slotIndex].name}.json"));
                 saveCurrentFileAsJson();
                 sLDataBase.dataList[slotIndex].name = currentSaveDataName;
                 File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
@@ -90,7 +79,7 @@ public class SLManager : Singleton<SLManager>
     {
         sLDataBase.LoadJson();
         currentSaveDataName = sLDataBase.dataList[index].name;
-        string saveDataPath = Path.Combine(Application.dataPath, $"Resources/IngameData/SaveData/{currentSaveDataName}.json");
+        string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
         string json = File.ReadAllText(saveDataPath);
         Debug.Log(json.ToString());
         currentSaveData = JsonConvert.DeserializeObject<SaveData>(json.ToString());
@@ -119,21 +108,11 @@ public class SLManager : Singleton<SLManager>
         
         newData.itemList = InventoryManager.Instance.GetItemList();
 
-        newData.sceneItemObjectStatusList = new List<SceneObjectStatus>();
-        newData.sceneScriptObjectStatusList = new List<SceneObjectStatus>();
-        newData.sceneLockObjectStatusList = new List<SceneObjectStatus>();
-        
-        foreach (ItemData var in DataBaseManager.Instance.ItemDataBase.dataList)
+        newData.interactObjectStatusList = new List<bool>();
+
+        foreach (InteractionData var in DataBaseManager.Instance.InteractionDataBase.dataList)
         {
-            newData.sceneItemObjectStatusList.Add((SceneObjectStatus)var.initStatus);
-        }
-        foreach (ScriptData var in DataBaseManager.Instance.ScriptDataBase.dataList)
-        {
-            newData.sceneScriptObjectStatusList.Add((SceneObjectStatus)var.initStatus);
-        }
-        foreach (LockData var in DataBaseManager.Instance.LockDataBase.dataList)
-        {
-            newData.sceneLockObjectStatusList.Add((SceneObjectStatus)var.initStatus);
+            newData.interactObjectStatusList.Add(var.initStatus);
         }
 
         if (setCurrentSaveData)

@@ -1,0 +1,36 @@
+[
+    {
+        "idx": 0,
+        "interactString": "\ub354\ubbf8\ub2e4",
+        "leftSpriteList": [
+            "dummy01",
+            "dummy01"
+        ],
+        "name": "\ub354\ubbf8",
+        "rightSpriteList": [
+            "none",
+            "dummy01"
+        ],
+        "scriptList": [
+            "\ub354\ubbf8\uc784",
+            "...\ub354\ubbf8\ub77c\uace0\uc694"
+        ]
+    },
+    {
+        "idx": 1,
+        "interactString": "\uce68\ub300\ub2e4",
+        "leftSpriteList": [
+            "sprite01",
+            "sprite01"
+        ],
+        "name": "\uc18c\ub140\uc758\ubc29_\uce68\ub300",
+        "rightSpriteList": [
+            "sprite01",
+            "sprite01"
+        ],
+        "scriptList": [
+            "\uc774\ubd88\uc774 \ud750\ud2b8\ub7ec\uc838 \uc788\ub294 \uce68\ub300\ub2e4",
+            "\u2026.\uce58\uc6cc\uc57c \ud558\ub294\ub370"
+        ]
+    }
+]
