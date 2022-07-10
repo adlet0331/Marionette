@@ -41,7 +41,12 @@ public abstract class InteractingObject : MonoBehaviour
         }
     }
 
-    public void Interact(int idx)
+    public void Interact()
+    {
+        
+    }
+
+    private void Interact(int idx)
     {
         // 대사 Script
         if (dataType[idx] == 3)
@@ -67,6 +72,7 @@ public abstract class InteractingObject : MonoBehaviour
         else
         {
             Debug.Assert(abstractInteractionObjectList.Count == currentInteractIndex + 1);
+            
             abstractInteractionObjectList[currentInteractIndex++].Interact();
         }
     }

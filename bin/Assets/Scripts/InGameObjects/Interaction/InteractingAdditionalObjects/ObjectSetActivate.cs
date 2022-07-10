@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class GameObjectCreateDelete
+public class GameObjectSetActivate
 {
     public GameObject gameObject;
     public bool isActivating;
 }
 [Serializable]
-public class ObjectCreateDelete : AbstractInteractionObject
+public class ObjectSetActivate : AbstractInteractionObject
 {
-    [SerializeField] private List<GameObjectCreateDelete> dataList;
+    [SerializeField] private List<GameObjectSetActivate> dataList;
     public override void Interact()
     {
         foreach (var gameObjectCreateDelete in dataList)

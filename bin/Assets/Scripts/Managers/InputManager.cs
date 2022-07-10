@@ -115,7 +115,7 @@ public class InputManager : Singleton<InputManager>
 
         var obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
 
-        obj.Interact(0);
+        obj.Interact();
     }
     private void TalkWithDoll()
     {
