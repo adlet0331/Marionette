@@ -13,14 +13,6 @@ public class SLManager : Singleton<SLManager>
 
     [SerializeField] private string currentSaveDataName;
     [SerializeField] private SaveData currentSaveData;
-    
-    [Serializable]
-    public enum SceneObjectStatus
-    {
-        NotAvaliable = 0,
-        Interactable = 1,
-        Showable = 2,
-    }
 
     [Serializable]
     public struct SaveData
@@ -34,9 +26,7 @@ public class SLManager : Singleton<SLManager>
         // Inventory
         public List<ItemData> itemList;
         // SceneObjects
-        public List<SceneObjectStatus> sceneItemObjectStatusList;
-        public List<SceneObjectStatus> sceneScriptObjectStatusList;
-        public List<SceneObjectStatus> sceneLockObjectStatusList;
+        public List<bool> interactObjectStatusList;
     }
 
     private void saveCurrentFileAsJson()
@@ -119,21 +109,11 @@ public class SLManager : Singleton<SLManager>
         
         newData.itemList = InventoryManager.Instance.GetItemList();
 
-        newData.sceneItemObjectStatusList = new List<SceneObjectStatus>();
-        newData.sceneScriptObjectStatusList = new List<SceneObjectStatus>();
-        newData.sceneLockObjectStatusList = new List<SceneObjectStatus>();
-        
-        foreach (ItemData var in DataBaseManager.Instance.ItemDataBase.dataList)
+        newData.interactObjectStatusList = new List<bool>();
+
+        foreach (InteractionData var in DataBaseManager.Instance.InteractionDataBase.dataList)
         {
-            newData.sceneItemObjectStatusList.Add((SceneObjectStatus)var.initStatus);
-        }
-        foreach (ScriptData var in DataBaseManager.Instance.ScriptDataBase.dataList)
-        {
-            newData.sceneScriptObjectStatusList.Add((SceneObjectStatus)var.initStatus);
-        }
-        foreach (LockData var in DataBaseManager.Instance.LockDataBase.dataList)
-        {
-            newData.sceneLockObjectStatusList.Add((SceneObjectStatus)var.initStatus);
+            newData.interactObjectStatusList.Add(var.initStatus);
         }
 
         if (setCurrentSaveData)

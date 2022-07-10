@@ -7,6 +7,7 @@ from openpyxl import load_workbook
 import json
 import os
 
+SAVE_FILE_PATH = 'Json'
 ROW_INDEX = 'B1'
 COLUMN_INDEX = 'C1'
 START_ALPHABET = 'B'
@@ -27,7 +28,7 @@ def getData(typestr, data):
     if typestr == "string":
         return deleteFirstLineBreak(str(data))
     if typestr == "bool":
-        if data == "true" or data == "1" or data == "True":
+        if data == "true" or data == "1" or data == "True" or data == "TRUE" or data == 1:
             return True
         if data == "False" or data == "0" or data == "false":
             return False
@@ -41,6 +42,7 @@ def getData(typestr, data):
     if typestr == "bool[]":
         return list(map(lambda x: getData("bool", x), str(data).split(SELECTING_KEY)))
 
+SAVE_FILE_PATH = os.path.join(os.getcwd(), SAVE_FILE_PATH)
 file_path = os.getcwd()
 file_path = os.path.join(file_path, 'DataBase')
 
@@ -48,6 +50,9 @@ excel_file_path =  file_path + '.xlsx'
 
 wb = load_workbook(excel_file_path, data_only=True)
 workbook_num = len(wb.worksheets)
+
+if not os.path.exists(SAVE_FILE_PATH):
+    os.makedirs(SAVE_FILE_PATH)
 
 for sheetidx in range(workbook_num):
     worksheet = wb.worksheets[sheetidx]
@@ -88,6 +93,6 @@ for sheetidx in range(workbook_num):
             idx_dict[key_list[key_idx]] = datas[key_idx]
         json_data_list.append(idx_dict)
 
-    json_file_path = wb.sheetnames[sheetidx] + '.json'
+    json_file_path = os.path.join(SAVE_FILE_PATH, wb.sheetnames[sheetidx] + '.json')
     with open(json_file_path, 'w', encoding='UTF8') as fd:
         json.dump(json_data_list, fd, sort_keys=True, indent=4)

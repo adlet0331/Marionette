@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: AnimaAbilityDataBase
   m_EditorClassIdentifier: 
   databaseName: AnimaAbility
-  dataList: []
+  dataList:
+  - idx: 0
+    name: "\uB354\uBBF8"
+    maxLevel: 4
+    levelUpCount: 010000000200000003000000
+    initStatus: 1

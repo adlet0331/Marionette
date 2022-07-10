@@ -2257,9 +2257,10 @@ MonoBehaviour:
   currObj:
     idx: 0
     name: 
-    initStatus: 0
     interactString: 
-    scripts: []
+    scriptList: []
+    leftSpriteList: []
+    rightSpriteList: []
   currentScriptIdx: -1
   currentScriptLength: 0
   blocked: 0
@@ -5861,9 +5862,7 @@ MonoBehaviour:
     playerPosY: 0
     setting: 
     itemList: []
-    sceneItemObjectStatusList: 
-    sceneScriptObjectStatusList: 
-    sceneLockObjectStatusList: 
+    interactObjectStatusList: 
 --- !u!1 &1010988788
 GameObject:
   m_ObjectHideFlags: 0
@@ -9180,7 +9179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1569470505
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9385,7 +9384,6 @@ MonoBehaviour:
   nameText: {fileID: 2077835344}
   explanationText: {fileID: 679901226}
   currentIdx: 0
-  interactionItemType: 0
   blocked: 0
 --- !u!1 &1606283251
 GameObject:
@@ -10108,11 +10106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb833507fbd21948a2d31a2437ae2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScriptDataBase: {fileID: 11400000, guid: 905263cdc59003040b4c6ae7a57f8c8d, type: 2}
+  InScriptDataBase: {fileID: 11400000, guid: b6abfc2e447c47f45bb51afbe9246516, type: 2}
+  InChooseDataBase: {fileID: 11400000, guid: 452f032a92494fc48a3199823f2a3b9d, type: 2}
+  InLockDataBase: {fileID: 11400000, guid: e5bb0aff0226aa04dbc7332c1a126908, type: 2}
+  InteractionDataBase: {fileID: 11400000, guid: 252a25c75e2eb9546a183c59845ba006, type: 2}
   ItemDataBase: {fileID: 11400000, guid: abc1ac2e67230264d8d6ba07114bccbe, type: 2}
-  LockDataBase: {fileID: 11400000, guid: ec4504a088af8a845b1abcf079abe88e, type: 2}
-  TalkDataBase: {fileID: 11400000, guid: 40f223d4f72333a479ca8a59f5d486fc, type: 2}
-  animaAbilityDataBase: {fileID: 0}
+  animaAbilityDataBase: {fileID: 11400000, guid: a07000e23323d6f4fbe7028eaf70e39a, type: 2}
 --- !u!1 &1738916973
 GameObject:
   m_ObjectHideFlags: 0
