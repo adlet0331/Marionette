@@ -15,6 +15,12 @@ public class InputManager : Singleton<InputManager>
     [SerializeField] private int moveH, moveV;
     [SerializeField] private bool isRun, isSlowWalk;
     [SerializeField] private MovingObject playerMovingComponent;
+
+    [SerializeField] private float mouseCursorWorldX;
+    [SerializeField] private float mouseCursorWorldY;
+    
+    [SerializeField] private float characterWorldX;
+    [SerializeField] private float characterWorldY;
     public void SetOptions(bool isMv, bool isAv)
     {
         isMoveable = isMv;
@@ -37,8 +43,14 @@ public class InputManager : Singleton<InputManager>
     {
         var mouseCursorWorldPos = CameraManager.Instance.GetMouseCursorWorldPointVec2();
         var characterTransform = playerMovingComponent.transform;
-        var characterWorldPos = characterTransform.localToWorldMatrix * characterTransform.localPosition;
+        var characterWorldPos = characterTransform.localPosition;
 
+        mouseCursorWorldX = mouseCursorWorldPos.x;
+        mouseCursorWorldY = mouseCursorWorldPos.y;
+        
+        characterWorldX = characterWorldPos.x;
+        characterWorldY = characterWorldPos.y;
+        
         return new Vector2(mouseCursorWorldPos.x - characterWorldPos.x, mouseCursorWorldPos.y - characterWorldPos.y);
     }
     

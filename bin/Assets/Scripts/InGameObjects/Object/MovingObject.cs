@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 
 /* 움직이는 오브젝트 관리
@@ -7,7 +8,7 @@
 public class MovingObject : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D playerRigidBody;
-    [SerializeField] private UnityEngine.Rendering.Universal.Light2D handLight;
+    [SerializeField] private Light2D handLight;
 
     [SerializeField] private bool isActive = true;
     [SerializeField] private float slowWalkSpeed = 300.0f;

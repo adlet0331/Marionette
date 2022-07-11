@@ -16,7 +16,6 @@ MonoBehaviour:
   dataList:
   - idx: 0
     name: "\uB354\uBBF8"
-    length: 0
     scriptList:
     - "\uB354\uBBF8 1"
     - "\uB354\uBBF8 2"

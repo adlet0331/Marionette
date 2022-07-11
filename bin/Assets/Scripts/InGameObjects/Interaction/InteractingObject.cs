@@ -22,9 +22,10 @@ public abstract class InteractingObject : MonoBehaviour
     [SerializeField] private int idx;
     [SerializeField] private List<int> dataType;
     [SerializeField] private List<int> dataIdx;
-    [SerializeField] private int currentInteractIndex;
     [SerializeField] private List<AbstractInteractionObject> abstractInteractionObjectList;
 
+    [SerializeField] private int currentInteractIndex;
+    [SerializeField] private int currentInteractInnerIndex;
     private void Awake()
     {
         currentInteractIndex = 0;
