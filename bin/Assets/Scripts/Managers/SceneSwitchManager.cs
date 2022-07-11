@@ -9,7 +9,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     public enum SceneName
     {
         P_StartScene = 0,
-        P_Girl_room = 1,
+        Girl_room = 1,
         P_Lab_1_1 = 2,
         P_Lab_1_2 = 3,
         P_RestArea = 4,
@@ -64,13 +64,13 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     }
     public void NewGame()
     {
-        SwitchScene(SceneName.P_Girl_room);
+        SwitchScene(SceneName.Girl_room);
         SLManager.Instance.InitSaveData(true);
     }
 
     public void LoadGame()
     {
-        SwitchScene(SceneName.P_Girl_room);
+        SwitchScene(SceneName.Girl_room);
         SLManager.Instance.Load(1);
     }
     public void SwitchScene(SceneName sceneName)

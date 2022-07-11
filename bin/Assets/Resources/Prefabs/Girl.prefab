@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439521919833596216}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.012955743, w: 0.9999161}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -98,8 +98,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 25.335352
-  m_PointLightOuterRadius: 39.30263
+  m_PointLightInnerRadius: 65.078354
+  m_PointLightOuterRadius: 97.754036
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -169,7 +169,7 @@ Transform:
   m_GameObject: {fileID: 1967143027729125128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3684013465169289675}
@@ -311,9 +311,9 @@ MonoBehaviour:
   playerRigidBody: {fileID: 5476571666832849565}
   handLight: {fileID: 6756948220352639934}
   isActive: 1
-  slowWalkSpeed: 100
-  moveSpeed: 300
-  runSpeed: 500
+  slowWalkSpeed: 300
+  moveSpeed: 600
+  runSpeed: 1000
   isMoving: 0
   isRunning: 0
   isSlowWalking: 0
@@ -359,7 +359,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7244459996651285561}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
@@ -433,8 +433,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 52.98
   m_PointLightOuterAngle: 60.98
-  m_PointLightInnerRadius: 155.75612
-  m_PointLightOuterRadius: 223.3497
+  m_PointLightInnerRadius: 220.8432
+  m_PointLightOuterRadius: 403.93622
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

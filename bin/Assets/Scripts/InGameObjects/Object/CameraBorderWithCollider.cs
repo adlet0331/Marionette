@@ -6,14 +6,11 @@
  * 1 씬에 1 개
  * 
  */
-
-namespace InGameObjects.Object
+[RequireComponent(typeof(BoxCollider2D))]
+public class CameraBorderWithCollider : MonoBehaviour
 {
-    public class CameraBorderWithCollider : MonoBehaviour
-    {
-        private void Start()
-        {
-            CameraManager.Instance.SetMap(this.gameObject);
-        }
-    }
+ private void Start()
+ {
+  CameraManager.Instance.SetMap(this.gameObject);
+ }
 }

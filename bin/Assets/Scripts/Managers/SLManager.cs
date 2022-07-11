@@ -100,7 +100,7 @@ public class SLManager : Singleton<SLManager>
     {
         SaveData newData = new SaveData();
 
-        newData.sceneName = SceneSwitchManager.SceneName.P_Girl_room.ToString();
+        newData.sceneName = SceneSwitchManager.SceneName.Girl_room.ToString();
         newData.playerPosX = 0;
         newData.playerPosY = 0;
 

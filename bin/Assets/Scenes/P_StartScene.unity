@@ -473,6 +473,10 @@ MonoBehaviour:
   isRun: 0
   isSlowWalk: 0
   playerMovingComponent: {fileID: 0}
+  mouseCursorWorldX: 0
+  mouseCursorWorldY: 0
+  characterWorldX: 0
+  characterWorldY: 0
 --- !u!1 &53038364
 GameObject:
   m_ObjectHideFlags: 0
@@ -10538,7 +10542,6 @@ GameObject:
   - component: {fileID: 1843908521}
   - component: {fileID: 1843908520}
   - component: {fileID: 1843908519}
-  - component: {fileID: 1843908523}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10636,18 +10639,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1843908523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843908518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed7c86c646cf744c84e7b576553755b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1846734081
 GameObject:
   m_ObjectHideFlags: 0
