@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class GameObjectSetActivate
+namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public GameObject gameObject;
-    public bool isActivating;
-}
-[Serializable]
-public class ObjectSetActivate : AbstractInteractionObject
-{
-    [SerializeField] private List<GameObjectSetActivate> dataList;
-    public override void Interact()
+    [Serializable]
+    public class GameObjectSetActivate
     {
-        foreach (var gameObjectCreateDelete in dataList)
+        public GameObject gameObject;
+        public bool isActivating;
+    }
+    [Serializable]
+    public class ObjectSetActivate : AbstractInteractionObject
+    {
+        [SerializeField] private List<GameObjectSetActivate> dataList;
+        public override void Interact()
         {
-            gameObjectCreateDelete.gameObject.SetActive(gameObjectCreateDelete.isActivating);
+            foreach (var gameObjectCreateDelete in dataList)
+            {
+                gameObjectCreateDelete.gameObject.SetActive(gameObjectCreateDelete.isActivating);
+            }
         }
     }
 }

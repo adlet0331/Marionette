@@ -2,131 +2,138 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DataBaseScripts;
+using InGameObjects.Interaction;
 using Newtonsoft.Json;
 using UnityEngine;
 using Random = System.Random;
 
-public class SLManager : Singleton<SLManager>
+namespace Managers
 {
-    [SerializeField] private SLDataBase sLDataBase;
-
-    [SerializeField] private string currentSaveDataName;
-    [SerializeField] private SaveData currentSaveData;
-
-    [Serializable]
-    public struct SaveData
+    public class SLManager : Singleton<SLManager>
     {
-        // Player Info
-        public string sceneName;
-        public int playerPosX;
-        public int playerPosY;
-        // Settings
-        public string setting;
-        // Inventory
-        public List<ItemData> itemList;
-        // SceneObjects
-        public List<bool> interactObjectStatusList;
-    }
+        [SerializeField] private SLDataBase sLDataBase;
 
-    private void saveCurrentFileAsJson()
-    {
-        string path = Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{currentSaveDataName}.json");
-        File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData));
-    }
+        [SerializeField] private string currentSaveDataName;
+        [SerializeField] private SaveData currentSaveData;
 
-    public void Save()
-    {
-        this.Save(1);
-    }
-    /// <summary>
-    /// Save to slot {index}. Overwrite data
-    /// </summary>
-    /// <param name="index"></param>
-    public void Save(int index) 
-    {
-        Debug.Log("SAVE");
-        string sLDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData.json");
-        TextAsset json = Resources.Load<TextAsset>(sLDataPath);
-        sLDataBase.LoadJson();
-        List<SLData> saveData = sLDataBase.dataList;
-        int slotIndex;
-        for (slotIndex = 0; slotIndex < sLDataBase.dataList.Count; slotIndex++)
+        [Serializable]
+        public struct SaveData
         {
-            // Already Exist
-            if (sLDataBase.dataList[slotIndex].idx == index)
+            // Player Info
+            public string sceneName;
+            public int playerPosX;
+            public int playerPosY;
+            // Settings
+            public string setting;
+            // Inventory
+            public List<ItemData> itemList;
+            // SceneObjects
+            public List<bool> interactingObjectStatusList;
+        }
+
+        private void saveCurrentFileAsJson()
+        {
+            string path = Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{currentSaveDataName}.json");
+            File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData));
+        }
+
+        public void Save()
+        {
+            this.Save(1);
+        }
+        /// <summary>
+        /// Save to slot {index}. Overwrite data
+        /// </summary>
+        /// <param name="index"></param>
+        public void Save(int index) 
+        {
+            Debug.Log("SAVE");
+            string sLDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData.json");
+            TextAsset json = Resources.Load<TextAsset>(sLDataPath);
+            sLDataBase.LoadJson();
+            List<SLData> saveData = sLDataBase.dataList;
+            int slotIndex;
+            for (slotIndex = 0; slotIndex < sLDataBase.dataList.Count; slotIndex++)
             {
-                File.Delete(Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{sLDataBase.dataList[slotIndex].name}.json"));
-                saveCurrentFileAsJson();
-                sLDataBase.dataList[slotIndex].name = currentSaveDataName;
-                File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
-                return;
+                // Already Exist
+                if (sLDataBase.dataList[slotIndex].idx == index)
+                {
+                    File.Delete(Path.Combine(Application.dataPath, "Resources", "IngameData", "SaveData", $"{sLDataBase.dataList[slotIndex].name}.json"));
+                    saveCurrentFileAsJson();
+                    sLDataBase.dataList[slotIndex].name = currentSaveDataName;
+                    File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
+                    return;
+                }
+            }
+            // New
+            saveCurrentFileAsJson();
+            SLData newData = new SLData();
+            newData.idx = slotIndex;
+            newData.name = currentSaveDataName;
+            sLDataBase.dataList.Add(newData);
+            File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
+        }
+
+        public void Load()
+        {
+            this.Load(1);
+        }
+        public void Load(int index)
+        {
+            sLDataBase.LoadJson();
+            currentSaveDataName = sLDataBase.dataList[index].name;
+            string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
+            string json = File.ReadAllText(saveDataPath);
+            Debug.Log(json.ToString());
+            currentSaveData = JsonConvert.DeserializeObject<SaveData>(json.ToString());
+        }
+
+        private string createRandomString(int length)
+        {
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var Charsarr = new char[length];
+            var random = new Random();
+            for (int i = 0; i < Charsarr.Length; i++)
+            {
+                Charsarr[i] = characters[random.Next(characters.Length)];
+            }
+            return new string(Charsarr);
+        }
+        public SaveData InitSaveData(bool setCurrentSaveData)
+        {
+            SaveData newData = new SaveData();
+
+            newData.sceneName = SceneSwitchManager.SceneName.Girl_room.ToString();
+            newData.playerPosX = 0;
+            newData.playerPosY = 0;
+
+            newData.setting = "init";
+        
+            newData.itemList = InventoryManager.Instance.GetItemList();
+
+            newData.interactingObjectStatusList = new List<bool>();
+
+            foreach (InteractionData var in DataBaseManager.Instance.InteractionDataBase.dataList)
+            {
+                newData.interactingObjectStatusList.Add(var.initStatus);
+            }
+
+            if (setCurrentSaveData)
+            {
+                this.currentSaveData = newData;
+                this.currentSaveDataName = createRandomString(10);
+            }
+
+            return newData;
+        }
+
+        public void InitsceneInteractingObjects(InteractingObject[] interactingObjects)
+        {
+            foreach (var interactingObject in interactingObjects)
+            {
+                var gameObjectStatus = this.currentSaveData.interactingObjectStatusList[interactingObject.Idx];
+                interactingObject.gameObject.SetActive(gameObjectStatus);
             }
         }
-        // New
-        saveCurrentFileAsJson();
-        SLData newData = new SLData();
-        newData.idx = slotIndex;
-        newData.name = currentSaveDataName;
-        sLDataBase.dataList.Add(newData);
-        File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
     }
-
-    public void Load()
-    {
-        this.Load(1);
-    }
-    public void Load(int index)
-    {
-        sLDataBase.LoadJson();
-        currentSaveDataName = sLDataBase.dataList[index].name;
-        string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
-        string json = File.ReadAllText(saveDataPath);
-        Debug.Log(json.ToString());
-        currentSaveData = JsonConvert.DeserializeObject<SaveData>(json.ToString());
-    }
-
-    private string createRandomString(int length)
-    {
-        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        var Charsarr = new char[length];
-        var random = new Random();
-        for (int i = 0; i < Charsarr.Length; i++)
-        {
-            Charsarr[i] = characters[random.Next(characters.Length)];
-        }
-        return new string(Charsarr);
-    }
-    public SaveData InitSaveData(bool setCurrentSaveData)
-    {
-        SaveData newData = new SaveData();
-
-        newData.sceneName = SceneSwitchManager.SceneName.Girl_room.ToString();
-        newData.playerPosX = 0;
-        newData.playerPosY = 0;
-
-        newData.setting = "init";
-        
-        newData.itemList = InventoryManager.Instance.GetItemList();
-
-        newData.interactObjectStatusList = new List<bool>();
-
-        foreach (InteractionData var in DataBaseManager.Instance.InteractionDataBase.dataList)
-        {
-            newData.interactObjectStatusList.Add(var.initStatus);
-        }
-
-        if (setCurrentSaveData)
-        {
-            this.currentSaveData = newData;
-            this.currentSaveDataName = createRandomString(10);
-        }
-
-        return newData;
-    }
-
-    private void Update()
-    {
-        
-    }
-
 }

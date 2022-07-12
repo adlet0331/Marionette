@@ -1,19 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemInfoPannel : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Image itemImage;
-    [SerializeField] private Text descriptionText;
-    [SerializeField] private Text nameText;
-
-    public void OpenWindow(string spriteName, string str, string name)
+    public class ItemInfoPannel : MonoBehaviour
     {
-        gameObject.SetActive(true);
-        //itemImage.sprite = itemSprite;
-        descriptionText.text = str;
-        nameText.text = name;
+        [SerializeField] private Image itemImage;
+        [SerializeField] private Text descriptionText;
+        [SerializeField] private Text nameText;
 
-        return;
+        public void OpenWindow(string spriteName, string str, string name)
+        {
+            gameObject.SetActive(true);
+            //itemImage.sprite = itemSprite;
+            descriptionText.text = str;
+            nameText.text = name;
+
+            return;
+        }
     }
 }

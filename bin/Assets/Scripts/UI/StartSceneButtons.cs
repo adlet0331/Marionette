@@ -1,19 +1,23 @@
+using Managers;
 using UnityEngine;
 
-public class StartSceneButtons : MonoBehaviour
+namespace UI
 {
-    public void NewGameButton()
+    public class StartSceneButtons : MonoBehaviour
     {
-        SceneSwitchManager.Instance.SwitchScene(SceneSwitchManager.SceneName.Girl_room);
-    }
+        public void NewGameButton()
+        {
+            SceneSwitchManager.Instance.SwitchScene(SceneSwitchManager.SceneName.Girl_room);
+        }
 
-    public void LoadGameButton()
-    {
+        public void LoadGameButton()
+        {
 
-    }
+        }
 
-    public void SettingButton()
-    {
+        public void SettingButton()
+        {
 
+        }
     }
 }

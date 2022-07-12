@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public abstract class AbstractInteractionObject : MonoBehaviour
+namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public abstract void Interact();
+    public abstract class AbstractInteractionObject : MonoBehaviour
+    {
+        public abstract void Interact();
+    }
 }

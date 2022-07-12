@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using InGameObjects.Interaction.InteractingAdditionalObjects;
+using Managers;
 using UnityEngine;
 
 /* Interact 되는 객체
@@ -16,65 +17,74 @@ using UnityEngine;
     11. 이벤트 - 내부 코드로 대응
  */
 
-[RequireComponent(typeof(BoxCollider2D))]
-public abstract class InteractingObject : MonoBehaviour
+namespace InGameObjects.Interaction
 {
-    [SerializeField] private int idx;
-    [SerializeField] private List<int> dataType;
-    [SerializeField] private List<int> dataIdx;
-    [SerializeField] private List<AbstractInteractionObject> abstractInteractionObjectList;
-
-    [SerializeField] private int currentInteractIndex;
-    [SerializeField] private int currentInteractInnerIndex;
-    private void Awake()
+    [RequireComponent(typeof(BoxCollider2D))]
+    public abstract class InteractingObject : MonoBehaviour
     {
-        currentInteractIndex = 0;
+        [SerializeField] private int idx;
+        [SerializeField] private List<int> dataType;
+        [SerializeField] private List<int> dataIdx;
+        [SerializeField] private List<AbstractInteractionObject> abstractInteractionObjectList;
+
+        [SerializeField] private int currentInteractIndex;
+        [SerializeField] private int currentInteractInnerIndex;
+
+        public int Idx
+        {
+            get => idx;
+        }
+
+        private void Awake()
+        {
+            currentInteractIndex = 0;
         
-        dataType.Clear();
-        dataIdx.Clear();
-        foreach (var data in DataBaseManager.Instance.InteractionDataBase.dataList[idx].typeList)
-        {
-            dataType.Add(data);
+            dataType.Clear();
+            dataIdx.Clear();
+            foreach (var data in DataBaseManager.Instance.InteractionDataBase.dataList[idx].typeList)
+            {
+                dataType.Add(data);
+            }
+            foreach (var data in DataBaseManager.Instance.InteractionDataBase.dataList[idx].idxList)
+            {
+                dataIdx.Add(data);
+            }
         }
-        foreach (var data in DataBaseManager.Instance.InteractionDataBase.dataList[idx].idxList)
-        {
-            dataIdx.Add(data);
-        }
-    }
 
-    public void Interact()
-    {
+        public void Interact()
+        {
         
-    }
+        }
 
-    private void Interact(int idx)
-    {
-        // 대사 Script
-        if (dataType[idx] == 3)
+        private void Interact(int idx)
         {
+            // 대사 Script
+            if (dataType[idx] == 3)
+            {
             
-        }
-        // 선택지 Choose
-        else if (dataType[idx] == 4)
-        {
+            }
+            // 선택지 Choose
+            else if (dataType[idx] == 4)
+            {
             
-        }
-        // 잠김 Lock
-        else if (dataType[idx] == 10)
-        {
+            }
+            // 잠김 Lock
+            else if (dataType[idx] == 10)
+            {
             
-        }
-        // 이벤트 Event
-        else if (dataType[idx] == 11)
-        {
+            }
+            // 이벤트 Event
+            else if (dataType[idx] == 11)
+            {
             
-        }
-        // InteractionObject 실행
-        else
-        {
-            Debug.Assert(abstractInteractionObjectList.Count == currentInteractIndex + 1);
+            }
+            // InteractionObject 실행
+            else
+            {
+                Debug.Assert(abstractInteractionObjectList.Count == currentInteractIndex + 1);
             
-            abstractInteractionObjectList[currentInteractIndex++].Interact();
+                abstractInteractionObjectList[currentInteractIndex++].Interact();
+            }
         }
     }
 }

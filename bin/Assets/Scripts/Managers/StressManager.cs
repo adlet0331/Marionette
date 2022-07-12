@@ -1,14 +1,16 @@
-using System;
 using UnityEngine;
 
-public class StressManager : Singleton<StressManager>
+namespace Managers
 {
-    [SerializeField] private float _stress = 0;
-    public float Stress => _stress;
-
-    public float AddStress(float val)
+    public class StressManager : Singleton<StressManager>
     {
-        _stress += val;
-        return _stress;
+        [SerializeField] private float _stress = 0;
+        public float Stress => _stress;
+
+        public float AddStress(float val)
+        {
+            _stress += val;
+            return _stress;
+        }
     }
 }

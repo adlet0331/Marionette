@@ -1,20 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Managers;
 using UnityEngine;
 
 /*
  * 씬에 있는 메인 카메라
  */
-public class CameraObject : MonoBehaviour
+namespace InGameObjects.Object
 {
-    [SerializeField] private bool isMainCamera;
-    private void Start()
+    public class CameraObject : MonoBehaviour
     {
-        if (isMainCamera)
+        [SerializeField] private bool isMainCamera;
+        private void Start()
         {
-            CameraManager.Instance.SetCamera(this.GetComponent<Camera>());
-            if (SceneObjManager.Instance.canvas)
-                SceneObjManager.Instance.canvas.GetComponent<Canvas>().worldCamera = this.GetComponent<Camera>();
+            if (isMainCamera)
+            {
+                CameraManager.Instance.SetCamera(this.GetComponent<Camera>());
+                if (SceneObjManager.Instance.canvas)
+                    SceneObjManager.Instance.canvas.GetComponent<Canvas>().worldCamera = this.GetComponent<Camera>();
+            }
         }
     }
 }

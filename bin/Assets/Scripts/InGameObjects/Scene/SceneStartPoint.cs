@@ -1,31 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Managers;
 using UnityEngine;
-using static SceneSwitchManager;
+using static Managers.SceneSwitchManager;
 
 /*
  * 플레이어가 시작하는 좌표를 지정해주는 오브젝트
  * 
  */
 
-public class SceneStartPoint : MonoBehaviour
+namespace InGameObjects.Scene
 {
-    [SerializeField] private SceneName beforeSceneName;
-    public enum StartPointType
+    public class SceneStartPoint : MonoBehaviour
     {
-        Player = 0,
-        Doll1 = 1,
-    }
-    [SerializeField] private StartPointType thisType;
-    public StartPointType GetObjType()
-    {
-        return thisType;
-    }
-    private void Start()
-    {
-        if (beforeSceneName == SceneSwitchManager.Instance.beforeScene)
+        [SerializeField] private SceneName beforeSceneName;
+        public enum StartPointType
         {
-            SceneObjManager.Instance.UpdatePlayerPos(this.transform.position);
+            Player = 0,
+            Doll1 = 1,
+        }
+        [SerializeField] private StartPointType thisType;
+        public StartPointType GetObjType()
+        {
+            return thisType;
+        }
+        private void Start()
+        {
+            if (beforeSceneName == SceneSwitchManager.Instance.beforeScene)
+            {
+                SceneObjManager.Instance.UpdatePlayerPos(this.transform.position);
+            }
         }
     }
 }

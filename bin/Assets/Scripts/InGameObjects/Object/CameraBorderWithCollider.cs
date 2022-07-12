@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Managers;
+using UnityEngine;
 
 /*
  * Map 오브젝트
@@ -6,11 +7,14 @@
  * 1 씬에 1 개
  * 
  */
-[RequireComponent(typeof(BoxCollider2D))]
-public class CameraBorderWithCollider : MonoBehaviour
+namespace InGameObjects.Object
 {
- private void Start()
+ [RequireComponent(typeof(BoxCollider2D))]
+ public class CameraBorderWithCollider : MonoBehaviour
  {
-  CameraManager.Instance.SetMap(this.gameObject);
+  private void Start()
+  {
+   CameraManager.Instance.SetMap(this.gameObject);
+  }
  }
 }

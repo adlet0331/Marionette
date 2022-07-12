@@ -1,13 +1,16 @@
-﻿using DataBaseScripts;
-using InGameObjects.Object;
+﻿using InGameObjects.Interaction;
+using Managers;
 using UnityEngine;
 
-public class AnimaObject : InteractionObject
+namespace InGameObjects.Object
 {
-    [SerializeField] private int idx = 0;
-    [SerializeField] private int upCount = 1;
-    public void Interact()
+    public class AnimaObject : InteractionObject
     {
-        AnimaAbilityManager.Instance.IncrementAnimaAbility(idx, upCount);
+        [SerializeField] private int idx = 0;
+        [SerializeField] private int upCount = 1;
+        public void Interact()
+        {
+            AnimaAbilityManager.Instance.IncrementAnimaAbility(idx, upCount);
+        }
     }
 }

@@ -1,11 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using InGameObjects.Object;
 
-public class MovingAnimaControllManager : Singleton<MovingAnimaControllManager>
+namespace Managers
 {
-    public MovingObject ControllingMainAnima;
-    public List<MovingObject> ControllingSubAnimasList;
+    public class MovingAnimaControllManager : Singleton<MovingAnimaControllManager>
+    {
+        public MovingObject ControllingMainAnima;
+        public List<MovingObject> ControllingSubAnimasList;
     
     
+    }
 }

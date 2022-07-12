@@ -1,16 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class Wrapper<T>
+namespace SerializableManager
 {
-    public T[] resources;
-}
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
+    [Serializable]
+    public class Wrapper<T>
     {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.resources;
+        public T[] resources;
+    }
+    public static class JsonHelper
+    {
+        public static T[] FromJson<T>(string json)
+        {
+            Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+            return wrapper.resources;
+        }
     }
 }

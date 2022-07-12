@@ -1,30 +1,34 @@
+using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProfileWindow : WindowObject
+namespace UI
 {
-    [SerializeField] private Slot equipedItemSlot;
-    [SerializeField] private Image profileImage;
-
-    [SerializeField] private int equipedItemIdx = -1;
-    //[SerializeField] private int currentStatus = -1;
-
-    private void updateEquipedSlot()
+    public class ProfileWindow : WindowObject
     {
-        equipedItemSlot.SetSlotStatus(false, false);
-    }
+        [SerializeField] private Slot equipedItemSlot;
+        [SerializeField] private Image profileImage;
 
-    public void UpdateEquipItem(int itemIdx)
-    {
-        equipedItemIdx = itemIdx;
-        if (equipedItemIdx >= 0)
-            equipedItemSlot.SetImage(InventoryManager.Instance.GetItem(itemIdx).spriteName);
-        else
-            equipedItemSlot.SetImage(null);
-    }
+        [SerializeField] private int equipedItemIdx = -1;
+        //[SerializeField] private int currentStatus = -1;
 
-    public override void Activate()
-    {
-        return;
+        private void updateEquipedSlot()
+        {
+            equipedItemSlot.SetSlotStatus(false, false);
+        }
+
+        public void UpdateEquipItem(int itemIdx)
+        {
+            equipedItemIdx = itemIdx;
+            if (equipedItemIdx >= 0)
+                equipedItemSlot.SetImage(InventoryManager.Instance.GetItem(itemIdx).spriteName);
+            else
+                equipedItemSlot.SetImage(null);
+        }
+
+        public override void Activate()
+        {
+            return;
+        }
     }
 }

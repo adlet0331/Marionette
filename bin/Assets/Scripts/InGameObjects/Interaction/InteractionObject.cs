@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Managers;
+using UnityEngine;
 
-namespace InGameObjects.Object
+namespace InGameObjects.Interaction
 {
     public class InteractionObject : InteractingObject
     {

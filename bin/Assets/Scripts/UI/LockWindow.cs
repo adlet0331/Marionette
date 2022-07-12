@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LockWindow : WindowObject
+namespace UI
 {
-    public override void Activate()
+    public class LockWindow : WindowObject
     {
-        return;
+        public override void Activate()
+        {
+            return;
+        }
     }
 }

@@ -1,12 +1,16 @@
 ﻿using System;
+using Managers;
 using UnityEngine;
 
-[Serializable]
-public class StressControl : AbstractInteractionObject
+namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    [SerializeField] private int stressAddNum;
-    public override void Interact()
+    [Serializable]
+    public class StressControl : AbstractInteractionObject
     {
-        StressManager.Instance.AddStress(stressAddNum);
+        [SerializeField] private int stressAddNum;
+        public override void Interact()
+        {
+            StressManager.Instance.AddStress(stressAddNum);
+        }
     }
 }

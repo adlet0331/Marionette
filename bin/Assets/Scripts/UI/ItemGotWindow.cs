@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /*
@@ -9,12 +7,15 @@ using UnityEngine.UI;
  * 5초 동안 냅두면 닫힘
  * 
  */
-public class ItemGotWindow : WindowObject
+namespace UI
 {
-    [SerializeField] private Text nameText;
-    [SerializeField] private Text infoText;
-    public override void Activate()
+    public class ItemGotWindow : WindowObject
     {
-        return;
+        [SerializeField] private Text nameText;
+        [SerializeField] private Text infoText;
+        public override void Activate()
+        {
+            return;
+        }
     }
 }

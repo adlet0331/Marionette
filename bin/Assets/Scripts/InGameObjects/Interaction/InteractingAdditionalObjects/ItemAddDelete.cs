@@ -1,30 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
-[Serializable]
-public class ItemAddDeleteData
+namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public int itemIdx;
-    public int num;
-    public bool isAdding;
-}
-
-[Serializable]
-public class ItemAddDelete : AbstractInteractionObject
-{
-    [SerializeField] private List<ItemAddDeleteData> dataList;
-    public override void Interact()
+    [Serializable]
+    public class ItemAddDeleteData
     {
-        foreach (var itemAddDeleteData in dataList)
+        public int itemIdx;
+        public int num;
+        public bool isAdding;
+    }
+
+    [Serializable]
+    public class ItemAddDelete : AbstractInteractionObject
+    {
+        [SerializeField] private List<ItemAddDeleteData> dataList;
+        public override void Interact()
         {
-            if (itemAddDeleteData.isAdding)
+            foreach (var itemAddDeleteData in dataList)
             {
-                InventoryManager.Instance.AddItem(itemAddDeleteData.itemIdx, itemAddDeleteData.num);
-            }
-            else
-            {
-                InventoryManager.Instance.DeleteItem(itemAddDeleteData.itemIdx, itemAddDeleteData.num);
+                if (itemAddDeleteData.isAdding)
+                {
+                    InventoryManager.Instance.AddItem(itemAddDeleteData.itemIdx, itemAddDeleteData.num);
+                }
+                else
+                {
+                    InventoryManager.Instance.DeleteItem(itemAddDeleteData.itemIdx, itemAddDeleteData.num);
+                }
             }
         }
     }

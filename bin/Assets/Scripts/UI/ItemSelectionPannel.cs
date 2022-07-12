@@ -1,51 +1,54 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemSelectionPannel : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private bool isEquip;
-    [SerializeField] private int currentSelection;
-    [SerializeField] private Text EquipOrUn; 
-    [SerializeField] private GameObject AvalibleImage1;
-    [SerializeField] private GameObject AvalibleImage2;
-    [SerializeField] private GameObject AvalibleImage3;
-
-    public void UpdateUI(int currentSelection)
+    public class ItemSelectionPannel : MonoBehaviour
     {
-        AvalibleImage1.gameObject.SetActive(false);
-        AvalibleImage2.gameObject.SetActive(false);
-        AvalibleImage3.gameObject.SetActive(false);
+        [SerializeField] private bool isEquip;
+        [SerializeField] private int currentSelection;
+        [SerializeField] private Text equipOrUn; 
+        [SerializeField] private GameObject avaliableImage1;
+        [SerializeField] private GameObject avaliableImage2;
+        [SerializeField] private GameObject avaliableImage3;
 
-        if (currentSelection == 0)
+        public void UpdateUI(int currentSelection)
         {
-            AvalibleImage1.gameObject.SetActive(true);
+            avaliableImage1.gameObject.SetActive(false);
+            avaliableImage2.gameObject.SetActive(false);
+            avaliableImage3.gameObject.SetActive(false);
+
+            if (currentSelection == 0)
+            {
+                avaliableImage1.gameObject.SetActive(true);
+            }
+            else if (currentSelection == 1)
+            {
+                avaliableImage2.gameObject.SetActive(true);
+            }
+            else if (currentSelection == 2)
+            {
+                avaliableImage3.gameObject.SetActive(true);
+            }
+
+            this.currentSelection = currentSelection;
+            return;
         }
-        else if (currentSelection == 1)
+
+        public void UpdatePannel(bool bl)
         {
-            AvalibleImage2.gameObject.SetActive(true);
+            isEquip = bl;
+
+            setEquipText();
         }
-        else if (currentSelection == 2)
+
+        private void setEquipText()
         {
-            AvalibleImage3.gameObject.SetActive(true);
+            if (isEquip)
+                equipOrUn.text = "장착";
+            else
+                equipOrUn.text = "해제";
+            return;
         }
-
-        this.currentSelection = currentSelection;
-        return;
-    }
-
-    public void UpdatePannel(bool bl)
-    {
-        isEquip = bl;
-
-        setEquipText();
-    }
-
-    private void setEquipText()
-    {
-        if (isEquip)
-            EquipOrUn.text = "장착";
-        else
-            EquipOrUn.text = "해제";
-        return;
     }
 }

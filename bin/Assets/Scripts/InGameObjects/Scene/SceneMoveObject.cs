@@ -1,16 +1,21 @@
+using InGameObjects.Interaction;
+using Managers;
 using UnityEngine;
-using static SceneSwitchManager;
+using static Managers.SceneSwitchManager;
 
-public class SceneMoveObject : ColliderObject
+namespace InGameObjects.Scene
 {
-    [SerializeField] private SceneName sceneName;
-    public override void InteractIn()
+    public class SceneMoveObject : ColliderObject
     {
-        SceneSwitchManager.Instance.SwitchScene(sceneName);
-    }
+        [SerializeField] private SceneName sceneName;
+        public override void InteractIn()
+        {
+            SceneSwitchManager.Instance.SwitchScene(sceneName);
+        }
 
-    public override void InteractOut()
-    {
-        return;
+        public override void InteractOut()
+        {
+            return;
+        }
     }
 }

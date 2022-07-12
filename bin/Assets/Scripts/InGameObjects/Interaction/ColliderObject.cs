@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /* 
  * BoxCollider 가지고 있는 애 (Trigger 꺼져있는)
@@ -8,25 +6,28 @@ using UnityEngine;
  * 
  */
 
-[RequireComponent(typeof(BoxCollider2D))]
-public abstract class ColliderObject : InteractingObject
+namespace InGameObjects.Interaction
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    [RequireComponent(typeof(BoxCollider2D))]
+    public abstract class ColliderObject : InteractingObject
     {
-        if(collision.gameObject.tag == "Player")
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            InteractIn();
+            if(collision.gameObject.tag == "Player")
+            {
+                InteractIn();
+            }
         }
-    }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        private void OnCollisionExit2D(Collision2D collision)
         {
-            InteractOut();
+            if (collision.gameObject.tag == "Player")
+            {
+                InteractOut();
+            }
         }
-    }
 
-    public abstract void InteractIn();
-    public abstract void InteractOut();
+        public abstract void InteractIn();
+        public abstract void InteractOut();
+    }
 }
