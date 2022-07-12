@@ -8,14 +8,8 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
 {
     public enum SceneName
     {
-        P_StartScene = 0,
+        StartScene = 0,
         Girl_room = 1,
-        P_Lab_1_1 = 2,
-        P_Lab_1_2 = 3,
-        P_RestArea = 4,
-        P_Prison1 = 5,
-        P_Control1 = 6,
-        P_Corrider = 7,
     }
     [Serializable]
     public class SceneInfo
@@ -36,7 +30,7 @@ public class SceneSwitchManager : Singleton<SceneSwitchManager>
     [SerializeField] private List<SceneInfo> sceneInfoList;
     private void Start()
     {
-        currentScene = SceneName.P_StartScene;
+        currentScene = SceneName.StartScene;
         newGameButton.onClick.AddListener(NewGame);
         loadButton.onClick.AddListener(LoadGame);
     }
