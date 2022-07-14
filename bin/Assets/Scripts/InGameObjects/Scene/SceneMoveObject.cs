@@ -1,21 +1,19 @@
-using InGameObjects.Interaction;
 using Managers;
 using UnityEngine;
 using static Managers.SceneSwitchManager;
 
 namespace InGameObjects.Scene
 {
-    public class SceneMoveObject : ColliderObject
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class SceneMoveObject : MonoBehaviour
     {
         [SerializeField] private SceneName sceneName;
-        public override void InteractIn()
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            SceneSwitchManager.Instance.SwitchScene(sceneName);
-        }
-
-        public override void InteractOut()
-        {
-            return;
+            if(collision.gameObject.CompareTag("Player"))
+            {
+                SceneSwitchManager.Instance.SwitchScene(sceneName);
+            }
         }
     }
 }

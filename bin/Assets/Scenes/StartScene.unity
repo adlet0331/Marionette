@@ -5749,7 +5749,7 @@ MonoBehaviour:
     playerPosY: 0
     setting: 
     itemList: []
-    interactObjectStatusList: 
+    interactingObjectStatusList: 
 --- !u!1 &1010988788
 GameObject:
   m_ObjectHideFlags: 0
@@ -10064,11 +10064,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb833507fbd21948a2d31a2437ae2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InScriptDataBase: {fileID: 11400000, guid: b6abfc2e447c47f45bb51afbe9246516, type: 2}
-  InChooseDataBase: {fileID: 11400000, guid: 452f032a92494fc48a3199823f2a3b9d, type: 2}
-  InLockDataBase: {fileID: 11400000, guid: e5bb0aff0226aa04dbc7332c1a126908, type: 2}
-  InteractionDataBase: {fileID: 11400000, guid: 252a25c75e2eb9546a183c59845ba006, type: 2}
-  ItemDataBase: {fileID: 11400000, guid: abc1ac2e67230264d8d6ba07114bccbe, type: 2}
+  scriptDataBase: {fileID: 11400000, guid: a4009fbf709924947894bd7335873f83, type: 2}
+  chooseDataBase: {fileID: 11400000, guid: f49728ed1884da1448886bfc47a36e68, type: 2}
+  itemControlDataBase: {fileID: 11400000, guid: 0fb8029ccc9d6be4ab537c41e9e04f16, type: 2}
+  stressControlDataBase: {fileID: 11400000, guid: 8eef5771af505f74dbddb27293f64bf9, type: 2}
+  lockDataBase: {fileID: 11400000, guid: 030f6ca87ef78594aaf575bca002aee4, type: 2}
+  interactionDataBase: {fileID: 11400000, guid: 252a25c75e2eb9546a183c59845ba006, type: 2}
+  itemDataBase: {fileID: 11400000, guid: abc1ac2e67230264d8d6ba07114bccbe, type: 2}
 --- !u!1 &1738916973
 GameObject:
   m_ObjectHideFlags: 0
@@ -10490,10 +10492,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEquip: 0
   currentSelection: 0
-  EquipOrUn: {fileID: 0}
-  AvalibleImage1: {fileID: 0}
-  AvalibleImage2: {fileID: 0}
-  AvalibleImage3: {fileID: 0}
+  equipOrUn: {fileID: 0}
+  avaliableImage1: {fileID: 0}
+  avaliableImage2: {fileID: 0}
+  avaliableImage3: {fileID: 0}
 --- !u!1 &1843908518
 GameObject:
   m_ObjectHideFlags: 0

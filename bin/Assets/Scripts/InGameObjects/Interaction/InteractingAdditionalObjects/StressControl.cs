@@ -1,11 +1,10 @@
-﻿using System;
+﻿using DataBaseScripts;
 using Managers;
 using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    [Serializable]
-    public class StressControl : AbstractInteractionObject
+    public class StressControl : IInteractionObject<StressControlData>
     {
         [SerializeField] private int stressAddNum;
         public override void Interact()

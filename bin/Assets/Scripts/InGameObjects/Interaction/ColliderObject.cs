@@ -9,25 +9,14 @@
 namespace InGameObjects.Interaction
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public abstract class ColliderObject : InteractingObject
+    public class ColliderObject : InteractingObject
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if(collision.gameObject.tag == "Player")
+            if(collision.gameObject.CompareTag("Player"))
             {
-                InteractIn();
+                Interact();
             }
         }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                InteractOut();
-            }
-        }
-
-        public abstract void InteractIn();
-        public abstract void InteractOut();
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using DataBaseScripts.Base;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
 using Managers;
 using UnityEngine;
@@ -11,7 +14,7 @@ using UnityEngine;
 5. 이동 - Teleport
 6. 애니메이션 - Animation
 7. 카메라 워크 - CameraWalk
-        8. 아이템 획득, 삭제 - ItemAddDelete
+        8. 아이템 획득, 삭제 - ItemControl
         9. 스트레스 수치 조정 - StressControl
     10. 잠김 - Lock
     11. 이벤트 - 내부 코드로 대응
@@ -25,7 +28,7 @@ namespace InGameObjects.Interaction
         [SerializeField] private int idx;
         [SerializeField] private List<int> dataType;
         [SerializeField] private List<int> dataIdx;
-        [SerializeField] private List<AbstractInteractionObject> abstractInteractionObjectList;
+        [SerializeField] private List<GameObject> interactingObjectList;
 
         [SerializeField] private int currentInteractIndex;
         [SerializeField] private int currentInteractInnerIndex;
@@ -41,11 +44,11 @@ namespace InGameObjects.Interaction
         
             dataType.Clear();
             dataIdx.Clear();
-            foreach (var data in DataBaseManager.Instance.InteractionDataBase.dataList[idx].typeList)
+            foreach (var data in DataBaseManager.Instance.interactionDataBase.dataList[idx].typeList)
             {
                 dataType.Add(data);
             }
-            foreach (var data in DataBaseManager.Instance.InteractionDataBase.dataList[idx].idxList)
+            foreach (var data in DataBaseManager.Instance.interactionDataBase.dataList[idx].idxList)
             {
                 dataIdx.Add(data);
             }
@@ -61,30 +64,48 @@ namespace InGameObjects.Interaction
             // 대사 Script
             if (dataType[idx] == 3)
             {
-            
+                interactingObjectList[idx].GetComponent<ScriptControl>().Interact();
             }
             // 선택지 Choose
             else if (dataType[idx] == 4)
             {
-            
+                interactingObjectList[idx].GetComponent<ChooseControl>().Interact();
+            }
+            // ItemControl
+            else if (dataType[idx] == 8)
+            {
+                interactingObjectList[idx].GetComponent<ItemControl>().Interact();
+            }
+            // Stress Control
+            else if (dataType[idx] == 9)
+            {
+                interactingObjectList[idx].GetComponent<ScriptControl>().Interact();
             }
             // 잠김 Lock
             else if (dataType[idx] == 10)
             {
-            
+                interactingObjectList[idx].GetComponent<LockObject>().Interact();
             }
             // 이벤트 Event
             else if (dataType[idx] == 11)
             {
-            
+                throw new NotImplementedException();
             }
-            // InteractionObject 실행
+            // IInteractionObject 실행
             else
             {
-                Debug.Assert(abstractInteractionObjectList.Count == currentInteractIndex + 1);
-            
-                abstractInteractionObjectList[currentInteractIndex++].Interact();
+                throw new InteractTypeNotDefinedException(this.idx, idx);
             }
+        }
+        
+        public class InteractTypeNotDefinedException : Exception
+        {
+            public InteractTypeNotDefinedException(int idx, int datatype)
+            {
+                Message = $"Interact DataType {datatype} is not defined. Check InteractionDataBase Data idx : {idx}";
+            }
+
+            public override string Message { get; }
         }
     }
 }

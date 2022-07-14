@@ -19,7 +19,7 @@ namespace UI
     {
         [SerializeField] private Text NameText;
         [SerializeField] private Text ScriptText;
-        [SerializeField] private InScriptData currObj = null;
+        [SerializeField] private ScriptData currObj = null;
         [SerializeField] private int currentScriptIdx = -1;
         [SerializeField] private int currentScriptLength;
         private IEnumerator currentCoroutine;
@@ -29,7 +29,7 @@ namespace UI
         {
             this.OpenWindow();
 
-            currObj = DataBaseManager.Instance.InScriptDataBase.dataList[idx];
+            currObj = DataBaseManager.Instance.scriptDataBase.dataList[idx];
             currentScriptIdx = 0;
             currentScriptLength = currObj.scriptList.Count;
 

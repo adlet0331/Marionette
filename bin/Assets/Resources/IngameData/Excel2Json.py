@@ -11,26 +11,20 @@ SAVE_FILE_PATH = 'Json'
 ROW_INDEX = 'B1'
 COLUMN_INDEX = 'C1'
 START_ALPHABET = 'B'
-SELECTING_KEY = ',,,'
+SELECTING_KEY = ',,,\n'
 KEY_START_NUM = 3
 DATA_START_NUM = 5
 AV_DATA_TYPE_STR = ["int", "string", "bool", "int[]", "string[]", "bool[]"]
-
-def deleteFirstLineBreak(string):
-    if string[0] == '\n':
-        return string[1:]
-    else:
-        return string
 
 def getData(typestr, data):
     if typestr == "int":
         return int(data)
     if typestr == "string":
-        return deleteFirstLineBreak(str(data))
+        return str(data)
     if typestr == "bool":
         if data == "true" or data == "1" or data == "True" or data == "TRUE" or data == 1:
             return True
-        if data == "False" or data == "0" or data == "false":
+        if data == "False" or data == "0" or data == "false" or data == "FALSE":
             return False
         else:
             print("Data \"" + str(data) + "\" is converted to \"False\"")
@@ -38,7 +32,7 @@ def getData(typestr, data):
     if typestr == "int[]":
         return list(map(lambda x: getData("int", x), str(data).split(SELECTING_KEY)))
     if typestr == "string[]":
-        return list(map(lambda x: getData("string", deleteFirstLineBreak(x)), str(data).split(SELECTING_KEY)))
+        return list(map(lambda x: getData("string", str(x)), str(data).split(SELECTING_KEY)))
     if typestr == "bool[]":
         return list(map(lambda x: getData("bool", x), str(data).split(SELECTING_KEY)))
 

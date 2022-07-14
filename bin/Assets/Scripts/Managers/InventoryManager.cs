@@ -29,7 +29,7 @@ namespace Managers
         }
         public void AddItem(int itemIdx, int num)
         {
-            var item = DataBaseManager.Instance.ItemDataBase.dataList[itemIdx];
+            var item = DataBaseManager.Instance.itemDataBase.dataList[itemIdx];
             for (int i = 0; i < num; i++)
             {
                 itemList.Add(item);

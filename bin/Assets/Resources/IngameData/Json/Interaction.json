@@ -2,12 +2,22 @@
     {
         "idx": 0,
         "idxList": [
+            0,
+            0,
+            0,
+            0,
+            0,
             0
         ],
         "initStatus": true,
         "name": "\ub354\ubbf8",
         "typeList": [
-            3
+            2,
+            3,
+            4,
+            8,
+            9,
+            10
         ]
     }
 ]

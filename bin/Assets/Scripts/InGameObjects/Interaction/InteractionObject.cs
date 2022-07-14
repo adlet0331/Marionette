@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction
 {
-    public class InteractionObject : InteractingObject
+    public sealed class InteractionObject : InteractingObject
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.CompareTag("Player"))
             {
                 PlayerManager.Instance.interactingPlayer.AddInteractionList(this);
             }
@@ -15,7 +15,7 @@ namespace InGameObjects.Interaction
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.CompareTag("Player"))
             {
                 PlayerManager.Instance.interactingPlayer.RemoveInteractionObj(this);
             }

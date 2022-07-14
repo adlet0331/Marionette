@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataBaseScripts.Base;
 using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
@@ -10,13 +11,18 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         public GameObject gameObject;
         public bool isActivating;
     }
+
     [Serializable]
-    public class ObjectSetActivate : AbstractInteractionObject
+    public class GameObjectSetActiveList : DataType
     {
-        [SerializeField] private List<GameObjectSetActivate> dataList;
+        public List<GameObjectSetActivate> gameObjectSetActivateList;
+    }
+    [Serializable]
+    public class ObjectSetActivate : IInteractionObject<GameObjectSetActiveList>
+    {
         public override void Interact()
         {
-            foreach (var gameObjectCreateDelete in dataList)
+            foreach (var gameObjectCreateDelete in data.gameObjectSetActivateList)
             {
                 gameObjectCreateDelete.gameObject.SetActive(gameObjectCreateDelete.isActivating);
             }
