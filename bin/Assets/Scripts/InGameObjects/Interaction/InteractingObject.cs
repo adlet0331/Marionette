@@ -68,6 +68,11 @@ namespace InGameObjects.Interaction
 
         private void Interact(int idx)
         {
+            // GameObject 생성/제거
+            if (dataType[idx] == 2)
+            {
+                interactingObjectList[idx].GetComponent<ObjectSetActivate>().Interact();
+            }
             // 대사 Script
             if (dataType[idx] == 3)
             {

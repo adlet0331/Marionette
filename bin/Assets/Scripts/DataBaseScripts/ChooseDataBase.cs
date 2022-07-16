@@ -14,7 +14,7 @@ namespace DataBaseScripts
         public List<int> interactionList;
     }
 
-    [CreateAssetMenu(fileName = "4_ChooseDataDataBase", menuName = "ScriptableObjects/4.ChooseDataDataBase", order = 4)]
+    [CreateAssetMenu(fileName = "4_ChooseDataBase", menuName = "ScriptableObjects/4.ChooseDataBase", order = 4)]
     public class ChooseDataBase : DataBase<ChooseData>
     {
     }

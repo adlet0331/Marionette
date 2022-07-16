@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0225781fb80bc8440b068704d1911253, type: 3}
-  m_Name: 4_ChooseDataDataBase
+  m_Name: 4_ChooseDataBase
   m_EditorClassIdentifier: 
   databaseName: 4.Choose
   dataList: []
