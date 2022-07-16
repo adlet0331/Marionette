@@ -38,6 +38,13 @@ namespace InGameObjects.Interaction
             get => idx;
         }
 
+        public void Initiate(int index, List<int> typeList, List<int> idxList)
+        {
+            idx = index;
+            dataType = typeList;
+            dataIdx = idxList;
+        }
+
         private void Awake()
         {
             currentInteractIndex = 0;
@@ -102,7 +109,7 @@ namespace InGameObjects.Interaction
         {
             public InteractTypeNotDefinedException(int idx, int datatype)
             {
-                Message = $"Interact DataType {datatype} is not defined. Check InteractionDataBase Data idx : {idx}";
+                Message = $"Interact DataType {datatype} is not defined. Check InteractionDataBase Data index : {idx}";
             }
 
             public override string Message { get; }
