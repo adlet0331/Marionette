@@ -11,6 +11,7 @@ namespace DataBaseScripts
     {
         public List<int> typeList;
         public List<int> idxList;
+        public List<bool> goNextImmediately;
         public bool initStatus;
     }
     

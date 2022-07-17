@@ -44,8 +44,11 @@ namespace Tools
         
         public int idx = 0;
         public InteractionObjectType type;
-        [SerializeField] private string interactionObjectName;
         
+        // For Showing
+        [SerializeField] private string interactionObjectName;
+        [SerializeField] private List<string> ControlObjectNameList;
+
         [MenuItem("CustomTools/CreateInteractionObject")]
         static void Open()
         {
@@ -103,6 +106,14 @@ namespace Tools
             InteractionData interactionData = InteractionDataBase.dataList[idx];
 
             interactionObjectName = interactionData.name;
+            for (int i = 0; i < interactionData.typeList.Count; i++)
+            {
+                int type = interactionData.typeList[i];
+                int index = interactionData.idxList[i];
+  
+                string name = type + "." + interactionData.name + "_" + index;
+                ControlObjectNameList.Add(name);
+            }
         }
 
         private void OnWizardCreate()
@@ -117,7 +128,7 @@ namespace Tools
             interactingObject.name = interactionData.name;
             
             InteractingObject interactionObjectScript = interactingObject.GetComponent<InteractingObject>();
-            interactionObjectScript.Initiate(idx, interactionData.typeList, interactionData.idxList);
+            interactionObjectScript.Initiate(idx, interactionData.typeList, interactionData.goNextImmediately);
 
             GameObject prefabObject;
             for (int i = 0; i < interactionData.typeList.Count; i++)
@@ -125,8 +136,9 @@ namespace Tools
                 int type = interactionData.typeList[i];
                 int index = interactionData.idxList[i];
                 prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[type])), interactingObject.transform, true);
-
-                prefabObject.name = type + "." + interactionData.name + "_" + interactionData.idx;
+                
+                prefabObject.name = type + "." + interactionData.name + "_" + index;
+                ControlObjectNameList.Add(prefabObject.name);
                 setInteractingObject(prefabObject, type, index);
                 interactionObjectScript.AddInteractingObject(prefabObject); 
             }

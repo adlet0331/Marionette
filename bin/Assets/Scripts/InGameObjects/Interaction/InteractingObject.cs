@@ -28,7 +28,7 @@ namespace InGameObjects.Interaction
     {
         [SerializeField] private int idx;
         [SerializeField] private List<int> dataType;
-        [SerializeField] private List<int> dataIdx;
+        [SerializeField] private List<bool> goNextImmediatly;
         [SerializeField] private List<GameObject> interactingObjectList;
 
         [SerializeField] private int currentInteractIndex = 0;
@@ -43,11 +43,11 @@ namespace InGameObjects.Interaction
             interactingObjectList.Add(gameObject);
         }
 
-        public void Initiate(int index, List<int> typeList, List<int> idxList)
+        public void Initiate(int index, List<int> typeList, List<bool> goNextList)
         {
             idx = index;
             dataType = typeList;
-            dataIdx = idxList;
+            goNextImmediatly = goNextList;
         }
 
         public void Interact()
@@ -101,6 +101,13 @@ namespace InGameObjects.Interaction
                 {
                     currentInteractIndex = 0;
                     PlayerManager.Instance.interactingPlayer.UnblockInteract();
+                    return;
+                }
+                
+                Interact();
+                if (goNextImmediatly[currentInteractIndex - 1])
+                {
+                    Interact();
                 }
             }
             else
