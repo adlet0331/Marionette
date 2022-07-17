@@ -4,7 +4,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
     public class ChooseControl : IInteractionObject<ChooseData>
     {
-        public override void Interact()
+        public override bool Interact()
         {
             throw new System.NotImplementedException();
         }

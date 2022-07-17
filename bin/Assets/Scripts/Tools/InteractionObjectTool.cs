@@ -12,15 +12,18 @@ namespace Tools
 {
     public class InteractionObjectTool : ScriptableWizard
     {
-        public InteractionDataBase InteractionDataBase;
-        public ScriptDataBase ScriptDataBase;
-        public ChooseDataBase ChooseDataBase;
-        public ItemControlDataBase ItemControlDataBase;
-        public StressControlDataBase StressControlDataBase;
-        public LockDataBase LockDataBase;
-        
-        public int idx = 0;
-        [SerializeField] private string name;
+        [Serializable]
+        public enum InteractionObjectType
+        {
+            InteractionObject = 0,
+            ColliderObject = 1
+        }
+
+        public Dictionary<int, string> interactionObjectPrefabNameDictionary = new Dictionary<int, string>()
+        {
+            {0, "InteractionObject"},
+            {1, "ColliderObject"}
+        };
 
         public Dictionary<int, string> typeNameDictionary = new Dictionary<int, string>()
         {
@@ -31,7 +34,18 @@ namespace Tools
             { 9, "9.Stress" },
             { 10, "10.Lock" },
         };
-
+        
+        public InteractionDataBase InteractionDataBase;
+        public ScriptDataBase ScriptDataBase;
+        public ChooseDataBase ChooseDataBase;
+        public ItemControlDataBase ItemControlDataBase;
+        public StressControlDataBase StressControlDataBase;
+        public LockDataBase LockDataBase;
+        
+        public int idx = 0;
+        public InteractionObjectType type;
+        [SerializeField] private string interactionObjectName;
+        
         [MenuItem("CustomTools/CreateInteractionObject")]
         static void Open()
         {
@@ -88,19 +102,21 @@ namespace Tools
             initializeDataBase();
             InteractionData interactionData = InteractionDataBase.dataList[idx];
 
-            name = interactionData.name;
+            interactionObjectName = interactionData.name;
         }
 
         private void OnWizardCreate()
         {
             initializeDataBase();
             
-            GameObject interactionGameObject = Instantiate(Resources.Load<GameObject>(prefabPath("InteractionObject")));
-            interactionGameObject.name = "InteractionObject_" + idx;
+            string interactingObjectName = type.ToString();
+            GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)));
 
             InteractionData interactionData = InteractionDataBase.dataList[idx];
             
-            InteractionObject interactionObjectScript = interactionGameObject.GetComponent<InteractionObject>();
+            interactingObject.name = interactionData.name;
+            
+            InteractingObject interactionObjectScript = interactingObject.GetComponent<InteractingObject>();
             interactionObjectScript.Initiate(idx, interactionData.typeList, interactionData.idxList);
 
             GameObject prefabObject;
@@ -108,10 +124,11 @@ namespace Tools
             {
                 int type = interactionData.typeList[i];
                 int index = interactionData.idxList[i];
-                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[type])), interactionGameObject.transform, true);
+                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[type])), interactingObject.transform, true);
 
                 prefabObject.name = type + "." + interactionData.name + "_" + interactionData.idx;
                 setInteractingObject(prefabObject, type, index);
+                interactionObjectScript.AddInteractingObject(prefabObject); 
             }
         }
     }

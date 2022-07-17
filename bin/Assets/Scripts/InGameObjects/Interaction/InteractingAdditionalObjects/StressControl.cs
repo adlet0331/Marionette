@@ -6,10 +6,10 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
     public class StressControl : IInteractionObject<StressControlData>
     {
-        [SerializeField] private int stressAddNum;
-        public override void Interact()
+        public override bool Interact()
         {
-            StressManager.Instance.AddStress(stressAddNum);
+            StressManager.Instance.AddStress(data.stressAdd);
+            return true;
         }
     }
 }

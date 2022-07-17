@@ -13,9 +13,10 @@ namespace InGameObjects.Object
     }
     public class AnimaObject : IInteractionObject<AnimaObjectData>
     {
-        public override void Interact()
+        public override bool Interact()
         {
             AnimaAbilityManager.Instance.IncrementAnimaAbility(data.idx, data.upCount);
+            return true;
         }
     }
 }

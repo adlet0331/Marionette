@@ -14,7 +14,6 @@ namespace DataBaseScripts
     [Serializable]
     public class ScriptData : DataType
     {
-        public string interactString;
         public List<string> scriptList;
         public List<string> leftSpriteList;
         public List<string> rightSpriteList;

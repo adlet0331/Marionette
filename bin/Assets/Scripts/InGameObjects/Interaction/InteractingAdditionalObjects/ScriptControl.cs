@@ -1,13 +1,33 @@
+using System;
 using DataBaseScripts;
+using Managers;
+using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
     public class ScriptControl : IInteractionObject<ScriptData>
     {
-        public ScriptData scriptData;
-        public override void Interact()
+        [SerializeField] private int currentIndex;
+
+        private void Awake()
         {
-            throw new System.NotImplementedException();
+            currentIndex = 0;
+        }
+        public override bool Interact()
+        {
+            if (currentIndex == 0)
+            {
+                WindowManager.Instance.scriptWindow.Activate();
+                WindowManager.Instance.scriptWindow.SetScriptData(data);
+            }
+            int nextIndex  = WindowManager.Instance.scriptWindow.PressSpace();
+            if (nextIndex == -1)
+            {
+                currentIndex = 0;
+                return true;
+            }
+            currentIndex = nextIndex;
+            return false;
         }
     }
 }

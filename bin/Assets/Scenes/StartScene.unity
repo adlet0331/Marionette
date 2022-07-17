@@ -606,7 +606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
+  moveableWhileOpen: 0
+  inputableWhileOpen: 0
 --- !u!1 &55092894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,18 +2370,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
-  NameText: {fileID: 55092896}
-  ScriptText: {fileID: 146667109}
+  moveableWhileOpen: 0
+  inputableWhileOpen: 1
+  nameText: {fileID: 55092896}
+  scriptText: {fileID: 146667109}
   currObj:
     idx: 0
     name: 
-    interactString: 
     scriptList: []
     leftSpriteList: []
     rightSpriteList: []
-  currentScriptIdx: -1
-  currentScriptLength: 0
+  currentPrintingIndex: 0
   blocked: 0
 --- !u!1 &305996683
 GameObject:
@@ -2398,7 +2398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &305996684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2433,18 +2433,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
-  NameText: {fileID: 0}
-  ScriptText: {fileID: 0}
+  moveableWhileOpen: 0
+  inputableWhileOpen: 0
+  nameText: {fileID: 0}
+  scriptText: {fileID: 0}
   currObj:
     idx: 0
     name: 
-    interactString: 
     scriptList: []
     leftSpriteList: []
     rightSpriteList: []
-  currentScriptIdx: -1
-  currentScriptLength: 0
+  currentPrintingIndex: 0
   blocked: 0
 --- !u!1 &330914096
 GameObject:
@@ -5411,7 +5410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
+  moveableWhileOpen: 1
+  inputableWhileOpen: 1
   isSelPannelOpen: 0
   isInfoPannelOpen: 0
   itemSelectionPannel: {fileID: 1808517001}
@@ -9319,7 +9319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
+  moveableWhileOpen: 1
+  inputableWhileOpen: 1
   equipedItemSlot: {fileID: 1715067197}
   profileImage: {fileID: 1541550299}
   equipedItemIdx: -1
@@ -10022,7 +10023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 1
+  moveableWhileOpen: 0
+  inputableWhileOpen: 1
   gameObject: {fileID: 1569470504}
   currentWindow: 1
   Object_AnimaLibrary: {fileID: 1537792403}
@@ -10186,7 +10188,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
+  moveableWhileOpen: 1
+  inputableWhileOpen: 1
 --- !u!1 &1606283251
 GameObject:
   m_ObjectHideFlags: 0
@@ -11270,7 +11273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
+  moveableWhileOpen: 0
+  inputableWhileOpen: 0
   nameText: {fileID: 844595461}
   infoText: {fileID: 635413738}
 --- !u!1 &1752149818
@@ -11651,7 +11655,6 @@ GameObject:
   - component: {fileID: 1846734082}
   - component: {fileID: 1846734085}
   - component: {fileID: 1846734084}
-  - component: {fileID: 1846734083}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -11679,26 +11682,6 @@ RectTransform:
   m_AnchoredPosition: {x: -273.8, y: -38.4}
   m_SizeDelta: {x: 146.56, y: 124.09}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1846734083
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846734081}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0cd4a3aad4eb29145874741f7823cb62, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1846734084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12966,7 +12949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0

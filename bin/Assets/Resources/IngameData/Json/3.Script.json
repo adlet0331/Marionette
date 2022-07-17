@@ -1,7 +1,6 @@
 [
     {
         "idx": 0,
-        "interactString": "\ub354\ubbf8\ub2e4",
         "leftSpriteList": [
             "dummy01",
             "dummy01"
@@ -12,13 +11,12 @@
             "dummy01"
         ],
         "scriptList": [
-            "\ub354\ubbf8\uc784",
-            "...\ub354\ubbf8\ub77c\uace0\uc694"
+            "\ub354\ubbf8 \uc2a4\ud06c\ub9bd\ud2b8\ub2e4. \ud14c\uc2a4\ud2b8\ub97c \uc704\ud574 \uc2a4\ud06c\ub9bd\ud2b8\ub97c \uc880 \uae38\uac8c \uc791\uc131\ud568",
+            "\uac00\ub098\ub2e4\ub77c\ub9c8\ubc14\uc0ac\n\uc544\uc790\ucc28\uce74\ud0c0\ud30c\ud558"
         ]
     },
     {
         "idx": 1,
-        "interactString": "\uce68\ub300\ub2e4",
         "leftSpriteList": [
             "sprite01",
             "sprite01"
@@ -29,8 +27,7 @@
             "sprite01"
         ],
         "scriptList": [
-            "\uc774\ubd88\uc774 \ud750\ud2b8\ub7ec\uc838 \uc788\ub294 \uce68\ub300\ub2e4",
-            "\u2026.\uce58\uc6cc\uc57c \ud558\ub294\ub370"
+            "\uce68\ub300\ub2e4"
         ]
     }
 ]

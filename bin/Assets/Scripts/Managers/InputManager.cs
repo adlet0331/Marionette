@@ -11,8 +11,10 @@ namespace Managers
 {
     public class InputManager : Singleton<InputManager>
     {
-        [SerializeField] private bool isMoveable = true;
-        [SerializeField] private bool isInputAvaliable = true;
+        // 움직임, Keyboard Input
+        [SerializeField] private bool isMoveable;
+        [SerializeField] private bool isInputAvaliable;
+        
         [SerializeField] private bool isInventoryWindowOn = false;
         [SerializeField] private bool isItemSelectionPannelOn = false;
         [SerializeField] private int moveH, moveV;
@@ -123,13 +125,11 @@ namespace Managers
             WindowManager.Instance.settingWindow.Activate();
         }
         private void Interact() {
-            if (WindowManager.Instance.scriptWindow.gameObject.activeSelf)
-            {
-                WindowManager.Instance.scriptWindow.Activate();
-            }
-
             var obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
 
+            if (obj == null)
+                return;
+            
             obj.Interact();
         }
         private void TalkWithDoll()

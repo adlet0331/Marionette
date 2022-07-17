@@ -197,17 +197,12 @@ namespace UI
                 return;
             }
 
-            InputManager.Instance.SetOptions(false, true);
             InputManager.Instance.SetInventWind(true);
             UpdateInventory();
             OpenWindow();
 
             selectedIdx = 0;
             updateInventoryUI();
-
-            return;
         }
-
-
     }
 }

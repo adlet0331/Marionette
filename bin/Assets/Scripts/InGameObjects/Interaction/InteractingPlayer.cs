@@ -24,7 +24,6 @@ namespace InGameObjects.Interaction
             if (scriptableObjList.Count == 0)
             {
                 this.currentInteractable = false;
-                return;
             }
             else
             {
@@ -68,6 +67,7 @@ namespace InGameObjects.Interaction
         public void BlockInteract()
         {
             this.isBlocked = true;
+            WindowManager.Instance.interactableWindow.CloseWindow();
         }
         public void UnblockInteract()
         {

@@ -20,12 +20,14 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     [Serializable]
     public class ObjectSetActivate : IInteractionObject<GameObjectSetActiveList>
     {
-        public override void Interact()
+        public override bool Interact()
         {
             foreach (var gameObjectCreateDelete in data.gameObjectSetActivateList)
             {
                 gameObjectCreateDelete.gameObject.SetActive(gameObjectCreateDelete.isActivating);
             }
+
+            return true;
         }
     }
 }

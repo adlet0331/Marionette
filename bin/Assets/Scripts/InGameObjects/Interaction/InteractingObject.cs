@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Xml;
 using DataBaseScripts.Base;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
 using Managers;
@@ -30,12 +31,16 @@ namespace InGameObjects.Interaction
         [SerializeField] private List<int> dataIdx;
         [SerializeField] private List<GameObject> interactingObjectList;
 
-        [SerializeField] private int currentInteractIndex;
-        [SerializeField] private int currentInteractInnerIndex;
+        [SerializeField] private int currentInteractIndex = 0;
 
         public int Idx
         {
             get => idx;
+        }
+
+        public void AddInteractingObject(GameObject gameObject)
+        {
+            interactingObjectList.Add(gameObject);
         }
 
         public void Initiate(int index, List<int> typeList, List<int> idxList)
@@ -45,71 +50,65 @@ namespace InGameObjects.Interaction
             dataIdx = idxList;
         }
 
-        private void Awake()
-        {
-            currentInteractIndex = 0;
-        
-            dataType.Clear();
-            dataIdx.Clear();
-            foreach (var data in DataBaseManager.Instance.interactionDataBase.dataList[idx].typeList)
-            {
-                dataType.Add(data);
-            }
-            foreach (var data in DataBaseManager.Instance.interactionDataBase.dataList[idx].idxList)
-            {
-                dataIdx.Add(data);
-            }
-        }
-
         public void Interact()
         {
-        
-        }
-
-        private void Interact(int idx)
-        {
             // GameObject 생성/제거
-            if (dataType[idx] == 2)
+            bool isEnd;
+            if (dataType[currentInteractIndex] == 2)
             {
-                interactingObjectList[idx].GetComponent<ObjectSetActivate>().Interact();
+                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectSetActivate>().Interact();
             }
             // 대사 Script
-            if (dataType[idx] == 3)
+            if (dataType[currentInteractIndex] == 3)
             {
-                interactingObjectList[idx].GetComponent<ScriptControl>().Interact();
+                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }
             // 선택지 Choose
-            else if (dataType[idx] == 4)
+            else if (dataType[currentInteractIndex] == 4)
             {
-                interactingObjectList[idx].GetComponent<ChooseControl>().Interact();
+                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
             }
             // ItemControl
-            else if (dataType[idx] == 8)
+            else if (dataType[currentInteractIndex] == 8)
             {
-                interactingObjectList[idx].GetComponent<ItemControl>().Interact();
+                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ItemControl>().Interact();
             }
             // Stress Control
-            else if (dataType[idx] == 9)
+            else if (dataType[currentInteractIndex] == 9)
             {
-                interactingObjectList[idx].GetComponent<ScriptControl>().Interact();
+                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }
             // 잠김 Lock
-            else if (dataType[idx] == 10)
+            else if (dataType[currentInteractIndex] == 10)
             {
-                interactingObjectList[idx].GetComponent<LockObject>().Interact();
+                isEnd = interactingObjectList[currentInteractIndex].GetComponent<LockObject>().Interact();
             }
             // 이벤트 Event
-            else if (dataType[idx] == 11)
+            else if (dataType[currentInteractIndex] == 11)
             {
                 throw new NotImplementedException();
             }
             // IInteractionObject 실행
             else
             {
-                throw new InteractTypeNotDefinedException(this.idx, idx);
+                throw new InteractTypeNotDefinedException(this.currentInteractIndex, currentInteractIndex);
+            }
+
+            if (isEnd)
+            {
+                currentInteractIndex++;
+                if (currentInteractIndex == dataType.Count)
+                {
+                    currentInteractIndex = 0;
+                    PlayerManager.Instance.interactingPlayer.UnblockInteract();
+                }
+            }
+            else
+            {
+                PlayerManager.Instance.interactingPlayer.BlockInteract();
             }
         }
-        
+
         public class InteractTypeNotDefinedException : Exception
         {
             public InteractTypeNotDefinedException(int idx, int datatype)

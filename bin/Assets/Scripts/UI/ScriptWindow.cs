@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DataBaseScripts;
 using InGameObjects.Interaction;
 using Managers;
@@ -17,91 +18,65 @@ namespace UI
 {
     public class ScriptWindow : WindowObject
     {
-        [SerializeField] private Text NameText;
-        [SerializeField] private Text ScriptText;
+        [SerializeField] private Text nameText;
+        [SerializeField] private Text scriptText;
         [SerializeField] private ScriptData currObj = null;
-        [SerializeField] private int currentScriptIdx = -1;
-        [SerializeField] private int currentScriptLength;
-        private IEnumerator currentCoroutine;
+        [SerializeField] private int currentPrintingIndex;
 
         [SerializeField] private bool blocked = false;
-        private void Open(int idx)
-        {
-            this.OpenWindow();
-
-            currObj = DataBaseManager.Instance.scriptDataBase.dataList[idx];
-            currentScriptIdx = 0;
-            currentScriptLength = currObj.scriptList.Count;
-
-            NameText.text = currObj.name;
-            currentCoroutine = _printScript(ScriptText, currObj.scriptList[0]);
-            StartCoroutine(currentCoroutine);
-        }
-        private void Next(int idx)
-        {
-            currentScriptIdx++;
-            NameText.text = currObj.name;
-            currentCoroutine = _printScript(ScriptText, currObj.scriptList[currentScriptIdx]);
-            StartCoroutine(currentCoroutine);
-        }
-        private void Close()
-        {
-            currentScriptIdx = -1;
-            CloseWindow();
-        }
-        private void Stop()
-        {
-            StopCoroutine(currentCoroutine);
-            blocked = false;
-            currentCoroutine = null;
-            ScriptText.text = currObj.scriptList[currentScriptIdx];
-        }
-        // 초기화
+        private IEnumerator currentCoroutine;
         public override void Activate()
         {
-            return;
+            this.OpenWindow();
         }
-        public void Activate(int idx)
+        public int PressSpace()
         {
-            if (PlayerManager.Instance.interactingPlayer == null)
-                return;
-
-            if (blocked)
+            // 끝내기
+            if (currentPrintingIndex >= currObj.scriptList.Count)
             {
-                Stop();
-                return;
+                currObj = null;
+                this.CloseWindow();
+                currentPrintingIndex = 0;
+                return -1;
             }
-
-            InteractionObject obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
-
-            if (obj == null)
-                return;
-
-            //InputManager.Instance.SetOptions(false, true);  스크립트 진행 중 움직임 막기
-
-            if (currentScriptIdx == -1)
-                this.Open(idx);
-            else if (currObj != null && currentScriptIdx == currObj.scriptList.Count - 1)
-            {   
-                InputManager.Instance.SetOptions(true, true);
-                this.Close();
+            // Coroutine 이 실행중이 아닐때
+            if (!blocked)
+            {
+                nameText.text = currObj.name;
+                currentCoroutine = _printScript(scriptText, currObj.scriptList[currentPrintingIndex]);
+                StartCoroutine(currentCoroutine);
             }
+            // Coroutine 이 실행중일 때, 스킵 기능
             else
-                this.Next(idx);
-            return;
+            {
+                StopCoroutine(currentCoroutine);
+                scriptText.text = currObj.scriptList[currentPrintingIndex];
+                EndPrintScript();
+            }
+            return currentPrintingIndex;
         }
-        IEnumerator _printScript(Text textObj, string script)
+        // 초기화
+        public void SetScriptData(ScriptData data)
+        {
+            currObj = data;
+        }
+        private IEnumerator _printScript(Text textObj, string script)
         {
             blocked = true;
             textObj.text = "";
             yield return new WaitForSeconds(0.02f);
-            for (int i = 0; i <= script.Length; i++)
+            for (int i = 0; i < script.Length; i++)
             {
-                textObj.text = script.Substring(0, i);
+                textObj.text += script[i];
                 yield return new WaitForSeconds(0.02f);
             }
+            EndPrintScript();
+        }
+        private void EndPrintScript()
+        {
             blocked = false;
             currentCoroutine = null;
+            currentPrintingIndex++;
         }
     }
 }

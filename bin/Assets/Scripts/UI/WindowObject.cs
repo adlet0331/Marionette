@@ -10,26 +10,15 @@ namespace UI
     public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler {
         //For Opening Window
         [SerializeField] private bool isDraggable;
-        [SerializeField] private bool notMoveableWhileOpen;
+        [SerializeField] private bool moveableWhileOpen;
+        [SerializeField] private bool inputableWhileOpen;
         public abstract void Activate();
-        public void OpenWindowWithoutSetting()
-        {
-            gameObject.SetActive(true);
-            transform.SetAsLastSibling();
-        }
-        public void CloseWindowWithoutOption()
-        {
-            gameObject.SetActive(false);
-        }
         public void OpenWindow()
         {
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
             WindowManager.Instance.currentOpenWindowNum += 1;
-            if (notMoveableWhileOpen)
-                InputManager.Instance.SetOptions(false, true);
-            else
-                InputManager.Instance.SetOptions(true, true);
+            InputManager.Instance.SetOptions(moveableWhileOpen, inputableWhileOpen);
         }
         public void CloseWindow()
         {
@@ -37,19 +26,18 @@ namespace UI
             gameObject.SetActive(false);
             InputManager.Instance.SetOptions(true, true);
         }
-        //Interface
-        private Vector3 _dragBeginCursorPos;
-        private Vector3 _dragBeginWindowPos;
+        
+        // Interface
         public void OnBeginDrag(PointerEventData eventData) {
             if (!isDraggable) 
                 return;
-            _dragBeginCursorPos = eventData.position;
-            _dragBeginWindowPos = transform.position;
+            dragBeginCursorPos = eventData.position;
+            dragBeginWindowPos = transform.position;
         }
         public void OnDrag(PointerEventData eventData) {
             if (!isDraggable) 
                 return;
-            transform.position = _dragBeginWindowPos + (Vector3)eventData.position - _dragBeginCursorPos;
+            transform.position = dragBeginWindowPos + (Vector3)eventData.position - dragBeginCursorPos;
         }
         public void OnPointerDown(PointerEventData eventData)
         {
@@ -57,5 +45,7 @@ namespace UI
                 return;
             transform.SetAsLastSibling();
         }
+        private Vector3 dragBeginCursorPos;
+        private Vector3 dragBeginWindowPos;
     }
 }
