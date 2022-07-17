@@ -65,9 +65,9 @@ namespace UI
             blocked = true;
             textObj.text = "";
             yield return new WaitForSeconds(0.02f);
-            for (int i = 0; i < script.Length; i++)
+            for (int i = 0; i <= script.Length; i++)
             {
-                textObj.text += script[i];
+                textObj.text = script.Substring(0, i);
                 yield return new WaitForSeconds(0.02f);
             }
             EndPrintScript();
