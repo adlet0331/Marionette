@@ -17,5 +17,6 @@ namespace Managers
         public ItemGotWindow itemGotWindow;
         public LockWindow lockWindow;
         public InventoryWindow inventoryWindow;
+        public DollTalkWindow DollTalkWindow;
     }
 }

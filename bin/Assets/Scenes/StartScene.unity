@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 27679964}
   - component: {fileID: 27679963}
   m_Layer: 5
-  m_Name: chooseBox_choose4_text
+  m_Name: chatBox_chat_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2586,22 +2586,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 305996683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef6a6bb60eeffe49bb97ad273e1dd4d, type: 3}
+  m_Script: {fileID: 11500000, guid: a3a7adb1ab04a3b49b011678de76d55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 0
-  nameText: {fileID: 0}
-  scriptText: {fileID: 0}
-  currObj:
-    idx: 0
-    name: 
-    scriptList: []
-    leftSpriteList: []
-    rightSpriteList: []
-  currentPrintingIndex: 0
-  blocked: 0
+  currentWindow: 0
+  pointSelImg: {fileID: 821111528}
+  chooseBoxImg:
+  - {fileID: 0}
+  - {fileID: 50487537}
+  - {fileID: 473295135}
+  - {fileID: 2036184193}
+  chooseBoxText:
+  - {fileID: 506020046}
+  - {fileID: 837142975}
+  - {fileID: 2043907019}
+  - {fileID: 1475966448}
+  activeSelNum: 4
+  pointSelNum: 4
+  chatBoxL: {fileID: 168791845}
+  chatBoxR: {fileID: 411844542}
 --- !u!1 &330914096
 GameObject:
   m_ObjectHideFlags: 0
@@ -10757,6 +10763,7 @@ MonoBehaviour:
   itemGotWindow: {fileID: 0}
   lockWindow: {fileID: 0}
   inventoryWindow: {fileID: 0}
+  DollTalkWindow: {fileID: 0}
 --- !u!1 &1622945515
 GameObject:
   m_ObjectHideFlags: 0
