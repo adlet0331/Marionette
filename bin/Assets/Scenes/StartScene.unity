@@ -547,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMoveable: 0
   isInputAvaliable: 1
+  isInteractable: 1
   isInventoryWindowOn: 0
   isItemSelectionPannelOn: 0
   moveH: 0
@@ -2529,14 +2530,14 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
-  nameText: {fileID: 55092896}
-  scriptText: {fileID: 146667109}
-  currObj:
+  data:
     idx: 0
     name: 
     scriptList: []
     leftSpriteList: []
     rightSpriteList: []
+  nameText: {fileID: 55092896}
+  scriptText: {fileID: 146667109}
   currentPrintingIndex: 0
   blocked: 0
 --- !u!1 &305996683
@@ -7056,7 +7057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1017061001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7093,8 +7094,14 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
-  chooseButtonPrefab: {fileID: 338881405259637484, guid: 197d041fd8dbc9e46b3c20d13149011d, type: 3}
+  data:
+    idx: 0
+    name: 
+    scriptList: []
+    interactionList: 
+    interactionGameObjectList: []
   chooseButtonField: {fileID: 534390410}
+  GameObjectList: []
 --- !u!1 &1018252520
 GameObject:
   m_ObjectHideFlags: 0
@@ -10931,7 +10938,7 @@ MonoBehaviour:
   lockWindow: {fileID: 0}
   inventoryWindow: {fileID: 0}
   dollTalkWindow: {fileID: 0}
-  chooseWindow: {fileID: 0}
+  chooseWindow: {fileID: 1017061002}
 --- !u!1 &1622945515
 GameObject:
   m_ObjectHideFlags: 0
@@ -13553,7 +13560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0

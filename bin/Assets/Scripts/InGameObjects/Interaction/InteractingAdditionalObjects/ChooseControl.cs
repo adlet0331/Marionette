@@ -1,4 +1,5 @@
 ﻿using DataBaseScripts;
+using Managers;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
@@ -6,7 +7,9 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     {
         public override bool Interact()
         {
-            throw new System.NotImplementedException();
+            WindowManager.Instance.chooseWindow.SetData(data);
+            WindowManager.Instance.chooseWindow.Activate();
+            return false;
         }
     }
 }

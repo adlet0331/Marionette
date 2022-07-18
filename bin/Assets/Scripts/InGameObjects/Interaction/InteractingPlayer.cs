@@ -12,12 +12,12 @@ namespace InGameObjects.Interaction
     {
         [SerializeField] private bool isBlocked = false;
         [SerializeField] private bool currentInteractable;
-        [SerializeField] private InteractionObject currentInteractObj;
-        [SerializeField] private List<InteractionObject> scriptableObjList;
+        [SerializeField] private InteractingObject currentInteractObj;
+        [SerializeField] private List<InteractingObject> scriptableObjList;
 
         private void Start()
         {
-            scriptableObjList = new List<InteractionObject>();
+            scriptableObjList = new List<InteractingObject>();
         }
         private void updateFstIdx()
         {
@@ -28,10 +28,10 @@ namespace InGameObjects.Interaction
             else
             {
                 float angle = 180.0f, cnt;
-                InteractionObject currentFirstObj = scriptableObjList[0];
+                InteractingObject currentFirstObj = scriptableObjList[0];
                 var pointerWorldVec2 = InputManager.Instance.GetWorldPointerVec2();
 
-                foreach (InteractionObject interObj in scriptableObjList)
+                foreach (InteractingObject interObj in scriptableObjList)
                 {
                     var objectWorldPosition = interObj.transform.localToWorldMatrix * interObj.transform.localPosition - transform.localToWorldMatrix * transform.localPosition;
                     var objectWorldVec2 = new Vector2(objectWorldPosition.x, objectWorldPosition.y);
@@ -73,7 +73,15 @@ namespace InGameObjects.Interaction
         {
             this.isBlocked = false;
         }
-        public InteractionObject GetFstInteractObj()
+        public void ClearScriptableObjList()
+        {
+            scriptableObjList.Clear();
+        }
+        public void SetFstInteractObj(InteractingObject interactingObject)
+        {
+            scriptableObjList[0] = interactingObject;
+        }
+        public InteractingObject GetFstInteractObj()
         {
             if (scriptableObjList.Count == 0)
                 return null;
@@ -84,12 +92,12 @@ namespace InGameObjects.Interaction
                 return currentInteractObj;
             }
         }
-        public void AddInteractionList(InteractionObject interactionObj)
+        public void AddInteractionList(InteractingObject interactionObj)
         {
             scriptableObjList.Add(interactionObj);
         }
 
-        public void RemoveInteractionObj(InteractionObject interactionObj)
+        public void RemoveInteractionObj(InteractingObject interactionObj)
         {
             scriptableObjList.Remove(interactionObj);
         }

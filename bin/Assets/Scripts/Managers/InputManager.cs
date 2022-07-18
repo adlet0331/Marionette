@@ -140,12 +140,11 @@ namespace Managers
             bool interactionEnd = obj.Interact();
             if (interactionEnd)
             {
-                isInteractable = false;
                 PlayerManager.Instance.interactingPlayer.UnblockInteract();
+                PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
             }
             else
             {
-                isInteractable = true;
                 PlayerManager.Instance.interactingPlayer.BlockInteract();
             }
         }

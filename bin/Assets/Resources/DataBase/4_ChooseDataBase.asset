@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: 4_ChooseDataBase
   m_EditorClassIdentifier: 
   databaseName: 4.Choose
-  dataList: []
+  dataList:
+  - idx: 0
+    name: "\uB354\uBBF8"
+    scriptList:
+    - "\uB354\uBBF8 1"
+    - "\uB354\uBBF8 2"
+    interactionList: 0300000003000000
+    interactionGameObjectList: []

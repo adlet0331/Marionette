@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public sealed class InteractionObject : InteractingObject
     {
         private void OnTriggerEnter2D(Collider2D collision)

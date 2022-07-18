@@ -16,13 +16,15 @@ namespace Tools
         public enum InteractionObjectType
         {
             InteractionObject = 0,
-            ColliderObject = 1
+            ColliderObject = 1,
+            InteractingObject = 2
         }
 
         public Dictionary<int, string> interactionObjectPrefabNameDictionary = new Dictionary<int, string>()
         {
             {0, "InteractionObject"},
-            {1, "ColliderObject"}
+            {1, "ColliderObject"},
+            {2, "InteractingObject"}
         };
 
         public Dictionary<int, string> typeNameDictionary = new Dictionary<int, string>()
@@ -104,7 +106,8 @@ namespace Tools
         {
             initializeDataBase();
             InteractionData interactionData = InteractionDataBase.dataList[idx];
-
+            
+            ControlObjectNameList.Clear();
             interactionObjectName = interactionData.name;
             for (int i = 0; i < interactionData.typeList.Count; i++)
             {
@@ -116,32 +119,56 @@ namespace Tools
             }
         }
 
-        private void OnWizardCreate()
+        private GameObject CreateObject(InteractionObjectType interactionObjectType, int interactionIdx)
         {
-            initializeDataBase();
-            
-            string interactingObjectName = type.ToString();
+            string interactingObjectName = interactionObjectType.ToString();
             GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)));
 
-            InteractionData interactionData = InteractionDataBase.dataList[idx];
+            InteractionData interactionData = InteractionDataBase.dataList[interactionIdx];
             
             interactingObject.name = interactionData.name;
             
             InteractingObject interactionObjectScript = interactingObject.GetComponent<InteractingObject>();
-            interactionObjectScript.Initiate(idx, interactionData.typeList, interactionData.goNextImmediately);
+            interactionObjectScript.Initiate(interactionIdx, interactionData.typeList, interactionData.goNextImmediately);
 
             GameObject prefabObject;
             for (int i = 0; i < interactionData.typeList.Count; i++)
             {
-                int type = interactionData.typeList[i];
+                int dataType = interactionData.typeList[i];
                 int index = interactionData.idxList[i];
-                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[type])), interactingObject.transform, true);
                 
-                prefabObject.name = type + "." + interactionData.name + "_" + index;
-                ControlObjectNameList.Add(prefabObject.name);
-                setInteractingObject(prefabObject, type, index);
-                interactionObjectScript.AddInteractingObject(prefabObject); 
+                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[dataType])), 
+                    interactingObject.transform, true);
+                prefabObject.name = dataType + "." + interactionData.name + "_" + index;
+                
+                setInteractingObject(prefabObject, dataType, index);
+                interactionObjectScript.AddInteractingObject(prefabObject);
+                
+                // 선택지
+                if (dataType == 4)
+                {
+                    List<int> interactIdxList = ChooseDataBase.dataList[index].interactionList;
+                    prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList.Clear();
+                    for (int j = 0; j < interactIdxList.Count; j++)
+                    {
+                        GameObject selectObject = CreateObject(InteractionObjectType.InteractingObject, interactIdxList[j]);
+                        selectObject.name = "선택지_" + j + "_" + selectObject.name;
+                        selectObject.transform.SetParent(prefabObject.transform);
+                        prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList.Add(selectObject.GetComponent<InteractingObject>());
+                    }
+                }
             }
+
+            return interactingObject;
+        }
+
+        private void OnWizardCreate()
+        {
+            initializeDataBase();
+
+            OnWizardOtherButton();
+            
+            CreateObject(this.type, this.idx);
         }
     }
 }

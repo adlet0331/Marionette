@@ -23,8 +23,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction
 {
-    [RequireComponent(typeof(BoxCollider2D))]
-    public abstract class InteractingObject : MonoBehaviour
+    public class InteractingObject : MonoBehaviour
     {
         [SerializeField] private int idx;
         [SerializeField] private List<int> dataType;
