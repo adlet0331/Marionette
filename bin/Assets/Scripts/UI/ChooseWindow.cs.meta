@@ -3,7 +3,9 @@ guid: 3136d425487b3c14bb5588db6df0a49e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - chooseButtonPrefab: {fileID: 338881405259637484, guid: 197d041fd8dbc9e46b3c20d13149011d, type: 3}
+  - chooseButtonField: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -16,11 +16,10 @@ using UnityEngine.UI;
 */
 namespace UI
 {
-    public class ScriptWindow : WindowObject
+    public class ScriptWindow : UIControlWindow<ScriptData>
     {
         [SerializeField] private Text nameText;
         [SerializeField] private Text scriptText;
-        [SerializeField] private ScriptData currObj = null;
         [SerializeField] private int currentPrintingIndex;
 
         [SerializeField] private bool blocked = false;
@@ -32,9 +31,9 @@ namespace UI
         public int PressSpace()
         {
             // 끝내기
-            if (currentPrintingIndex >= currObj.scriptList.Count)
+            if (currentPrintingIndex >= data.scriptList.Count)
             {
-                currObj = null;
+                data = null;
                 this.CloseWindow();
                 currentPrintingIndex = 0;
                 return -1;
@@ -42,23 +41,18 @@ namespace UI
             // Coroutine 이 실행중이 아닐때
             if (!blocked)
             {
-                nameText.text = currObj.name;
-                currentCoroutine = _printScript(scriptText, currObj.scriptList[currentPrintingIndex]);
+                nameText.text = data.name;
+                currentCoroutine = _printScript(scriptText, data.scriptList[currentPrintingIndex]);
                 StartCoroutine(currentCoroutine);
             }
             // Coroutine 이 실행중일 때, 스킵 기능
             else
             {
                 StopCoroutine(currentCoroutine);
-                scriptText.text = currObj.scriptList[currentPrintingIndex];
+                scriptText.text = data.scriptList[currentPrintingIndex];
                 EndPrintScript();
             }
             return currentPrintingIndex;
-        }
-        // 초기화
-        public void SetScriptData(ScriptData data)
-        {
-            currObj = data;
         }
         private IEnumerator _printScript(Text textObj, string script)
         {

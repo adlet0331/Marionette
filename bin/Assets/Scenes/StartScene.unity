@@ -2555,7 +2555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &305996684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7056,7 +7056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1017061001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7092,7 +7092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDraggable: 0
   moveableWhileOpen: 0
-  inputableWhileOpen: 0
+  inputableWhileOpen: 1
   chooseButtonPrefab: {fileID: 338881405259637484, guid: 197d041fd8dbc9e46b3c20d13149011d, type: 3}
   chooseButtonField: {fileID: 534390410}
 --- !u!1 &1018252520
@@ -9823,7 +9823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 69.099976, y: 110.8}
+  m_AnchoredPosition: {x: 69.099976, y: 110.79999}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486109552

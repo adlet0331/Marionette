@@ -49,39 +49,42 @@ namespace InGameObjects.Interaction
             dataType = typeList;
             goNextImmediatly = goNextList;
         }
-
-        public void Interact()
+        
+        /*
+         * Interact가 끝났는지 Return
+         */
+        public bool Interact()
         {
             // GameObject 생성/제거
-            bool isEnd;
+            bool isInteractionEnd;
             if (dataType[currentInteractIndex] == 2)
             {
-                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectSetActivate>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectSetActivate>().Interact();
             }
             // 대사 Script
             if (dataType[currentInteractIndex] == 3)
             {
-                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }
             // 선택지 Choose
             else if (dataType[currentInteractIndex] == 4)
             {
-                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
             }
             // ItemControl
             else if (dataType[currentInteractIndex] == 8)
             {
-                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ItemControl>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ItemControl>().Interact();
             }
             // Stress Control
             else if (dataType[currentInteractIndex] == 9)
             {
-                isEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }
             // 잠김 Lock
             else if (dataType[currentInteractIndex] == 10)
             {
-                isEnd = interactingObjectList[currentInteractIndex].GetComponent<LockObject>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<LockObject>().Interact();
             }
             // 이벤트 Event
             else if (dataType[currentInteractIndex] == 11)
@@ -94,26 +97,20 @@ namespace InGameObjects.Interaction
                 throw new InteractTypeNotDefinedException(this.currentInteractIndex, currentInteractIndex);
             }
 
-            if (isEnd)
+            if (isInteractionEnd)
             {
                 currentInteractIndex++;
                 if (currentInteractIndex == dataType.Count)
                 {
                     currentInteractIndex = 0;
-                    PlayerManager.Instance.interactingPlayer.UnblockInteract();
-                    return;
+                    return true;
                 }
                 
+                // 끝이 아니라면 다음 거 바로 띄워주기
                 Interact();
-                if (goNextImmediatly[currentInteractIndex - 1])
-                {
-                    Interact();
-                }
             }
-            else
-            {
-                PlayerManager.Instance.interactingPlayer.BlockInteract();
-            }
+            
+            return false;
         }
 
         public class InteractTypeNotDefinedException : Exception

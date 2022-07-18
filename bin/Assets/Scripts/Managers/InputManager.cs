@@ -15,6 +15,8 @@ namespace Managers
         [SerializeField] private bool isMoveable;
         [SerializeField] private bool isInputAvaliable;
         
+        [SerializeField] private bool isInteractable = true;
+        
         [SerializeField] private bool isInventoryWindowOn = false;
         [SerializeField] private bool isItemSelectionPannelOn = false;
         [SerializeField] private int moveH, moveV;
@@ -26,6 +28,7 @@ namespace Managers
     
         [SerializeField] private float characterWorldX;
         [SerializeField] private float characterWorldY;
+        
         public void SetOptions(bool isMv, bool isAv)
         {
             isMoveable = isMv;
@@ -124,13 +127,27 @@ namespace Managers
         private void OpenSettings() {
             WindowManager.Instance.settingWindow.Activate();
         }
-        private void Interact() {
+        private void Interact()
+        {
+            if (!isInteractable)
+                return;
+            
             var obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
 
             if (obj == null)
                 return;
             
-            obj.Interact();
+            bool interactionEnd = obj.Interact();
+            if (interactionEnd)
+            {
+                isInteractable = false;
+                PlayerManager.Instance.interactingPlayer.UnblockInteract();
+            }
+            else
+            {
+                isInteractable = true;
+                PlayerManager.Instance.interactingPlayer.BlockInteract();
+            }
         }
         private void TalkWithDoll()
         {
