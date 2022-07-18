@@ -759,7 +759,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  notMoveableWhileOpen: 0
+  moveableWhileOpen: 0
+  inputableWhileOpen: 0
 --- !u!1 &76868426
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &111054150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4654,7 +4655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &774167562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6100,7 +6101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &990673789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6790,7 +6791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1043385605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9445,7 +9446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1544665232
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10110,6 +10111,8 @@ MonoBehaviour:
   itemGotWindow: {fileID: 0}
   lockWindow: {fileID: 0}
   inventoryWindow: {fileID: 0}
+  dollTalkWindow: {fileID: 0}
+  chooseWindow: {fileID: 0}
 --- !u!1 &1616329502
 GameObject:
   m_ObjectHideFlags: 0
@@ -11610,7 +11613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1843908519
 MonoBehaviour:
   m_ObjectHideFlags: 0
