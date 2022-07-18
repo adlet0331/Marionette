@@ -134,7 +134,7 @@ namespace Managers
         }
         private void TalkWithDoll()
         {
-            WindowManager.Instance.DollTalkWindow.Activate();
+            WindowManager.Instance.dollTalkWindow.Activate();
         }
 
         private void SettingTabChange()
