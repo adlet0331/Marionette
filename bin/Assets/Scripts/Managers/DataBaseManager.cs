@@ -11,5 +11,6 @@ namespace Managers
         public LockDataBase lockDataBase;
         public InteractionDataBase interactionDataBase;
         public ItemDataBase itemDataBase;
+        public DollTalkDataBase dollTalkDataBase;
     }
 }

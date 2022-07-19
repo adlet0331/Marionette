@@ -76,15 +76,21 @@ namespace Managers
 
         private void Update() {
             // Doll Window
-            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow")
+            if (Input.GetKeyDown(KeyCode.Space) && 
+                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow")
             {
-                
+                bool isEnd = WindowManager.Instance.dollTalkWindow.PressSpace();
+                if (isEnd)
+                {
+                    WindowManager.Instance.dollTalkSelectionWindow.Activate();
+                }
+                Debug.Log("UI.DollTalkWindow");
                 return;
             }
             // Doll Talk Selection window
             if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
             {
-                
+                Debug.Log("UI.DollTalkSelectionWindow");
                 return;
             }
             // 인벤토리 판넬

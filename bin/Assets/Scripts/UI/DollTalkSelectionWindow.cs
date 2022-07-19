@@ -6,7 +6,7 @@ namespace UI
     public class DollTalkSelectionWindow : WindowObject
     {
         [SerializeField] private List<GameObject> chooseBoxImg;
-        [SerializeField] private List<GameObject> chooseBoxText;
+        [SerializeField] private List<DollTalkSelectionBox> chooseBoxText;
         
         [SerializeField] private int activeSelNum; // Total number of selection
         [SerializeField] private int pointSelNum; // Current number of selection
@@ -14,19 +14,27 @@ namespace UI
         public override void Activate()
         {
             OpenWindow();
+            initChooseNumber(4);
         }
         
         private void initChooseNumber(int num) // 2, 3, 4 only
         {
-            for (int i = 1; i <= num; i++)
+            for (int i = 0; i < 4; i++)
             {
-                chooseBoxText[i - 1].SetActive(false);
-                if (i != 1) chooseBoxImg[i].SetActive(false);
-            }
+                if (i == num - 2)
+                {
+                    chooseBoxImg[i].SetActive(true);
+                }
+                else
+                {
+                    chooseBoxImg[i].SetActive(false);
+                }
 
-            for (int i = 1; i <= num; i++)
-            {
-                chooseBoxText[i - 1].SetActive(true);
+                if (i < num)
+                {
+                    chooseBoxText[i].ActivateSelection(true);
+                    
+                }
             }
 
             chooseBoxImg[num - 1].SetActive(true);

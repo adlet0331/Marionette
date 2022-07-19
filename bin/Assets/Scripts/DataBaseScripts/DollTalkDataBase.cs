@@ -12,7 +12,7 @@ using UnityEngine;
 namespace DataBaseScripts
 {
     [Serializable]
-    public class DollTalk : DataType
+    public class DollTalkData : DataType
     {
         public List<string> scriptList;
         public List<string> leftSpriteList;
@@ -20,13 +20,13 @@ namespace DataBaseScripts
         public List<bool> isGirlTalking;
     }
 
-    [CreateAssetMenu(fileName = "DollTalkBase", menuName = "ScriptableObjects/DollTalkBase", order = 1)]
-    public class DollTalkBase : DataBase<DollTalk>
+    [CreateAssetMenu(fileName = "DollTalkDataBase", menuName = "ScriptableObjects/DollTalkDataBase", order = 1)]
+    public class DollTalkDataBase : DataBase<DollTalkData>
     {
     }
 
-    [CustomEditor(typeof(DollTalkBase))]
-    public class DollTalkBaseEditor : DataBaseEditor<DollTalkBase, DollTalk>
+    [CustomEditor(typeof(DollTalkDataBase))]
+    public class DollTalkDataBaseEditor : DataBaseEditor<DollTalkDataBase, DollTalkData>
     {
     }
 }
