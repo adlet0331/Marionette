@@ -94,7 +94,7 @@ namespace Managers
                 WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt);
             }
             // 인벤토리
-            else if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.InventoryWindow")
+            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.InventoryWindow")
             {
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                     WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(1);
