@@ -26,7 +26,7 @@ namespace UI {
 	        this.OpenWindow();
 
 	        if (GameObjectList.Count != 0)
-		        return;
+		        throw new Exception("ChooseWindow's GameObjectList is not Initiated");
 	        
 	        RectTransform rectTransform = chooseButtonField.GetComponent<RectTransform>();
 	        var sizeDelta = rectTransform.rect;
