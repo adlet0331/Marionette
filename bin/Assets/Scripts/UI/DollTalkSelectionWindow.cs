@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
 namespace UI
@@ -6,21 +7,41 @@ namespace UI
     public class DollTalkSelectionWindow : WindowObject
     {
         [SerializeField] private List<GameObject> chooseBoxImgList;
-        [SerializeField] private List<GameObject> talkBoxGameObjectList;
-        [SerializeField] private List<DollTalkSelectionBox> chooseBoxTextList;
+        [SerializeField] private List<DollTalkSelectionBox> chooseBoxList;
         
-        [SerializeField] private int activeSelNum; // Total number of selection
-        [SerializeField] private int pointSelNum; // Current number of selection
+        [SerializeField] private int totalSelNum; // Total number of selection
+        [SerializeField] private int currentSelNum; // Current number of selection
         
         public override void Activate()
         {
             OpenWindow();
-            initChooseNumber(4);
+            initChooseWindow(4);
         }
         
-        private void initChooseNumber(int num) // 2, 3, 4 only
+        public void MoveUpDown(bool isUp) // Up = true, Down = false
         {
-            for (int i = 0; i < 4; i++)
+            if (isUp)
+                currentSelNum = (currentSelNum + totalSelNum - 1) % totalSelNum;
+            else
+                currentSelNum = (currentSelNum + 1) % totalSelNum;
+            updateSelect();
+        }
+
+        public void PressSpace()
+        {
+            WindowManager.Instance.dollTalkWindow.ChangeTab(currentSelNum);
+        }
+
+        private void updateSelect()
+        {
+            for (int i = 0; i < totalSelNum; i++)
+            {
+                chooseBoxList[i].ActivateSelection(i == currentSelNum);
+            }
+        }
+        private void initChooseWindow(int num) // 2, 3, 4 only
+        {
+            for (int i = 0; i < 3; i++)
             {
                 if (i == num - 2)
                 {
@@ -30,28 +51,22 @@ namespace UI
                 {
                     chooseBoxImgList[i].SetActive(false);
                 }
-
+            }
+            for (int i = 0; i < 4; i++)
+            {
                 if (i < 4 - num)
                 {
-                    chooseBoxTextList[i].gameObject.SetActive(false);
+                    chooseBoxList[i].gameObject.SetActive(false);
                 }
                 else
                 {
-                    chooseBoxTextList[i].gameObject.SetActive(true);
+                    chooseBoxList[i].gameObject.SetActive(true);
+                    chooseBoxList[i].ActivateSelection(false);
                 }
             }
-
-            chooseBoxImgList[num - 1].SetActive(true);
-            activeSelNum = num;
-        }
-
-        public void MoveUpDown(bool UpDown) // Up = true, Down = false
-        {
-            int moveP;
-            if (UpDown)
-                moveP = pointSelNum % activeSelNum + 1;
-            else
-                moveP = (pointSelNum - 2) % activeSelNum + 1;
+            totalSelNum = num;
+            currentSelNum = 0;
+            updateSelect();
         }
     }
 }

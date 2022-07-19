@@ -34,21 +34,31 @@ using System.Collections.Generic;
             }
         }
 
-        public bool PressSpace()
+        public void ChangeTab(int index)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                WindowObjects[i].SetActive(i == index);
+            }
+        }
+
+        public void PressSpace()
         {
             // 끝내기
             if (currentScriptIndex >= dollTalkData.scriptList.Count)
             {
                 dollTalkData = null;
                 currentScriptIndex = 0;
-                return true;
+                return;
             }
             // Coroutine 이 실행중일 때, 스킵 기능
             if (blocked)
             {
                 StopCoroutine(currentCoroutine);
-                activateLeftorRight(dollTalkData.isGirlTalking[currentScriptIndex]);
                 chatText.text = dollTalkData.scriptList[currentScriptIndex];
+                currentScriptIndex++;
+                blocked = false;
+                checkIsLastAndOpenDollTalkSelectionWindow();
             }
             // Coroutine 이 실행중이 아닐때
             else
@@ -56,10 +66,7 @@ using System.Collections.Generic;
                 activateLeftorRight(dollTalkData.isGirlTalking[currentScriptIndex]);
                 currentCoroutine = _printScript(chatText, dollTalkData.scriptList[currentScriptIndex]);
                 StartCoroutine(currentCoroutine);
-                _endPrintScript();
             }
-
-            return false;
         }
 
         private void activateLeftorRight(bool isLeft)
@@ -72,10 +79,8 @@ using System.Collections.Generic;
             int randomIndex = new Random().Next(maxIndex);
             //Random chat of doll
             dollTalkData = DataBaseManager.Instance.dollTalkDataBase.dataList[randomIndex];
-            
-            activateLeftorRight(dollTalkData.isGirlTalking[currentScriptIndex]);
 
-            StartCoroutine(_printScript(chatText, dollTalkData.scriptList[currentScriptIndex]));
+            PressSpace();
         }
         private IEnumerator _printScript(Text textObj, string script)
         {
@@ -85,16 +90,19 @@ using System.Collections.Generic;
             for (int i = 0; i <= script.Length; i++)
             {
                 textObj.text = script.Substring(0, i);
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.02f);
             }
-            _endPrintScript();
-        }
-        
-        private void _endPrintScript()
-        {
-            blocked = false;
-            currentCoroutine = null;
             currentScriptIndex++;
+            blocked = false;
+            checkIsLastAndOpenDollTalkSelectionWindow();
+        }
+
+        private void checkIsLastAndOpenDollTalkSelectionWindow()
+        {
+            if (currentScriptIndex >= dollTalkData.scriptList.Count)
+            {
+                WindowManager.Instance.dollTalkSelectionWindow.Activate();
+            }
         }
     }
 }

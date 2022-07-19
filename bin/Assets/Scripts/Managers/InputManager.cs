@@ -79,18 +79,36 @@ namespace Managers
             if (Input.GetKeyDown(KeyCode.Space) && 
                 WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow")
             {
-                bool isEnd = WindowManager.Instance.dollTalkWindow.PressSpace();
-                if (isEnd)
-                {
-                    WindowManager.Instance.dollTalkSelectionWindow.Activate();
-                }
+                WindowManager.Instance.dollTalkWindow.PressSpace();
                 Debug.Log("UI.DollTalkWindow");
                 return;
             }
-            // Doll Talk Selection window
-            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
+            if (Input.GetKeyDown(KeyCode.C) && 
+                (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow" ||
+                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
+                )
             {
-                Debug.Log("UI.DollTalkSelectionWindow");
+                WindowManager.Instance.dollTalkWindow.CloseWindow();
+                WindowManager.Instance.dollTalkSelectionWindow.CloseWindow();
+                return;
+            }
+            // Doll Talk Selection window
+            if (Input.GetKeyDown(KeyCode.Space) &&
+                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
+            {
+                WindowManager.Instance.dollTalkSelectionWindow.PressSpace();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow) &&
+                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
+            {
+                WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(true);
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow) &&
+                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
+            {
+                WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(false);
                 return;
             }
             // 인벤토리 판넬
