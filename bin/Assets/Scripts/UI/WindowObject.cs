@@ -11,7 +11,7 @@ namespace UI
         //For Opening Window
         [SerializeField] private bool isDraggable;
         [SerializeField] private bool moveableWhileOpen;
-        [SerializeField] private bool inputableWhileOpen;
+        [SerializeField] private bool inputableWhileOpen = true;
         public abstract void Activate();
         public void OpenWindow()
         {

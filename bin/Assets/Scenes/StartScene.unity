@@ -2692,6 +2692,42 @@ MonoBehaviour:
   scriptText: {fileID: 146667109}
   currentPrintingIndex: 0
   blocked: 0
+--- !u!1 &300303562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300303563}
+  m_Layer: 5
+  m_Name: Talk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &300303563
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300303562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 868198780}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 800, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &305996683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2739,7 @@ GameObject:
   - component: {fileID: 305996684}
   - component: {fileID: 305996685}
   m_Layer: 5
-  m_Name: Dolltalk Window
+  m_Name: Doll Talk Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2746,21 +2782,13 @@ MonoBehaviour:
   moveableWhileOpen: 0
   inputableWhileOpen: 1
   currentWindow: 0
-  pointSelImg: {fileID: 821111528}
-  chooseBoxImg:
-  - {fileID: 0}
-  - {fileID: 50487537}
-  - {fileID: 473295135}
-  - {fileID: 2036184193}
-  chooseBoxText:
-  - {fileID: 506020046}
-  - {fileID: 837142975}
-  - {fileID: 2043907019}
-  - {fileID: 1475966448}
-  activeSelNum: 4
-  pointSelNum: 4
   chatBoxL: {fileID: 168791845}
   chatBoxR: {fileID: 411844542}
+  WindowObjects:
+  - {fileID: 300303562}
+  - {fileID: 792641918}
+  - {fileID: 1051291499}
+  - {fileID: 1275874026}
 --- !u!1 &330914096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,8 +5490,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 743650356}
+  - component: {fileID: 743650357}
   m_Layer: 5
-  m_Name: chooseBox
+  m_Name: Dolltalk Choose Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5496,6 +5525,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &743650357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743650355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916a5ceed8854841a1e9a153982ae788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDraggable: 0
+  moveableWhileOpen: 0
+  inputableWhileOpen: 1
+  chooseBoxImg: []
+  chooseBoxText: []
+  activeSelNum: 0
+  pointSelNum: 0
 --- !u!1 &758366671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,7 +5626,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868198780}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6073,7 +6121,10 @@ RectTransform:
   - {fileID: 2054175733}
   - {fileID: 743650356}
   - {fileID: 1957385717}
+  - {fileID: 300303563}
   - {fileID: 792641919}
+  - {fileID: 1051291500}
+  - {fileID: 1275874027}
   m_Father: {fileID: 305996684}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7459,6 +7510,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033003516}
   m_CullTransparentMesh: 1
+--- !u!1 &1051291499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051291500}
+  m_Layer: 5
+  m_Name: Anima Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1051291500
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051291499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 868198780}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 800, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1053224479
 GameObject:
   m_ObjectHideFlags: 0
@@ -8487,6 +8574,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253629024}
   m_CullTransparentMesh: 1
+--- !u!1 &1275874026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275874027}
+  m_Layer: 5
+  m_Name: Save Load
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1275874027
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275874026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 868198780}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 800, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1279275391
 GameObject:
   m_ObjectHideFlags: 0
@@ -11001,7 +11124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3502c73e18d57774fa1543b8254f7939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentOpenWindowNum: 0
+  currentOpenWindowTypeString: 
+  currentOpenWindowList: []
   sLWindow: {fileID: 0}
   settingWindow: {fileID: 1569470506}
   profileWindow: {fileID: 1486109552}
@@ -11011,6 +11135,7 @@ MonoBehaviour:
   lockWindow: {fileID: 0}
   inventoryWindow: {fileID: 0}
   dollTalkWindow: {fileID: 305996685}
+  dollTalkSelectionWindow: {fileID: 743650357}
   chooseWindow: {fileID: 1017061002}
 --- !u!1 &1622945515
 GameObject:
@@ -12207,6 +12332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affef8cbeb50ebf4f9f9eee4f8976283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 0
+  moveableWhileOpen: 0
+  inputableWhileOpen: 0
   isEquip: 0
   currentSelection: 0
   equipOrUn: {fileID: 0}

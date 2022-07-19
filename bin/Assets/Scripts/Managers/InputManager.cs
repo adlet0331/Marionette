@@ -75,13 +75,18 @@ namespace Managers
         }
 
         private void Update() {
-            if (isInputAvaliable && Input.anyKeyDown) {
-                foreach (var dic in keyDictionary) {
-                    if (Input.GetKeyDown(dic.Key))
-                        dic.Value();
-                }
+            // Doll Window
+            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow")
+            {
+                
+                return;
             }
-            
+            // Doll Talk Selection window
+            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
+            {
+                
+                return;
+            }
             // 인벤토리 판넬
             if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.ItemSelectionPannel")
             {
@@ -92,6 +97,7 @@ namespace Managers
                     moveInt += 1;
 
                 WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt);
+                return;
             }
             // 인벤토리
             if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.InventoryWindow")
@@ -104,8 +110,17 @@ namespace Managers
                     WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-2);
                 else if (Input.GetKeyDown(KeyCode.DownArrow))
                     WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
+                return;
             }
             
+            if (isInputAvaliable && Input.anyKeyDown) {
+                foreach (var dic in keyDictionary) {
+                    if (Input.GetKeyDown(dic.Key))
+                        dic.Value();
+                }
+            }
+            
+            // Move
             if (!playerMovingComponent)
                 return;
 
