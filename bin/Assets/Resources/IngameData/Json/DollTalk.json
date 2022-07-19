@@ -38,5 +38,43 @@
             "\uce68\ub300\ub2e4",
             "\u2026 \uc774\ubd88\uc744 \uac1c\uae34 \uadc0\ucc2e\ub2e4"
         ]
+    },
+    {
+        "idx": 2,
+        "isGirlTalking": [
+            true,
+            true
+        ],
+        "leftSpriteList": [
+            "dummy01",
+            "dummy01"
+        ],
+        "name": "\ub354\ubbf8\ub370\uc774\ud130",
+        "rightSpriteList": [
+            "none",
+            "dummy01"
+        ],
+        "scriptList": [
+            "\uc774\uac78 \ubcf4\uace0 \uc788\ub2e4\uba74 \uc774\uac8c \uc65c \uc791\ub3d9\ud558\ub294\uc9c0 \uc758\ubb38\uc744 \uac00\uc9c0\uc2ed\uc1fc"
+        ]
+    },
+    {
+        "idx": 3,
+        "isGirlTalking": [
+            false,
+            false
+        ],
+        "leftSpriteList": [
+            "dummy01",
+            "dummy01"
+        ],
+        "name": "\ub354\ubbf82\ub370\uc774\ud130",
+        "rightSpriteList": [
+            "none",
+            "dummy01"
+        ],
+        "scriptList": [
+            "\uc798 \uc791\ub3d9\ud569\ub2c8\ub2e4 \uc608"
+        ]
     }
 ]
