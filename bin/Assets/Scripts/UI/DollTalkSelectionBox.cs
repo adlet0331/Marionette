@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    [Serializable]
-    public class DollTalkSelectionBox
+    public class DollTalkSelectionBox : MonoBehaviour
     {
         [SerializeField] private GameObject SelectionArrow;
         [SerializeField] private Text SelectionText;

@@ -3526,6 +3526,7 @@ GameObject:
   - component: {fileID: 506020047}
   - component: {fileID: 506020049}
   - component: {fileID: 506020048}
+  - component: {fileID: 506020050}
   m_Layer: 5
   m_Name: chooseBox_choose4_text
   m_TagString: Untagged
@@ -3596,6 +3597,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506020046}
   m_CullTransparentMesh: 1
+--- !u!114 &506020050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506020046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e821c19444b428a424eb7da407358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectionArrow: {fileID: 821111528}
+  SelectionText: {fileID: 506020048}
 --- !u!1 &529821083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5335,19 +5350,20 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
-  chooseBoxImg:
-  - {fileID: 50487537}
-  - {fileID: 473295135}
-  - {fileID: 2036184193}
-  chooseBoxText:
-  - SelectionArrow: {fileID: 145965673}
-    SelectionText: {fileID: 1475966450}
-  - SelectionArrow: {fileID: 1979764784}
-    SelectionText: {fileID: 2043907021}
-  - SelectionArrow: {fileID: 262703233}
-    SelectionText: {fileID: 837142977}
-  - SelectionArrow: {fileID: 821111528}
-    SelectionText: {fileID: 506020048}
+  chooseBoxImgList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  talkBoxGameObjectList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chooseBoxTextList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   activeSelNum: 0
   pointSelNum: 0
 --- !u!1 &758366671
@@ -5678,6 +5694,7 @@ GameObject:
   - component: {fileID: 837142976}
   - component: {fileID: 837142978}
   - component: {fileID: 837142977}
+  - component: {fileID: 837142979}
   m_Layer: 5
   m_Name: chooseBox_choose3_text
   m_TagString: Untagged
@@ -5748,6 +5765,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837142975}
   m_CullTransparentMesh: 1
+--- !u!114 &837142979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837142975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e821c19444b428a424eb7da407358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectionArrow: {fileID: 262703233}
+  SelectionText: {fileID: 837142977}
 --- !u!1 &844595459
 GameObject:
   m_ObjectHideFlags: 0
@@ -9607,6 +9638,7 @@ GameObject:
   - component: {fileID: 1475966449}
   - component: {fileID: 1475966451}
   - component: {fileID: 1475966450}
+  - component: {fileID: 1475966452}
   m_Layer: 5
   m_Name: chooseBox_choose1_text
   m_TagString: Untagged
@@ -9677,6 +9709,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475966448}
   m_CullTransparentMesh: 1
+--- !u!114 &1475966452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475966448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e821c19444b428a424eb7da407358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectionArrow: {fileID: 145965673}
+  SelectionText: {fileID: 1475966450}
 --- !u!1 &1477241110
 GameObject:
   m_ObjectHideFlags: 0
@@ -13276,6 +13322,7 @@ GameObject:
   - component: {fileID: 2043907020}
   - component: {fileID: 2043907022}
   - component: {fileID: 2043907021}
+  - component: {fileID: 2043907023}
   m_Layer: 5
   m_Name: chooseBox_choose2_text
   m_TagString: Untagged
@@ -13346,6 +13393,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043907019}
   m_CullTransparentMesh: 1
+--- !u!114 &2043907023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043907019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e821c19444b428a424eb7da407358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectionArrow: {fileID: 1979764784}
+  SelectionText: {fileID: 2043907021}
 --- !u!1 &2054175732
 GameObject:
   m_ObjectHideFlags: 0

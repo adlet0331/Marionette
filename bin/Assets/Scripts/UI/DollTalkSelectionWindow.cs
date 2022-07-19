@@ -5,8 +5,9 @@ namespace UI
 {
     public class DollTalkSelectionWindow : WindowObject
     {
-        [SerializeField] private List<GameObject> chooseBoxImg;
-        [SerializeField] private List<DollTalkSelectionBox> chooseBoxText;
+        [SerializeField] private List<GameObject> chooseBoxImgList;
+        [SerializeField] private List<GameObject> talkBoxGameObjectList;
+        [SerializeField] private List<DollTalkSelectionBox> chooseBoxTextList;
         
         [SerializeField] private int activeSelNum; // Total number of selection
         [SerializeField] private int pointSelNum; // Current number of selection
@@ -23,21 +24,24 @@ namespace UI
             {
                 if (i == num - 2)
                 {
-                    chooseBoxImg[i].SetActive(true);
+                    chooseBoxImgList[i].SetActive(true);
                 }
                 else
                 {
-                    chooseBoxImg[i].SetActive(false);
+                    chooseBoxImgList[i].SetActive(false);
                 }
 
-                if (i < num)
+                if (i < 4 - num)
                 {
-                    chooseBoxText[i].ActivateSelection(true);
-                    
+                    chooseBoxTextList[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    chooseBoxTextList[i].gameObject.SetActive(true);
                 }
             }
 
-            chooseBoxImg[num - 1].SetActive(true);
+            chooseBoxImgList[num - 1].SetActive(true);
             activeSelNum = num;
         }
 
