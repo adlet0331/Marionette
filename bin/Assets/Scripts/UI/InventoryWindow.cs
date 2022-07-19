@@ -56,14 +56,14 @@ namespace UI
             selectionPannelInt = 0;
             isSelPannelOpen = true;
             InputManager.Instance.SetItemSelectionPannel(true);
-            itemSelectionPannel.gameObject.SetActive(true);
+            itemSelectionPannel.Activate();
             itemSelectionPannel.UpdatePannel(equipedIdx != selectedIdx);
         }
 
         public void CloseSelectionPannel()
         {
             isSelPannelOpen = false;
-            itemSelectionPannel.gameObject.SetActive(false);
+            itemSelectionPannel.CloseWindow();
             InputManager.Instance.SetItemSelectionPannel(false);
         }
 

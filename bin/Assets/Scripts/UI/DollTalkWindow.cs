@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ namespace UI
             }
         }
 
-        private void setChooseNumber(int num) // 2, 3, 4 only
+        private void initChooseNumber(int num) // 2, 3, 4 only
         {
             for (int i = 1; i <= num; i++)
             {

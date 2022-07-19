@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class ItemSelectionPannel : MonoBehaviour
+    public class ItemSelectionPannel : WindowObject
     {
         [SerializeField] private bool isEquip;
         [SerializeField] private int currentSelection;
@@ -11,6 +11,12 @@ namespace UI
         [SerializeField] private GameObject avaliableImage1;
         [SerializeField] private GameObject avaliableImage2;
         [SerializeField] private GameObject avaliableImage3;
+        
+        public override void Activate()
+        {
+            OpenWindow();
+            UpdateUI(0);
+        }
 
         public void UpdateUI(int currentSelection)
         {
@@ -32,7 +38,6 @@ namespace UI
             }
 
             this.currentSelection = currentSelection;
-            return;
         }
 
         public void UpdatePannel(bool bl)

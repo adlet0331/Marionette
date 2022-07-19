@@ -17,13 +17,13 @@ namespace UI
         {
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
-            WindowManager.Instance.currentOpenWindowNum += 1;
+            WindowManager.Instance.SetCurrentWindow(this);
             InputManager.Instance.SetOptions(moveableWhileOpen, inputableWhileOpen);
         }
         public void CloseWindow()
         {
-            WindowManager.Instance.currentOpenWindowNum -= 1;
             gameObject.SetActive(false);
+            WindowManager.Instance.RemoveWindow(this);
             InputManager.Instance.SetOptions(true, true);
         }
         

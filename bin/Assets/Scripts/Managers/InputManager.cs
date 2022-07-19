@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using InGameObjects.Object;
+using UI;
 using UnityEngine;
 
 /* 
@@ -74,6 +75,37 @@ namespace Managers
         }
 
         private void Update() {
+            if (isInputAvaliable && Input.anyKeyDown) {
+                foreach (var dic in keyDictionary) {
+                    if (Input.GetKeyDown(dic.Key))
+                        dic.Value();
+                }
+            }
+            
+            // 인벤토리 판넬
+            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.ItemSelectionPannel")
+            {
+                int moveInt = 0;
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                    moveInt -= 1;
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                    moveInt += 1;
+
+                WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt);
+            }
+            // 인벤토리
+            else if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.InventoryWindow")
+            {
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(1);
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-1);
+                else if (Input.GetKeyDown(KeyCode.UpArrow))
+                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-2);
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
+            }
+            
             if (!playerMovingComponent)
                 return;
 
@@ -91,37 +123,6 @@ namespace Managers
             {
                 playerMovingComponent.Move(0, 0, false, false);
             }
-
-            if (isInputAvaliable && Input.anyKeyDown) {
-                foreach (var dic in keyDictionary) {
-                    if (Input.GetKeyDown(dic.Key))
-                        dic.Value();
-                }
-            }
-
-            if (!isMoveable && isInputAvaliable && isItemSelectionPannelOn)
-            {
-                int moveInt = 0;
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                    moveInt -= 1;
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                    moveInt += 1;
-
-                WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt);
-            }
-
-            else if (!isMoveable && isInputAvaliable && isInventoryWindowOn)
-            {
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(1);
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-1);
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-2);
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
-            }
-
         }
 
         private void OpenSettings() {
