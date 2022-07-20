@@ -24,9 +24,7 @@ namespace Managers
             public bool isInputAvaliable;
             public int CameraMode;
         }
-
-        [SerializeField] private Button newGameButton;
-        [SerializeField] private Button loadButton;
+        
         [SerializeField] private SceneName currentScene;
         [SerializeField] public SceneName beforeScene;
         [ArrayElementTitle("sceneName")]
@@ -34,8 +32,6 @@ namespace Managers
         private void Start()
         {
             currentScene = SceneName.StartScene;
-            newGameButton.onClick.AddListener(NewGame);
-            loadButton.onClick.AddListener(LoadGame);
         }
         private SceneInfo FindSceneInfo(SceneName sceneName)
         {
