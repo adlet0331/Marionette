@@ -59,6 +59,6 @@ TagManager:
   - name: Character
     uniqueID: 639321795
     locked: 0
-  - name: Load Card
+  - name: UI
     uniqueID: 3343983359
     locked: 0

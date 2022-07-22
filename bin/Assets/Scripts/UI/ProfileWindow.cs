@@ -10,12 +10,7 @@ namespace UI
         [SerializeField] private Image profileImage;
 
         [SerializeField] private int equipedItemIdx = -1;
-        //[SerializeField] private int currentStatus = -1;
-
-        private void updateEquipedSlot()
-        {
-            equipedItemSlot.SetSlotStatus(false, false);
-        }
+        [SerializeField] private string currentSpriteName;
 
         public void UpdateEquipItem(int itemIdx)
         {
@@ -28,7 +23,7 @@ namespace UI
 
         public override void Activate()
         {
-            return;
+            this.OpenWindow();
         }
     }
 }

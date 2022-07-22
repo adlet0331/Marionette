@@ -6,8 +6,8 @@
             true
         ],
         "leftSpriteList": [
-            "dummy01",
-            "dummy01"
+            "girl_thinking",
+            "girl_idle"
         ],
         "name": "\uc778\ud615\uacfc\uc758 \ub354\ubbf8 \ub300\ud654",
         "rightSpriteList": [
@@ -26,8 +26,8 @@
             true
         ],
         "leftSpriteList": [
-            "dummy01",
-            "dummy01"
+            "girl_thinking",
+            "girl_idle"
         ],
         "name": "\ub354\ubbf8\ub370\uc774\ud130",
         "rightSpriteList": [
@@ -46,8 +46,8 @@
             false
         ],
         "leftSpriteList": [
-            "dummy01",
-            "dummy01"
+            "girl_thinking",
+            "girl_idle"
         ],
         "name": "\ub354\ubbf82\ub370\uc774\ud130",
         "rightSpriteList": [

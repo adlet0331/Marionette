@@ -27,11 +27,36 @@ namespace Managers
             public string setting;
             // Inventory
             public List<ItemData> itemList;
+            // Stella List
+            public List<int> stellaIdxList;
             // SceneObjects
             public List<bool> interactingObjectStatusList;
         }
         
-        public SaveData InitSaveData()
+        public enum SaveDataType
+        {
+            InteractionObject = 0,
+            Item = 1,
+            AnimaObject = 2,
+        }
+
+        public void OnNotify(SaveDataType dataType, bool isAdd, int idx)
+        {
+            if (dataType == SaveDataType.InteractionObject)
+            {
+                
+            }
+            else if (dataType == SaveDataType.Item)
+            {
+                
+            }
+            else if (dataType == SaveDataType.AnimaObject)
+            {
+                
+            }
+        }
+        
+        public void InitSaveData()
         {
             SaveData newData = new SaveData();
 
@@ -52,8 +77,6 @@ namespace Managers
             
             this.currentSaveData = newData;
             this.currentSaveDataName = createRandomString(10);
-
-            return newData;
         }
         
         /// <summary>

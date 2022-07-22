@@ -556,6 +556,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 0
+  profileShowingWhileOpen: 0
 --- !u!1 &55092894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1539,7 @@ RectTransform:
   - {fileID: 717658566}
   - {fileID: 55092895}
   m_Father: {fileID: 457803118}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2832,6 +2833,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 0
   data:
     idx: 0
     name: 
@@ -2840,6 +2842,7 @@ MonoBehaviour:
     rightSpriteList: []
   nameText: {fileID: 55092896}
   scriptText: {fileID: 146667109}
+  currentImage: {fileID: 3504795126098222945}
   currentPrintingIndex: 0
   blocked: 0
 --- !u!1 &300303562
@@ -2931,6 +2934,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 0
   currentWindow: 0
   chatBoxL: {fileID: 168791845}
   chatBoxR: {fileID: 411844542}
@@ -3658,6 +3662,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3504795126098222950}
   - {fileID: 1477241111}
   - {fileID: 176873622}
   m_Father: {fileID: 287018447}
@@ -5921,6 +5926,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 0
   chooseBoxImgList:
   - {fileID: 50487537}
   - {fileID: 473295135}
@@ -6480,6 +6486,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 1
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 0
   isSelPannelOpen: 0
   isInfoPannelOpen: 0
   itemSelectionPannel: {fileID: 1808517001}
@@ -7556,6 +7563,7 @@ MonoBehaviour:
     playerPosY: 0
     setting: 
     itemList: []
+    stellaIdxList: 
     interactingObjectStatusList: 
 --- !u!1 &1010988788
 GameObject:
@@ -7745,6 +7753,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 1
   data:
     idx: 0
     name: 
@@ -10554,7 +10563,7 @@ RectTransform:
   - {fileID: 1238604420}
   - {fileID: 146667108}
   m_Father: {fileID: 457803118}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10615,9 +10624,11 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 1
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 1
   equipedItemSlot: {fileID: 1715067197}
   profileImage: {fileID: 1541550299}
   equipedItemIdx: -1
+  currentSpriteName: 
 --- !u!1 &1505238015
 GameObject:
   m_ObjectHideFlags: 0
@@ -11319,6 +11330,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 0
   gameObject: {fileID: 1569470504}
   currentWindow: 1
   Object_AnimaLibrary: {fileID: 1537792403}
@@ -11530,6 +11542,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 1
   inputableWhileOpen: 1
+  profileShowingWhileOpen: 0
 --- !u!1 &1606283251
 GameObject:
   m_ObjectHideFlags: 0
@@ -12553,7 +12566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1750524137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12590,6 +12603,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 0
+  profileShowingWhileOpen: 0
   nameText: {fileID: 844595461}
   infoText: {fileID: 635413738}
 --- !u!1 &1762268030
@@ -12766,6 +12780,7 @@ MonoBehaviour:
   isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 0
+  profileShowingWhileOpen: 0
   isEquip: 0
   currentSelection: 0
   equipOrUn: {fileID: 0}
@@ -14201,7 +14216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14695,6 +14710,82 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5756950653789702672, guid: 0f5d2334921ae8844ab5e5bbec4e390c, type: 3}
   m_PrefabInstance: {fileID: 2141527770}
   m_PrefabAsset: {fileID: 0}
+--- !u!222 &3504795126098222944
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504795126098222951}
+  m_CullTransparentMesh: 1
+--- !u!114 &3504795126098222945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504795126098222951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 408cfc5951de5ff4e9423eed95b6fed9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!224 &3504795126098222950
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3504795126098222951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 457803118}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -227.7, y: 155.6}
+  m_SizeDelta: {x: 1448, y: 2048}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &3504795126098222951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3504795126098222950}
+  - component: {fileID: 3504795126098222944}
+  - component: {fileID: 3504795126098222945}
+  m_Layer: 5
+  m_Name: Girl Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &5756950655035105220
 PrefabInstance:
   m_ObjectHideFlags: 0

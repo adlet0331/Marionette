@@ -2,13 +2,13 @@
     {
         "idx": 0,
         "leftSpriteList": [
-            "dummy01",
-            "dummy01"
+            "none",
+            "none"
         ],
         "name": "\ub354\ubbf8",
         "rightSpriteList": [
             "none",
-            "dummy01"
+            "none"
         ],
         "scriptList": [
             "\ub354\ubbf8 \uc2a4\ud06c\ub9bd\ud2b8\ub2e4. \ud14c\uc2a4\ud2b8\ub97c \uc704\ud574 \uc2a4\ud06c\ub9bd\ud2b8\ub97c \uc880 \uae38\uac8c \uc791\uc131\ud568",
@@ -18,13 +18,13 @@
     {
         "idx": 1,
         "leftSpriteList": [
-            "sprite01",
-            "sprite01"
+            "girl_thinking",
+            "girl_idle"
         ],
         "name": "\uc18c\ub140\uc758\ubc29_\uce68\ub300",
         "rightSpriteList": [
-            "sprite01",
-            "sprite01"
+            "none",
+            "none"
         ],
         "scriptList": [
             "\uce68\ub300\ub2e4",

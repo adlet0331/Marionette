@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using System.IO;
 using DataBaseScripts;
-using InGameObjects.Interaction;
-using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +18,7 @@ namespace UI
     {
         [SerializeField] private Text nameText;
         [SerializeField] private Text scriptText;
+        [SerializeField] private Image currentImage;
         [SerializeField] private int currentPrintingIndex;
 
         [SerializeField] private bool blocked = false;
@@ -51,6 +50,16 @@ namespace UI
                 StopCoroutine(currentCoroutine);
                 scriptText.text = data.scriptList[currentPrintingIndex];
                 EndPrintScript();
+            }
+            if (data.leftSpriteList[currentPrintingIndex] == "none")
+            {
+                currentImage.sprite = null;
+                currentImage.gameObject.SetActive(false);
+            }
+            else {
+                currentImage.gameObject.SetActive(true);
+                currentImage.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Character_Script",
+                    data.leftSpriteList[currentPrintingIndex]));
             }
             return currentPrintingIndex;
         }
