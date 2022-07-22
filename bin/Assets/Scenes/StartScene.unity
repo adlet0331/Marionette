@@ -11761,7 +11761,7 @@ MonoBehaviour:
   profileWindow: {fileID: 1486109552}
   interactableWindow: {fileID: 1583403101}
   scriptWindow: {fileID: 287018448}
-  itemGotWindow: {fileID: 0}
+  itemGotWindow: {fileID: 1750524138}
   lockWindow: {fileID: 0}
   inventoryWindow: {fileID: 0}
   dollTalkWindow: {fileID: 305996685}
@@ -12602,10 +12602,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDraggable: 0
   moveableWhileOpen: 0
-  inputableWhileOpen: 0
-  profileShowingWhileOpen: 0
+  inputableWhileOpen: 1
+  profileShowingWhileOpen: 1
+  data:
+    idx: 0
+    name: 
+    itemIdxList: 
+    itemNumList: 
+    isAddList: 
   nameText: {fileID: 844595461}
   infoText: {fileID: 635413738}
+  itemImage: {fileID: 912783982}
+  isOpened: 0
 --- !u!1 &1762268030
 GameObject:
   m_ObjectHideFlags: 0

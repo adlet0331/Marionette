@@ -13,10 +13,8 @@ namespace DataBaseScripts
     [Serializable]
     public class ItemData : DataType
     {
-        public int initStatus;
         public string itemInfo;
         public string spriteName;
-        public string itemDescription;
     }
 
     [CreateAssetMenu(fileName = "ItemDataBase", menuName = "ScriptableObjects/ItemDataBase", order = 1)]

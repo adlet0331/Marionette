@@ -311,9 +311,9 @@ MonoBehaviour:
   playerRigidBody: {fileID: 5476571666832849565}
   handLight: {fileID: 6756948220352639934}
   isActive: 1
-  slowWalkSpeed: 300
-  moveSpeed: 600
-  runSpeed: 1000
+  slowWalkSpeed: 150
+  moveSpeed: 300
+  runSpeed: 500
   isMoving: 0
   isRunning: 0
   isSlowWalking: 0

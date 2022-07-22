@@ -13,6 +13,7 @@ namespace DataBaseScripts
         public List<int> idxList;
         public List<bool> goNextImmediately;
         public bool initStatus;
+        public bool disableAfterInteract;
     }
     
     [CreateAssetMenu(fileName = "InteractionDataBase", menuName = "ScriptableObjects/InteractionDataBase", order = 1)]

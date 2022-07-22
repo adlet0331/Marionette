@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using DataBaseScripts;
+using DataBaseScripts.Base;
+using InGameObjects.Interaction.InteractingAdditionalObjects;
+using Managers;
+using UnityEngine;
 using UnityEngine.UI;
 
 /*
@@ -9,13 +14,36 @@ using UnityEngine.UI;
  */
 namespace UI
 {
-    public class ItemGotWindow : WindowObject
+    public class ItemGotWindow : UIControlWindow<ItemControlData>
     {
         [SerializeField] private Text nameText;
         [SerializeField] private Text infoText;
+        [SerializeField] private Image itemImage;
+        [SerializeField] private bool isOpened = false;
+
         public override void Activate()
         {
-            return;
+            if (!isOpened)
+            {
+                OpenWindow();
+                for (int i = 0; i < data.itemIdxList.Count; i++)
+                {
+                    if (data.isAddList[i])
+                    {
+                        var itemData = DataBaseManager.Instance.itemDataBase.dataList[data.itemIdxList[i]];
+                        nameText.text = itemData.name;
+                        infoText.text = itemData.itemInfo;
+                        itemImage.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items", itemData.spriteName));
+                        break;
+                    }
+                }
+                isOpened = true;
+            }
+            else
+            {
+                CloseWindow();
+                isOpened = false;
+            }
         }
     }
 }

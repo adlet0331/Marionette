@@ -29,7 +29,7 @@ namespace Managers
     
         [SerializeField] private float characterWorldX;
         [SerializeField] private float characterWorldY;
-        
+
         public void SetOptions(bool isMv, bool isAv)
         {
             isMoveable = isMv;
@@ -186,6 +186,8 @@ namespace Managers
             if (interactionEnd)
             {
                 PlayerManager.Instance.interactingPlayer.UnblockInteract();
+                obj.gameObject.SetActive(!obj.DisableAfterInteract); //TODO
+                SLManager.Instance.OnNotify(SLManager.SaveDataType.InteractionObject, obj.DisableAfterInteract, obj.Idx);
                 PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
             }
             else

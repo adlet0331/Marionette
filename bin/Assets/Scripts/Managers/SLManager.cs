@@ -36,7 +36,7 @@ namespace Managers
         public enum SaveDataType
         {
             InteractionObject = 0,
-            Item = 1,
+            ItemAdd = 1,
             AnimaObject = 2,
         }
 
@@ -44,9 +44,10 @@ namespace Managers
         {
             if (dataType == SaveDataType.InteractionObject)
             {
-                
+                currentSaveData.interactingObjectStatusList[idx] = isAdd;
+                return;
             }
-            else if (dataType == SaveDataType.Item)
+            else if (dataType == SaveDataType.ItemAdd)
             {
                 
             }

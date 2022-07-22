@@ -139,12 +139,11 @@ namespace Tools
             GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)), interactionGroupsTransform, true);
 
             InteractionData interactionData = InteractionDataBase.dataList[interactionIdx];
-
             
             interactingObject.name = interactionData.name;
 
             InteractingObject interactionObjectScript = interactingObject.GetComponent<InteractingObject>();
-            interactionObjectScript.Initiate(interactionIdx, interactionData.typeList, interactionData.goNextImmediately);
+            interactionObjectScript.Initiate(interactionIdx, interactionData.typeList, interactionData.goNextImmediately, interactionData.disableAfterInteract);
 
             GameObject prefabObject;
             for (int i = 0; i < interactionData.typeList.Count; i++)

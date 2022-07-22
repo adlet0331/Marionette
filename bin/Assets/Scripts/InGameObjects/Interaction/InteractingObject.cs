@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Xml;
-using DataBaseScripts.Base;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
-using Managers;
 using UnityEngine;
 
 /* Interact 되는 객체
@@ -30,6 +26,7 @@ namespace InGameObjects.Interaction
         [SerializeField] private List<int> dataType;
         [SerializeField] private List<bool> goNextImmediatly;
         [SerializeField] private List<GameObject> interactingObjectList;
+        [SerializeField] private bool disableAfterInteract;
 
         [SerializeField] private int currentInteractIndex = 0;
 
@@ -38,16 +35,22 @@ namespace InGameObjects.Interaction
             get => idx;
         }
 
+        public bool DisableAfterInteract
+        {
+            get => disableAfterInteract;
+        }
+
         public void AddInteractingObject(GameObject gameObject)
         {
             interactingObjectList.Add(gameObject);
         }
 
-        public void Initiate(int index, List<int> typeList, List<bool> goNextList)
+        public void Initiate(int index, List<int> typeList, List<bool> goNextList, bool disableAfterInteract)
         {
             idx = index;
             dataType = typeList;
             goNextImmediatly = goNextList;
+            this.disableAfterInteract = disableAfterInteract;
         }
         
         /*

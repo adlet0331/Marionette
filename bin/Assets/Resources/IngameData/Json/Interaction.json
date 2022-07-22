@@ -1,5 +1,6 @@
 [
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true,
             true,
@@ -29,6 +30,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true,
             true,
@@ -67,6 +69,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
@@ -81,6 +84,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             false,
             true
@@ -98,6 +102,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true,
             false
@@ -113,6 +118,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
@@ -127,6 +133,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
@@ -141,6 +148,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
@@ -155,12 +163,13 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
         "idx": 8,
         "idxList": [
-            0
+            1
         ],
         "initStatus": true,
         "name": "\uc544\uc774\ud15c \ub354\ubbf8",
@@ -169,6 +178,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
@@ -183,6 +193,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             true
         ],
@@ -197,6 +208,7 @@
         ]
     },
     {
+        "disableAfterInteract": true,
         "goNextImmediately": [
             false,
             true
