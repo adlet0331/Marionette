@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using DataBaseScripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     public class AnimaAbilityManager : Singleton<AnimaAbilityManager>
     {
-        [SerializeField] private AnimaAbilityDataBase animaAbilityDataBase;
+        [FormerlySerializedAs("animaAbilityDataBase")] [SerializeField] private StellaAbilityDataBase stellaAbilityDataBase;
         [SerializeField] private List<int> animaAbilityLevelList;
         [SerializeField] private List<int> animaAbilityCountList;
     
@@ -18,9 +19,9 @@ namespace Managers
             animaAbilityLevelList.Add(-1);
             animaAbilityCountList.Add(-1);
         
-            for (int i = 1; i < animaAbilityDataBase.dataList.Count; i++)
+            for (int i = 1; i < stellaAbilityDataBase.dataList.Count; i++)
             {
-                animaAbilityLevelList.Add(animaAbilityDataBase.dataList[i].initStatus);
+                animaAbilityLevelList.Add(stellaAbilityDataBase.dataList[i].initStatus);
                 animaAbilityCountList.Add(0);
             }
         }
@@ -28,12 +29,12 @@ namespace Managers
         public void IncrementAnimaAbility(int idx, int count)
         {
             animaAbilityCountList[idx] += count;
-            var currentAbilityInfo = animaAbilityDataBase.dataList[idx];
+            var currentAbilityInfo = stellaAbilityDataBase.dataList[idx];
             int currentLevel = animaAbilityLevelList[idx];
             if (animaAbilityCountList[idx] > currentAbilityInfo.levelUpCount[currentLevel] && currentLevel < currentAbilityInfo.maxLevel)
             {
-                animaAbilityCountList[idx] -= animaAbilityDataBase.dataList[idx].levelUpCount[currentLevel];
-                animaAbilityDataBase.dataList[idx].levelUpCount[currentLevel] += 1;
+                animaAbilityCountList[idx] -= stellaAbilityDataBase.dataList[idx].levelUpCount[currentLevel];
+                stellaAbilityDataBase.dataList[idx].levelUpCount[currentLevel] += 1;
             }
         }
     }

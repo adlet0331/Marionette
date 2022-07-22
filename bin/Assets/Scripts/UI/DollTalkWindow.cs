@@ -63,7 +63,7 @@ using System.Collections.Generic;
             // Coroutine 이 실행중이 아닐때
             else
             {
-                activateLeftorRight(dollTalkData.isGirlTalking[currentScriptIndex]);
+                activateLeftorRight(dollTalkData.isGirlTalkingList[currentScriptIndex]);
                 currentCoroutine = _printScript(chatText, dollTalkData.scriptList[currentScriptIndex]);
                 StartCoroutine(currentCoroutine);
             }

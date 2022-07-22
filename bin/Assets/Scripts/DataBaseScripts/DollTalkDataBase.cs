@@ -4,6 +4,7 @@ using System.Linq;
 using DataBaseScripts.Base;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /* 게임 내 Script를 가지는 오브젝트의 데이터 (idx로 사용)
  * -> 이름, 이미지, scriptableScript, Scripts
@@ -17,7 +18,7 @@ namespace DataBaseScripts
         public List<string> scriptList;
         public List<string> leftSpriteList;
         public List<string> rightSpriteList;
-        public List<bool> isGirlTalking;
+        public List<bool> isGirlTalkingList;
     }
 
     [CreateAssetMenu(fileName = "DollTalkDataBase", menuName = "ScriptableObjects/DollTalkDataBase", order = 1)]

@@ -14,9 +14,11 @@ namespace InGameObjects.Interaction
         [SerializeField] private bool currentInteractable;
         [SerializeField] private InteractingObject currentInteractObj;
         [SerializeField] private List<InteractingObject> scriptableObjList;
-
+        private int beforeScriptableObjListLegnth;
+        
         private void Start()
         {
+            beforeScriptableObjListLegnth = 0;
             scriptableObjList = new List<InteractingObject>();
         }
         private void updateFstIdx()
@@ -50,18 +52,22 @@ namespace InGameObjects.Interaction
         {
             if (this.isBlocked)
                 return;
-        
-            updateFstIdx();
+
+            if (beforeScriptableObjListLegnth != scriptableObjList.Count)
+            {
+                beforeScriptableObjListLegnth = scriptableObjList.Count;
+                updateFstIdx();
+            }
+            
             if (!currentInteractable)
             {
-                if (WindowManager.Instance.interactableWindow.gameObject.activeSelf)
+                if (WindowManager.Instance.interactableWindow.IsOpened)
                     WindowManager.Instance.interactableWindow.CloseWindow();
             }
             else
             {
-                if (!WindowManager.Instance.interactableWindow.gameObject.activeSelf)
-                    WindowManager.Instance.interactableWindow.OpenWindow();
-                WindowManager.Instance.interactableWindow.OpenWindow();
+                if (!WindowManager.Instance.interactableWindow.IsOpened)
+                    WindowManager.Instance.interactableWindow.Activate();
             }
         }
         public void BlockInteract()

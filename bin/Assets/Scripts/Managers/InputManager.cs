@@ -65,13 +65,37 @@ namespace Managers
     
         private Dictionary<KeyCode, Action> keyDictionary;
         private void Start() {
-            isInputAvaliable = true;
             keyDictionary = new Dictionary<KeyCode, Action> {
                 { KeyCode.Space, Interact },
                 { KeyCode.Escape, OpenSettings },
                 { KeyCode.C, TalkWithDoll }, 
                 { KeyCode.Tab, SettingTabChange},
             };
+        }
+        
+        /// <summary>
+        /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+        /// </summary>
+        private void FixedUpdate()
+        {
+            // Move
+            if (!playerMovingComponent)
+                return;
+
+            if (isMoveable) {
+                moveH = (int)Input.GetAxisRaw("Horizontal");
+                moveV = (int)Input.GetAxisRaw("Vertical");
+                isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+                isSlowWalk = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+
+                playerMovingComponent.Move(moveH, moveV, isRun, isSlowWalk);
+            
+                playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), GetWorldPointerVec2()));
+            }
+            else
+            {
+                playerMovingComponent.Move(0, 0, false, false);
+            }
         }
 
         private void Update() {
@@ -142,25 +166,6 @@ namespace Managers
                     if (Input.GetKeyDown(dic.Key))
                         dic.Value();
                 }
-            }
-            
-            // Move
-            if (!playerMovingComponent)
-                return;
-
-            if (isMoveable) {
-                moveH = (int)Input.GetAxisRaw("Horizontal");
-                moveV = (int)Input.GetAxisRaw("Vertical");
-                isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-                isSlowWalk = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-
-                playerMovingComponent.Move(moveH, moveV, isRun, isSlowWalk);
-            
-                playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), GetWorldPointerVec2()));
-            }
-            else
-            {
-                playerMovingComponent.Move(0, 0, false, false);
             }
         }
 

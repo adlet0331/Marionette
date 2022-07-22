@@ -66,9 +66,9 @@ namespace UI {
         {
 	        PlayerManager.Instance.interactingPlayer.SetFstInteractObj(data.interactionGameObjectList[idx]);
 
-	        data.interactionGameObjectList[idx].Interact();
-	        
 	        CloseWindow();
+	        
+	        data.interactionGameObjectList[idx].Interact();
         }
 	}
 }

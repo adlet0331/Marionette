@@ -1,7 +1,7 @@
 [
     {
         "idx": 0,
-        "isGirlTalking": [
+        "isGirlTalkingList": [
             true,
             true
         ],
@@ -21,7 +21,7 @@
     },
     {
         "idx": 1,
-        "isGirlTalking": [
+        "isGirlTalkingList": [
             true,
             true
         ],
@@ -41,7 +41,7 @@
     },
     {
         "idx": 2,
-        "isGirlTalking": [
+        "isGirlTalkingList": [
             false,
             false
         ],

@@ -4,6 +4,7 @@ using System.IO;
 using DataBaseScripts;
 using InGameObjects.Interaction;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
+using Managers;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -37,13 +38,17 @@ namespace Tools
             { 10, "10.Lock" },
         };
         
-        public InteractionDataBase InteractionDataBase;
         public ScriptDataBase ScriptDataBase;
         public ChooseDataBase ChooseDataBase;
         public ItemControlDataBase ItemControlDataBase;
         public StressControlDataBase StressControlDataBase;
         public LockDataBase LockDataBase;
-        
+        public InteractionDataBase InteractionDataBase;
+        private DollTalkDataBase DollTalkDataBase;
+        private AnimaDataBase AnimaDataBase;
+        private StellaAbilityDataBase StellaAbilityDataBase;
+        private ItemDataBase ItemDataBase;
+
         public int idx = 0;
         public InteractionObjectType type;
         
@@ -94,12 +99,16 @@ namespace Tools
 
         private void initializeDataBase()
         {
-            InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
             ScriptDataBase = Resources.Load(Path.Combine("DataBase", "3_ScriptDataBase"), typeof(ScriptDataBase)) as ScriptDataBase;
             ChooseDataBase = Resources.Load(Path.Combine("DataBase", "4_ChooseDataBase"), typeof(ChooseDataBase)) as ChooseDataBase;
             ItemControlDataBase = Resources.Load(Path.Combine("DataBase", "8_ItemControlDataBase"), typeof(ItemControlDataBase)) as ItemControlDataBase;
             StressControlDataBase = Resources.Load(Path.Combine("DataBase", "9_StressControlDataBase"), typeof(StressControlDataBase)) as StressControlDataBase;
             LockDataBase = Resources.Load(Path.Combine("DataBase", "10_LockDataBase"), typeof(LockDataBase)) as LockDataBase;
+            InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
+            DollTalkDataBase = Resources.Load(Path.Combine("DataBase", "DollTalkDataBase"), typeof(DollTalkDataBase)) as DollTalkDataBase;
+            AnimaDataBase = Resources.Load(Path.Combine("DataBase", "AnimaDataBase"), typeof(AnimaDataBase)) as AnimaDataBase;
+            StellaAbilityDataBase = Resources.Load(Path.Combine("DataBase", "StellaAbilityDataBase"), typeof(StellaAbilityDataBase)) as StellaAbilityDataBase;
+            ItemDataBase = Resources.Load(Path.Combine("DataBase", "ItemDataBase"), typeof(ItemDataBase)) as ItemDataBase;
         }
 
         private void OnWizardOtherButton()

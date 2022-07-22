@@ -56,16 +56,9 @@ namespace Managers
             PlayerManager.Instance.SetProfileShowing(sceneInfo.isProfileActivate);
         }
 
-        public void NewGame()
+        public void returnToOriginalSceneSetting()
         {
-            SwitchScene(SceneName.Girl_room);
-            SLManager.Instance.InitSaveData(true);
-        }
-
-        public void LoadGame()
-        {
-            SwitchScene(SceneName.Girl_room);
-            SLManager.Instance.Load(1);
+            setSceneOptions(FindSceneInfo(currentScene));
         }
         public void SwitchScene(SceneName sceneName)
         {

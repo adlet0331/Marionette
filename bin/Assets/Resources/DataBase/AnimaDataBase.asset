@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52b50dd20e541258e710708d716f646, type: 3}
-  m_Name: AnimaAbilityDataBase
+  m_Script: {fileID: 11500000, guid: 1eca47ade9ba4d5b8e1057ccc0753efd, type: 3}
+  m_Name: AnimaDataBase
   m_EditorClassIdentifier: 
-  databaseName: AnimaAbility
-  dataList:
-  - idx: 0
-    name: "\uB354\uBBF8"
-    maxLevel: 4
-    levelUpCount: 010000000200000003000000
-    initStatus: 1
+  databaseName: Anima
+  dataList: []

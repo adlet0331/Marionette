@@ -9,9 +9,14 @@ namespace UI
 {
     public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler {
         //For Opening Window
-        [SerializeField] private bool isDraggable;
-        [SerializeField] private bool moveableWhileOpen;
+        [SerializeField] private bool isDraggable = false;
+        [SerializeField] private bool moveableWhileOpen = false;
         [SerializeField] private bool inputableWhileOpen = true;
+
+        public bool IsOpened
+        {
+            get => this.gameObject.activeSelf;
+        }
         public abstract void Activate();
         public void OpenWindow()
         {
@@ -20,11 +25,12 @@ namespace UI
             WindowManager.Instance.SetCurrentWindow(this);
             InputManager.Instance.SetOptions(moveableWhileOpen, inputableWhileOpen);
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         public void CloseWindow()
         {
             gameObject.SetActive(false);
             WindowManager.Instance.RemoveWindow(this);
-            InputManager.Instance.SetOptions(true, true);
+            SceneSwitchManager.Instance.returnToOriginalSceneSetting();
         }
         
         // Interface
