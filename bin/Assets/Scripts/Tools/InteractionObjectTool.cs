@@ -4,8 +4,6 @@ using System.IO;
 using DataBaseScripts;
 using InGameObjects.Interaction;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
-using Managers;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -48,7 +46,7 @@ namespace Tools
         private AnimaDataBase AnimaDataBase;
         private StellaAbilityDataBase StellaAbilityDataBase;
         private ItemDataBase ItemDataBase;
-
+        
         public int idx = 0;
         public InteractionObjectType type;
         
@@ -131,13 +129,20 @@ namespace Tools
 
         private GameObject CreateObject(InteractionObjectType interactionObjectType, int interactionIdx)
         {
+            Transform interactionGroupsTransform = GameObject.FindGameObjectWithTag("GroupInteraction").GetComponent<Transform>();
+            if (!interactionGroupsTransform)
+            {
+                Debug.LogAssertion("Please Make [Group Interaction] Code attached Object For InteractionObject Initialize!");
+            }
+            
             string interactingObjectName = interactionObjectType.ToString();
-            GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)));
+            GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)), interactionGroupsTransform, true);
 
             InteractionData interactionData = InteractionDataBase.dataList[interactionIdx];
+
             
             interactingObject.name = interactionData.name;
-            
+
             InteractingObject interactionObjectScript = interactingObject.GetComponent<InteractingObject>();
             interactionObjectScript.Initiate(interactionIdx, interactionData.typeList, interactionData.goNextImmediately);
 
@@ -158,7 +163,7 @@ namespace Tools
                 if (dataType == 4)
                 {
                     List<int> interactIdxList = ChooseDataBase.dataList[index].interactionList;
-                    prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList.Clear();
+                    prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList = new List<InteractingObject>();
                     for (int j = 0; j < interactIdxList.Count; j++)
                     {
                         GameObject selectObject = CreateObject(InteractionObjectType.InteractingObject, interactIdxList[j]);

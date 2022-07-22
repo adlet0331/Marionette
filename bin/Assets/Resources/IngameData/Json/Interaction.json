@@ -195,5 +195,22 @@
         "typeList": [
             10
         ]
+    },
+    {
+        "goNextImmediately": [
+            false,
+            true
+        ],
+        "idx": 11,
+        "idxList": [
+            1,
+            0
+        ],
+        "initStatus": true,
+        "name": "\ub300\uc0ac \ub354\ubbf8 2",
+        "typeList": [
+            3,
+            3
+        ]
     }
 ]

@@ -12,6 +12,7 @@ TagManager:
   - Interaction Object
   - Manager
   - StartPoint
+  - GroupInteraction
   layers:
   - Default
   - TransparentFX

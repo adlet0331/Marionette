@@ -7,7 +7,7 @@ namespace UI
     {
         public void NewGameButton()
         {
-            SLManager.Instance.Save(1);
+            SLManager.Instance.InitSaveData();
             SceneSwitchManager.Instance.SwitchScene(SceneSwitchManager.SceneName.Girl_room);
         }
 

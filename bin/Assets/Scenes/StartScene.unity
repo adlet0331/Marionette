@@ -2946,7 +2946,7 @@ MonoBehaviour:
     scriptList: []
     leftSpriteList: []
     rightSpriteList: []
-    isGirlTalking: 
+    isGirlTalkingList: 
   currentScriptIndex: 0
   blocked: 0
 --- !u!1 &330914096
@@ -12166,8 +12166,10 @@ MonoBehaviour:
   stressControlDataBase: {fileID: 11400000, guid: 8eef5771af505f74dbddb27293f64bf9, type: 2}
   lockDataBase: {fileID: 11400000, guid: 030f6ca87ef78594aaf575bca002aee4, type: 2}
   interactionDataBase: {fileID: 11400000, guid: 252a25c75e2eb9546a183c59845ba006, type: 2}
-  itemDataBase: {fileID: 11400000, guid: abc1ac2e67230264d8d6ba07114bccbe, type: 2}
   dollTalkDataBase: {fileID: 11400000, guid: 7afd85dbc4d97f14298ad52da8bc38b0, type: 2}
+  animaDataBase: {fileID: 11400000, guid: 68e78cc9c3061f847905eeb5e85376e8, type: 2}
+  stellaAbilityDataBase: {fileID: 11400000, guid: 250395c37d8825345ad4ef8b8939fb17, type: 2}
+  itemDataBase: {fileID: 11400000, guid: abc1ac2e67230264d8d6ba07114bccbe, type: 2}
 --- !u!1 &1738916973
 GameObject:
   m_ObjectHideFlags: 0
@@ -13501,7 +13503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ff533364eba2c4e81151b36576f4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animaAbilityDataBase: {fileID: 11400000, guid: a07000e23323d6f4fbe7028eaf70e39a, type: 2}
+  stellaAbilityDataBase: {fileID: 11400000, guid: 250395c37d8825345ad4ef8b8939fb17, type: 2}
   animaAbilityLevelList: 
   animaAbilityCountList: 
 --- !u!1 &1995072938
