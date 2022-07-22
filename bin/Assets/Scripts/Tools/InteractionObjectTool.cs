@@ -107,6 +107,7 @@ namespace Tools
             initializeDataBase();
             InteractionData interactionData = InteractionDataBase.dataList[idx];
             
+            ControlObjectNameList = new List<string>();
             ControlObjectNameList.Clear();
             interactionObjectName = interactionData.name;
             for (int i = 0; i < interactionData.typeList.Count; i++)
