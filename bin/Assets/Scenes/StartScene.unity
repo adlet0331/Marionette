@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 45b1de46cc013394c9e03f9f6e776785, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46e69bbc752e24d48aa46c3358f8af40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1308,8 +1308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9788776b8b4f54929426b47ac344af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: 45b1de46cc013394c9e03f9f6e776785, type: 3}
-  activateSprite: {fileID: 21300000, guid: 46e69bbc752e24d48aa46c3358f8af40, type: 3}
+  defaultSprite: {fileID: 21300000, guid: 46e69bbc752e24d48aa46c3358f8af40, type: 3}
+  activateSprite: {fileID: 21300000, guid: 45b1de46cc013394c9e03f9f6e776785, type: 3}
 --- !u!1 &168791845
 GameObject:
   m_ObjectHideFlags: 0
@@ -10021,7 +10021,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0f435c192c7d854b9bf2dcec7e34f37, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe4671bedf24d964280c3ec09aeda96e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10051,8 +10051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9788776b8b4f54929426b47ac344af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: c0f435c192c7d854b9bf2dcec7e34f37, type: 3}
-  activateSprite: {fileID: 21300000, guid: fe4671bedf24d964280c3ec09aeda96e, type: 3}
+  defaultSprite: {fileID: 21300000, guid: fe4671bedf24d964280c3ec09aeda96e, type: 3}
+  activateSprite: {fileID: 21300000, guid: c0f435c192c7d854b9bf2dcec7e34f37, type: 3}
 --- !u!1 &1385077982
 GameObject:
   m_ObjectHideFlags: 0
@@ -14496,7 +14496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c175441eabd310f479f9da202d3acb50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efd4b2cf1708cee4892da4665e5956a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14526,8 +14526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9788776b8b4f54929426b47ac344af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSprite: {fileID: 21300000, guid: c175441eabd310f479f9da202d3acb50, type: 3}
-  activateSprite: {fileID: 21300000, guid: efd4b2cf1708cee4892da4665e5956a4, type: 3}
+  defaultSprite: {fileID: 21300000, guid: efd4b2cf1708cee4892da4665e5956a4, type: 3}
+  activateSprite: {fileID: 21300000, guid: c175441eabd310f479f9da202d3acb50, type: 3}
 --- !u!1 &2118342257
 GameObject:
   m_ObjectHideFlags: 0
