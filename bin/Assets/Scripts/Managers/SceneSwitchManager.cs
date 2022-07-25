@@ -13,6 +13,7 @@ namespace Managers
         {
             StartScene = 0,
             Girl_room = 1,
+            W1_E2 = 2,
         }
         [Serializable]
         public class SceneInfo
