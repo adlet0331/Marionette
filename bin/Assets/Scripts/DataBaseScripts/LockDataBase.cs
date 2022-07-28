@@ -9,9 +9,10 @@ namespace DataBaseScripts
     [Serializable]
     public class LockData : DataType
     {
-        public List<string> needTypeList;
+        // 0: Item, 1: AnimaAbility
+        public List<int> needTypeList;
         public List<int> needItemList;
-        public List<int> needItemNum;
+        public List<int> needItemNumList;
         public string lockedString;
         public string unLockString;
     };

@@ -6,27 +6,57 @@
         "needItemList": [
             -1
         ],
-        "needItemNum": [
-            "1"
+        "needItemNumList": [
+            1
         ],
         "needTypeList": [
             0
         ],
-        "unLockString": "\uc5f4\ub9b4\ub9ac\uac00 \uc5c6\ub294 \ubb3c\uccb4\uc784"
+        "unLockString": "\uc5f4\ub824\uc11c\ub294 \uc548\ub428"
     },
     {
         "idx": 1,
-        "lockedString": "\ubb34\uac70\uc6b4 \ubb3c\uccb4\uac00 \ubb38\uc744 \uac00\ub85c\ub9c9\uace0 \uc788\uc5b4\uc11c \uc5f4\ub9ac\uc9c0 \uc54a\uc544",
-        "name": "\ubb38",
+        "lockedString": "\ubb34\uc5c7\uc778\uac00\uc5d0 \uc758\ud574 \ubb38\uc774 \uc5f4\ub9ac\uc9c0 \uc54a\uc544.",
+        "name": "W1-R1 \ubb38",
         "needItemList": [
             -1
         ],
-        "needItemNum": [
-            "1"
+        "needItemNumList": [
+            1
         ],
         "needTypeList": [
             0
         ],
-        "unLockString": "\uc5f4\ub9ac\uba74 \uc548\ub418\ub294 \ubb3c\uccb4\uc784"
+        "unLockString": "\uc5f4\ub824\uc11c\ub294 \uc548\ub428"
+    },
+    {
+        "idx": 2,
+        "lockedString": "\ubb34\uc5c7\uc778\uac00\uc5d0 \uc758\ud574 \ubb38\uc774 \uc5f4\ub9ac\uc9c0 \uc54a\uc544.",
+        "name": "W1-E2 \ubb38",
+        "needItemList": [
+            -1
+        ],
+        "needItemNumList": [
+            1
+        ],
+        "needTypeList": [
+            0
+        ],
+        "unLockString": "\uc5f4\ub824\uc11c\ub294 \uc548\ub428"
+    },
+    {
+        "idx": 3,
+        "lockedString": "\uad00\ub9ac\uc790 \uad8c\ud55c\uc774 \uc5c6\uc5b4 \uc9c0\ub098\uac08 \uc218 \uc5c6\uc5b4.",
+        "name": "W1-C \ubb38",
+        "needItemList": [
+            1
+        ],
+        "needItemNumList": [
+            1
+        ],
+        "needTypeList": [
+            0
+        ],
+        "unLockString": "\uce74\ub4dc\ud0a4\ub85c \ubb38\uc744 \uc5f4\uc5c8\ub2e4"
     }
 ]

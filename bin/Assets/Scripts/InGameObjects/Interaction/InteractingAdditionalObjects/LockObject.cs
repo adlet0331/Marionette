@@ -26,10 +26,11 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             UnLocked = true;
             for (int i = 0; i < data.needItemList.Count; i++)
             {
-                if (data.needTypeList[i] == "Item")
+                if (data.needTypeList[i] == 0)
                 {
                     // 일단 하나 없애는걸로 구현
-                    if (InventoryManager.Instance.GetItemNumInInventory(data.needItemList[i]) < data.needItemNum[i])
+                    if (data.needItemList[i] == -1 || 
+                        InventoryManager.Instance.GetItemNumInInventory(data.needItemList[i]) > data.needItemNumList[i])
                     {
                         UnLocked = false;
                         break;
@@ -39,13 +40,12 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
 
             if (UnLocked)
             {
-                UnLocked = true;
                 for (int i = 0; i < data.needItemList.Count; i++)
                 {
-                    if (data.needTypeList[i] == "Item")
+                    if (data.needTypeList[i] == 0)
                     {
                         // 일단 하나 없애는걸로 구현
-                        InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNum[i]);
+                        InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
                     }
                 }
                 WindowManager.Instance.lockWindow.OpenWithData(data.lockedString);

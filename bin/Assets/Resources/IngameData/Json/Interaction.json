@@ -193,7 +193,7 @@
         ]
     },
     {
-        "disableAfterInteract": true,
+        "disableAfterInteract": false,
         "goNextImmediately": [
             true
         ],
