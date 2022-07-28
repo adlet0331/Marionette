@@ -18,7 +18,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             if (currentIndex == 0)
             {
                 WindowManager.Instance.scriptWindow.Activate();
-                WindowManager.Instance.scriptWindow.SetData(data);
+                WindowManager.Instance.scriptWindow.OpenWithData(data);
             }
             int nextIndex  = WindowManager.Instance.scriptWindow.PressSpace();
             if (nextIndex == -1)

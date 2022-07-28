@@ -17,6 +17,18 @@ namespace Managers
             }
             return false;
         }
+
+        public int GetItemNumInInventory(int idx)
+        {
+            int num = 0;
+            foreach (ItemData item in itemList)
+            {
+                if (idx == item.idx)
+                    num += 1;
+            }
+
+            return num;
+        }
         public List<ItemData> GetItemList()
         {
             return itemList.ConvertAll(o => o);

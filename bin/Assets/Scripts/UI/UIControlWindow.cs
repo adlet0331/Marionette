@@ -6,9 +6,11 @@ namespace UI
     public abstract class UIControlWindow<T> : WindowObject
     {
         [SerializeField] protected T data;
-        public void SetData(T d)
+        public override void Activate()
         {
-            this.data = d;
+            OpenWindow();
         }
+
+        public abstract void OpenWithData(T d);
     }
 }

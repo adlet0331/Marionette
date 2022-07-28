@@ -7,8 +7,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     {
         public override bool Interact()
         {
-            WindowManager.Instance.chooseWindow.SetData(data);
-            WindowManager.Instance.chooseWindow.Activate();
+            WindowManager.Instance.chooseWindow.OpenWithData(data);
             return false;
         }
     }

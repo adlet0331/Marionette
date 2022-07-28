@@ -1,12 +1,19 @@
 using System;
+using DataBaseScripts;
+using InGameObjects.Interaction.InteractingAdditionalObjects;
+using Managers;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
-    public class LockWindow : WindowObject
+    public class LockWindow : UIControlWindow<string>
     {
-        public override void Activate()
+        [SerializeField] private Text text;
+        public override void OpenWithData(string printString)
         {
-            throw new NotImplementedException();
+            text.text = printString;
+            Activate();
         }
     }
 }

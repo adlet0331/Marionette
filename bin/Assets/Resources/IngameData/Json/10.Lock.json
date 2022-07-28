@@ -1,28 +1,32 @@
 [
     {
         "idx": 0,
+        "lockedString": "\ub354\ubbf8\uc784",
         "name": "\ub354\ubbf8",
         "needItemList": [
             -1
         ],
+        "needItemNum": [
+            "1"
+        ],
         "needTypeList": [
             0
         ],
-        "noItemString": [
-            "\ub354\ubbf8\uc784"
-        ]
+        "unLockString": "\uc5f4\ub9b4\ub9ac\uac00 \uc5c6\ub294 \ubb3c\uccb4\uc784"
     },
     {
         "idx": 1,
+        "lockedString": "\ubb34\uac70\uc6b4 \ubb3c\uccb4\uac00 \ubb38\uc744 \uac00\ub85c\ub9c9\uace0 \uc788\uc5b4\uc11c \uc5f4\ub9ac\uc9c0 \uc54a\uc544",
         "name": "\ubb38",
         "needItemList": [
             -1
         ],
+        "needItemNum": [
+            "1"
+        ],
         "needTypeList": [
             0
         ],
-        "noItemString": [
-            "\ubb34\uac70\uc6b4 \ubb3c\uccb4\uac00 \ubb38\uc744 \uac00\ub85c\ub9c9\uace0 \uc788\uc5b4\uc11c \uc5f4\ub9ac\uc9c0 \uc54a\uc544"
-        ]
+        "unLockString": "\uc5f4\ub9ac\uba74 \uc548\ub418\ub294 \ubb3c\uccb4\uc784"
     }
 ]

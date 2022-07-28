@@ -23,10 +23,13 @@ namespace UI
 
         [SerializeField] private bool blocked = false;
         private IEnumerator currentCoroutine;
-        public override void Activate()
+
+        public override void OpenWithData(ScriptData d)
         {
-            this.OpenWindow();
+            this.data = d;
+            PressSpace();
         }
+
         public int PressSpace()
         {
             // 끝내기

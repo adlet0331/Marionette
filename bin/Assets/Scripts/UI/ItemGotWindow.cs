@@ -19,30 +19,21 @@ namespace UI
         [SerializeField] private Text nameText;
         [SerializeField] private Text infoText;
         [SerializeField] private Image itemImage;
-        [SerializeField] private bool isOpened = false;
 
-        public override void Activate()
+        public override void OpenWithData(ItemControlData d)
         {
-            if (!isOpened)
+            this.data = d;
+            Activate();
+            for (int i = 0; i < data.itemIdxList.Count; i++)
             {
-                OpenWindow();
-                for (int i = 0; i < data.itemIdxList.Count; i++)
+                if (data.isAddList[i])
                 {
-                    if (data.isAddList[i])
-                    {
-                        var itemData = DataBaseManager.Instance.itemDataBase.dataList[data.itemIdxList[i]];
-                        nameText.text = itemData.name;
-                        infoText.text = itemData.itemInfo;
-                        itemImage.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items", itemData.spriteName));
-                        break;
-                    }
+                    var itemData = DataBaseManager.Instance.itemDataBase.dataList[data.itemIdxList[i]];
+                    nameText.text = itemData.name;
+                    infoText.text = itemData.itemInfo;
+                    itemImage.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items", itemData.spriteName));
+                    break;
                 }
-                isOpened = true;
-            }
-            else
-            {
-                CloseWindow();
-                isOpened = false;
             }
         }
     }

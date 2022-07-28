@@ -11,7 +11,9 @@ namespace DataBaseScripts
     {
         public List<string> needTypeList;
         public List<int> needItemList;
-        public List<string> noItemString;
+        public List<int> needItemNum;
+        public string lockedString;
+        public string unLockString;
     };
 
     [CreateAssetMenu(fileName = "10_LockDataBase", menuName = "ScriptableObjects/10.LockDataBase", order = 10)]

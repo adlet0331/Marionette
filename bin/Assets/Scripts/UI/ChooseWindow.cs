@@ -15,44 +15,40 @@ namespace UI {
 		[SerializeField] private GameObject chooseButtonField;
 		[SerializeField] private List<GameObject> GameObjectList;
 		
-		private void Start()
+		public override void OpenWithData(ChooseData d)
 		{
-			Canvas.ForceUpdateCanvases();
-			GameObjectList.Clear();
+			this.data = d;
+			
+			this.Activate();
+
+			if (GameObjectList.Count != 0)
+				throw new Exception("ChooseWindow's GameObjectList is not Initiated");
+	        
+			RectTransform rectTransform = chooseButtonField.GetComponent<RectTransform>();
+			var sizeDelta = rectTransform.rect;
+			float width = sizeDelta.x * 2;
+			float height = - sizeDelta.y * 2;
+	        
+			Debug.Log(height);
+	        
+			for (int i = 0; i < data.scriptList.Count; i++)
+			{
+				var i1 = i;
+				GameObject button = Instantiate(
+					Resources.Load<GameObject>(Path.Combine("Prefabs", "UI", "ChooseButton")), 
+					chooseButtonField.transform, true);
+				button.transform.localPosition = new Vector3(
+					0, 
+					height / 2 - (height / (data.scriptList.Count + 1)) * (i1 + 1), 
+					0);
+				button.name = "button_" + i;
+				button.GetComponentInChildren<Text>().text = data.scriptList[i];
+				button.GetComponent<Button>().onClick.AddListener(() => InteractWithIndex(i1));
+				GameObjectList.Add(button);
+			}
 		}
-
-		public override void Activate()
-        {
-	        this.OpenWindow();
-
-	        if (GameObjectList.Count != 0)
-		        throw new Exception("ChooseWindow's GameObjectList is not Initiated");
-	        
-	        RectTransform rectTransform = chooseButtonField.GetComponent<RectTransform>();
-	        var sizeDelta = rectTransform.rect;
-	        float width = sizeDelta.x * 2;
-	        float height = - sizeDelta.y * 2;
-	        
-	        Debug.Log(height);
-	        
-	        for (int i = 0; i < data.scriptList.Count; i++)
-	        {
-		        var i1 = i;
-		        GameObject button = Instantiate(
-			        Resources.Load<GameObject>(Path.Combine("Prefabs", "UI", "ChooseButton")), 
-			        chooseButtonField.transform, true);
-		        button.transform.localPosition = new Vector3(
-			        0, 
-			        height / 2 - (height / (data.scriptList.Count + 1)) * (i1 + 1), 
-			        0);
-		        button.name = "button_" + i;
-		        button.GetComponentInChildren<Text>().text = data.scriptList[i];
-		        button.GetComponent<Button>().onClick.AddListener(() => InteractWithIndex(i1));
-		        GameObjectList.Add(button);
-	        }
-        }
-
-		public void CloseWindow()
+		
+		public void UnActivate()
 		{
 			foreach (var gameObject in GameObjectList)
 			{
@@ -61,12 +57,18 @@ namespace UI {
 			GameObjectList.Clear();
 			base.CloseWindow();
 		}
+		
+		private void Start()
+		{
+			Canvas.ForceUpdateCanvases();
+			GameObjectList.Clear();
+		}
 
-        private void InteractWithIndex(int idx)
+		private void InteractWithIndex(int idx)
         {
 	        PlayerManager.Instance.interactingPlayer.SetFstInteractObj(data.interactionGameObjectList[idx]);
 
-	        CloseWindow();
+	        UnActivate();
 	        
 	        data.interactionGameObjectList[idx].Interact();
         }

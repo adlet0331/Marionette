@@ -15,14 +15,13 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         {
             if (!interacted)
             {
-                WindowManager.Instance.itemGotWindow.SetData(this.data);
-                WindowManager.Instance.itemGotWindow.Activate();
+                WindowManager.Instance.itemGotWindow.OpenWithData(this.data);
                 interacted = true;
                 return false;
             }
             else
             {
-                WindowManager.Instance.itemGotWindow.Activate();
+                WindowManager.Instance.itemGotWindow.CloseWindow();
                 interacted = false;
                 return true;
             }
