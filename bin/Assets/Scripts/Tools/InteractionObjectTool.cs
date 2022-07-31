@@ -91,7 +91,7 @@ namespace Tools
             // 잠김 Lock
             else if (typeInt == 10)
             {
-                gameObject.GetComponent<LockObject>().data = LockDataBase.dataList[index];
+                gameObject.GetComponent<LockControl>().data = LockDataBase.dataList[index];
             }
         }
 

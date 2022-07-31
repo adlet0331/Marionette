@@ -28,7 +28,7 @@ namespace Managers
         {
             profileShowing = tf;
             if (profileShowing)
-                WindowManager.Instance.profileWindow.OpenWindow();
+                WindowManager.Instance.profileWindow.Activate();
             else
                 WindowManager.Instance.profileWindow.CloseWindow();
         }

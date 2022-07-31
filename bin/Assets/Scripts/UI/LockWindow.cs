@@ -10,10 +10,17 @@ namespace UI
     public class LockWindow : UIControlWindow<string>
     {
         [SerializeField] private Text text;
-        public override void OpenWithData(string printString)
+        public override void Activate()
         {
-            text.text = printString;
-            Activate();
+            OpenWindow();
+        }
+        public override void DeActivate()
+        {
+            CloseWindow();
+        }
+        public override void Interact()
+        {
+            text.text = data;
         }
     }
 }

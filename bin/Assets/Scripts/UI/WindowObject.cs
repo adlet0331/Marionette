@@ -19,8 +19,10 @@ namespace UI
             get => this.gameObject.activeSelf;
         }
         public abstract void Activate();
-        public void OpenWindow()
+        protected void OpenWindow()
         {
+            if (gameObject.activeSelf)
+                return;
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
             WindowManager.Instance.SetCurrentWindow(this);

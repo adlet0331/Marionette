@@ -2911,16 +2911,12 @@ MonoBehaviour:
   inputableWhileOpen: 1
   profileShowingWhileOpen: 0
   data:
-    idx: 0
     name: 
-    scriptList: []
-    leftSpriteList: []
-    rightSpriteList: []
-  nameText: {fileID: 55092896}
-  scriptText: {fileID: 146667109}
-  currentImage: {fileID: 3504795126098222945}
-  currentPrintingIndex: 0
-  blocked: 0
+    script: 
+    sprite: {fileID: 0}
+  name: {fileID: 55092896}
+  script: {fileID: 146667109}
+  image: {fileID: 3504795126098222945}
 --- !u!1 &300303562
 GameObject:
   m_ObjectHideFlags: 0
@@ -7986,11 +7982,8 @@ MonoBehaviour:
   inputableWhileOpen: 1
   profileShowingWhileOpen: 1
   data:
-    idx: 0
-    name: 
     scriptList: []
-    interactionList: 
-    interactionGameObjectList: []
+    interactingObjectList: []
   chooseButtonField: {fileID: 534390410}
   GameObjectList: []
 --- !u!1 &1018252520
@@ -12757,11 +12750,9 @@ MonoBehaviour:
   inputableWhileOpen: 1
   profileShowingWhileOpen: 1
   data:
-    idx: 0
     name: 
-    itemIdxList: 
-    itemNumList: 
-    isAddList: 
+    script: 
+    sprite: {fileID: 0}
   nameText: {fileID: 844595461}
   infoText: {fileID: 635413738}
   itemImage: {fileID: 912783982}

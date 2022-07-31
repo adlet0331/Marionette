@@ -11,8 +11,12 @@ namespace InGameObjects.Object
     {
         public int upCount = 1;
     }
-    public class AnimaObject : IInteractionObject<AnimaObjectData>
+    public class AnimaControl : IInteractionObjectWithUI<AnimaObjectData, AnimaObjectData>
     {
+        protected override void GetUIWindowAndInit()
+        {
+            
+        }
         public override bool Interact()
         {
             AnimaAbilityManager.Instance.IncrementAnimaAbility(data.idx, data.upCount);

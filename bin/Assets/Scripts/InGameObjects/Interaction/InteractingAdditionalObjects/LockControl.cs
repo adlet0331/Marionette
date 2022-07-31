@@ -6,10 +6,17 @@ using UnityEngine;
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class LockObject : IInteractionObject<LockData>
+    public class LockControl : IInteractionObjectWithUI<LockData, string>
     {
-        [SerializeField] private bool UIOpened = false;
+        [SerializeField] private bool UIOpened;
         [SerializeField] private bool UnLocked = false;
+        
+        protected override void GetUIWindowAndInit()
+        {
+            UIOpened = false;
+            UnLocked = false;
+            UIWindow = WindowManager.Instance.lockWindow;
+        }
         public override bool Interact()
         {
             if (UIOpened)
@@ -48,11 +55,11 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                         InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
                     }
                 }
-                WindowManager.Instance.lockWindow.OpenWithData(data.lockedString);
+                UIWindow.InteractWithData(data.lockedString);
             }
             else
             {
-                WindowManager.Instance.lockWindow.OpenWithData(data.unLockString);
+                UIWindow.InteractWithData(data.unLockString);
             }
             return false;
         }

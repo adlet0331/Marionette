@@ -1,30 +1,51 @@
 ﻿using System;
+using System.IO;
 using DataBaseScripts;
 using Managers;
 using UI;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
     [Serializable]
-    public class ItemControl : IInteractionObject<ItemControlData>
+    public class ItemControl : IInteractionObjectWithUI<ItemControlData, ItemGotUIData>
     {
-        [SerializeField] private bool interacted = false;
+        [SerializeField] private bool interacted;
+        private ItemDataBase itemDataBase;
+        protected override void GetUIWindowAndInit()
+        {
+            interacted = false;
+            itemDataBase = DataBaseManager.Instance.itemDataBase; 
+            UIWindow = WindowManager.Instance.itemGotWindow;
+        }
         public override bool Interact()
         {
             if (!interacted)
             {
-                WindowManager.Instance.itemGotWindow.OpenWithData(this.data);
+                int currentIndex = 0;
+                for (int i = 0; i < data.itemIdxList.Count; i++)
+                {
+                    if (data.isAddList[i])
+                    {
+                        currentIndex = data.itemIdxList[i];
+                        break;
+                    }
+                }
+                UIData.name = itemDataBase.dataList[currentIndex].name;
+                UIData.script = itemDataBase.dataList[currentIndex].itemInfo;
+                UIData.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items",
+                    itemDataBase.dataList[currentIndex].spriteName));
+                UIWindow.InteractWithData(UIData);
                 interacted = true;
                 return false;
             }
             else
             {
-                WindowManager.Instance.itemGotWindow.CloseWindow();
+                UIWindow.CloseWindow();
                 interacted = false;
                 return true;
             }
         }
+
     }
 }

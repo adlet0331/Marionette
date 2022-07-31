@@ -18,7 +18,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         public List<GameObjectSetActivate> gameObjectSetActivateList;
     }
     [Serializable]
-    public class ObjectSetActivate : IInteractionObject<GameObjectSetActiveList>
+    public class ObjectWithUISetActivate : IInteractionObject<GameObjectSetActiveList>
     {
         public override bool Interact()
         {

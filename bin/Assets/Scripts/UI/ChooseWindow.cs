@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using DataBaseScripts;
+using InGameObjects.Interaction;
 using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,17 +11,33 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace UI {
-	public class ChooseWindow : UIControlWindow<ChooseData>
+	[Serializable]
+	public class ChooseUIData
+	{
+		public List<string> scriptList;
+		public List<InteractingObject> interactingObjectList;
+	}
+	public class ChooseWindow : UIControlWindow<ChooseUIData>
 	{
 		[SerializeField] private GameObject chooseButtonField;
 		[SerializeField] private List<GameObject> GameObjectList;
 		
-		public override void OpenWithData(ChooseData d)
+		public override void DeActivate()
 		{
-			this.data = d;
-			
-			this.Activate();
-
+			foreach (var gameObject in GameObjectList)
+			{
+				Destroy(gameObject);
+			}
+			GameObjectList.Clear();
+			CloseWindow();
+		}
+		public override void Activate()
+		{
+			GameObjectList.Clear();
+			OpenWindow();
+		}
+		public override void Interact()
+		{
 			if (GameObjectList.Count != 0)
 				throw new Exception("ChooseWindow's GameObjectList is not Initiated");
 	        
@@ -47,30 +64,12 @@ namespace UI {
 				GameObjectList.Add(button);
 			}
 		}
-		
-		public void UnActivate()
-		{
-			foreach (var gameObject in GameObjectList)
-			{
-				Destroy(gameObject);
-			}
-			GameObjectList.Clear();
-			base.CloseWindow();
-		}
-		
-		private void Start()
-		{
-			Canvas.ForceUpdateCanvases();
-			GameObjectList.Clear();
-		}
 
 		private void InteractWithIndex(int idx)
         {
-	        PlayerManager.Instance.interactingPlayer.SetFstInteractObj(data.interactionGameObjectList[idx]);
-
-	        UnActivate();
-	        
-	        data.interactionGameObjectList[idx].Interact();
+	        PlayerManager.Instance.interactingPlayer.SetFstInteractObj(data.interactingObjectList[idx]);
+	        DeActivate();
+	        data.interactingObjectList[idx].Interact();
         }
 	}
 }

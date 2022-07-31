@@ -34,7 +34,7 @@ namespace Managers
             // foreach (Resolution item in resolutionList)
             // {
             //     Dropdown.OptionData option = new Dropdown.OptionData();
-            //     option.text = item.width + "x" + item.height;
+            //     option.script = item.width + "x" + item.height;
             //     resolutionDropdown.options.Add(option);
             // 
             //     if (item.width == Screen.width && item.height == Screen.height)

@@ -62,7 +62,7 @@ namespace InGameObjects.Interaction
             bool isInteractionEnd;
             if (dataType[currentInteractIndex] == 2)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectSetActivate>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectWithUISetActivate>().Interact();
             }
             // 대사 Script
             if (dataType[currentInteractIndex] == 3)
@@ -87,14 +87,14 @@ namespace InGameObjects.Interaction
             // 잠김 Lock
             else if (dataType[currentInteractIndex] == 10)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<LockObject>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<LockControl>().Interact();
             }
             // 이벤트 Event
             else if (dataType[currentInteractIndex] == 11)
             {
                 throw new NotImplementedException();
             }
-            // IInteractionObject 실행
+            // IInteractionObjectWithUI 실행
             else
             {
                 throw new InteractTypeNotDefinedException(this.currentInteractIndex, currentInteractIndex);

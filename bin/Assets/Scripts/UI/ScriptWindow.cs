@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
+using System.Net.Mime;
 using DataBaseScripts;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,75 +16,43 @@ using UnityEngine.UI;
 */
 namespace UI
 {
-    public class ScriptWindow : UIControlWindow<ScriptData>
+    [Serializable]
+    public struct ScriptUIData
     {
-        [SerializeField] private Text nameText;
-        [SerializeField] private Text scriptText;
-        [SerializeField] private Image currentImage;
-        [SerializeField] private int currentPrintingIndex;
+        public string name;
+        public string script;
+        public Sprite sprite;
+    }
 
-        [SerializeField] private bool blocked = false;
-        private IEnumerator currentCoroutine;
+    public class ScriptWindow : UIControlWindow<ScriptUIData>
+    {
+        [SerializeField] private Text name;
+        [SerializeField] private Text script;
+        [SerializeField] private Image image;
 
-        public override void OpenWithData(ScriptData d)
+        public override void Activate()
         {
-            this.data = d;
-            PressSpace();
+            OpenWindow();
         }
 
-        public int PressSpace()
+        public override void DeActivate()
         {
-            // 끝내기
-            if (currentPrintingIndex >= data.scriptList.Count)
+            CloseWindow();
+        }
+
+        public override void Interact()
+        {
+            name.text = data.name;
+            script.text = data.script;
+            image.sprite = data.sprite;
+            if (data.sprite == null)
             {
-                data = null;
-                this.CloseWindow();
-                currentPrintingIndex = 0;
-                return -1;
+                image.gameObject.SetActive(false);
             }
-            // Coroutine 이 실행중이 아닐때
-            if (!blocked)
-            {
-                nameText.text = data.name;
-                currentCoroutine = _printScript(scriptText, data.scriptList[currentPrintingIndex]);
-                StartCoroutine(currentCoroutine);
-            }
-            // Coroutine 이 실행중일 때, 스킵 기능
             else
             {
-                StopCoroutine(currentCoroutine);
-                scriptText.text = data.scriptList[currentPrintingIndex];
-                EndPrintScript();
+                image.gameObject.SetActive(true);
             }
-            if (data.leftSpriteList[currentPrintingIndex] == "none")
-            {
-                currentImage.sprite = null;
-                currentImage.gameObject.SetActive(false);
-            }
-            else {
-                currentImage.gameObject.SetActive(true);
-                currentImage.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Character_Script",
-                    data.leftSpriteList[currentPrintingIndex]));
-            }
-            return currentPrintingIndex;
-        }
-        private IEnumerator _printScript(Text textObj, string script)
-        {
-            blocked = true;
-            textObj.text = "";
-            yield return new WaitForSeconds(0.02f);
-            for (int i = 0; i <= script.Length; i++)
-            {
-                textObj.text = script.Substring(0, i);
-                yield return new WaitForSeconds(0.02f);
-            }
-            EndPrintScript();
-        }
-        private void EndPrintScript()
-        {
-            blocked = false;
-            currentCoroutine = null;
-            currentPrintingIndex++;
         }
     }
 }
