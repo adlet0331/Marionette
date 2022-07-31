@@ -62,7 +62,7 @@ namespace InGameObjects.Interaction
             bool isInteractionEnd;
             if (dataType[currentInteractIndex] == 2)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectWithUISetActivate>().Interact();
+                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectControl>().Interact();
             }
             // 대사 Script
             if (dataType[currentInteractIndex] == 3)

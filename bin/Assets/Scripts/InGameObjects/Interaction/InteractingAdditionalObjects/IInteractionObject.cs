@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public abstract class IInteractionObject<DataBaseType> : MonoBehaviour where DataBaseType : DataType
+    public abstract class IInteractionObject<TDataBaseType> : MonoBehaviour
     {
-        public DataBaseType data;
+        public TDataBaseType data;
         /// <summary>
         /// Return True If Interaction is End
         /// </summary>

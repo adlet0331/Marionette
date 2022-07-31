@@ -31,6 +31,9 @@ namespace Tools
             { 2, "2.ObjectControl" },
             { 3, "3.Script" },
             { 4, "4.Choose" },
+            { 5, "5.SceneMove" },
+            { 6, "6.Animation" },
+            { 7, "7.CameraWalk" },
             { 8, "8.ItemControl" },
             { 9, "9.Stress" },
             { 10, "10.Lock" },
@@ -42,11 +45,7 @@ namespace Tools
         public StressControlDataBase StressControlDataBase;
         public LockDataBase LockDataBase;
         public InteractionDataBase InteractionDataBase;
-        private DollTalkDataBase DollTalkDataBase;
-        private AnimaDataBase AnimaDataBase;
-        private StellaAbilityDataBase StellaAbilityDataBase;
-        private ItemDataBase ItemDataBase;
-        
+
         public int idx = 0;
         public InteractionObjectType type;
         
@@ -103,10 +102,6 @@ namespace Tools
             StressControlDataBase = Resources.Load(Path.Combine("DataBase", "9_StressControlDataBase"), typeof(StressControlDataBase)) as StressControlDataBase;
             LockDataBase = Resources.Load(Path.Combine("DataBase", "10_LockDataBase"), typeof(LockDataBase)) as LockDataBase;
             InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
-            DollTalkDataBase = Resources.Load(Path.Combine("DataBase", "DollTalkDataBase"), typeof(DollTalkDataBase)) as DollTalkDataBase;
-            AnimaDataBase = Resources.Load(Path.Combine("DataBase", "AnimaDataBase"), typeof(AnimaDataBase)) as AnimaDataBase;
-            StellaAbilityDataBase = Resources.Load(Path.Combine("DataBase", "StellaAbilityDataBase"), typeof(StellaAbilityDataBase)) as StellaAbilityDataBase;
-            ItemDataBase = Resources.Load(Path.Combine("DataBase", "ItemDataBase"), typeof(ItemDataBase)) as ItemDataBase;
         }
 
         private void OnWizardOtherButton()

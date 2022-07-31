@@ -13,12 +13,12 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     }
 
     [Serializable]
-    public class GameObjectSetActiveList : DataType
+    public class GameObjectSetActiveList
     {
         public List<GameObjectSetActivate> gameObjectSetActivateList;
     }
     [Serializable]
-    public class ObjectWithUISetActivate : IInteractionObject<GameObjectSetActiveList>
+    public class ObjectControl : IInteractionObject<GameObjectSetActiveList>
     {
         public override bool Interact()
         {
