@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 807036641600955373, guid: 9708a831d36ea58458d4e065d57fdb3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+      objectReference: {fileID: 2100000, guid: 16c89255310745b499ce0e7b5a85848e, type: 2}
     - target: {fileID: 1967143027729125128, guid: 9708a831d36ea58458d4e065d57fdb3d, type: 3}
       propertyPath: m_Name
       value: Girl
@@ -337,7 +337,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 5932fbe19d8a23847964575710630bb0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
