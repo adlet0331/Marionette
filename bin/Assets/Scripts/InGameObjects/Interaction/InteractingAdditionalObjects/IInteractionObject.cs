@@ -1,4 +1,5 @@
-﻿using DataBaseScripts.Base;
+﻿using Cysharp.Threading.Tasks;
+using DataBaseScripts.Base;
 using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
@@ -10,6 +11,6 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         /// Return True If Interaction is End
         /// </summary>
         /// <returns></returns>
-        public abstract bool Interact();
+        public abstract UniTask<bool> Interact();
     }
 }   

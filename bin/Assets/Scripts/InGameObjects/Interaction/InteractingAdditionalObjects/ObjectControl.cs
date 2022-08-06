@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts.Base;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     [Serializable]
     public class ObjectControl : IInteractionObject<GameObjectSetActiveList>
     {
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
             foreach (var gameObjectCreateDelete in data.gameObjectSetActivateList)
             {

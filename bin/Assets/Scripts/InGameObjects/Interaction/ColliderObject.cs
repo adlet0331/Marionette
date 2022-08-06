@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 /* 
  * BoxCollider 가지고 있는 애 (Trigger 꺼져있는)
@@ -11,11 +12,11 @@ namespace InGameObjects.Interaction
     [RequireComponent(typeof(BoxCollider2D))]
     public class ColliderObject : InteractingObject
     {
-        private void OnCollisionEnter2D(Collision2D collision)
+        private async UniTask OnCollisionEnter2D(Collision2D collision)
         {
             if(collision.gameObject.CompareTag("Player"))
             {
-                Interact();
+                await InteractAsync();
             }
         }
     }

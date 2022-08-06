@@ -3,7 +3,7 @@ using Managers;
 using UnityEngine;
 
 /*
- * Interact 하는 주체 (주로 플레이어)
+ * InteractAsync 하는 주체 (주로 플레이어)
  * 
  */
 namespace InGameObjects.Interaction

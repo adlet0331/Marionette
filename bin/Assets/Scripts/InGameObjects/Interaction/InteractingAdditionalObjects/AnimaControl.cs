@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts.Base;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
 using Managers;
@@ -17,7 +18,7 @@ namespace InGameObjects.Object
         {
             
         }
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
             AnimaAbilityManager.Instance.IncrementAnimaAbility(data.idx, data.upCount);
             return true;

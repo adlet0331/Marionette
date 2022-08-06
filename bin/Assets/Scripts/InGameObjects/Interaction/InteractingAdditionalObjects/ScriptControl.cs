@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Data.Common;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts;
 using Managers;
 using UI;
@@ -21,7 +22,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             currentCoroutine = null;
             UIWindow = WindowManager.Instance.scriptWindow;
         }
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
             if (currentIndex >= data.scriptList.Count) // 끝나는 것 처리
             {
@@ -38,6 +39,8 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             else // 코루틴 안 끝났을 때
             {
                 StopCoroutine(currentCoroutine);
+                UIData.script = data.scriptList[currentIndex];
+                UIWindow.InteractWithData(UIData);
                 EndPrintScript();
             }
 

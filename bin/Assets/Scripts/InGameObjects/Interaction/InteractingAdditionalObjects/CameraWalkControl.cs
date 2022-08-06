@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
@@ -9,9 +10,9 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     }
     public class CameraWalkControl : IInteractionObject<CameraWalkData>
     {
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
-
+            
             return true;
         }
     }
