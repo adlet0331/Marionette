@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts;
 using InGameObjects.Interaction;
 using Managers;
@@ -60,16 +61,16 @@ namespace UI {
 					0);
 				button.name = "button_" + i;
 				button.GetComponentInChildren<Text>().text = data.scriptList[i];
-				button.GetComponent<Button>().onClick.AddListener(() => InteractWithIndex(i1));
+				button.GetComponent<Button>().onClick.AddListener(async () => await InteractWithIndexAsync(i1));
 				GameObjectList.Add(button);
 			}
 		}
 
-		private void InteractWithIndex(int idx)
+		private async UniTask InteractWithIndexAsync(int idx)
         {
 	        PlayerManager.Instance.interactingPlayer.SetFstInteractObj(data.interactingObjectList[idx]);
 	        DeActivate();
-	        data.interactingObjectList[idx].Interact();
+	        await data.interactingObjectList[idx].InteractAsync();
         }
 	}
 }

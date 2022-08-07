@@ -1,4 +1,5 @@
-﻿using DataBaseScripts;
+﻿using Cysharp.Threading.Tasks;
+using DataBaseScripts;
 using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             UnLocked = false;
             UIWindow = WindowManager.Instance.lockWindow;
         }
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
             if (UIOpened)
             {

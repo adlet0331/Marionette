@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using InGameObjects.Object;
 using UI;
 using UnityEngine;
@@ -66,7 +68,6 @@ namespace Managers
         private Dictionary<KeyCode, Action> keyDictionary;
         private void Start() {
             keyDictionary = new Dictionary<KeyCode, Action> {
-                { KeyCode.Space, Interact },
                 { KeyCode.Escape, OpenSettings },
                 { KeyCode.C, TalkWithDoll }, 
                 { KeyCode.Tab, SettingTabChange},
@@ -160,6 +161,11 @@ namespace Managers
                     WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
                 return;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Interact().Forget();
+            }
             
             if (isInputAvaliable && Input.anyKeyDown) {
                 foreach (var dic in keyDictionary) {
@@ -172,7 +178,7 @@ namespace Managers
         private void OpenSettings() {
             WindowManager.Instance.settingWindow.Activate();
         }
-        private void Interact()
+        private async UniTask Interact()
         {
             if (!isInteractable)
                 return;
@@ -182,7 +188,7 @@ namespace Managers
             if (obj == null)
                 return;
             
-            bool interactionEnd = obj.Interact();
+            bool interactionEnd = await obj.InteractAsync();
             if (interactionEnd)
             {
                 PlayerManager.Instance.interactingPlayer.UnblockInteract();

@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts.Base;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
@@ -10,7 +11,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     }
     public class AnimationControl : IInteractionObject<AnimationData>
     {
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
             return true;
         }

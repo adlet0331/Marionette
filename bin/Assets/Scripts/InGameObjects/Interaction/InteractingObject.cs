@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
 using UnityEngine;
 
-/* Interact 되는 객체
+/* InteractAsync 되는 객체
  * [상호작용 물체의 종류]
             2. 오브젝트 생성 / 소멸 - ObjectCreateDelete
             3. 대사 - Script
@@ -56,38 +58,38 @@ namespace InGameObjects.Interaction
         /*
          * Interact가 끝났는지 Return
          */
-        public bool Interact()
+        public async UniTask<bool> InteractAsync()
         {
             // GameObject 생성/제거
             bool isInteractionEnd;
             if (dataType[currentInteractIndex] == 2)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ObjectControl>().Interact();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ObjectControl>().Interact();
             }
             // 대사 Script
             if (dataType[currentInteractIndex] == 3)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }
             // 선택지 Choose
             else if (dataType[currentInteractIndex] == 4)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
             }
             // ItemControl
             else if (dataType[currentInteractIndex] == 8)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ItemControl>().Interact();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ItemControl>().Interact();
             }
             // Stress Control
             else if (dataType[currentInteractIndex] == 9)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }
             // 잠김 Lock
             else if (dataType[currentInteractIndex] == 10)
             {
-                isInteractionEnd = interactingObjectList[currentInteractIndex].GetComponent<LockControl>().Interact();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<LockControl>().Interact();
             }
             // 이벤트 Event
             else if (dataType[currentInteractIndex] == 11)
@@ -110,7 +112,7 @@ namespace InGameObjects.Interaction
                 }
                 
                 // 끝이 아니라면 다음 거 바로 띄워주기
-                Interact();
+                await InteractAsync();
             }
             
             return false;
@@ -120,7 +122,7 @@ namespace InGameObjects.Interaction
         {
             public InteractTypeNotDefinedException(int idx, int datatype)
             {
-                Message = $"Interact DataType {datatype} is not defined. Check InteractionDataBase Data index : {idx}";
+                Message = $"InteractAsync DataType {datatype} is not defined. Check InteractionDataBase Data index : {idx}";
             }
 
             public override string Message { get; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts;
 using Managers;
 using UI;
@@ -18,7 +19,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             itemDataBase = DataBaseManager.Instance.itemDataBase; 
             UIWindow = WindowManager.Instance.itemGotWindow;
         }
-        public override bool Interact()
+        public override async UniTask<bool> Interact()
         {
             if (!interacted)
             {
