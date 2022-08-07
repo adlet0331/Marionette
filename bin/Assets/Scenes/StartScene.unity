@@ -1321,19 +1321,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 149915228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1901255189}
-        m_TargetAssemblyTypeName: UI.StartSceneButtons, Assembly-CSharp
-        m_MethodName: LoadGameButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: SampleScene
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &149915228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10155,19 +10143,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1383154705}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1901255189}
-        m_TargetAssemblyTypeName: UI.StartSceneButtons, Assembly-CSharp
-        m_MethodName: NewGameButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1383154705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12591,6 +12567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptDataBase: {fileID: 11400000, guid: a4009fbf709924947894bd7335873f83, type: 2}
   chooseDataBase: {fileID: 11400000, guid: f49728ed1884da1448886bfc47a36e68, type: 2}
+  MoveControlDataBase: {fileID: 11400000, guid: 02441e84f08e6f343807375c10b1c73a, type: 2}
+  CameraControlDataBase: {fileID: 11400000, guid: d2078299928b3fe48adcb43112561878, type: 2}
   itemControlDataBase: {fileID: 11400000, guid: 0fb8029ccc9d6be4ab537c41e9e04f16, type: 2}
   stressControlDataBase: {fileID: 11400000, guid: 8eef5771af505f74dbddb27293f64bf9, type: 2}
   lockDataBase: {fileID: 11400000, guid: 030f6ca87ef78594aaf575bca002aee4, type: 2}
@@ -13114,6 +13092,7 @@ RectTransform:
   - {fileID: 1017061001}
   - {fileID: 1750524137}
   - {fileID: 1841842693}
+  - {fileID: 2088390773}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13519,6 +13498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c582e686067aaff449e1e9bb7ea3a579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 1383154704}
+  loadButton: {fileID: 149915227}
+  settingButton: {fileID: 2101984507}
 --- !u!1001 &1901553273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14602,6 +14584,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087519687}
   m_CullTransparentMesh: 1
+--- !u!1 &2088390772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088390773}
+  - component: {fileID: 2088390775}
+  - component: {fileID: 2088390774}
+  m_Layer: 5
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2088390773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088390772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1843908522}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 10000, y: 10000}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2088390774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088390772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2088390775
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088390772}
+  m_CullTransparentMesh: 1
 --- !u!1 &2101984505
 GameObject:
   m_ObjectHideFlags: 0
@@ -14685,19 +14743,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2101984508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1901255189}
-        m_TargetAssemblyTypeName: StartSceneButtons, Assembly-CSharp
-        m_MethodName: SettingButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2101984508
 MonoBehaviour:
   m_ObjectHideFlags: 0

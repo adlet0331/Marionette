@@ -76,6 +76,17 @@ namespace InGameObjects.Interaction
             {
                 isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
             }
+            // Move
+            else if (dataType[currentInteractIndex] == 5)
+            {
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<MoveControl>().Interact();
+            }
+            // Camera Walk
+            else if (dataType[currentInteractIndex] == 7)
+            {
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<CameraControl>().Interact();
+            }
+
             // ItemControl
             else if (dataType[currentInteractIndex] == 8)
             {

@@ -1,18 +1,15 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
+using DataBaseScripts;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    [Serializable]
-    public class CameraWalkData
-    {
-        
-    }
-    public class CameraWalkControl : IInteractionObject<CameraWalkData>
+    public class CameraControl : IInteractionObject<CameraControlData>
     {
         public override async UniTask<bool> Interact()
         {
             
+
             return true;
         }
     }

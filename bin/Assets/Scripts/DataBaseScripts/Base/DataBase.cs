@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using SerializableManager;
 using UnityEngine;
 
 namespace DataBaseScripts.Base
@@ -8,6 +9,7 @@ namespace DataBaseScripts.Base
     public abstract class DataBase<T> : ScriptableObject
     {
         [SerializeField] protected string databaseName;
+        [ArrayElementTitle("name")]
         [SerializeField] public List<T> dataList;
 
         private void Awake()

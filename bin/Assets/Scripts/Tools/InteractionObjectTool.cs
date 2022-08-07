@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using DataBaseScripts;
+using DataBaseScripts.Base;
 using InGameObjects.Interaction;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
+using Managers;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Tools
 {
@@ -38,9 +42,11 @@ namespace Tools
             { 9, "9.Stress" },
             { 10, "10.Lock" },
         };
-        
+
         public ScriptDataBase ScriptDataBase;
         public ChooseDataBase ChooseDataBase;
+        public MoveControlDataBase MoveControlDataBase;
+        public CameraControlDataBase CameraControlDataBase;
         public ItemControlDataBase ItemControlDataBase;
         public StressControlDataBase StressControlDataBase;
         public LockDataBase LockDataBase;
@@ -63,7 +69,47 @@ namespace Tools
         {
             return Path.Combine("Prefabs", "InteractObject", name);
         }
-
+        private string getInteractingObjectName(int typeInt, int index)
+        {
+            // 대사 Script
+            if (typeInt == 3)
+            {
+                return ScriptDataBase.dataList[index].name;
+            }
+            // 선택지 Choose
+            else if (typeInt == 4)
+            {
+                return ChooseDataBase.dataList[index].name;
+            }
+            // 이동 (씬 이동, 씬 내 이동)
+            else if (typeInt == 5)
+            {
+                return MoveControlDataBase.dataList[index].name;
+            }
+            else if (typeInt == 7)
+            {
+                return CameraControlDataBase.dataList[index].name;
+            }
+            // ItemControl
+            else if (typeInt == 8)
+            {
+                return ItemControlDataBase.dataList[index].name;
+            }
+            // Stress Control
+            else if (typeInt == 9)
+            {
+                return StressControlDataBase.dataList[index].name;
+            }
+            // 잠김 Lock
+            else if (typeInt == 10)
+            {
+                return LockDataBase.dataList[index].name;
+            }
+            else
+            {
+                return null;
+            }
+        }
         private void setInteractingObject(GameObject gameObject, int typeInt, int index)
         {
             InteractionData interactionData = InteractionDataBase.dataList[idx];
@@ -76,6 +122,15 @@ namespace Tools
             else if (typeInt == 4)
             {
                 gameObject.GetComponent<ChooseControl>().data = ChooseDataBase.dataList[index];
+            }
+            // 이동 (씬 이동, 씬 내 이동)
+            else if (typeInt == 5)
+            {
+                gameObject.GetComponent<MoveControl>().data = MoveControlDataBase.dataList[index];
+            }
+            else if (typeInt == 7)
+            {
+                gameObject.GetComponent<CameraControl>().data = CameraControlDataBase.dataList[index];
             }
             // ItemControl
             else if (typeInt == 8)
@@ -98,6 +153,8 @@ namespace Tools
         {
             ScriptDataBase = Resources.Load(Path.Combine("DataBase", "3_ScriptDataBase"), typeof(ScriptDataBase)) as ScriptDataBase;
             ChooseDataBase = Resources.Load(Path.Combine("DataBase", "4_ChooseDataBase"), typeof(ChooseDataBase)) as ChooseDataBase;
+            MoveControlDataBase = Resources.Load(Path.Combine("DataBase", "5_MoveControlDataBase"), typeof(MoveControlDataBase)) as MoveControlDataBase;
+            CameraControlDataBase = Resources.Load(Path.Combine("DataBase", "7_CameraControlDataBase"), typeof(CameraControlDataBase)) as CameraControlDataBase;
             ItemControlDataBase = Resources.Load(Path.Combine("DataBase", "8_ItemControlDataBase"), typeof(ItemControlDataBase)) as ItemControlDataBase;
             StressControlDataBase = Resources.Load(Path.Combine("DataBase", "9_StressControlDataBase"), typeof(StressControlDataBase)) as StressControlDataBase;
             LockDataBase = Resources.Load(Path.Combine("DataBase", "10_LockDataBase"), typeof(LockDataBase)) as LockDataBase;
@@ -116,18 +173,20 @@ namespace Tools
             {
                 int type = interactionData.typeList[i];
                 int index = interactionData.idxList[i];
-  
-                string name = type + "." + interactionData.name + "_" + index;
+
+                string name = type + "." + (getInteractingObjectName(type, index) != null ? getInteractingObjectName(type, index) : interactionData.name) + "_" + index;
                 ControlObjectNameList.Add(name);
             }
         }
 
         private GameObject CreateObject(InteractionObjectType interactionObjectType, int interactionIdx)
         {
-            Transform interactionGroupsTransform = GameObject.FindGameObjectWithTag("GroupInteraction").GetComponent<Transform>();
+            Transform interactionGroupsTransform = GameObject.FindGameObjectWithTag("GroupInteraction")?.GetComponent<Transform>();
             if (!interactionGroupsTransform)
             {
-                Debug.LogAssertion("Please Make [Group Interaction] Code attached Object For InteractionObject Initialize!");
+                var groupInteractionObj = new GameObject("GroupInteraction");
+                groupInteractionObj.tag = "GroupInteraction";
+                interactionGroupsTransform = GameObject.FindGameObjectWithTag("GroupInteraction")?.GetComponent<Transform>();
             }
             
             string interactingObjectName = interactionObjectType.ToString();
@@ -143,18 +202,18 @@ namespace Tools
             GameObject prefabObject;
             for (int i = 0; i < interactionData.typeList.Count; i++)
             {
-                int dataType = interactionData.typeList[i];
+                int type = interactionData.typeList[i];
                 int index = interactionData.idxList[i];
-                
-                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[dataType])), 
+
+                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[type])), 
                     interactingObject.transform, true);
-                prefabObject.name = dataType + "." + interactionData.name + "_" + index;
+                prefabObject.name = type + "." + (getInteractingObjectName(type, index) != null ? getInteractingObjectName(type, index) : interactionData.name) + "_" + index;
                 
-                setInteractingObject(prefabObject, dataType, index);
+                setInteractingObject(prefabObject, type, index);
                 interactionObjectScript.AddInteractingObject(prefabObject);
                 
                 // 선택지
-                if (dataType == 4)
+                if (type == 4)
                 {
                     List<int> interactIdxList = ChooseDataBase.dataList[index].interactionList;
                     prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList = new List<InteractingObject>();

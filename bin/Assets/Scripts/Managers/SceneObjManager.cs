@@ -33,12 +33,6 @@ namespace Managers
 
             }
         }
-    
-        public void UpdatePlayerPos(Vector3 pos)
-        {
-            playerObj.transform.position = pos;
-            return;
-        }
         public void AddPlayerObject(GameObject gameObject)
         {
             playerObj = gameObject;
@@ -52,7 +46,6 @@ namespace Managers
             movingCharacter.name = "Moving Character";
             // SceneManager에 넣어줌
             AddPlayerObject(movingCharacter);
-            return;
         }
         private void Start()
         {

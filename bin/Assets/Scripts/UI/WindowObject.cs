@@ -37,7 +37,10 @@ namespace UI
         {
             gameObject.SetActive(false);
             WindowManager.Instance.RemoveWindow(this);
-            SceneSwitchManager.Instance.returnToOriginalSceneSetting();
+            if (WindowManager.Instance.CurrentOpenWindowTypeString == "")
+            {
+                SceneSwitchManager.Instance.returnToOriginalSceneSetting();
+            }
             if (!profileShowingWhileOpen)
             {
                 WindowManager.Instance.profileWindow.gameObject.SetActive(true);

@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using InGameObjects.Interaction;
+using InGameObjects.Interaction.InteractingAdditionalObjects;
+using InGameObjects.Scene;
 using SerializableManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +18,8 @@ namespace Managers
             StartScene = 0,
             Girl_room = 1,
             W1_E2 = 2,
-            W1_E1 = 3,
-            W1_Hall = 4
+            W1_Hall = 3,
+            W1_E1 = 4,
         }
         [Serializable]
         public class SceneInfo
@@ -28,7 +32,7 @@ namespace Managers
             public int CameraMode;
         }
         
-        [SerializeField] private SceneName currentScene;
+        [SerializeField] public SceneName currentScene;
         [SerializeField] public SceneName beforeScene;
         [ArrayElementTitle("sceneName")]
         [SerializeField] private List<SceneInfo> sceneInfoList;
@@ -63,14 +67,29 @@ namespace Managers
         {
             setSceneOptions(FindSceneInfo(currentScene));
         }
-        public void SwitchScene(SceneName sceneName)
+        public async UniTask SwitchScene(SceneName sceneName, int idx)
         {
             SceneInfo sceneInfo = FindSceneInfo(sceneName);
             Debug.Assert(sceneInfo != null, "SceneName : " + sceneName.ToString() + " is not Exist in this game");
             beforeScene = currentScene;
             currentScene = sceneName;
-            SceneManager.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single);
+                
+            PlayerManager.Instance.interactingPlayer?.ClearScriptableObjList();
+            await SceneManager.LoadSceneAsync(sceneName.ToString(), LoadSceneMode.Single);
             setSceneOptions(sceneInfo);
+
+            await UniTask.WaitUntil(() => SceneObjManager.Instance.PlayerObjectExist);
+            
+            var sceneMovePoints = GameObject.FindGameObjectsWithTag("SceneMovePoint");
+            Debug.Assert(sceneMovePoints.Length != 0, "sceneMovePoints.Length is 0");
+            foreach (var sceneMovePointobj in sceneMovePoints)
+            {
+                if (sceneMovePointobj.GetComponent<SceneMovePoint>().sourceSceneName == beforeScene && sceneMovePointobj.GetComponent<SceneMovePoint>().idx == idx)
+                {
+                    PlayerManager.Instance.moveablePlayerObject.transform.localPosition = sceneMovePointobj.gameObject.transform.localPosition;
+                    return;
+                }
+            }
         }
     }
 }

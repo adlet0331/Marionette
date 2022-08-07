@@ -118,13 +118,13 @@
         ]
     },
     {
-        "disableAfterInteract": true,
+        "disableAfterInteract": false,
         "goNextImmediately": [
             true
         ],
         "idx": 5,
         "idxList": [
-            0
+            1
         ],
         "initStatus": true,
         "name": "\uc774\ub3d9 \ub354\ubbf8",
@@ -148,7 +148,7 @@
         ]
     },
     {
-        "disableAfterInteract": true,
+        "disableAfterInteract": false,
         "goNextImmediately": [
             true
         ],
@@ -223,6 +223,21 @@
         "typeList": [
             3,
             3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 12,
+        "idxList": [
+            2
+        ],
+        "initStatus": true,
+        "name": "\uc774\ub3d9 \ub354\ubbf8 2",
+        "typeList": [
+            5
         ]
     }
 ]

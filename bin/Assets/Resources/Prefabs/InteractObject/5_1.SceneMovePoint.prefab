@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8985199508772107536}
   - component: {fileID: 2035218465}
   m_Layer: 0
-  m_Name: SceneStartPoint
-  m_TagString: Untagged
+  m_Name: 5_1.SceneMovePoint
+  m_TagString: SceneMovePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ded685191fac8499ab06570b39a94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeSceneName: 0
-  thisType: 0
+  sourceSceneName: 0
+  idx: 0
 --- !u!61 &2035218465
 BoxCollider2D:
   m_ObjectHideFlags: 0

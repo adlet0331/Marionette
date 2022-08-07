@@ -185,14 +185,20 @@ namespace Managers
             
             var obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
 
+            // ReSharper disable once Unity.PerformanceCriticalCodeNullComparison
             if (obj == null)
                 return;
             
             bool interactionEnd = await obj.InteractAsync();
+            
+            // ReSharper disable once Unity.PerformanceCriticalCodeNullComparison
+            if (obj == null)
+                return;
+            
             if (interactionEnd)
             {
                 PlayerManager.Instance.interactingPlayer.UnblockInteract();
-                obj.gameObject.SetActive(!obj.DisableAfterInteract); //TODO
+                obj.gameObject.SetActive(!obj.DisableAfterInteract);
                 SLManager.Instance.OnNotify(SLManager.SaveDataType.InteractionObject, obj.DisableAfterInteract, obj.Idx);
                 PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
             }

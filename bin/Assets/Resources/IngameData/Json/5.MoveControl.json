@@ -1,0 +1,17 @@
+[
+    {
+        "destinationScene": 1,
+        "idx": 0,
+        "name": "StartScene \uc5d0\uc11c Girl_Room \uc73c\ub85c"
+    },
+    {
+        "destinationScene": 2,
+        "idx": 1,
+        "name": "Girl_Room\uc5d0\uc11c W1_E2\ub85c"
+    },
+    {
+        "destinationScene": 1,
+        "idx": 2,
+        "name": "Girl_Room\uc548\uc5d0\uc11c \ud154\ub808\ud3ec\ud2b8"
+    }
+]
