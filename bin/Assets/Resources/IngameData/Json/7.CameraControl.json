@@ -1,7 +1,20 @@
 [
     {
         "idx": 0,
-        "name": "\ub354\ubbf8",
+        "name": "\ud398\uc774\ub4dc \uc544\uc6c3 \ub354\ubbf8",
+        "time": 3000,
+        "type": 0
+    },
+    {
+        "idx": 1,
+        "name": "\ud398\uc774\ub4dc \uc778 \ub354\ubbf8",
+        "time": 3000,
         "type": 1
+    },
+    {
+        "idx": 2,
+        "name": "\uce74\uba54\ub77c \uc774\ub3d9 \ub354\ubbf8",
+        "time": 3000,
+        "type": 2
     }
 ]

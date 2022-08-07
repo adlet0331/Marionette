@@ -251,6 +251,7 @@ MonoBehaviour:
   modeList:
   - Static
   - Following Charcater
+  - Move Target to Target
   CameraSize_X: 0
   CameraSize_Y: 0
   ScreenSize_X: 0
@@ -11895,17 +11896,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOpenWindowTypeString: 
   currentOpenWindowList: []
-  sLWindow: {fileID: 0}
   settingWindow: {fileID: 1569470506}
-  profileWindow: {fileID: 1486109552}
   interactableWindow: {fileID: 1583403101}
   scriptWindow: {fileID: 287018448}
+  chooseWindow: {fileID: 1017061002}
   itemGotWindow: {fileID: 1750524138}
   lockWindow: {fileID: 1841842694}
-  inventoryWindow: {fileID: 0}
   dollTalkWindow: {fileID: 305996685}
   dollTalkSelectionWindow: {fileID: 743650357}
-  chooseWindow: {fileID: 1017061002}
+  sLWindow: {fileID: 0}
+  inventoryWindow: {fileID: 0}
+  profileWindow: {fileID: 1486109552}
+  FadeInOutBoard: {fileID: 2088390774}
 --- !u!1 &1622945515
 GameObject:
   m_ObjectHideFlags: 0
@@ -12565,13 +12567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb833507fbd21948a2d31a2437ae2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptDataBase: {fileID: 11400000, guid: a4009fbf709924947894bd7335873f83, type: 2}
-  chooseDataBase: {fileID: 11400000, guid: f49728ed1884da1448886bfc47a36e68, type: 2}
-  MoveControlDataBase: {fileID: 11400000, guid: 02441e84f08e6f343807375c10b1c73a, type: 2}
-  CameraControlDataBase: {fileID: 11400000, guid: d2078299928b3fe48adcb43112561878, type: 2}
-  itemControlDataBase: {fileID: 11400000, guid: 0fb8029ccc9d6be4ab537c41e9e04f16, type: 2}
-  stressControlDataBase: {fileID: 11400000, guid: 8eef5771af505f74dbddb27293f64bf9, type: 2}
-  lockDataBase: {fileID: 11400000, guid: 030f6ca87ef78594aaf575bca002aee4, type: 2}
   interactionDataBase: {fileID: 11400000, guid: 252a25c75e2eb9546a183c59845ba006, type: 2}
   dollTalkDataBase: {fileID: 11400000, guid: 7afd85dbc4d97f14298ad52da8bc38b0, type: 2}
   animaDataBase: {fileID: 11400000, guid: 68e78cc9c3061f847905eeb5e85376e8, type: 2}
@@ -14596,7 +14591,7 @@ GameObject:
   - component: {fileID: 2088390775}
   - component: {fileID: 2088390774}
   m_Layer: 5
-  m_Name: Square
+  m_Name: FadeInOutBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14635,7 +14630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

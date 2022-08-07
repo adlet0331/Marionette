@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 /* Camera 제어
  * - 캐릭터 따라가기
@@ -19,7 +21,7 @@ namespace Managers
             if (!currentCamera)
                 return new Vector2(0, 0);
             var mouseCursorPos = Input.mousePosition;
-            return  (Vector2) currentCamera.ScreenToWorldPoint(mouseCursorPos);
+            return (Vector2) currentCamera.ScreenToWorldPoint(mouseCursorPos);
         }
 
         [SerializeField] private GameObject currentMap;
@@ -47,6 +49,8 @@ namespace Managers
         }
         public void SetCameraMode(int mode)
         {
+            Debug.Assert(mode != 2, "SetCameraMode's mode cannot be 2. Use SetCameraModeMovingTarget");
+            
             if (modeList[mode] == null)
             {
                 return;
@@ -57,12 +61,29 @@ namespace Managers
             return;
         }
 
+        public async UniTask CameraMoveTargetAsync(Vector3 startVector3, Vector3 destinationVector3, float totalTimeMiliSecond, float timeIntervalSecond)
+        {
+            int beforeMode = currentMode;
+            currentMode = 2;
+
+            float milisecondPassed = 0.0f;
+            while (milisecondPassed <= totalTimeMiliSecond)
+            {
+                gameObject.transform.localPosition = Vector3.Lerp(startVector3, destinationVector3,
+                    milisecondPassed / totalTimeMiliSecond);
+                await UniTask.Delay(TimeSpan.FromSeconds(timeIntervalSecond));
+                milisecondPassed += timeIntervalSecond * 1000.0f;
+            }
+            
+            currentMode = beforeMode;
+        }
+
         private void Start() {
             SetCameraMode(1);
         }
         private void LateUpdate()
         {
-            if (currentCamera == null)
+            if (!currentCamera)
                 return;
             if (currentMode == 0)
             {
@@ -71,7 +92,6 @@ namespace Managers
             if (currentMode == 1)
             {
                 currentCamera.transform.position = CameraMode1GetPosition();
-                return;
             }
         }
         [SerializeField] private double CameraSize_X;
@@ -87,7 +107,7 @@ namespace Managers
         }
 
         private Vector3 CameraMode1GetPosition() {
-            if (followingObject == null || currentMap == null)
+            if (!followingObject || !currentMap )
                 return new Vector3(0,0,-1);
             double posx = followingObject.transform.position.x;
             double posy = followingObject.transform.position.y;

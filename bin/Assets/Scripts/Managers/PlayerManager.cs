@@ -27,10 +27,7 @@ namespace Managers
         public void SetProfileShowing(bool tf)
         {
             profileShowing = tf;
-            if (profileShowing)
-                WindowManager.Instance.profileWindow.Activate();
-            else
-                WindowManager.Instance.profileWindow.CloseWindow();
+            WindowManager.Instance.profileWindow.gameObject.SetActive(profileShowing);
         }
     }
 }

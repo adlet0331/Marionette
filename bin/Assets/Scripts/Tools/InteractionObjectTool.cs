@@ -225,6 +225,11 @@ namespace Tools
                         prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList.Add(selectObject.GetComponent<InteractingObject>());
                     }
                 }
+
+                if (type == 7)
+                {
+                    
+                }
             }
 
             return interactingObject;

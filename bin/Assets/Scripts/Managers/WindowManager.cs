@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 /* Window 매니저 Singleton
  * 
@@ -31,16 +32,20 @@ namespace Managers
             currentOpenWindowTypeString = currentOpenWindowList[^1].GetType().ToString();
         }
         
-        public WindowObject sLWindow;
+        [Header("Setting Window Objects")]
         public SettingWindow settingWindow;
-        public ProfileWindow profileWindow;
+        [Header("Interaction Window Objects")]
         public InteractableWindow interactableWindow;
         public ScriptWindow scriptWindow;
+		public ChooseWindow chooseWindow;
         public ItemGotWindow itemGotWindow;
         public LockWindow lockWindow;
-        public InventoryWindow inventoryWindow;
         public DollTalkWindow dollTalkWindow;
         public DollTalkSelectionWindow dollTalkSelectionWindow;
-		public ChooseWindow chooseWindow;
+        public WindowObject sLWindow;
+        public InventoryWindow inventoryWindow;
+        [Header("Non Window Objects")]
+        public ProfileWindow profileWindow;
+        public Image FadeInOutBoard;
     }
 }

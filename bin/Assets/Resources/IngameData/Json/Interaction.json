@@ -154,11 +154,13 @@
         ],
         "idx": 7,
         "idxList": [
-            0
+            0,
+            1
         ],
         "initStatus": true,
-        "name": "\uce74\uba54\ub77c\uc6cc\ud06c \ub354\ubbf8",
+        "name": "\uce74\uba54\ub77c \uc81c\uc5b4 \ub354\ubbf8",
         "typeList": [
+            7,
             7
         ]
     },

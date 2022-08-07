@@ -11,13 +11,16 @@ namespace DataBaseScripts
     {
         FadeOut = 0,
         FadeIn = 1,
-        FollowGameObject = 2,
+        MoveTarget2Target = 2,
     }
     [Serializable]
     public class CameraControlData : DataType
     {
         // 0: Item, 1: AnimaAbility
         public CameraWalkType type;
+        public int time;
+        public Transform startPoint;
+        public Transform endPoint;
     };
 
     [CreateAssetMenu(fileName = "7_CameraControlDataBase", menuName = "ScriptableObjects/7.CameraControlDataBase", order = 7)]
