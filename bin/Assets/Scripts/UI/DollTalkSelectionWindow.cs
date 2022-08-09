@@ -18,7 +18,8 @@ namespace UI
             initChooseWindow(4);
         }
         
-        public void MoveUpDown(bool isUp) // Up = true, Down = false
+        // Up = true, Down = false
+        public void MoveUpDown(bool isUp) 
         {
             if (isUp)
                 currentSelNum = (currentSelNum + totalSelNum - 1) % totalSelNum;

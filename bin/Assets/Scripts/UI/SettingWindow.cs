@@ -20,10 +20,7 @@ namespace UI
 
         public override void Activate()
         {
-            if (gameObject.activeSelf)
-                this.CloseWindow();
-            else
-                this.OpenWindow();
+            this.OpenWindow();
         }
 
         public void tabInput() {

@@ -123,7 +123,7 @@ namespace InGameObjects.Interaction
                 }
                 
                 // 끝이 아니라면 다음 거 바로 띄워주기
-                await InteractAsync();
+                return await InteractAsync();
             }
             
             return false;

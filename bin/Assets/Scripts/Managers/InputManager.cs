@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using InGameObjects.Object;
@@ -64,16 +65,7 @@ namespace Managers
         
             return new Vector2(mouseCursorWorldPos.x - characterWorldPos.x, mouseCursorWorldPos.y - characterWorldPos.y);
         }
-    
-        private Dictionary<KeyCode, Action> keyDictionary;
-        private void Start() {
-            keyDictionary = new Dictionary<KeyCode, Action> {
-                { KeyCode.Escape, OpenSettings },
-                { KeyCode.C, TalkWithDoll }, 
-                { KeyCode.Tab, SettingTabChange},
-            };
-        }
-        
+
         /// <summary>
         /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
         /// </summary>
@@ -99,55 +91,93 @@ namespace Managers
             }
         }
 
+        [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeInvocation")]
         private void Update() {
-            // Doll Window
-            if (Input.GetKeyDown(KeyCode.Space) && 
-                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow")
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                WindowManager.Instance.dollTalkWindow.PressSpace();
-                Debug.Log("UI.DollTalkWindow");
-                return;
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.DollTalkWindow":
+                        WindowManager.Instance.dollTalkWindow.PressSpace();
+                        return;
+                    case "UI.DollTalkSelectionWindow":
+                        WindowManager.Instance.dollTalkSelectionWindow.PressSpace();
+                        return;
+                    default:
+                        Interact().Forget();
+                        return;
+                }
             }
-            if (Input.GetKeyDown(KeyCode.C) && 
-                (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkWindow" ||
-                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
-                )
+            
+            if (Input.GetKeyDown((KeyCode.C)))
             {
-                WindowManager.Instance.dollTalkWindow.CloseWindow();
-                WindowManager.Instance.dollTalkSelectionWindow.CloseWindow();
-                return;
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.DollTalkWindow":
+                    case "UI.DollTalkSelectionWindow":
+                        WindowManager.Instance.dollTalkWindow.CloseWindow();
+                        WindowManager.Instance.dollTalkSelectionWindow.CloseWindow();
+                        return;
+                    default:
+                        return;
+                }
             }
-            // Doll Talk Selection window
-            if (Input.GetKeyDown(KeyCode.Space) &&
-                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
-            {
-                WindowManager.Instance.dollTalkSelectionWindow.PressSpace();
-                return;
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow) &&
-                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
-            {
-                WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(true);
-                return;
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow) &&
-                WindowManager.Instance.CurrentOpenWindowTypeString == "UI.DollTalkSelectionWindow")
-            {
-                WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(false);
-                return;
-            }
-            // 인벤토리 판넬
-            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.ItemSelectionPannel")
-            {
-                int moveInt = 0;
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                    moveInt -= 1;
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                    moveInt += 1;
 
-                WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(moveInt);
-                return;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.SettingWindow":
+                        WindowManager.Instance.settingWindow.CloseWindow();
+                        return;
+                    default:
+                        WindowManager.Instance.settingWindow.Activate();
+                        return;
+                }
             }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.SettingWindow":
+                        WindowManager.Instance.settingWindow.tabInput();
+                        return;
+                    default:
+                        return;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.DollTalkSelectionWindow":
+                        WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(true);
+                        return;
+                    case "UI.ItemSelectionPannel":
+                        WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(-1);
+                        return;
+                    default:
+                        return;
+                }
+            }
+            
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.DollTalkSelectionWindow":
+                        WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(false);
+                        return;
+                    case "UI.ItemSelectionPannel":
+                        WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(1);
+                        return;
+                    default:
+                        return;
+                }
+            }
+
             // 인벤토리
             if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.InventoryWindow")
             {
@@ -161,37 +191,21 @@ namespace Managers
                     WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
                 return;
             }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Interact().Forget();
-            }
-            
-            if (isInputAvaliable && Input.anyKeyDown) {
-                foreach (var dic in keyDictionary) {
-                    if (Input.GetKeyDown(dic.Key))
-                        dic.Value();
-                }
-            }
         }
-
-        private void OpenSettings() {
-            WindowManager.Instance.settingWindow.Activate();
-        }
+        
+        // ReSharper disable Unity.PerformanceAnalysis
         private async UniTask Interact()
         {
             if (!isInteractable)
                 return;
             
             var obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
-
-            // ReSharper disable once Unity.PerformanceCriticalCodeNullComparison
+            
             if (obj == null)
                 return;
             
             bool interactionEnd = await obj.InteractAsync();
             
-            // ReSharper disable once Unity.PerformanceCriticalCodeNullComparison
             if (obj == null)
                 return;
             
