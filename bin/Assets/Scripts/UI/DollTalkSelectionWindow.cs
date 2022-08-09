@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace UI
 {
+    public enum DollTalkSelectionType
+    {
+        SelectTab = 0,
+        ItemUsage = 1,
+    }
     public class DollTalkSelectionWindow : WindowObject
     {
         [SerializeField] private List<GameObject> chooseBoxImgList;
@@ -17,7 +22,6 @@ namespace UI
             OpenWindow();
             initChooseWindow(4);
         }
-        
         // Up = true, Down = false
         public void MoveUpDown(bool isUp) 
         {
@@ -27,12 +31,12 @@ namespace UI
                 currentSelNum = (currentSelNum + 1) % totalSelNum;
             updateSelect();
         }
-
         public void PressSpace()
         {
+            gameObject.SetActive(false);
             WindowManager.Instance.dollTalkWindow.ChangeTab(currentSelNum);
         }
-
+        
         private void updateSelect()
         {
             for (int i = 0; i < totalSelNum; i++)

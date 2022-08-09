@@ -7,13 +7,11 @@ using UnityEngine.EventSystems;
  */
 namespace UI
 {
-    public abstract class WindowObject : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler {
+    public abstract class WindowObject : MonoBehaviour {
         //For Opening Window
-        [SerializeField] private bool isDraggable = false;
         [SerializeField] private bool moveableWhileOpen = false;
         [SerializeField] private bool inputableWhileOpen = true;
         [SerializeField] private bool profileShowingWhileOpen = false;
-
         public bool IsOpened
         {
             get => this.gameObject.activeSelf;
@@ -46,26 +44,5 @@ namespace UI
                 WindowManager.Instance.profileWindow.gameObject.SetActive(true);
             }
         }
-        
-        // Interface
-        public void OnBeginDrag(PointerEventData eventData) {
-            if (!isDraggable) 
-                return;
-            dragBeginCursorPos = eventData.position;
-            dragBeginWindowPos = transform.position;
-        }
-        public void OnDrag(PointerEventData eventData) {
-            if (!isDraggable) 
-                return;
-            transform.position = dragBeginWindowPos + (Vector3)eventData.position - dragBeginCursorPos;
-        }
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            if (!isDraggable) 
-                return;
-            transform.SetAsLastSibling();
-        }
-        private Vector3 dragBeginCursorPos;
-        private Vector3 dragBeginWindowPos;
     }
 }

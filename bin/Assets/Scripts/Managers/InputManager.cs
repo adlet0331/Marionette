@@ -13,6 +13,13 @@ using UnityEngine;
  */
 namespace Managers
 {
+    public enum DirectionArrowType
+    {
+        Left = 1, 
+        Right = 2,
+        Up = 3, 
+        Down = 4
+    }
     public class InputManager : Singleton<InputManager>
     {
         // 움직임, Keyboard Input
@@ -119,6 +126,7 @@ namespace Managers
                         WindowManager.Instance.dollTalkSelectionWindow.CloseWindow();
                         return;
                     default:
+                        WindowManager.Instance.dollTalkWindow.Activate();
                         return;
                 }
             }
@@ -155,8 +163,8 @@ namespace Managers
                     case "UI.DollTalkSelectionWindow":
                         WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(true);
                         return;
-                    case "UI.ItemSelectionPannel":
-                        WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(-1);
+                    case "UI.InventoryWindow":
+                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Up);
                         return;
                     default:
                         return;
@@ -170,26 +178,36 @@ namespace Managers
                     case "UI.DollTalkSelectionWindow":
                         WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(false);
                         return;
-                    case "UI.ItemSelectionPannel":
-                        WindowManager.Instance.inventoryWindow.MoveEquipWindowIdx(1);
+                    case "UI.InventoryWindow":
+                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Down);
                         return;
                     default:
                         return;
                 }
             }
-
-            // 인벤토리
-            if (WindowManager.Instance.CurrentOpenWindowTypeString == "UI.InventoryWindow")
+            
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (Input.GetKeyDown(KeyCode.RightArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(1);
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-1);
-                else if (Input.GetKeyDown(KeyCode.UpArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(-2);
-                else if (Input.GetKeyDown(KeyCode.DownArrow))
-                    WindowManager.Instance.inventoryWindow.MoveInventoryUIdx(2);
-                return;
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.InventoryWindow":
+                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Left);
+                        return;
+                    default:
+                        return;
+                }
+            }
+            
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                {
+                    case "UI.InventoryWindow":
+                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Right);
+                        return;
+                    default:
+                        return;
+                }
             }
         }
         

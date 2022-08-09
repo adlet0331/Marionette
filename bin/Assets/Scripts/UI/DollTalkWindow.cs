@@ -14,6 +14,7 @@ using System.Collections.Generic;
         [SerializeField] private int currentWindow; // 0 : ChatWithDoll, 1 : Inventory, 2 : AnimaAbility, 3 : Save & Load
         [SerializeField] private GameObject chatBoxL, chatBoxR;
         [SerializeField] private Text chatText;
+        [SerializeField] private InventoryWindow inventoryWindow;
         [SerializeField] private List<GameObject> WindowObjects;
         [SerializeField] private DollTalkData dollTalkData;
         [SerializeField] private int currentScriptIndex;
@@ -36,9 +37,20 @@ using System.Collections.Generic;
 
         public void ChangeTab(int index)
         {
-            for (int i = 0; i < 4; i++)
+            switch (index)
             {
-                WindowObjects[i].SetActive(i == index);
+                case 0:
+                    WindowObjects[0].SetActive(true);
+                    return;
+                case 1:
+                    inventoryWindow.Activate();
+                    return;
+                case 2:
+                    WindowObjects[2].SetActive(true);
+                    return;
+                case 3:
+                    WindowObjects[3].SetActive(false);
+                    return;
             }
         }
 
@@ -67,6 +79,11 @@ using System.Collections.Generic;
                 currentCoroutine = _printScript(chatText, dollTalkData.scriptList[currentScriptIndex]);
                 StartCoroutine(currentCoroutine);
             }
+        }
+
+        public void PressArrowo()
+        {
+            
         }
 
         private void activateLeftorRight(bool isLeft)
