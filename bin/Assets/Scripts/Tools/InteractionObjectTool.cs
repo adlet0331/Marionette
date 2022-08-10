@@ -59,7 +59,7 @@ namespace Tools
         [SerializeField] private string interactionObjectName;
         [SerializeField] private List<string> ControlObjectNameList;
 
-        [MenuItem("CustomTools/CreateInteractionObject")]
+        [MenuItem("Marionette/CreateInteractionObject")]
         static void Open()
         {
             DisplayWizard<InteractionObjectTool>("Create InteractionObject", "Create", "Get DataName");
@@ -225,10 +225,13 @@ namespace Tools
                         prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList.Add(selectObject.GetComponent<InteractingObject>());
                     }
                 }
-
-                if (type == 7)
+                // 카메라 워크
+                if (type == 7 && CameraControlDataBase.dataList[index].type == CameraWalkType.CameraWalk)
                 {
-                    
+                    GameObject startGameObject = new GameObject("카메라워크_시작지점_" + index);
+                    GameObject endGameObject = new GameObject("카메라워크_엔드지점_" + index);
+                    prefabObject.GetComponent<CameraControl>().data.startPoint = startGameObject.transform;
+                    prefabObject.GetComponent<CameraControl>().data.endPoint = endGameObject.transform;
                 }
             }
 

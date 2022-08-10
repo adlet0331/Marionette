@@ -11,7 +11,7 @@ namespace DataBaseScripts
     {
         FadeOut = 0,
         FadeIn = 1,
-        MoveTarget2Target = 2,
+        CameraWalk = 2,
     }
     [Serializable]
     public class CameraControlData : DataType

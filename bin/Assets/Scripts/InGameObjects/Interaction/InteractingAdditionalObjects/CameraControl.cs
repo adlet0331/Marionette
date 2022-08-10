@@ -45,7 +45,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                 
                 WindowManager.Instance.FadeInOutBoard.gameObject.SetActive(false);
             }
-            else if (data.type == CameraWalkType.MoveTarget2Target)
+            else if (data.type == CameraWalkType.CameraWalk)
             {
                 await CameraManager.Instance.CameraMoveTargetAsync(data.startPoint.localPosition, data.endPoint.localPosition, data.time, Time.fixedDeltaTime);
             }
