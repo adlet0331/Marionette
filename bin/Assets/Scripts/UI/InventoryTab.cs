@@ -7,15 +7,46 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class InventoryWindow : WindowObject
+    public class InventoryTab : ADollTalkWindowTab
     {
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private InventorySlot detailSlot;
         [SerializeField] private InventorySlot[] inventorySlots;
+        
         [SerializeField] private int maxColumn;
         [SerializeField] private int maxRow;
         [SerializeField] private int _currentColumn;
         [SerializeField] private int _cururentRow;
+        public override void OpenTab()
+        {
+            
+        }
+        public override void GetInput(InputType input)
+        {
+            switch (input)
+            {
+                case InputType.Left:
+                    if (_currentColumn != 0)
+                        currentColumn -= 1;
+                    return;
+                case InputType.Right:
+                    if (currentColumn != maxColumn - 1)
+                        currentColumn += 1;
+                    return;
+                case InputType.Up:
+                    if (cururentRow != 0)
+                        cururentRow -= 1;
+                    return;
+                case InputType.Down:
+                    if (cururentRow != maxRow - 1)
+                        cururentRow += 1;
+                    return;
+                case InputType.Space:
+                    
+                default:
+                    return;
+            }
+        }
         private int currentColumn
         {
             get => _currentColumn;
@@ -27,7 +58,6 @@ namespace UI
                 detailSlot.SetSprite(inventorySlots[_currentColumn + _cururentRow * maxColumn].GetSprite());
             }
         }
-
         private int cururentRow
         {
             get => _cururentRow;
@@ -46,35 +76,6 @@ namespace UI
             maxColumn = inventorySlots.Length / maxRow;
             _currentColumn = 0;
             _cururentRow = 0;
-        }
-
-        public override void Activate()
-        {
-            OpenWindow();
-        }
-
-        public void ArrowInput(DirectionArrowType arrowType)
-        {
-            if (arrowType == DirectionArrowType.Left)
-            {
-                if (_currentColumn != 0)
-                    currentColumn -= 1;
-            }
-            else if (arrowType == DirectionArrowType.Right)
-            {
-                if (currentColumn != maxColumn - 1)
-                    currentColumn += 1;
-            }
-            else if (arrowType == DirectionArrowType.Up)
-            {
-                if (cururentRow != 0)
-                    cururentRow -= 1;
-            }
-            else if (arrowType == DirectionArrowType.Down)
-            {
-                if (cururentRow != maxRow - 1)
-                    cururentRow += 1;
-            }
         }
     }
 }

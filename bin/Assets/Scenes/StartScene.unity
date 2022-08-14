@@ -2703,7 +2703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &305996684
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2740,16 +2740,12 @@ MonoBehaviour:
   moveableWhileOpen: 0
   inputableWhileOpen: 1
   profileShowingWhileOpen: 0
-  currentWindow: 0
+  _currentWindowType: 0
+  dollTalkSelectionWindow: {fileID: 0}
+  WindowTabs: []
   chatBoxL: {fileID: 168791845}
   chatBoxR: {fileID: 411844542}
   chatText: {fileID: 27679963}
-  inventoryWindow: {fileID: 792641920}
-  WindowObjects:
-  - {fileID: 300303562}
-  - {fileID: 792641918}
-  - {fileID: 1051291499}
-  - {fileID: 254432467}
   dollTalkData:
     idx: 0
     name: 
@@ -2757,8 +2753,8 @@ MonoBehaviour:
     leftSpriteList: []
     rightSpriteList: []
     isGirlTalkingList: 
-  currentScriptIndex: 0
   blocked: 0
+  currentScriptIndex: 0
 --- !u!1 &330914096
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,18 +5460,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916a5ceed8854841a1e9a153982ae788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveableWhileOpen: 0
-  inputableWhileOpen: 1
-  profileShowingWhileOpen: 0
   chooseBoxImgList:
   - {fileID: 50487537}
   - {fileID: 473295135}
   - {fileID: 2036184193}
   chooseBoxList:
-  - {fileID: 1475966452}
-  - {fileID: 2043907023}
-  - {fileID: 837142979}
   - {fileID: 506020050}
+  - {fileID: 837142979}
+  - {fileID: 2043907023}
+  - {fileID: 1475966452}
+  windowType: 4
   totalSelNum: 0
   currentSelNum: 0
 --- !u!1001 &747992221
@@ -5654,9 +5648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d659bbb42b6d1e84c8c9e37cd8c5e699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveableWhileOpen: 0
-  inputableWhileOpen: 1
-  profileShowingWhileOpen: 0
+  dollTalkWindow: {fileID: 0}
+  currentType: 0
+  typePerSelectionStrings:
+    type: 0
+    strings: []
   gridLayoutGroup: {fileID: 1216836989}
   detailSlot: {fileID: 84781996}
   inventorySlots:
@@ -6958,6 +6954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -11474,9 +11471,7 @@ MonoBehaviour:
   itemGotWindow: {fileID: 1750524138}
   lockWindow: {fileID: 1841842694}
   dollTalkWindow: {fileID: 305996685}
-  dollTalkSelectionWindow: {fileID: 743650357}
-  sLWindow: {fileID: 0}
-  inventoryWindow: {fileID: 792641920}
+  dollTalkSelectionWindowInnerTab: {fileID: 0}
   profileWindow: {fileID: 1486109552}
   FadeInOutBoard: {fileID: 2088390774}
 --- !u!1 &1622945515
@@ -13701,7 +13696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2057952851
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,103 +1,131 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-    using DataBaseScripts;
-    using Managers;
-    using Unity.Mathematics;
-    using UnityEngine;
-    using UnityEngine.UI;
-    using Random = System.Random;
-
-    namespace UI
+using DataBaseScripts;
+using Managers;
+using UnityEngine;
+using UnityEngine.UI;
+namespace UI
 {
+    public enum DollTalkWindowType
+    {
+        TabSelecting = 0,
+        DollTalk = 1,
+        Inventory = 2,
+        AnimaAbility = 3,
+        SaveLoad = 4
+    }
+    public enum InputType
+    {
+        Up = 0,
+        Down = 1,
+        Left = 2,
+        Right = 3,
+        Space = 4,
+        C = 5
+    }
     public class DollTalkWindow : WindowObject
     {
-        [SerializeField] private int currentWindow; // 0 : ChatWithDoll, 1 : Inventory, 2 : AnimaAbility, 3 : Save & Load
+        [SerializeField] private DollTalkWindowType _currentWindowType;
+
+        [SerializeField] private DollTalkSelectionWindow dollTalkSelectionWindow;
+        [SerializeField] private List<ADollTalkWindowTab> WindowTabs;
         [SerializeField] private GameObject chatBoxL, chatBoxR;
         [SerializeField] private Text chatText;
-        [SerializeField] private InventoryWindow inventoryWindow;
-        [SerializeField] private List<GameObject> WindowObjects;
         [SerializeField] private DollTalkData dollTalkData;
-        [SerializeField] private int currentScriptIndex;
-
+        
         [SerializeField] private bool blocked;
+        [SerializeField] private int currentScriptIndex;
         private IEnumerator currentCoroutine;
+
+        private void ChangeSelectionTab(DollTalkSelectionType type)
+        {
+            switch (type)
+            {
+                case DollTalkSelectionType.ItemSelection:
+
+                    return;
+            }
+            
+        }
+        private void ChangeWindowTab(DollTalkWindowType type)
+        {
+            WindowTabs[(int)_currentWindowType].gameObject.SetActive(false);
+            _currentWindowType = type;
+            WindowTabs[(int)_currentWindowType].gameObject.SetActive(true);
+            
+        }
+        // ReSharper disable Unity.PerformanceAnalysis
         public override void Activate()
         {
             if (!gameObject.activeSelf)
             {
-                this.OpenWindow();
+                OpenWindow();
                 currentScriptIndex = 0;
+                ChangeWindowTab(DollTalkWindowType.DollTalk);
                 dollTalkStartRandomly(3);
             }
             else
             {
-                this.CloseWindow();
+                CloseWindow();
             }
         }
-
-        public void ChangeTab(int index)
+        public void Interact()
         {
-            switch (index)
+            if (_currentWindowType == DollTalkWindowType.DollTalk)
             {
-                case 0:
-                    WindowObjects[0].SetActive(true);
+                // 끝내기
+                if (currentScriptIndex >= dollTalkData.scriptList.Count)
+                {
+                    dollTalkData = null;
+                    currentScriptIndex = 0;
+                    
                     return;
-                case 1:
-                    inventoryWindow.Activate();
-                    return;
-                case 2:
-                    WindowObjects[2].SetActive(true);
-                    return;
-                case 3:
-                    WindowObjects[3].SetActive(false);
-                    return;
+                }
+                // Coroutine 이 실행중일 때, 스킵 기능
+                if (blocked)
+                {
+                    StopCoroutine(currentCoroutine);
+                    chatText.text = dollTalkData.scriptList[currentScriptIndex];
+                    currentScriptIndex++;
+                    blocked = false;
+                    checkIsLastAndOpenDollTalkSelectionWindow();
+                }
+                // Coroutine 이 실행중이 아닐때
+                else
+                {
+                    activateLeftorRight(dollTalkData.isGirlTalkingList[currentScriptIndex]);
+                    currentCoroutine = _printScript(chatText, dollTalkData.scriptList[currentScriptIndex]);
+                    StartCoroutine(currentCoroutine);
+                }
             }
-        }
-
-        public void PressSpace()
-        {
-            // 끝내기
-            if (currentScriptIndex >= dollTalkData.scriptList.Count)
-            {
-                dollTalkData = null;
-                currentScriptIndex = 0;
-                return;
-            }
-            // Coroutine 이 실행중일 때, 스킵 기능
-            if (blocked)
-            {
-                StopCoroutine(currentCoroutine);
-                chatText.text = dollTalkData.scriptList[currentScriptIndex];
-                currentScriptIndex++;
-                blocked = false;
-                checkIsLastAndOpenDollTalkSelectionWindow();
-            }
-            // Coroutine 이 실행중이 아닐때
-            else
-            {
-                activateLeftorRight(dollTalkData.isGirlTalkingList[currentScriptIndex]);
-                currentCoroutine = _printScript(chatText, dollTalkData.scriptList[currentScriptIndex]);
-                StartCoroutine(currentCoroutine);
-            }
-        }
-
-        public void PressArrowo()
-        {
             
         }
 
+        public void PressArrow()
+        {
+            
+        }
+        
+        # region DollTalk
         private void activateLeftorRight(bool isLeft)
         {
             chatBoxL.SetActive(isLeft);
             chatBoxR.SetActive(!isLeft);
         }
+        private void checkIsLastAndOpenDollTalkSelectionWindow()
+        {
+            if (currentScriptIndex >= dollTalkData.scriptList.Count)
+            {
+                //WindowManager.Instance.dollTalkSelectionWindowInnerTab.OpenWithType(DollTalkSelectionType.SelectTab);
+            }
+        }
         private void dollTalkStartRandomly(int maxIndex)
         {
-            int randomIndex = new Random().Next(maxIndex);
+            int randomIndex = new System.Random().Next(maxIndex);
             //Random chat of doll
             dollTalkData = DataBaseManager.Instance.dollTalkDataBase.dataList[randomIndex];
 
-            PressSpace();
+            Interact();
         }
         private IEnumerator _printScript(Text textObj, string script)
         {
@@ -113,14 +141,7 @@ using System.Collections.Generic;
             blocked = false;
             checkIsLastAndOpenDollTalkSelectionWindow();
         }
-
-        private void checkIsLastAndOpenDollTalkSelectionWindow()
-        {
-            if (currentScriptIndex >= dollTalkData.scriptList.Count)
-            {
-                WindowManager.Instance.dollTalkSelectionWindow.Activate();
-            }
-        }
+        #endregion
     }
 }
 

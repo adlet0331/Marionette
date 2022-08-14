@@ -1,77 +1,85 @@
-﻿using System.Collections.Generic;
-using Managers;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace UI
 {
+    [Serializable]
     public enum DollTalkSelectionType
     {
-        SelectTab = 0,
-        ItemUsage = 1,
+        SelectTab = 4,
+        ItemSelection = 2,
+        AnimaAbilitySelection = 2,
+        SaveLoad = 2
     }
-    public class DollTalkSelectionWindow : WindowObject
+
+    [Serializable]
+    public class TypePerSelectionStrings
+    {
+        public DollTalkSelectionType type;
+        public List<string> strings;
+    }
+    public class DollTalkSelectionWindow: MonoBehaviour
     {
         [SerializeField] private List<GameObject> chooseBoxImgList;
         [SerializeField] private List<DollTalkSelectionBox> chooseBoxList;
-        
+
+        [SerializeField] private DollTalkSelectionType windowType;
         [SerializeField] private int totalSelNum; // Total number of selection
         [SerializeField] private int currentSelNum; // Current number of selection
-        
-        public override void Activate()
+
+        public void OpenWithType(DollTalkSelectionType type, TypePerSelectionStrings selectionStrings)
         {
-            OpenWindow();
-            initChooseWindow(4);
-        }
-        // Up = true, Down = false
-        public void MoveUpDown(bool isUp) 
-        {
-            if (isUp)
-                currentSelNum = (currentSelNum + totalSelNum - 1) % totalSelNum;
-            else
-                currentSelNum = (currentSelNum + 1) % totalSelNum;
+            if (selectionStrings.strings.Count != (int)type)
+                throw new Exception(selectionStrings.type.ToString() + " : String Count Error.");
+            
+            windowType = type;
+            gameObject.SetActive(true);
+            // 2개 3개 4개 이미지 교체
+            for (int i = 0; i < 3; i++)
+            {
+                chooseBoxImgList[i].SetActive(i == (int)type - 2);
+            }
+            // ChooseBoxList 설정
+            // 아래부터 0, 1, 2, 3
+            for (int i = 0; i < chooseBoxList.Count; i++)
+            {
+                chooseBoxList[i].gameObject.SetActive(i < (int)type);
+                if(i < (int)type)
+                    chooseBoxList[i].SetText(selectionStrings.strings[i]);
+            }
+            totalSelNum = (int)type;
+            currentSelNum = 0;
+            chooseBoxList[currentSelNum].ActivateSelection(false);
+            
             updateSelect();
         }
-        public void PressSpace()
+
+        public void Close()
         {
             gameObject.SetActive(false);
-            WindowManager.Instance.dollTalkWindow.ChangeTab(currentSelNum);
         }
         
+        // Up = true, Down = false
+        public void InputUpDown(InputType inputType) 
+        {
+            switch (inputType)
+            {
+                case InputType.Down:
+                    currentSelNum = (currentSelNum + totalSelNum - 1) % totalSelNum;
+                    break;
+                case InputType.Up:
+                    currentSelNum = currentSelNum = (currentSelNum + 1) % totalSelNum;
+                    break;
+            }
+            updateSelect();
+        }
         private void updateSelect()
         {
             for (int i = 0; i < totalSelNum; i++)
             {
                 chooseBoxList[i].ActivateSelection(i == currentSelNum);
             }
-        }
-        private void initChooseWindow(int num) // 2, 3, 4 only
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                if (i == num - 2)
-                {
-                    chooseBoxImgList[i].SetActive(true);
-                }
-                else
-                {
-                    chooseBoxImgList[i].SetActive(false);
-                }
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                if (i < 4 - num)
-                {
-                    chooseBoxList[i].gameObject.SetActive(false);
-                }
-                else
-                {
-                    chooseBoxList[i].gameObject.SetActive(true);
-                    chooseBoxList[i].ActivateSelection(false);
-                }
-            }
-            totalSelNum = num;
-            currentSelNum = 0;
-            updateSelect();
         }
     }
 }

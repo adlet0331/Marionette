@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /* Window 매니저 Singleton
@@ -41,9 +42,7 @@ namespace Managers
         public ItemGotWindow itemGotWindow;
         public LockWindow lockWindow;
         public DollTalkWindow dollTalkWindow;
-        public DollTalkSelectionWindow dollTalkSelectionWindow;
-        public WindowObject sLWindow;
-        public InventoryWindow inventoryWindow;
+        public DollTalkSelectionWindow dollTalkSelectionWindowInnerTab;
         [Header("Non Window Objects")]
         public ProfileWindow profileWindow;
         public Image FadeInOutBoard;

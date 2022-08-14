@@ -105,10 +105,7 @@ namespace Managers
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.PressSpace();
-                        return;
-                    case "UI.DollTalkSelectionWindow":
-                        WindowManager.Instance.dollTalkSelectionWindow.PressSpace();
+                        WindowManager.Instance.dollTalkWindow.Interact();
                         return;
                     default:
                         Interact().Forget();
@@ -123,7 +120,7 @@ namespace Managers
                     case "UI.DollTalkWindow":
                     case "UI.DollTalkSelectionWindow":
                         WindowManager.Instance.dollTalkWindow.CloseWindow();
-                        WindowManager.Instance.dollTalkSelectionWindow.CloseWindow();
+                        WindowManager.Instance.dollTalkSelectionWindowInnerTab.Close();
                         return;
                     default:
                         WindowManager.Instance.dollTalkWindow.Activate();
@@ -161,10 +158,7 @@ namespace Managers
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
                     case "UI.DollTalkSelectionWindow":
-                        WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(true);
-                        return;
-                    case "UI.InventoryWindow":
-                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Up);
+                        WindowManager.Instance.dollTalkSelectionWindowInnerTab.InputUpDown(InputType.Up);
                         return;
                     default:
                         return;
@@ -176,10 +170,7 @@ namespace Managers
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
                     case "UI.DollTalkSelectionWindow":
-                        WindowManager.Instance.dollTalkSelectionWindow.MoveUpDown(false);
-                        return;
-                    case "UI.InventoryWindow":
-                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Down);
+                        WindowManager.Instance.dollTalkSelectionWindowInnerTab.InputUpDown(InputType.Down);
                         return;
                     default:
                         return;
@@ -190,9 +181,6 @@ namespace Managers
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
-                    case "UI.InventoryWindow":
-                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Left);
-                        return;
                     default:
                         return;
                 }
@@ -202,9 +190,6 @@ namespace Managers
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
-                    case "UI.InventoryWindow":
-                        WindowManager.Instance.inventoryWindow.ArrowInput(DirectionArrowType.Right);
-                        return;
                     default:
                         return;
                 }

@@ -11,16 +11,8 @@ namespace UI
 
         public void ActivateSelection(bool isActivating)
         {
-            if (isActivating)
-            {
-                SelectionArrow.gameObject.SetActive(true);
-            }
-            else
-            {
-                SelectionArrow.gameObject.SetActive(false);
-            }
+            SelectionArrow.gameObject.SetActive(isActivating);
         }
-
         public void SetText(string textString)
         {
             SelectionText.text = textString;
