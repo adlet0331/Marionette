@@ -46,6 +46,10 @@ namespace InGameObjects.Interaction
                 }
                 currentInteractObj = currentFirstObj;
                 currentInteractable = true;
+                foreach (InteractingObject interObj in scriptableObjList)
+                {
+                    interObj.GetComponent<InteractionObject>().SetSelecting(interObj.Idx == currentFirstObj.Idx);
+                }
             }
         }
         private void Update()
@@ -105,6 +109,7 @@ namespace InGameObjects.Interaction
 
         public void RemoveInteractionObj(InteractingObject interactionObj)
         {
+            interactionObj.GetComponent<InteractionObject>().SetSelecting(false);
             scriptableObjList.Remove(interactionObj);
         }
     }
