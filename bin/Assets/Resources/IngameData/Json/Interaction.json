@@ -24,222 +24,26 @@
             2,
             3,
             4,
+            5,
+            7,
             8,
             9,
             10
         ]
     },
     {
-        "disableAfterInteract": true,
+        "disableAfterInteract": false,
         "goNextImmediately": [
-            true,
-            true,
-            false,
-            true,
-            true,
-            false,
-            true,
-            true,
             false
         ],
         "idx": 1,
         "idxList": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ],
-        "initStatus": true,
-        "name": "\uc885\ud569 \ub354\ubbf8",
-        "typeList": [
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9,
-            10
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 2,
-        "idxList": [
-            0
-        ],
-        "initStatus": true,
-        "name": "\uc624\ube0c\uc81d\ud2b8 \ub354\ubbf8",
-        "typeList": [
-            2
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            false,
-            true
-        ],
-        "idx": 3,
-        "idxList": [
-            0,
             1
         ],
         "initStatus": true,
-        "name": "\ub300\uc0ac \ub354\ubbf8",
+        "name": "\uce68\ub300",
         "typeList": [
-            3,
             3
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            true,
-            false
-        ],
-        "idx": 4,
-        "idxList": [
-            0
-        ],
-        "initStatus": true,
-        "name": "\uc120\ud0dd\uc9c0 \ub354\ubbf8",
-        "typeList": [
-            4
-        ]
-    },
-    {
-        "disableAfterInteract": false,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 5,
-        "idxList": [
-            1
-        ],
-        "initStatus": true,
-        "name": "\uc774\ub3d9 \ub354\ubbf8",
-        "typeList": [
-            5
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 6,
-        "idxList": [
-            0
-        ],
-        "initStatus": true,
-        "name": "\uc560\ub2c8\uba54\uc774\uc158 \ub354\ubbf8",
-        "typeList": [
-            6
-        ]
-    },
-    {
-        "disableAfterInteract": false,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 7,
-        "idxList": [
-            0,
-            1
-        ],
-        "initStatus": true,
-        "name": "\uce74\uba54\ub77c \uc81c\uc5b4 \ub354\ubbf8",
-        "typeList": [
-            7,
-            7
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 8,
-        "idxList": [
-            1
-        ],
-        "initStatus": true,
-        "name": "\uc544\uc774\ud15c \ub354\ubbf8",
-        "typeList": [
-            8
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 9,
-        "idxList": [
-            0
-        ],
-        "initStatus": true,
-        "name": "\uc2a4\ud2b8\ub808\uc2a4 \ub354\ubbf8",
-        "typeList": [
-            9
-        ]
-    },
-    {
-        "disableAfterInteract": false,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 10,
-        "idxList": [
-            0
-        ],
-        "initStatus": true,
-        "name": "\uc7a0\uae08 \ub354\ubbf8",
-        "typeList": [
-            10
-        ]
-    },
-    {
-        "disableAfterInteract": true,
-        "goNextImmediately": [
-            false,
-            true
-        ],
-        "idx": 11,
-        "idxList": [
-            1,
-            0
-        ],
-        "initStatus": true,
-        "name": "\ub300\uc0ac \ub354\ubbf8 2",
-        "typeList": [
-            3,
-            3
-        ]
-    },
-    {
-        "disableAfterInteract": false,
-        "goNextImmediately": [
-            true
-        ],
-        "idx": 12,
-        "idxList": [
-            2
-        ],
-        "initStatus": true,
-        "name": "\uc774\ub3d9 \ub354\ubbf8 2",
-        "typeList": [
-            5
         ]
     }
 ]

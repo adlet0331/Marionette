@@ -161,9 +161,22 @@ namespace Tools
             InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
         }
 
+        private void loadDataBase()
+        {
+            ScriptDataBase.LoadJson();
+            ChooseDataBase.LoadJson();
+            MoveControlDataBase.LoadJson();
+            CameraControlDataBase.LoadJson();
+            ItemControlDataBase.LoadJson();
+            StressControlDataBase.LoadJson();
+            LockDataBase.LoadJson();
+            InteractionDataBase.LoadJson();
+        }
+
         private void OnWizardOtherButton()
         {
             initializeDataBase();
+            loadDataBase();
             InteractionData interactionData = InteractionDataBase.dataList[idx];
             
             ControlObjectNameList = new List<string>();
@@ -181,6 +194,9 @@ namespace Tools
 
         private GameObject CreateObject(InteractionObjectType interactionObjectType, int interactionIdx)
         {
+            initializeDataBase();
+            loadDataBase();
+            
             Transform interactionGroupsTransform = GameObject.FindGameObjectWithTag("GroupInteraction")?.GetComponent<Transform>();
             if (!interactionGroupsTransform)
             {
