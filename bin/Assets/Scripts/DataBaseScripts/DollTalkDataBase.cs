@@ -16,9 +16,8 @@ namespace DataBaseScripts
     public class DollTalkData : DataType
     {
         public List<string> scriptList;
-        public List<string> leftSpriteList;
-        public List<string> rightSpriteList;
         public List<bool> isGirlTalkingList;
+        public int randomKey;
     }
 
     [CreateAssetMenu(fileName = "DollTalkDataBase", menuName = "ScriptableObjects/DollTalkDataBase", order = 1)]

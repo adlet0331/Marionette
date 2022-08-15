@@ -5,15 +5,8 @@
             true,
             true
         ],
-        "leftSpriteList": [
-            "girl_thinking",
-            "girl_idle"
-        ],
         "name": "\uc778\ud615\uacfc\uc758 \ub354\ubbf8 \ub300\ud654",
-        "rightSpriteList": [
-            "none",
-            "dummy01"
-        ],
+        "randomKey": 0,
         "scriptList": [
             "\ub354\ubbf8 \uc2a4\ud06c\ub9bd\ud2b8\ub2e4. \ud14c\uc2a4\ud2b8\ub97c \uc704\ud574 \uc2a4\ud06c\ub9bd\ud2b8\ub97c \uc880 \uae38\uac8c \uc791\uc131\ud568",
             "\uac00\ub098\ub2e4\ub77c\ub9c8\ubc14\uc0ac\n\uc544\uc790\ucc28\uce74\ud0c0\ud30c\ud558"
@@ -25,15 +18,8 @@
             true,
             true
         ],
-        "leftSpriteList": [
-            "girl_thinking",
-            "girl_idle"
-        ],
         "name": "\ub354\ubbf8\ub370\uc774\ud130",
-        "rightSpriteList": [
-            "none",
-            "dummy01"
-        ],
+        "randomKey": 0,
         "scriptList": [
             "\uc774\uac78 \ubcf4\uace0 \uc788\ub2e4\uba74 \uc774\uac8c \uc65c \uc791\ub3d9\ud558\ub294\uc9c0 \uc758\ubb38\uc744 \uac00\uc9c0\uc2ed\uc1fc",
             "\ud55c \uc904 \ubc16\uc5d0 \uc5c6\uc5b4\uc11c \ucd94\uac00\ud568"
@@ -45,15 +31,8 @@
             false,
             false
         ],
-        "leftSpriteList": [
-            "girl_thinking",
-            "girl_idle"
-        ],
         "name": "\ub354\ubbf82\ub370\uc774\ud130",
-        "rightSpriteList": [
-            "none",
-            "dummy01"
-        ],
+        "randomKey": 0,
         "scriptList": [
             "\uc798 \uc791\ub3d9\ud569\ub2c8\ub2e4 \uc608",
             "\ud55c\uc904\uc774 \uc5c6\uc5b4\uc11c \ucd94\uac00\ud568"
