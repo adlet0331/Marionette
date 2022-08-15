@@ -20,6 +20,8 @@ namespace Managers
             W1_E2 = 2,
             W1_Hall = 3,
             W1_E1 = 4,
+            W1_C = 5,
+            W1_R2 = 6,
         }
         [Serializable]
         public class SceneInfo

@@ -477,7 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93daf91f01c01f4d8442a913821cab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDraggable: 0
   moveableWhileOpen: 0
   inputableWhileOpen: 1
   profileShowingWhileOpen: 0
@@ -495,17 +494,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentOpenWindowTypeString: 
   currentOpenWindowList: []
-  sLWindow: {fileID: 0}
   settingWindow: {fileID: 0}
-  profileWindow: {fileID: 0}
   interactableWindow: {fileID: 992934393}
   scriptWindow: {fileID: 0}
+  chooseWindow: {fileID: 0}
   itemGotWindow: {fileID: 0}
   lockWindow: {fileID: 0}
-  inventoryWindow: {fileID: 0}
   dollTalkWindow: {fileID: 0}
-  dollTalkSelectionWindow: {fileID: 0}
-  chooseWindow: {fileID: 0}
+  dollTalkSelectionWindowInnerTab: {fileID: 0}
+  profileWindow: {fileID: 0}
+  FadeInOutBoard: {fileID: 0}
 --- !u!1 &1058996294
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +684,7 @@ GameObject:
   - component: {fileID: 1271887101}
   - component: {fileID: 1271887103}
   m_Layer: 0
-  m_Name: 10 (1)
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
