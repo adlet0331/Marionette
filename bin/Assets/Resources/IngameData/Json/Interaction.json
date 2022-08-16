@@ -41,7 +41,322 @@
             1
         ],
         "initStatus": true,
-        "name": "\uce68\ub300",
+        "name": "W1R1\uce68\ub300",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 2,
+        "idxList": [
+            2
+        ],
+        "initStatus": true,
+        "name": "W1R1\ucc45\uc0c1",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 3,
+        "idxList": [
+            3
+        ],
+        "initStatus": true,
+        "name": "W1R1\uc2e4\ud5d8\uc120\ubc18",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 4,
+        "idxList": [
+            4
+        ],
+        "initStatus": true,
+        "name": "W1R1\uc695\uc870",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 5,
+        "idxList": [
+            5
+        ],
+        "initStatus": true,
+        "name": "W1R1\ud070\ucc45\uc0c1",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 6,
+        "idxList": [
+            6
+        ],
+        "initStatus": true,
+        "name": "W1R1\uc637\uc7a5",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 7,
+        "idxList": [
+            7
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc120\ubc18",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": true,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 8,
+        "idxList": [
+            8
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc5f0\uad6c\uc6d0\uc2dc\uccb4",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 9,
+        "idxList": [
+            9
+        ],
+        "initStatus": true,
+        "name": "W1E2\ubd84\uc11d\ucef4",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 10,
+        "idxList": [
+            10
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc5f0\uad6c\uc6d0PC",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 11,
+        "idxList": [
+            11
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc544\ub2c8\ub9c8\ubd84\uc11d\uc7a5\uce58",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 12,
+        "idxList": [
+            12
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc2e4\ud5d8\uc120\ubc18",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 13,
+        "idxList": [
+            13
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc544\ub2c8\ub9c81\ud615\uaca9\ub9ac",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 14,
+        "idxList": [
+            14
+        ],
+        "initStatus": true,
+        "name": "W1E1\uc544\ub2c8\ub9c8\ub300\ud615\uaca9\ub9ac",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 15,
+        "idxList": [
+            15
+        ],
+        "initStatus": true,
+        "name": "W1E1\uc5f0\uad6c\uc6d0PC",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 16,
+        "idxList": [
+            16
+        ],
+        "initStatus": true,
+        "name": "W1E1\uc544\ub2c8\ub9c81\ud615\uaca9\ub9ac",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": true,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 17,
+        "idxList": [
+            17
+        ],
+        "initStatus": true,
+        "name": "W1E1\uc5f0\uad6c\uc6d0\uc2dc\uccb4",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 18,
+        "idxList": [
+            18
+        ],
+        "initStatus": true,
+        "name": "W1C\uc81c\uc5b4\uc804\uc6d0X",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 19,
+        "idxList": [
+            19
+        ],
+        "initStatus": false,
+        "name": "W1C\uc81c\uc5b4\uc804\uc6d0O",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 20,
+        "idxList": [
+            20
+        ],
+        "initStatus": true,
+        "name": "W1C\uc804\uc6d0\ucc28\ub2e8\uae30",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 21,
+        "idxList": [
+            21
+        ],
+        "initStatus": true,
+        "name": "W1R2\ube5b\uc2a4\ud154\ub77c",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 22,
+        "idxList": [
+            22
+        ],
+        "initStatus": true,
+        "name": "W1R2\ub178\ud2b8\ubd81(\uc804\uc6d0O)",
         "typeList": [
             3
         ]
