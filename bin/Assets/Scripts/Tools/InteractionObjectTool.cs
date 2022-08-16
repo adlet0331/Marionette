@@ -43,6 +43,7 @@ namespace Tools
             { 10, "10.Lock" },
         };
 
+        [Header("DataBase")]
         public ScriptDataBase ScriptDataBase;
         public ChooseDataBase ChooseDataBase;
         public MoveControlDataBase MoveControlDataBase;
@@ -52,10 +53,12 @@ namespace Tools
         public LockDataBase LockDataBase;
         public InteractionDataBase InteractionDataBase;
 
+        [Header("님이 설정해야할 것들")]
         public int idx = 0;
         public InteractionObjectType type;
         
         // For Showing
+        [Header("For Showing")]
         [SerializeField] private string interactionObjectName;
         [SerializeField] private List<string> ControlObjectNameList;
 
