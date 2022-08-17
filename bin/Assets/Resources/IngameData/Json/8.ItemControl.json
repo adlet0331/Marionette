@@ -27,5 +27,31 @@
             1
         ],
         "name": "\ub354\ubbf8 \ud3ec\uc158 \ucd9c\ub825\ub418\uba74 \uc548\ub428"
+    },
+    {
+        "idx": 2,
+        "isAddList": [
+            true
+        ],
+        "itemIdxList": [
+            3
+        ],
+        "itemNumList": [
+            1
+        ],
+        "name": "W1-E1 \ud0a4\uce74\ub4dc"
+    },
+    {
+        "idx": 3,
+        "isAddList": [
+            true
+        ],
+        "itemIdxList": [
+            4
+        ],
+        "itemNumList": [
+            1
+        ],
+        "name": "W1-C \ud0a4\uce74\ub4dc"
     }
 ]

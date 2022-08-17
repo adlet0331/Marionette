@@ -360,5 +360,275 @@
         "typeList": [
             3
         ]
+    },
+    {
+        "disableAfterInteract": true,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 23,
+        "idxList": [
+            23
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc2dc\uccb4\ubc1c\uacacT",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50001,
+        "idxList": [
+            1
+        ],
+        "initStatus": true,
+        "name": "W1_E2\uc5d0\uc11c Girl_Room\uc73c\ub85c",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50002,
+        "idxList": [
+            2
+        ],
+        "initStatus": true,
+        "name": "Girl_Room\uc5d0\uc11c W1_E2\ub85c",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50003,
+        "idxList": [
+            3
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_E2\ub85c",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50004,
+        "idxList": [
+            4
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_E1\ub85c_\uc0c1\ub2e8",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50005,
+        "idxList": [
+            5
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_E1\ub85c_\ud558\ub2e8",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50006,
+        "idxList": [
+            6
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_C\ub85c(\ub354\ubbf8)",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50007,
+        "idxList": [
+            7
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_R2\ub85c(\ub354\ubbf8)",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50008,
+        "idxList": [
+            8
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_I\ub85c(\ub354\ubbf8)",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50009,
+        "idxList": [
+            9
+        ],
+        "initStatus": true,
+        "name": "W1_E2\uc5d0\uc11c W1_Hall\ub85c",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50010,
+        "idxList": [
+            10
+        ],
+        "initStatus": true,
+        "name": "W1_E1\uc5d0\uc11c W1_Hall\ub85c_\uc0c1\ub2e8",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50011,
+        "idxList": [
+            11
+        ],
+        "initStatus": true,
+        "name": "W1_E1\uc5d0\uc11c W1_Hall\ub85c_\ud558\ub2e8",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50012,
+        "idxList": [
+            12
+        ],
+        "initStatus": true,
+        "name": "W1_C\uc5d0\uc11c W1_Hall\ub85c(\ub354\ubbf8)",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50013,
+        "idxList": [
+            13
+        ],
+        "initStatus": true,
+        "name": "W1_R2\uc5d0\uc11c W1_Hall\ub85c(\ub354\ubbf8)",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 50014,
+        "idxList": [
+            14
+        ],
+        "initStatus": true,
+        "name": "W1_I\uc5d0\uc11c W1_Hall\ub85c(\ub354\ubbf8)",
+        "typeList": [
+            5
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 100001,
+        "idxList": [
+            1
+        ],
+        "initStatus": false,
+        "name": "\ubb34\uc5b8\uac00\uc5d0 \uc758\ud574 \ub9c9\ud798",
+        "typeList": [
+            10
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 100002,
+        "idxList": [
+            2
+        ],
+        "initStatus": false,
+        "name": "W1_E1 \ud0a4\uce74\ub4dc",
+        "typeList": [
+            10
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 100003,
+        "idxList": [
+            3
+        ],
+        "initStatus": false,
+        "name": "W1_C \ud0a4\uce74\ub4dc",
+        "typeList": [
+            10
+        ]
     }
 ]
