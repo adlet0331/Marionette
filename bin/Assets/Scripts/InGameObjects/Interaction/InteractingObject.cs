@@ -24,12 +24,12 @@ namespace InGameObjects.Interaction
 {
     public class InteractingObject : MonoBehaviour
     {
+        [Header("데이터")]
         [SerializeField] private int idx;
         [SerializeField] private List<int> dataType;
         [SerializeField] private List<bool> goNextImmediatly;
         [SerializeField] private List<GameObject> interactingObjectList;
         [SerializeField] private bool disableAfterInteract;
-
         [SerializeField] private int currentInteractIndex = 0;
 
         public int Idx

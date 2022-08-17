@@ -8,7 +8,9 @@ namespace InGameObjects.Interaction
     [RequireComponent(typeof(BoxCollider2D))]
     public sealed class InteractionObject : InteractingObject
     {
+        [Header("게임 시작 전 꼭 설정해 줘야함")]
         [SerializeField] private SpriteRenderer SpriteRenderer;
+        [Header("게임 시작 후 알아서 설정됨")]
         [SerializeField] private Material defaultMaterial;
         [SerializeField] private Material selectingMaterial;
 

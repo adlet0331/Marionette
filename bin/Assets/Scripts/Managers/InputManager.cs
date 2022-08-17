@@ -85,8 +85,8 @@ namespace Managers
             if (isMoveable) {
                 moveH = (int)Input.GetAxisRaw("Horizontal");
                 moveV = (int)Input.GetAxisRaw("Vertical");
-                isRun = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
-                isSlowWalk = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+                isRun = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+                isSlowWalk = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
 
                 playerMovingComponent.Move(moveH, moveV, isRun, isSlowWalk);
             
@@ -100,12 +100,12 @@ namespace Managers
 
         [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeInvocation")]
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.F))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact();
+                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Space);
                         return;
                     default:
                         Interact().Forget();
@@ -118,9 +118,7 @@ namespace Managers
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
                     case "UI.DollTalkWindow":
-                    case "UI.DollTalkSelectionWindow":
-                        WindowManager.Instance.dollTalkWindow.CloseWindow();
-                        WindowManager.Instance.dollTalkSelectionWindowInnerTab.Close();
+                        WindowManager.Instance.dollTalkWindow.Interact(InputType.C);
                         return;
                     default:
                         WindowManager.Instance.dollTalkWindow.Activate();
@@ -153,43 +151,49 @@ namespace Managers
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
-                    case "UI.DollTalkSelectionWindow":
-                        WindowManager.Instance.dollTalkSelectionWindowInnerTab.InputUpDown(InputType.Up);
+                    case "UI.DollTalkWindow":
+                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Up);
                         return;
                     default:
                         return;
                 }
             }
             
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
-                    case "UI.DollTalkSelectionWindow":
-                        WindowManager.Instance.dollTalkSelectionWindowInnerTab.InputUpDown(InputType.Down);
+                    case "UI.DollTalkWindow":
+                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Down);
                         return;
                     default:
                         return;
                 }
             }
             
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
+                    case "UI.DollTalkWindow":
+                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Left);
+                        return;
                     default:
                         return;
                 }
             }
             
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
+                    case "UI.DollTalkWindow":
+                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Right);
+                        return;
                     default:
                         return;
                 }
@@ -222,18 +226,6 @@ namespace Managers
             else
             {
                 PlayerManager.Instance.interactingPlayer.BlockInteract();
-            }
-        }
-        private void TalkWithDoll()
-        {
-            WindowManager.Instance.dollTalkWindow.Activate();
-        }
-
-        private void SettingTabChange()
-        {
-            if (WindowManager.Instance.settingWindow.gameObject.activeSelf)
-            {
-                WindowManager.Instance.settingWindow.tabInput();
             }
         }
     }

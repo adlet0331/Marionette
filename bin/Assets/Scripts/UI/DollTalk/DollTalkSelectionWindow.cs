@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Managers;
 using UnityEngine;
 
 namespace UI
@@ -8,8 +9,9 @@ namespace UI
     public enum DollTalkSelectionType
     {
         SelectTab = 4,
-        ItemSelection = 2,
-        AnimaAbilitySelection = 2,
+        TalkSelection = -1,
+        ItemSelection = 3,
+        StellaSelection = 2,
         SaveLoad = 2
     }
 
@@ -21,38 +23,42 @@ namespace UI
     }
     public class DollTalkSelectionWindow: MonoBehaviour
     {
+        [Header("Need to be Initialized")]
         [SerializeField] private List<GameObject> chooseBoxImgList;
         [SerializeField] private List<DollTalkSelectionBox> chooseBoxList;
-
+        
+        [Header("Changed In Game")]
         [SerializeField] private DollTalkSelectionType windowType;
         [SerializeField] private int totalSelNum; // Total number of selection
         [SerializeField] private int currentSelNum; // Current number of selection
 
-        public void OpenWithType(DollTalkSelectionType type, TypePerSelectionStrings selectionStrings)
+        public void OpenWithType(TypePerSelectionStrings selectionStrings)
         {
-            if (selectionStrings.strings.Count != (int)type)
+            var windowNum = selectionStrings.strings.Count;
+
+            if (selectionStrings.strings.Count != windowNum)
                 throw new Exception(selectionStrings.type.ToString() + " : String Count Error.");
             
-            windowType = type;
+            windowType = selectionStrings.type;
             gameObject.SetActive(true);
             // 2개 3개 4개 이미지 교체
             for (int i = 0; i < 3; i++)
             {
-                chooseBoxImgList[i].SetActive(i == (int)type - 2);
+                chooseBoxImgList[i].SetActive(i == windowNum - 2);
             }
             // ChooseBoxList 설정
             // 아래부터 0, 1, 2, 3
             for (int i = 0; i < chooseBoxList.Count; i++)
             {
-                chooseBoxList[i].gameObject.SetActive(i < (int)type);
-                if(i < (int)type)
+                chooseBoxList[i].gameObject.SetActive(i < windowNum);
+                if(i < windowNum)
                     chooseBoxList[i].SetText(selectionStrings.strings[i]);
             }
-            totalSelNum = (int)type;
-            currentSelNum = 0;
+            totalSelNum = windowNum;
+            currentSelNum = windowNum - 1;
             chooseBoxList[currentSelNum].ActivateSelection(false);
             
-            updateSelect();
+            _updateSelect();
         }
 
         public void Close()
@@ -61,7 +67,7 @@ namespace UI
         }
         
         // Up = true, Down = false
-        public void InputUpDown(InputType inputType) 
+        public void GetInput(InputType inputType) 
         {
             switch (inputType)
             {
@@ -71,10 +77,30 @@ namespace UI
                 case InputType.Up:
                     currentSelNum = currentSelNum = (currentSelNum + 1) % totalSelNum;
                     break;
+                case InputType.Space:
+                    switch (windowType)
+                    {
+                        case DollTalkSelectionType.SelectTab:
+                            WindowManager.Instance.dollTalkWindow.ChangeWindowTab((DollTalkWindowType)currentSelNum);
+                            return;
+                        case DollTalkSelectionType.ItemSelection:
+                            switch (currentSelNum)
+                            {
+                                case 0:
+                                    WindowManager.Instance.dollTalkWindow.ChangeWindowTab(DollTalkWindowType.Inventory);
+                                    return;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    return;
+                default:
+                    break;
             }
-            updateSelect();
+            _updateSelect();
         }
-        private void updateSelect()
+        private void _updateSelect()
         {
             for (int i = 0; i < totalSelNum; i++)
             {
