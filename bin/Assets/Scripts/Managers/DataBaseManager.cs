@@ -10,19 +10,20 @@ namespace Managers
         public InteractionDataBase interactionDataBase;
         public DollTalkDataBase dollTalkDataBase;
         public AnimaDataBase animaDataBase;
-        public StellaAbilityDataBase stellaAbilityDataBase;
+        public StellaDataBase stellaDataBase;
         public ItemDataBase itemDataBase;
 
         private void Start()
         {
             initializeDataBase();
+            loadDataBase();
         }
         private void initializeDataBase()
         {
             interactionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
             dollTalkDataBase = Resources.Load(Path.Combine("DataBase", "DollTalkDataBase"), typeof(DollTalkDataBase)) as DollTalkDataBase;
             animaDataBase = Resources.Load(Path.Combine("DataBase", "AnimaDataBase"), typeof(AnimaDataBase)) as AnimaDataBase;
-            stellaAbilityDataBase = Resources.Load(Path.Combine("DataBase", "StellaAbilityDataBase"), typeof(StellaAbilityDataBase)) as StellaAbilityDataBase;
+            stellaDataBase = Resources.Load(Path.Combine("DataBase", "StellaDataBase"), typeof(StellaDataBase)) as StellaDataBase;
             itemDataBase = Resources.Load(Path.Combine("DataBase", "ItemDataBase"), typeof(ItemDataBase)) as ItemDataBase;
         }
 
@@ -31,7 +32,7 @@ namespace Managers
             interactionDataBase.LoadJson();
             dollTalkDataBase.LoadJson();
             animaDataBase.LoadJson();
-            stellaAbilityDataBase.LoadJson();
+            stellaDataBase.LoadJson();
             itemDataBase.LoadJson();
         }
     }

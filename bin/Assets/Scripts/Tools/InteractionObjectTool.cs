@@ -41,6 +41,7 @@ namespace Tools
             { 8, "8.ItemControl" },
             { 9, "9.Stress" },
             { 10, "10.Lock" },
+            { 11, "11.StellaControl" }
         };
 
         [Header("DataBase")]
@@ -51,6 +52,7 @@ namespace Tools
         public ItemControlDataBase ItemControlDataBase;
         public StressControlDataBase StressControlDataBase;
         public LockDataBase LockDataBase;
+        public StellaControlDataBase StellaControlDataBase;
         public InteractionDataBase InteractionDataBase;
 
         [Header("님이 설정해야할 것들")]
@@ -108,6 +110,10 @@ namespace Tools
             {
                 return LockDataBase.dataKeyDictionary[index].name;
             }
+            else if (typeInt == 11)
+            {
+                return StellaControlDataBase.dataKeyDictionary[index].name;
+            }
             else
             {
                 return null;
@@ -150,6 +156,11 @@ namespace Tools
             {
                 gameObject.GetComponent<LockControl>().data = LockDataBase.dataKeyDictionary[index];
             }
+            // Stella 획득
+            else if (typeInt == 11)
+            {
+                gameObject.GetComponent<StellaControl>().data = StellaControlDataBase.dataKeyDictionary[index];
+            }
         }
 
         private void initializeDataBase()
@@ -161,6 +172,7 @@ namespace Tools
             ItemControlDataBase = Resources.Load(Path.Combine("DataBase", "8_ItemControlDataBase"), typeof(ItemControlDataBase)) as ItemControlDataBase;
             StressControlDataBase = Resources.Load(Path.Combine("DataBase", "9_StressControlDataBase"), typeof(StressControlDataBase)) as StressControlDataBase;
             LockDataBase = Resources.Load(Path.Combine("DataBase", "10_LockDataBase"), typeof(LockDataBase)) as LockDataBase;
+            StellaControlDataBase = Resources.Load(Path.Combine("DataBase", "11_StellaControlDataBase"), typeof(StellaControlDataBase)) as StellaControlDataBase;
             InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
         }
 
@@ -173,6 +185,7 @@ namespace Tools
             ItemControlDataBase.LoadJson();
             StressControlDataBase.LoadJson();
             LockDataBase.LoadJson();
+            StellaControlDataBase.LoadJson();
             InteractionDataBase.LoadJson();
         }
 

@@ -1,0 +1,38 @@
+[
+    {
+        "descriptionList": [
+            "\ub354\ubbf8 \ub370\uc774\ud1301",
+            "\ub354\ubbf8 \ub370\uc774\ud1302",
+            "\ub354\ubbf8 \ub370\uc774\ud1303",
+            "\ub354\ubbf8 \ub370\uc774\ud1304"
+        ],
+        "idx": 0,
+        "initStatus": 1,
+        "levelUpCountList": [
+            1,
+            2,
+            3
+        ],
+        "maxLevel": 4,
+        "name": "\ub354\ubbf8",
+        "spriteName": "shortsword"
+    },
+    {
+        "descriptionList": [
+            "\uc778\ud615\uc774 \ubc14\ub77c\ubcf4\ub294 \uacf3\uc774 \ubc1d\uac8c \ube5b\ub0a9\ub2c8\ub2e4.",
+            "\uc778\ud615\uc774 \ubc14\ub77c\ubcf4\ub294 \uacf3\uacfc \uc8fc\uc704\uac00 \ubc1d\uac8c \ube5b\ub0a9\ub2c8\ub2e4.",
+            "\uc778\ud615\uc774 \ubc14\ub77c\ubcf4\ub294 \uacf3\uc73c\ub85c \ub354 \uba40\ub9ac\uae4c\uc9c0 \ube5b\uc744 \ubc29\ucd9c\ud569\ub2c8\ub2e4.",
+            "\uc778\ud615\uc774 \uc8fc\uc704\ub85c \ub354 \uba40\ub9ac\uae4c\uc9c0 \ube5b\uc744 \ubc29\ucd9c\ud569\ub2c8\ub2e4."
+        ],
+        "idx": 1,
+        "initStatus": 1,
+        "levelUpCountList": [
+            3,
+            6,
+            10
+        ],
+        "maxLevel": 4,
+        "name": "\uba85\uba78",
+        "spriteName": "\uba85\uba78"
+    }
+]

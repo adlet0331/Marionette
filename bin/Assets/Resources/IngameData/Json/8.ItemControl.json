@@ -1,5 +1,6 @@
 [
     {
+        "getDescription": "\ubb50 \uc544\ubb34\ud2bc \ub354\ubbf8\uc785\ub2c8\ub2e4",
         "idx": 0,
         "isAddList": [
             false,
@@ -16,6 +17,7 @@
         "name": "\ub5a8\uc5b4\uc838 \uc788\ub294 \ub354\ubbf8 \ubb49\uce58"
     },
     {
+        "getDescription": "\uc5c4\uc900\uc2dd\uc740\uc0b4\uc544\uc787\ub2e4",
         "idx": 1,
         "isAddList": [
             true
@@ -29,6 +31,7 @@
         "name": "\ub354\ubbf8 \ud3ec\uc158 \ucd9c\ub825\ub418\uba74 \uc548\ub428"
     },
     {
+        "getDescription": "None",
         "idx": 2,
         "isAddList": [
             true
@@ -42,6 +45,7 @@
         "name": "W1-E1 \ud0a4\uce74\ub4dc"
     },
     {
+        "getDescription": "None",
         "idx": 3,
         "isAddList": [
             true

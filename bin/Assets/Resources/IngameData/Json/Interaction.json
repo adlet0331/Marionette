@@ -7,10 +7,14 @@
             false,
             true,
             true,
+            false,
+            true,
             false
         ],
         "idx": 0,
         "idxList": [
+            0,
+            0,
             0,
             0,
             0,
@@ -381,7 +385,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50001,
+        "idx": 24,
         "idxList": [
             1
         ],
@@ -396,7 +400,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50002,
+        "idx": 25,
         "idxList": [
             2
         ],
@@ -411,7 +415,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50003,
+        "idx": 26,
         "idxList": [
             3
         ],
@@ -426,7 +430,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50004,
+        "idx": 27,
         "idxList": [
             4
         ],
@@ -441,7 +445,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50005,
+        "idx": 28,
         "idxList": [
             5
         ],
@@ -456,7 +460,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50006,
+        "idx": 29,
         "idxList": [
             6
         ],
@@ -471,7 +475,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50007,
+        "idx": 30,
         "idxList": [
             7
         ],
@@ -486,7 +490,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50008,
+        "idx": 31,
         "idxList": [
             8
         ],
@@ -501,7 +505,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50009,
+        "idx": 32,
         "idxList": [
             9
         ],
@@ -516,7 +520,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50010,
+        "idx": 33,
         "idxList": [
             10
         ],
@@ -531,7 +535,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50011,
+        "idx": 34,
         "idxList": [
             11
         ],
@@ -546,7 +550,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50012,
+        "idx": 35,
         "idxList": [
             12
         ],
@@ -561,7 +565,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50013,
+        "idx": 36,
         "idxList": [
             13
         ],
@@ -576,7 +580,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 50014,
+        "idx": 37,
         "idxList": [
             14
         ],
@@ -589,29 +593,44 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
-        "idx": 100001,
+        "idx": 38,
         "idxList": [
             1
         ],
-        "initStatus": false,
+        "initStatus": true,
         "name": "\ubb34\uc5b8\uac00\uc5d0 \uc758\ud574 \ub9c9\ud798",
         "typeList": [
             10
         ]
     },
     {
-        "disableAfterInteract": false,
+        "disableAfterInteract": true,
         "goNextImmediately": [
-            false
+            true
         ],
-        "idx": 100002,
+        "idx": 39,
         "idxList": [
             2
         ],
-        "initStatus": false,
+        "initStatus": true,
         "name": "W1_E1 \ud0a4\uce74\ub4dc",
+        "typeList": [
+            10
+        ]
+    },
+    {
+        "disableAfterInteract": true,
+        "goNextImmediately": [
+            true
+        ],
+        "idx": 40,
+        "idxList": [
+            3
+        ],
+        "initStatus": true,
+        "name": "W1_C \ud0a4\uce74\ub4dc",
         "typeList": [
             10
         ]
@@ -621,14 +640,14 @@
         "goNextImmediately": [
             false
         ],
-        "idx": 100003,
+        "idx": 100,
         "idxList": [
-            3
+            1
         ],
-        "initStatus": false,
-        "name": "W1_C \ud0a4\uce74\ub4dc",
+        "initStatus": true,
+        "name": "\uc2a4\ud154\ub77c \ub354\ubbf8",
         "typeList": [
-            10
+            11
         ]
     }
 ]

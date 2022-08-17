@@ -17,7 +17,7 @@ namespace DataBaseScripts
         public string spriteName;
     }
 
-    [CreateAssetMenu(fileName = "ItemDataBase", menuName = "ScriptableObjects/ItemDataBase", order = 1)]
+    [CreateAssetMenu(fileName = "ItemDataBase", menuName = "ScriptableObjects/ItemDataBase", order = 100)]
     public class ItemDataBase : DataBase<ItemData>
     {
     }

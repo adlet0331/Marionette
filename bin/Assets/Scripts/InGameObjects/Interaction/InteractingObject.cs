@@ -109,7 +109,7 @@ namespace InGameObjects.Interaction
             // 이벤트 Event
             else if (dataType[currentInteractIndex] == 11)
             {
-                throw new NotImplementedException();
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<StellaControl>().Interact();
             }
             // IInteractionObjectWithUI 실행
             else

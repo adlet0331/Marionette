@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dcfc68cb7acf346b117537a7267fbf, type: 3}
   m_Name: 10_LockDataBase
   m_EditorClassIdentifier: 
-  databaseName: 10.Lock
+  databaseName: 10.LockControl
   dataList:
   - idx: 0
     name: "\uB354\uBBF8"

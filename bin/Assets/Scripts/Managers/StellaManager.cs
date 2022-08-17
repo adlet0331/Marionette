@@ -5,9 +5,9 @@ using UnityEngine.Serialization;
 
 namespace Managers
 {
-    public class AnimaAbilityManager : Singleton<AnimaAbilityManager>
+    public class StellaManager : Singleton<StellaManager>
     {
-        [FormerlySerializedAs("animaAbilityDataBase")] [SerializeField] private StellaAbilityDataBase stellaAbilityDataBase;
+        [FormerlySerializedAs("animaAbilityDataBase")] [SerializeField] private StellaDataBase stellaDataBase;
         [SerializeField] private List<int> animaAbilityLevelList;
         [SerializeField] private List<int> animaAbilityCountList;
     
@@ -19,9 +19,9 @@ namespace Managers
             animaAbilityLevelList.Add(-1);
             animaAbilityCountList.Add(-1);
         
-            for (int i = 1; i < stellaAbilityDataBase.dataKeyDictionary.Count; i++)
+            for (int i = 1; i < stellaDataBase.dataKeyDictionary.Count; i++)
             {
-                animaAbilityLevelList.Add(stellaAbilityDataBase.dataKeyDictionary[i].initStatus);
+                animaAbilityLevelList.Add(stellaDataBase.dataKeyDictionary[i].initStatus);
                 animaAbilityCountList.Add(0);
             }
         }
@@ -29,12 +29,12 @@ namespace Managers
         public void IncrementAnimaAbility(int idx, int count)
         {
             animaAbilityCountList[idx] += count;
-            var currentAbilityInfo = stellaAbilityDataBase.dataKeyDictionary[idx];
+            var currentAbilityInfo = stellaDataBase.dataKeyDictionary[idx];
             int currentLevel = animaAbilityLevelList[idx];
-            if (animaAbilityCountList[idx] > currentAbilityInfo.levelUpCount[currentLevel] && currentLevel < currentAbilityInfo.maxLevel)
+            if (animaAbilityCountList[idx] > currentAbilityInfo.levelUpCountList[currentLevel] && currentLevel < currentAbilityInfo.maxLevel)
             {
-                animaAbilityCountList[idx] -= stellaAbilityDataBase.dataKeyDictionary[idx].levelUpCount[currentLevel];
-                stellaAbilityDataBase.dataKeyDictionary[idx].levelUpCount[currentLevel] += 1;
+                animaAbilityCountList[idx] -= stellaDataBase.dataKeyDictionary[idx].levelUpCountList[currentLevel];
+                stellaDataBase.dataKeyDictionary[idx].levelUpCountList[currentLevel] += 1;
             }
         }
     }

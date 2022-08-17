@@ -7,7 +7,8 @@ namespace UI
     public class StellaSlot : MonoBehaviour
     {
         [SerializeField] private Image stellaImage;
-        [SerializeField] private int[] reqExp;
+        [SerializeField] private bool isSelected;
+        [SerializeField] private float currentExp;
     }
 }
 

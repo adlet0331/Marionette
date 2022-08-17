@@ -41,6 +41,8 @@ namespace Managers
 		public ChooseWindow chooseWindow;
         public ItemGotWindow itemGotWindow;
         public LockWindow lockWindow;
+        public StellaGotWindow stellaGotWindow;
+        [Header("Doll Talk Window")]
         public DollTalkWindow dollTalkWindow;
         public DollTalkSelectionWindow dollTalkSelectionWindowInnerTab;
         [Header("Non Window Objects")]
