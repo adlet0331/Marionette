@@ -101,6 +101,10 @@ namespace InGameObjects.Interaction
             else if (dataType[currentInteractIndex] == 10)
             {
                 isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<LockControl>().Interact();
+                if (!isInteractionEnd)
+                {
+                    return true;
+                }
             }
             // 이벤트 Event
             else if (dataType[currentInteractIndex] == 11)
