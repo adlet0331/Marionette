@@ -26,7 +26,7 @@ namespace UI
             //Random chat of doll
             blocked = false;
             currentScriptIndex = 0;
-            dollTalkData = DataBaseManager.Instance.dollTalkDataBase.dataList[randomIndex];
+            dollTalkData = DataBaseManager.Instance.dollTalkDataBase.dataKeyDictionary[randomIndex];
             GetInput(InputType.Space);
         }
 

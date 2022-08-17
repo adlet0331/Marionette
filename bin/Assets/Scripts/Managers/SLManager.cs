@@ -71,7 +71,7 @@ namespace Managers
 
             newData.interactingObjectStatusList = new List<bool>();
 
-            foreach (InteractionData var in DataBaseManager.Instance.interactionDataBase.dataList)
+            foreach (var var in DataBaseManager.Instance.interactionDataBase.dataList)
             {
                 newData.interactingObjectStatusList.Add(var.initStatus);
             }

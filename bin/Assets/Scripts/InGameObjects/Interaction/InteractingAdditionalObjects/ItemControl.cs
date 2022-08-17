@@ -32,10 +32,10 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                         break;
                     }
                 }
-                UIData.name = itemDataBase.dataList[currentIndex].name;
-                UIData.script = itemDataBase.dataList[currentIndex].itemInfo;
+                UIData.name = itemDataBase.dataKeyDictionary[currentIndex].name;
+                UIData.script = itemDataBase.dataKeyDictionary[currentIndex].itemInfo;
                 UIData.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items",
-                    itemDataBase.dataList[currentIndex].spriteName));
+                    itemDataBase.dataKeyDictionary[currentIndex].spriteName));
                 UIWindow.InteractWithData(UIData);
                 interacted = true;
                 return false;

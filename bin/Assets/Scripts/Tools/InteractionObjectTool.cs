@@ -77,36 +77,36 @@ namespace Tools
             // 대사 Script
             if (typeInt == 3)
             {
-                return ScriptDataBase.dataList[index].name;
+                return ScriptDataBase.dataKeyDictionary[index].name;
             }
             // 선택지 Choose
             else if (typeInt == 4)
             {
-                return ChooseDataBase.dataList[index].name;
+                return ChooseDataBase.dataKeyDictionary[index].name;
             }
             // 이동 (씬 이동, 씬 내 이동)
             else if (typeInt == 5)
             {
-                return MoveControlDataBase.dataList[index].name;
+                return MoveControlDataBase.dataKeyDictionary[index].name;
             }
             else if (typeInt == 7)
             {
-                return CameraControlDataBase.dataList[index].name;
+                return CameraControlDataBase.dataKeyDictionary[index].name;
             }
             // ItemControl
             else if (typeInt == 8)
             {
-                return ItemControlDataBase.dataList[index].name;
+                return ItemControlDataBase.dataKeyDictionary[index].name;
             }
             // Stress Control
             else if (typeInt == 9)
             {
-                return StressControlDataBase.dataList[index].name;
+                return StressControlDataBase.dataKeyDictionary[index].name;
             }
             // 잠김 Lock
             else if (typeInt == 10)
             {
-                return LockDataBase.dataList[index].name;
+                return LockDataBase.dataKeyDictionary[index].name;
             }
             else
             {
@@ -115,40 +115,40 @@ namespace Tools
         }
         private void setInteractingObject(GameObject gameObject, int typeInt, int index)
         {
-            InteractionData interactionData = InteractionDataBase.dataList[idx];
+            InteractionData interactionData = InteractionDataBase.dataKeyDictionary[idx];
             // 대사 Script
             if (typeInt == 3)
             {
-                gameObject.GetComponent<ScriptControl>().data = ScriptDataBase.dataList[index];
+                gameObject.GetComponent<ScriptControl>().data = ScriptDataBase.dataKeyDictionary[index];
             }
             // 선택지 Choose
             else if (typeInt == 4)
             {
-                gameObject.GetComponent<ChooseControl>().data = ChooseDataBase.dataList[index];
+                gameObject.GetComponent<ChooseControl>().data = ChooseDataBase.dataKeyDictionary[index];
             }
             // 이동 (씬 이동, 씬 내 이동)
             else if (typeInt == 5)
             {
-                gameObject.GetComponent<MoveControl>().data = MoveControlDataBase.dataList[index];
+                gameObject.GetComponent<MoveControl>().data = MoveControlDataBase.dataKeyDictionary[index];
             }
             else if (typeInt == 7)
             {
-                gameObject.GetComponent<CameraControl>().data = CameraControlDataBase.dataList[index];
+                gameObject.GetComponent<CameraControl>().data = CameraControlDataBase.dataKeyDictionary[index];
             }
             // ItemControl
             else if (typeInt == 8)
             {
-                gameObject.GetComponent<ItemControl>().data = ItemControlDataBase.dataList[index];
+                gameObject.GetComponent<ItemControl>().data = ItemControlDataBase.dataKeyDictionary[index];
             }
             // Stress Control
             else if (typeInt == 9)
             {
-                gameObject.GetComponent<StressControl>().data = StressControlDataBase.dataList[index];
+                gameObject.GetComponent<StressControl>().data = StressControlDataBase.dataKeyDictionary[index];
             }
             // 잠김 Lock
             else if (typeInt == 10)
             {
-                gameObject.GetComponent<LockControl>().data = LockDataBase.dataList[index];
+                gameObject.GetComponent<LockControl>().data = LockDataBase.dataKeyDictionary[index];
             }
         }
 
@@ -180,7 +180,7 @@ namespace Tools
         {
             initializeDataBase();
             loadDataBase();
-            InteractionData interactionData = InteractionDataBase.dataList[idx];
+            InteractionData interactionData = InteractionDataBase.dataKeyDictionary[idx];
             
             ControlObjectNameList = new List<string>();
             ControlObjectNameList.Clear();
@@ -211,7 +211,7 @@ namespace Tools
             string interactingObjectName = interactionObjectType.ToString();
             GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)), interactionGroupsTransform, true);
 
-            InteractionData interactionData = InteractionDataBase.dataList[interactionIdx];
+            InteractionData interactionData = InteractionDataBase.dataKeyDictionary[interactionIdx];
             
             interactingObject.name = interactionData.name;
 
@@ -234,7 +234,7 @@ namespace Tools
                 // 선택지
                 if (type == 4)
                 {
-                    List<int> interactIdxList = ChooseDataBase.dataList[index].interactionList;
+                    List<int> interactIdxList = ChooseDataBase.dataKeyDictionary[index].interactionList;
                     prefabObject.GetComponent<ChooseControl>().data.interactionGameObjectList = new List<InteractingObject>();
                     for (int j = 0; j < interactIdxList.Count; j++)
                     {
@@ -245,7 +245,7 @@ namespace Tools
                     }
                 }
                 // 카메라 워크
-                if (type == 7 && CameraControlDataBase.dataList[index].type == CameraWalkType.CameraWalk)
+                if (type == 7 && CameraControlDataBase.dataKeyDictionary[index].type == CameraWalkType.CameraWalk)
                 {
                     GameObject startGameObject = new GameObject("카메라워크_시작지점_" + index);
                     GameObject endGameObject = new GameObject("카메라워크_엔드지점_" + index);

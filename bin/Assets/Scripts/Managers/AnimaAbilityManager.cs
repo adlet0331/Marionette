@@ -19,9 +19,9 @@ namespace Managers
             animaAbilityLevelList.Add(-1);
             animaAbilityCountList.Add(-1);
         
-            for (int i = 1; i < stellaAbilityDataBase.dataList.Count; i++)
+            for (int i = 1; i < stellaAbilityDataBase.dataKeyDictionary.Count; i++)
             {
-                animaAbilityLevelList.Add(stellaAbilityDataBase.dataList[i].initStatus);
+                animaAbilityLevelList.Add(stellaAbilityDataBase.dataKeyDictionary[i].initStatus);
                 animaAbilityCountList.Add(0);
             }
         }
@@ -29,12 +29,12 @@ namespace Managers
         public void IncrementAnimaAbility(int idx, int count)
         {
             animaAbilityCountList[idx] += count;
-            var currentAbilityInfo = stellaAbilityDataBase.dataList[idx];
+            var currentAbilityInfo = stellaAbilityDataBase.dataKeyDictionary[idx];
             int currentLevel = animaAbilityLevelList[idx];
             if (animaAbilityCountList[idx] > currentAbilityInfo.levelUpCount[currentLevel] && currentLevel < currentAbilityInfo.maxLevel)
             {
-                animaAbilityCountList[idx] -= stellaAbilityDataBase.dataList[idx].levelUpCount[currentLevel];
-                stellaAbilityDataBase.dataList[idx].levelUpCount[currentLevel] += 1;
+                animaAbilityCountList[idx] -= stellaAbilityDataBase.dataKeyDictionary[idx].levelUpCount[currentLevel];
+                stellaAbilityDataBase.dataKeyDictionary[idx].levelUpCount[currentLevel] += 1;
             }
         }
     }
