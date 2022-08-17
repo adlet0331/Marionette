@@ -12,6 +12,7 @@ namespace DataBaseScripts
         public List<int> itemIdxList;
         public List<int> itemNumList;
         public List<bool> isAddList;
+        public string getDescription;
     };
 
     [CreateAssetMenu(fileName = "8_ItemControlDataBase", menuName = "ScriptableObjects/8.ItemControlDataBase", order = 8)]

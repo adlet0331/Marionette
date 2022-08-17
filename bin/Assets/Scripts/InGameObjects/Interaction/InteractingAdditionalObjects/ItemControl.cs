@@ -33,7 +33,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                     }
                 }
                 UIData.name = itemDataBase.dataKeyDictionary[currentIndex].name;
-                UIData.script = itemDataBase.dataKeyDictionary[currentIndex].itemInfo;
+                UIData.script = data.getDescription;
                 UIData.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items",
                     itemDataBase.dataKeyDictionary[currentIndex].spriteName));
                 UIWindow.InteractWithData(UIData);
