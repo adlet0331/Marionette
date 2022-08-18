@@ -4,11 +4,24 @@ using System.IO;
 using DataBaseScripts;
 using InGameObjects.Interaction;
 using Newtonsoft.Json;
+using SerializableManager;
 using UnityEngine;
 using Random = System.Random;
 
 namespace Managers
 {
+    [Serializable]
+    public class InteractionStatus
+    {
+        public int Idx;
+        public bool CurrentStatus;
+
+        public InteractionStatus(int idx, bool currentStatus)
+        {
+            this.Idx = idx;
+            this.CurrentStatus = currentStatus;
+        }
+    }
     public class SLManager : Singleton<SLManager>
     {
         [SerializeField] private SLDataBase sLDataBase;
@@ -30,7 +43,8 @@ namespace Managers
             // Stella List
             public List<int> stellaIdxList;
             // SceneObjects
-            public List<bool> interactingObjectStatusList;
+            [ArrayElementTitle("Idx")]
+            public List<InteractionStatus> interactingObjectStatusList;
         }
         
         public enum SaveDataType
@@ -40,12 +54,17 @@ namespace Managers
             AnimaObject = 2,
         }
 
-        public void OnNotify(SaveDataType dataType, bool isAdd, int idx)
+        public void OnNotify(SaveDataType dataType, bool disableAfterInteract, int idx)
         {
             if (dataType == SaveDataType.InteractionObject)
             {
-                currentSaveData.interactingObjectStatusList[idx] = isAdd;
-                return;
+                foreach (var status in currentSaveData.interactingObjectStatusList)
+                {
+                    if (status.Idx == idx)
+                    {
+                        status.CurrentStatus = disableAfterInteract;
+                    }
+                }
             }
             else if (dataType == SaveDataType.ItemAdd)
             {
@@ -69,11 +88,11 @@ namespace Managers
         
             newData.itemList = InventoryManager.Instance.GetItemList();
 
-            newData.interactingObjectStatusList = new List<bool>();
+            newData.interactingObjectStatusList = new List<InteractionStatus>();
 
             foreach (var var in DataBaseManager.Instance.interactionDataBase.dataList)
             {
-                newData.interactingObjectStatusList.Add(var.initStatus);
+                newData.interactingObjectStatusList.Add(new InteractionStatus(var.idx, var.initStatus));
             }
             
             this.currentSaveData = newData;
@@ -149,7 +168,7 @@ namespace Managers
         {
             foreach (var interactingObject in interactingObjects)
             {
-                var gameObjectStatus = this.currentSaveData.interactingObjectStatusList[interactingObject.Idx];
+                var gameObjectStatus = this.currentSaveData.interactingObjectStatusList[interactingObject.Idx].CurrentStatus;
                 interactingObject.gameObject.SetActive(gameObjectStatus);
             }
         }

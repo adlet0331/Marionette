@@ -16,7 +16,8 @@ namespace InGameObjects.Interaction
 
         public void SetSelecting(bool selecting)
         {
-            Debug.Log("Selecting");
+            if (SpriteRenderer == null)
+                return;
             if (selecting)
             {
                 SpriteRenderer.material = selectingMaterial;
@@ -29,6 +30,8 @@ namespace InGameObjects.Interaction
         
         private void Start()
         {
+            if (SpriteRenderer == null)
+                return;
             defaultMaterial = SpriteRenderer.material;
             selectingMaterial = Resources.Load<Material>(Path.Combine("ShaderMaterials", "Border Material"));
         }
