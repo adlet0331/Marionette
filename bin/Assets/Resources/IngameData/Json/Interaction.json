@@ -143,19 +143,22 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false,
-            false
+            true,
+            true,
+            true
         ],
         "idx": 8,
         "idxList": [
             8,
-            2
+            2,
+            0
         ],
         "initStatus": true,
         "name": "W1E2\uc5f0\uad6c\uc6d0\uc2dc\uccb4",
         "typeList": [
             3,
-            8
+            8,
+            2
         ]
     },
     {
