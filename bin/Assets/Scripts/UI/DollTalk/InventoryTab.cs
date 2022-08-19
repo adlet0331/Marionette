@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using DataBaseScripts;
 using Managers;
 using UnityEngine;
@@ -58,6 +59,17 @@ namespace UI
             WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
             inventorySlots[currentIndex].SetAvaliableBoard(true);
             isChooseAvaliable = false;
+
+            foreach (var slot in inventorySlots)
+            {
+                slot.SetSprite(null);
+            }
+            var itemList = InventoryManager.Instance.GetItemList();
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                var sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items", itemList[i].spriteName));
+                inventorySlots[i].SetSprite(sprite);
+            }
         }
 
         public override void CloseTab()
