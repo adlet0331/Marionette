@@ -49,7 +49,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         private IEnumerator _printScript(int index)
         {
             blocked = true;
-            UIData.name = data.name;
+            UIData.name = data.titleList[index];
             if (data.leftSpriteList[currentIndex] == "none")
             {
                 UIData.sprite = null;

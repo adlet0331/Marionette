@@ -56,11 +56,11 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                         InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
                     }
                 }
-                UIWindow.InteractWithData(data.lockedString);
+                UIWindow.InteractWithData(data.unLockString);
             }
             else
             {
-                UIWindow.InteractWithData(data.unLockString);
+                UIWindow.InteractWithData(data.lockedString);
             }
             return false;
         }
