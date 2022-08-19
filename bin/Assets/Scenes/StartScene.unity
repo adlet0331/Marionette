@@ -7702,7 +7702,7 @@ MonoBehaviour:
     setting: 
     itemList: []
     stellaIdxList: 
-    interactingObjectStatusList: 
+    interactingObjectStatusList: []
 --- !u!1 &1010988788
 GameObject:
   m_ObjectHideFlags: 0
