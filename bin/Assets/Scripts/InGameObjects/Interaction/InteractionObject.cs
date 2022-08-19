@@ -18,6 +18,7 @@ namespace InGameObjects.Interaction
         {
             if (SpriteRenderer == null)
                 return;
+            
             if (selecting)
             {
                 SpriteRenderer.material = selectingMaterial;

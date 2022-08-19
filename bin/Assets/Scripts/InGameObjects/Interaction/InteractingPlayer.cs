@@ -14,11 +14,11 @@ namespace InGameObjects.Interaction
         [SerializeField] private bool currentInteractable;
         [SerializeField] private InteractingObject currentInteractObj;
         [SerializeField] private List<InteractingObject> interactionObjList;
-        private int beforeScriptableObjListLegnth;
-        
+        [Header("Update 주기")]
+        [SerializeField] private int updateFrameCount;
+
         private void Start()
         {
-            beforeScriptableObjListLegnth = 0;
             interactionObjList = new List<InteractingObject>();
         }
         private void updateFstIdx()
@@ -48,7 +48,7 @@ namespace InGameObjects.Interaction
                 currentInteractable = true;
                 foreach (InteractingObject interObj in interactionObjList)
                 {
-                    interObj.GetComponent<InteractionObject>().SetSelecting(interObj.Idx == currentFirstObj.Idx);
+                    interObj.GetComponent<InteractionObject>()?.SetSelecting(interObj.Idx == currentFirstObj.Idx);
                 }
             }
         }
@@ -57,11 +57,12 @@ namespace InGameObjects.Interaction
             if (this.isBlocked)
                 return;
 
-            if (beforeScriptableObjListLegnth != interactionObjList.Count)
-            {
-                beforeScriptableObjListLegnth = interactionObjList.Count;
-                updateFstIdx();
-            }
+            updateFrameCount++;
+            if (updateFrameCount < 10)
+                return;
+            updateFrameCount = 0;
+
+            updateFstIdx();
             
             if (!currentInteractable)
             {
@@ -78,6 +79,10 @@ namespace InGameObjects.Interaction
         {
             isBlocked = true;
             WindowManager.Instance.interactableWindow.CloseWindow();
+            foreach (InteractingObject interObj in interactionObjList)
+            {
+                interObj.GetComponent<InteractionObject>()?.SetSelecting(false);
+            }
         }
         public void UnblockInteract()
         {
@@ -97,6 +102,11 @@ namespace InGameObjects.Interaction
                 list.Add(var);
             }
             interactionObjList = list;
+        }
+
+        public void ChangeFstInteractObj(InteractingObject interactingObject)
+        {
+            interactionObjList[0] = interactingObject;
         }
         public InteractingObject GetFstInteractObj()
         {

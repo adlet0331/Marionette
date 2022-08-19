@@ -221,7 +221,8 @@ namespace Managers
                 PlayerManager.Instance.interactingPlayer.UnblockInteract();
                 obj.gameObject.SetActive(!obj.DisableAfterInteract);
                 SLManager.Instance.OnNotify(SLManager.SaveDataType.InteractionObject, obj.DisableAfterInteract, obj.Idx);
-                PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
+                PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
+                
             }
             else
             {

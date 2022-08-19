@@ -69,7 +69,7 @@ namespace InGameObjects.Interaction
                 isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ObjectControl>().Interact();
             }
             // 대사 Script
-            if (dataType[currentInteractIndex] == 3)
+            else if (dataType[currentInteractIndex] == 3)
             {
                 isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
             }

@@ -677,7 +677,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -756,6 +756,7 @@ MonoBehaviour:
   data:
     idx: 12
     name: "W1-E2_\uC2E4\uD5D8\uAE30\uAD6C\uC120\uBC18"
+    titleList: []
     scriptList:
     - "\uC5EC\uB7EC \uC2E4\uD5D8 \uAE30\uAD6C\uB4E4\uC774 \uB098\uC5F4\uB418\uC5B4
       \uC788\uB2E4."
@@ -963,7 +964,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1309,6 +1310,7 @@ MonoBehaviour:
   data:
     idx: 10
     name: "W1-E2_\uC5F0\uAD6C\uC6D0\uC6A9PC"
+    titleList: []
     scriptList:
     - "\uC0AC\uBB34\uC2E4\uC5D0 \uD754\uD788 \uC788\uC744\uBC95\uD55C \uCEF4\uD4E8\uD130."
     - "\u2026"
@@ -1461,7 +1463,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1598,6 +1600,7 @@ MonoBehaviour:
   data:
     idx: 8
     name: "W1-E2_\uC2DC\uCCB4(\uC5F0\uAD6C\uC6D0)"
+    titleList: []
     scriptList:
     - "\uC124\uB9C8.."
     - "\uC2DC..\uC2DC\uCCB4\uB77C\uACE0? \uC6B0\uC6B0\uC6B1\u2026"
@@ -1676,7 +1679,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4106,6 +4109,7 @@ MonoBehaviour:
   data:
     idx: 13
     name: "W1-E2_\uC544\uB2C8\uB9C8\uACA9\uB9AC\uC2DC\uC124(1\uD615)"
+    titleList: []
     scriptList:
     - "\uAE68\uC9C4 \uC720\uB9AC\uC870\uAC01\uB4E4\uC774 \uD769\uC5B4\uC838\uC788\uB2E4."
     - "\u2026\uBB34\uC5B8\uAC00 \uC788\uC5C8\uB358\uAC78\uAE4C?"
@@ -4272,7 +4276,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4356,7 +4360,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4578,7 +4582,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4657,6 +4661,7 @@ MonoBehaviour:
   data:
     idx: 11
     name: "W1-E2_\uC544\uB2C8\uB9C8\uBD84\uC11D\uC7A5\uCE58"
+    titleList: []
     scriptList:
     - "\uC644\uC804\uD788 \uB9DD\uAC00\uC9C4 \uAE30\uACC4\uC7A5\uCE58.\n\uC6D0\uBCF8\uC774
       \uBB34\uC5C7\uC778\uC9C0\uB3C4 \uBAA8\uB974\uAC8C \uB9DD\uAC00\uC838\uC788\uB2E4."
@@ -4718,6 +4723,7 @@ MonoBehaviour:
   data:
     idx: 9
     name: "W1-E2_\uC5F0\uAD6C\uC6A9\uBD84\uC11D\uCEF4\uD4E8\uD130"
+    titleList: []
     scriptList:
     - "\uC5C4\uCCAD\uB098\uAC8C \uD06C\uACE0 \uBCF5\uC7A1\uD574\uBCF4\uC774\uB294
       \uCEF4\uD4E8\uD130"
@@ -4983,7 +4989,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5787,7 +5793,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5919,7 +5925,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6135,7 +6141,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6265,7 +6271,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6915,7 +6921,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29871,7 +29877,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30091,7 +30097,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30170,6 +30176,7 @@ MonoBehaviour:
   data:
     idx: 23
     name: "W1-E2_\uC2DC\uCCB4\uBC1C\uACAC\uD2B8\uB9AC\uAC70"
+    titleList: []
     scriptList:
     - "\u2026??"
     - "\uC0AC\uB78C..\uC778\uAC00? \uC800\uAC74..\uD53C?"
@@ -30525,7 +30532,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30840,7 +30847,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30924,7 +30931,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31003,6 +31010,7 @@ MonoBehaviour:
   data:
     idx: 23
     name: "W1-E2_\uC2DC\uCCB4\uBC1C\uACAC\uD2B8\uB9AC\uAC70"
+    titleList: []
     scriptList:
     - "\u2026??"
     - "\uC0AC\uB78C..\uC778\uAC00? \uC800\uAC74..\uD53C?"
@@ -31209,7 +31217,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31288,6 +31296,7 @@ MonoBehaviour:
   data:
     idx: 7
     name: "W1-E2_\uC120\uBC18"
+    titleList: []
     scriptList:
     - "\uB2E4\uC591\uD55C \uC57D\uD488\uB4E4\uC774 \uC9C4\uC5F4\uB418\uC5B4 \uC788\uB2E4"
     - "\uBCA4\uC870..\uC5B4\uCA4C\uACE0..\uB808\uBCF4..\uC5B4\uCA4C\uACE0.."
@@ -31496,7 +31505,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b15722543081624b987fe3d1a3ebd3b, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -31685,6 +31694,7 @@ MonoBehaviour:
   data:
     idx: 10
     name: "W1-E2_\uC5F0\uAD6C\uC6D0\uC6A9PC"
+    titleList: []
     scriptList:
     - "\uC0AC\uBB34\uC2E4\uC5D0 \uD754\uD788 \uC788\uC744\uBC95\uD55C \uCEF4\uD4E8\uD130."
     - "\u2026"
