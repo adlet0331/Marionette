@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
+using Managers;
 using UnityEngine;
 
 /* InteractAsync 되는 객체
@@ -60,6 +61,7 @@ namespace InGameObjects.Interaction
          */
         public async UniTask<bool> InteractAsync()
         {
+            PlayerManager.Instance.interactingPlayer.BlockInteract();
             // GameObject 생성/제거
             bool isInteractionEnd;
             if (dataType[currentInteractIndex] == 2)
@@ -120,14 +122,20 @@ namespace InGameObjects.Interaction
             if (isInteractionEnd)
             {
                 currentInteractIndex++;
+                // 데이터의 끝
                 if (currentInteractIndex == dataType.Count)
                 {
                     currentInteractIndex = 0;
+                    PlayerManager.Instance.interactingPlayer.UnblockInteract();
                     return true;
                 }
                 
                 // 끝이 아니라면 다음 거 바로 띄워주기
-                return await InteractAsync();
+                if (goNextImmediatly[currentInteractIndex - 1])
+                {
+                    InteractAsync().Forget();
+                    return false;
+                }
             }
             
             return false;

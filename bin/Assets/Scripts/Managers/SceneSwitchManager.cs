@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using InGameObjects.Interaction;
-using InGameObjects.Interaction.InteractingAdditionalObjects;
 using InGameObjects.Scene;
 using SerializableManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Managers
 {

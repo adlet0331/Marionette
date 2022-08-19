@@ -143,16 +143,22 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false
+            true,
+            true,
+            true
         ],
         "idx": 8,
         "idxList": [
-            8
+            8,
+            2,
+            0
         ],
         "initStatus": true,
         "name": "W1E2\uc5f0\uad6c\uc6d0\uc2dc\uccb4",
         "typeList": [
-            3
+            3,
+            8,
+            2
         ]
     },
     {
@@ -276,18 +282,21 @@
         ]
     },
     {
-        "disableAfterInteract": true,
+        "disableAfterInteract": false,
         "goNextImmediately": [
+            false,
             false
         ],
         "idx": 17,
         "idxList": [
-            17
+            17,
+            3
         ],
         "initStatus": true,
         "name": "W1E1\uc5f0\uad6c\uc6d0\uc2dc\uccb4",
         "typeList": [
-            3
+            3,
+            8
         ]
     },
     {
@@ -385,7 +394,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 24,
+        "idx": 50001,
         "idxList": [
             1
         ],
@@ -400,7 +409,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 25,
+        "idx": 50002,
         "idxList": [
             2
         ],
@@ -415,7 +424,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 26,
+        "idx": 50003,
         "idxList": [
             3
         ],
@@ -428,15 +437,18 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
+            false,
             true
         ],
-        "idx": 27,
+        "idx": 50004,
         "idxList": [
+            2,
             4
         ],
         "initStatus": true,
         "name": "W1_Hall\uc5d0\uc11c W1_E1\ub85c_\uc0c1\ub2e8",
         "typeList": [
+            10,
             5
         ]
     },
@@ -445,7 +457,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 28,
+        "idx": 50005,
         "idxList": [
             5
         ],
@@ -458,15 +470,18 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
+            false,
             true
         ],
-        "idx": 29,
+        "idx": 50006,
         "idxList": [
+            3,
             6
         ],
         "initStatus": true,
         "name": "W1_Hall\uc5d0\uc11c W1_C\ub85c(\ub354\ubbf8)",
         "typeList": [
+            10,
             5
         ]
     },
@@ -475,7 +490,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 30,
+        "idx": 50007,
         "idxList": [
             7
         ],
@@ -490,7 +505,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 31,
+        "idx": 50008,
         "idxList": [
             8
         ],
@@ -505,7 +520,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 32,
+        "idx": 50009,
         "idxList": [
             9
         ],
@@ -520,7 +535,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 33,
+        "idx": 50010,
         "idxList": [
             10
         ],
@@ -535,7 +550,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 34,
+        "idx": 50011,
         "idxList": [
             11
         ],
@@ -550,7 +565,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 35,
+        "idx": 50012,
         "idxList": [
             12
         ],
@@ -565,7 +580,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 36,
+        "idx": 50013,
         "idxList": [
             13
         ],
@@ -580,7 +595,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 37,
+        "idx": 50014,
         "idxList": [
             14
         ],
@@ -595,7 +610,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 38,
+        "idx": 100001,
         "idxList": [
             1
         ],
@@ -610,7 +625,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 39,
+        "idx": 100002,
         "idxList": [
             2
         ],
@@ -625,7 +640,7 @@
         "goNextImmediately": [
             true
         ],
-        "idx": 40,
+        "idx": 100003,
         "idxList": [
             3
         ],
@@ -640,7 +655,7 @@
         "goNextImmediately": [
             false
         ],
-        "idx": 100,
+        "idx": 110000,
         "idxList": [
             1
         ],

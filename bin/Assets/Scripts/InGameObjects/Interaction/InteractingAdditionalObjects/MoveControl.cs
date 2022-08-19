@@ -11,7 +11,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     {
         public override async UniTask<bool> Interact()
         {
-            if (SceneManager.GetActiveScene().name == SceneSwitchManager.Instance.currentScene.ToString())
+            if (SceneManager.GetActiveScene().name == data.destinationScene.ToString())
             {
                 var sceneMovePoints = GameObject.FindGameObjectsWithTag("SceneMovePoint");
                 Debug.Assert(sceneMovePoints.Length != 0, "sceneMovePoints.Length is 0");

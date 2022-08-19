@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Managers;
 using UnityEngine;
 
 /* 
@@ -16,6 +17,7 @@ namespace InGameObjects.Interaction
         {
             if(collision.gameObject.CompareTag("Player"))
             {
+                PlayerManager.Instance.interactingPlayer.SetFstInteractObj(this);
                 await InteractAsync();
             }
         }
