@@ -486,5 +486,21 @@
             "\uc18c\ub140",
             "\uc18c\ub140"
         ]
+    },
+    {
+        "idx": 24,
+        "leftSpriteList": [
+            "girl_embarrass"
+        ],
+        "name": "W1-2_\uc2dc\uccb4\ubc1c\uacac\uc774\ud6c4\ub300\uc0ac",
+        "rightSpriteList": [
+            "none"
+        ],
+        "scriptList": [
+            "\uc73c\uc73c.."
+        ],
+        "titleList": [
+            "\uc18c\ub140"
+        ]
     }
 ]

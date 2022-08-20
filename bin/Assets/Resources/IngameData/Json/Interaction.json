@@ -145,12 +145,14 @@
         "goNextImmediately": [
             true,
             true,
+            true,
             true
         ],
         "idx": 8,
         "idxList": [
             8,
             2,
+            24,
             0
         ],
         "initStatus": true,
@@ -158,6 +160,7 @@
         "typeList": [
             3,
             8,
+            3,
             2
         ]
     },
@@ -282,21 +285,24 @@
         ]
     },
     {
-        "disableAfterInteract": false,
+        "disableAfterInteract": true,
         "goNextImmediately": [
-            false,
-            false
+            true,
+            true,
+            true
         ],
         "idx": 17,
         "idxList": [
             17,
-            3
+            3,
+            0
         ],
         "initStatus": true,
         "name": "W1E1\uc5f0\uad6c\uc6d0\uc2dc\uccb4",
         "typeList": [
             3,
-            8
+            8,
+            2
         ]
     },
     {
@@ -385,6 +391,21 @@
         ],
         "initStatus": true,
         "name": "W1E2\uc2dc\uccb4\ubc1c\uacacT",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": true,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 24,
+        "idxList": [
+            24
+        ],
+        "initStatus": false,
+        "name": "W1E\uc2dc\uccb4\ubc1c\uacac\ud6c4\ub300\uc0ac",
         "typeList": [
             3
         ]
