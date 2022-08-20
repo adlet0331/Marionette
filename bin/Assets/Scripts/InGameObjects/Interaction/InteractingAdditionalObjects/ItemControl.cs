@@ -24,12 +24,14 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         {
             if (currentIndex < data.itemIdxList.Count)
             {
-                InventoryManager.Instance.AddItem(data.itemIdxList[currentIndex], data.itemNumList[currentIndex]);
+                var idx = data.itemIdxList[currentIndex];
+                var itemNum = data.itemNumList[currentIndex];
+                InventoryManager.Instance.AddItem(idx, itemNum);
 
-                UIData.name = itemDataBase.dataKeyDictionary[currentIndex].name;
+                UIData.name = itemDataBase.dataKeyDictionary[idx].name;
                 UIData.script = data.getDescription;
                 UIData.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items",
-                    itemDataBase.dataKeyDictionary[currentIndex].spriteName));
+                    itemDataBase.dataKeyDictionary[idx].spriteName));
 
                 currentIndex++;
                 

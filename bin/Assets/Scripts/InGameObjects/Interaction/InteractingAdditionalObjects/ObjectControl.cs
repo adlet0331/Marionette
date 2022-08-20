@@ -9,7 +9,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     [Serializable]
     public class GameObjectSetActivate
     {
-        public GameObject gameObject;
+        public InteractingObject interactingObject;
         public bool isActivating;
     }
 
@@ -25,7 +25,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         {
             foreach (var gameObjectCreateDelete in data.gameObjectSetActivateList)
             {
-                gameObjectCreateDelete.gameObject.SetActive(gameObjectCreateDelete.isActivating);
+                gameObjectCreateDelete.interactingObject.SetActiveNotify(gameObjectCreateDelete.isActivating);
             }
 
             return true;

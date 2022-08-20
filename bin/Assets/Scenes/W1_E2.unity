@@ -3838,9 +3838,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     gameObjectSetActivateList:
-    - gameObject: {fileID: 366849326}
+    - interactingObject: {fileID: 366849328}
       isActivating: 1
-    - gameObject: {fileID: 1061669215}
+    - interactingObject: {fileID: 1061669218}
       isActivating: 0
 --- !u!1 &921354644
 GameObject:
@@ -4631,7 +4631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 8
   dataType: 03000000080000000300000002000000
-  goNextImmediatly: 01010101
+  goNextImmediatly: 01010100
   interactingObjectList:
   - {fileID: 1594904287}
   - {fileID: 660353991}
@@ -30595,7 +30595,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -169.3277, y: -246.35718}
+  m_Offset: {x: -80.314316, y: -278.99536}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -30606,7 +30606,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 867.0033, y: 822.82654}
+  m_Size: {x: 467.43228, y: 793.1554}
   m_EdgeRadius: 0
 --- !u!1 &1841104607
 GameObject:

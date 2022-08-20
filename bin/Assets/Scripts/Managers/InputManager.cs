@@ -219,7 +219,7 @@ namespace Managers
             
             if (interactionEnd)
             {
-                obj.gameObject.SetActive(!obj.DisableAfterInteract);
+                obj.SetActiveNotify(!obj.DisableAfterInteract);
                 
                 SLManager.Instance.OnNotify(obj.DisableAfterInteract, obj.Idx);
                 if (obj.GetComponent<InteractionObject>() == null)

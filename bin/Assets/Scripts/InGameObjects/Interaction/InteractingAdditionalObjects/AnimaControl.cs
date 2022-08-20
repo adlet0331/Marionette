@@ -20,7 +20,7 @@ namespace InGameObjects.Object
         }
         public override async UniTask<bool> Interact()
         {
-            StellaManager.Instance.IncrementAnimaAbility(data.idx, data.upCount);
+            StellaManager.Instance.IncrementStella(data.idx, data.upCount);
             return true;
         }
     }

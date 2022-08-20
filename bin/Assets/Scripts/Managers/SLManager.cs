@@ -36,22 +36,20 @@ namespace Managers
             // Player Info
             public string sceneString;
             public SceneSwitchManager.SceneName sceneName;
-            public int playerPosX;
-            public int playerPosY;
+            public Vector3 playerLocalPos;
             // Settings
             public string setting;
             // Inventory
             public List<ItemData> itemList;
             // Stella List
-            public List<int> stellaIdxList;
+            public List<int> stellaLevelList;
+            public List<int> stellaExpList;
             // SceneObjects
             public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
         }
-
+        
         public void OnNotify(bool disableAfterInteract, int idx)
         {
-            var groupInteraction = FindObjectOfType<GroupInteraction>();
-            
             currentSaveData.interactingObjectStatusDictionary[idx].CurrentStatus = !disableAfterInteract;
         }
         
@@ -60,8 +58,7 @@ namespace Managers
             SaveData newData = new SaveData();
 
             newData.sceneName = SceneSwitchManager.SceneName.Girl_room;
-            newData.playerPosX = 0;
-            newData.playerPosY = 0;
+            currentSaveData.playerLocalPos = new Vector3(0, 0, 0);
 
             newData.setting = "init";
         
@@ -90,6 +87,7 @@ namespace Managers
             string sLDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData.json");
             TextAsset json = Resources.Load<TextAsset>(sLDataPath);
             sLDataBase.LoadJson();
+            saveCurrentStatus();
             List<SLData> saveData = sLDataBase.dataList;
             int slotIndex;
             for (slotIndex = 0; slotIndex < sLDataBase.dataList.Count; slotIndex++)
@@ -123,6 +121,17 @@ namespace Managers
             currentSaveData = JsonConvert.DeserializeObject<SaveData>(json);
 
             SceneSwitchManager.Instance.SwitchScene(currentSaveData.sceneName, -1);
+        }
+
+        private void saveCurrentStatus()
+        {
+            currentSaveData.sceneName = SceneSwitchManager.Instance.currentScene;
+            currentSaveData.sceneString = SceneSwitchManager.Instance.CurrentSceneInfo.sceneString;
+            currentSaveData.itemList = InventoryManager.Instance.GetItemList();
+            currentSaveData.stellaLevelList = StellaManager.Instance.GetStellaLevelList();
+            currentSaveData.stellaExpList = StellaManager.Instance.GetStellaExpCountList();
+            
+            currentSaveData.playerLocalPos = PlayerManager.Instance.moveablePlayerObject.transform.localPosition;
         }
         
         private void saveCurrentFileAsJson()

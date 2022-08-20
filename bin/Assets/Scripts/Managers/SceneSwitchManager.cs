@@ -36,6 +36,7 @@ namespace Managers
         [SerializeField] public SceneName beforeScene;
         [ArrayElementTitle("sceneName")]
         [SerializeField] public List<SceneInfo> sceneInfoList;
+        public SceneInfo CurrentSceneInfo => FindSceneInfo(currentScene);
         private void Start()
         {
             currentScene = SceneName.StartScene;

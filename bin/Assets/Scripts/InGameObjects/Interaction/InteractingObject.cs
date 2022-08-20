@@ -56,6 +56,21 @@ namespace InGameObjects.Interaction
             this.disableAfterInteract = disableAfterInteract;
         }
         
+        public void SetActiveNotify(bool isAc)
+        {
+            SLManager.Instance.OnNotify(isAc, idx);
+            gameObject.SetActive(isAc);
+
+            var groupInteraction = FindObjectOfType<GroupInteraction>();
+            var interactionObjects = groupInteraction.GetComponentsInChildren<InteractingObject>();
+            foreach (var obj in interactionObjects)
+            {
+                if (obj.idx != idx)
+                    continue;
+                obj.SetActiveNotify(isAc);
+            }
+        }
+        
         /*
          * Interact가 끝났는지 Return
          */

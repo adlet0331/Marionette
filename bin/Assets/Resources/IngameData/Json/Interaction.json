@@ -289,7 +289,7 @@
         "goNextImmediately": [
             true,
             true,
-            true
+            false
         ],
         "idx": 17,
         "idxList": [
