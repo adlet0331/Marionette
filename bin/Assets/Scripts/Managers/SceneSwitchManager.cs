@@ -24,6 +24,7 @@ namespace Managers
         public class SceneInfo
         {
             public SceneName sceneName;
+            public string sceneString;
             public bool isProfileActivate;
             public bool isCharacterExist;
             public bool isMovable;
@@ -34,7 +35,7 @@ namespace Managers
         [SerializeField] public SceneName currentScene;
         [SerializeField] public SceneName beforeScene;
         [ArrayElementTitle("sceneName")]
-        [SerializeField] private List<SceneInfo> sceneInfoList;
+        [SerializeField] public List<SceneInfo> sceneInfoList;
         private void Start()
         {
             currentScene = SceneName.StartScene;

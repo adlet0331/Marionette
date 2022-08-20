@@ -25,7 +25,7 @@ namespace UI
 
         public void LoadGameButton()
         {
-
+            SLManager.Instance.Load(1);
         }
 
         public void SettingButton()

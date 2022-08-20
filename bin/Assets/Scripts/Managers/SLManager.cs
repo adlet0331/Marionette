@@ -34,7 +34,8 @@ namespace Managers
         public struct SaveData
         {
             // Player Info
-            public string sceneName;
+            public string sceneString;
+            public SceneSwitchManager.SceneName sceneName;
             public int playerPosX;
             public int playerPosY;
             // Settings
@@ -49,6 +50,8 @@ namespace Managers
 
         public void OnNotify(bool disableAfterInteract, int idx)
         {
+            var groupInteraction = FindObjectOfType<GroupInteraction>();
+            
             currentSaveData.interactingObjectStatusDictionary[idx].CurrentStatus = !disableAfterInteract;
         }
         
@@ -56,7 +59,7 @@ namespace Managers
         {
             SaveData newData = new SaveData();
 
-            newData.sceneName = SceneSwitchManager.SceneName.Girl_room.ToString();
+            newData.sceneName = SceneSwitchManager.SceneName.Girl_room;
             newData.playerPosX = 0;
             newData.playerPosY = 0;
 
@@ -109,19 +112,17 @@ namespace Managers
             sLDataBase.dataList.Add(newData);
             File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList, Formatting.Indented));
         }
-
-        public void Load()
-        {
-            this.Load(1);
-        }
+        
         public void Load(int index)
         {
             sLDataBase.LoadJson();
             currentSaveDataName = sLDataBase.dataList[index].name;
             string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
             string json = File.ReadAllText(saveDataPath);
-            Debug.Log(json.ToString());
-            currentSaveData = JsonConvert.DeserializeObject<SaveData>(json.ToString());
+            Debug.Log(json);
+            currentSaveData = JsonConvert.DeserializeObject<SaveData>(json);
+
+            SceneSwitchManager.Instance.SwitchScene(currentSaveData.sceneName, -1);
         }
         
         private void saveCurrentFileAsJson()

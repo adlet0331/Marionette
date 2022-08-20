@@ -41,6 +41,7 @@ namespace UI
                 inventorySlots[currentIndex].SetAvaliableBoard(false);
                 _currentColumn = value;
                 inventorySlots[currentIndex].SetAvaliableBoard(true);
+                updateInventorySlots(currentIndex);
             }
         }
         private int cururentRow
@@ -51,7 +52,19 @@ namespace UI
                 inventorySlots[currentIndex].SetAvaliableBoard(false);
                 _cururentRow = value;
                 inventorySlots[currentIndex].SetAvaliableBoard(true);
+                updateInventorySlots(currentIndex);
             }
+        }
+
+        private void updateInventorySlots(int currentIndex)
+        {
+            var itemList = InventoryManager.Instance.GetItemList();
+            if (currentIndex >= itemList.Count)
+            {
+                WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
+                return;
+            }
+            WindowManager.Instance.dollTalkWindow.SetChatText(false, itemList[currentIndex].itemInfo);
         }
         public override void OpenTab()
         {
@@ -71,6 +84,8 @@ namespace UI
                 var sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items", itemList[i].spriteName));
                 inventorySlots[i].SetSprite(sprite);
             }
+
+            updateInventorySlots(currentIndex);
         }
 
         public override void CloseTab()
@@ -125,6 +140,15 @@ namespace UI
                             case 1:
                                 dollTalkSelectionWindow.Close();
                                 isChooseAvaliable = false;
+                                var itemList = InventoryManager.Instance.GetItemList();
+                                if (!itemList[currentIndex].isUsable)
+                                {
+                                    WindowManager.Instance.dollTalkWindow.SetChatText(false, "사용할 수 없는 아이템이야...");
+                                }
+                                else
+                                {
+                                    // TODO 아이템 별 사용 코드
+                                }
                                 break;
                         }
                         return;
