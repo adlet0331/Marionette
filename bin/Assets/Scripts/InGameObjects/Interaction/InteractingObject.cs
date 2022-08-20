@@ -67,7 +67,7 @@ namespace InGameObjects.Interaction
             {
                 if (obj.idx != idx)
                     continue;
-                obj.SetActiveNotify(isAc);
+                obj.gameObject.SetActive(isAc);
             }
         }
         
