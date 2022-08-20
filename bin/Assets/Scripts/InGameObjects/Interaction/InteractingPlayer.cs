@@ -111,8 +111,9 @@ namespace InGameObjects.Interaction
         public InteractingObject GetFstInteractObj()
         {
             if (interactionObjList.Count == 0)
+            {
                 return null;
-
+            }
             else
             {
                 updateFstIdx();

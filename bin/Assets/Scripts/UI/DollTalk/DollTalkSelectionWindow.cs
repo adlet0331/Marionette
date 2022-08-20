@@ -67,7 +67,7 @@ namespace UI
         }
         
         // Up = true, Down = false
-        public void GetInput(InputType inputType) 
+        public int GetInputIdx(InputType inputType) 
         {
             switch (inputType)
             {
@@ -78,27 +78,12 @@ namespace UI
                     currentSelNum = currentSelNum = (currentSelNum + 1) % totalSelNum;
                     break;
                 case InputType.Space:
-                    switch (windowType)
-                    {
-                        case DollTalkSelectionType.SelectTab:
-                            WindowManager.Instance.dollTalkWindow.ChangeWindowTab((DollTalkWindowType)currentSelNum);
-                            return;
-                        case DollTalkSelectionType.ItemSelection:
-                            switch (currentSelNum)
-                            {
-                                case 0:
-                                    WindowManager.Instance.dollTalkWindow.ChangeWindowTab(DollTalkWindowType.Inventory);
-                                    return;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                    return;
+                    return currentSelNum;
                 default:
                     break;
             }
             _updateSelect();
+            return -1;
         }
         private void _updateSelect()
         {

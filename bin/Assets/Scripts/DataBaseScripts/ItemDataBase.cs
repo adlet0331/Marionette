@@ -13,6 +13,7 @@ namespace DataBaseScripts
     [Serializable]
     public class ItemData : DataType
     {
+        public bool isUsable;
         public string itemInfo;
         public string spriteName;
     }

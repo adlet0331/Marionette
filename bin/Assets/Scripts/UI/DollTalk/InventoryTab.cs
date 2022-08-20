@@ -57,6 +57,7 @@ namespace UI
         {
             gameObject.SetActive(true);
             WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
+            WindowManager.Instance.dollTalkWindow.ActivateNext(false);
             inventorySlots[currentIndex].SetAvaliableBoard(true);
             isChooseAvaliable = false;
 
@@ -96,7 +97,7 @@ namespace UI
                 case InputType.Up:
                     if (isChooseAvaliable)
                     {
-                        dollTalkSelectionWindow.GetInput(InputType.Up);
+                        dollTalkSelectionWindow.GetInputIdx(InputType.Up);
                         return;
                     }
                     if (cururentRow != 0)
@@ -105,7 +106,7 @@ namespace UI
                 case InputType.Down:
                     if (isChooseAvaliable)
                     {
-                        dollTalkSelectionWindow.GetInput(InputType.Down);
+                        dollTalkSelectionWindow.GetInputIdx(InputType.Down);
                         return;
                     }
                     if (cururentRow != maxRow - 1)
@@ -114,7 +115,18 @@ namespace UI
                 case InputType.Space:
                     if (isChooseAvaliable)
                     {
-                        dollTalkSelectionWindow.GetInput(InputType.Space);
+                        var selectionIdx = dollTalkSelectionWindow.GetInputIdx(InputType.Space);
+                        switch (selectionIdx)
+                        {
+                            case 0:
+                                dollTalkSelectionWindow.Close();
+                                isChooseAvaliable = false;
+                                break;
+                            case 1:
+                                dollTalkSelectionWindow.Close();
+                                isChooseAvaliable = false;
+                                break;
+                        }
                         return;
                     }
 

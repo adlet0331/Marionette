@@ -8,15 +8,15 @@ using UnityEngine;
 
 /* InteractAsync 되는 객체
  * [상호작용 물체의 종류]
-            2. 오브젝트 생성 / 소멸 - ObjectCreateDelete
-            3. 대사 - Script
-            4. 선택지 - Choose
-            5. 맵 이동 - Teleport
-    6. 애니메이션 - Animation
+    2. 오브젝트 생성 / 소멸 - ObjectControl
+    3. 대사 - Script
+    4. 선택지 - Choose
+    5. 맵 이동 - Teleport
+        6. 애니메이션 - Animation
     7. 카메라 워크 - CameraWalk
-        8. 아이템 획득, 삭제 - ItemControl
-        9. 스트레스 수치 조정 - StressControl
-        10. 잠김 - Lock
+    8. 아이템 획득, 삭제 - ItemControl
+    9. 스트레스 수치 조정 - StressControl
+    10. 잠김 - Lock
     11. 아니마 획득 - AnimaAdd
     12. 이벤트 - 내부 코드로 대응
  */

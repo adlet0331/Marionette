@@ -75,7 +75,11 @@ namespace UI
 
             if (_currentWindowType == DollTalkWindowType.TabSelecting)
             {
-                dollTalkSelectionWindow.GetInput(input);
+                var changingTab = dollTalkSelectionWindow.GetInputIdx(input);
+                if (input == InputType.Space)
+                {
+                    WindowManager.Instance.dollTalkWindow.ChangeWindowTab((DollTalkWindowType)changingTab);
+                }
                 return;
             }
 

@@ -260,7 +260,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16c89255310745b499ce0e7b5a85848e, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -397,7 +397,8 @@ MonoBehaviour:
   isBlocked: 0
   currentInteractable: 0
   currentInteractObj: {fileID: 0}
-  scriptableObjList: []
+  interactionObjList: []
+  updateFrameCount: 0
 --- !u!1 &7244459996651285561
 GameObject:
   m_ObjectHideFlags: 0

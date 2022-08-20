@@ -6309,10 +6309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typePerSelectionStrings:
-    type: 2
+    type: 3
     strings:
-    - "\uB2E4\uB978\uAC78 \uD560\uB798"
-    - "\uC774\uAC78 \uC124\uBA85\uD574\uC918"
+    - "\uB2E4\uB978 \uC544\uC774\uD15C\uC744 \uBCFC\uB798"
     - "\uC0AC\uC6A9\uD560\uB798"
   gridLayoutGroup: {fileID: 1216836989}
   inventorySlots:

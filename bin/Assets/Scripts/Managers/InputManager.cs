@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using InGameObjects.Interaction;
 using InGameObjects.Object;
 using UI;
 using UnityEngine;
@@ -221,7 +222,14 @@ namespace Managers
                 obj.gameObject.SetActive(!obj.DisableAfterInteract);
                 
                 SLManager.Instance.OnNotify(obj.DisableAfterInteract, obj.Idx);
-                PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
+                if (obj.GetComponent<InteractionObject>() == null)
+                {
+                    PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
+                }
+                else
+                {
+                    PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
+                }
             }
         }
     }
