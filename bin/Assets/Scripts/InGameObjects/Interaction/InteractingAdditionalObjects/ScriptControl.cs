@@ -48,6 +48,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         }
         private IEnumerator _printScript(int index)
         {
+            UIWindow.gameObject.GetComponent<ScriptWindow>().ActivateNext(false);
             blocked = true;
             UIData.name = data.titleList[index];
             if (data.leftSpriteList[currentIndex] == "none")
@@ -75,6 +76,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             blocked = false;
             currentCoroutine = null;
             currentIndex++;
+            UIWindow.gameObject.GetComponent<ScriptWindow>().ActivateNext(true);
         }
     }
 }

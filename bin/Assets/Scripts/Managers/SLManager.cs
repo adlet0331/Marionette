@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using DataBaseScripts;
 using InGameObjects.Interaction;
 using Newtonsoft.Json;
@@ -43,37 +44,12 @@ namespace Managers
             // Stella List
             public List<int> stellaIdxList;
             // SceneObjects
-            [ArrayElementTitle("Idx")]
-            public List<InteractionStatus> interactingObjectStatusList;
-        }
-        
-        public enum SaveDataType
-        {
-            InteractionObject = 0,
-            ItemAdd = 1,
-            AnimaObject = 2,
+            public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
         }
 
-        public void OnNotify(SaveDataType dataType, bool disableAfterInteract, int idx)
+        public void OnNotify(bool disableAfterInteract, int idx)
         {
-            if (dataType == SaveDataType.InteractionObject)
-            {
-                foreach (var status in currentSaveData.interactingObjectStatusList)
-                {
-                    if (status.Idx == idx)
-                    {
-                        status.CurrentStatus = disableAfterInteract;
-                    }
-                }
-            }
-            else if (dataType == SaveDataType.ItemAdd)
-            {
-                
-            }
-            else if (dataType == SaveDataType.AnimaObject)
-            {
-                
-            }
+            currentSaveData.interactingObjectStatusDictionary[idx].CurrentStatus = !disableAfterInteract;
         }
         
         public void InitSaveData()
@@ -88,13 +64,15 @@ namespace Managers
         
             newData.itemList = InventoryManager.Instance.GetItemList();
 
-            newData.interactingObjectStatusList = new List<InteractionStatus>();
+            var interactingObjectStatusList = new List<InteractionStatus>();
 
             foreach (var var in DataBaseManager.Instance.interactionDataBase.dataList)
             {
-                newData.interactingObjectStatusList.Add(new InteractionStatus(var.idx, var.initStatus));
+                interactingObjectStatusList.Add(new InteractionStatus(var.idx, var.initStatus));
             }
-            
+
+            newData.interactingObjectStatusDictionary = interactingObjectStatusList.ToDictionary(x => x.Idx);
+
             this.currentSaveData = newData;
             this.currentSaveDataName = createRandomString(10);
         }
@@ -119,7 +97,7 @@ namespace Managers
                     File.Delete(Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{sLDataBase.dataList[slotIndex].name}.json"));
                     saveCurrentFileAsJson();
                     sLDataBase.dataList[slotIndex].name = currentSaveDataName;
-                    File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
+                    File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList, Formatting.Indented));
                     return;
                 }
             }
@@ -129,7 +107,7 @@ namespace Managers
             newData.idx = slotIndex;
             newData.name = currentSaveDataName;
             sLDataBase.dataList.Add(newData);
-            File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList));
+            File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList, Formatting.Indented));
         }
 
         public void Load()
@@ -149,7 +127,7 @@ namespace Managers
         private void saveCurrentFileAsJson()
         {
             string path = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
-            File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData));
+            File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData, Formatting.Indented));
         }
 
         private string createRandomString(int length)
@@ -168,7 +146,7 @@ namespace Managers
         {
             foreach (var interactingObject in interactingObjects)
             {
-                var gameObjectStatus = this.currentSaveData.interactingObjectStatusList[interactingObject.Idx].CurrentStatus;
+                var gameObjectStatus = currentSaveData.interactingObjectStatusDictionary[interactingObject.Idx].CurrentStatus;
                 interactingObject.gameObject.SetActive(gameObjectStatus);
             }
         }

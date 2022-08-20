@@ -9,7 +9,7 @@ namespace InGameObjects.Interaction
         void Start()
         {
             var interactingObjects = GetComponentsInChildren<InteractingObject>(this.gameObject);
-            // SLManager.Instance.InitsceneInteractingObjects(interactingObjects);
+            SLManager.Instance.InitsceneInteractingObjects(interactingObjects);
         }
     }
 }

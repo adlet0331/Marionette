@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using DataBaseScripts;
 using Managers;
 using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
@@ -11,40 +12,34 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     [Serializable]
     public class ItemControl : IInteractionObjectWithUI<ItemControlData, ItemGotUIData>
     {
-        [SerializeField] private bool interacted;
+        [SerializeField] private int currentIndex = 0;
         private ItemDataBase itemDataBase;
         protected override void GetUIWindowAndInit()
         {
-            interacted = false;
+            currentIndex = 0;
             itemDataBase = DataBaseManager.Instance.itemDataBase; 
             UIWindow = WindowManager.Instance.itemGotWindow;
         }
         public override async UniTask<bool> Interact()
         {
-            if (!interacted)
+            if (currentIndex < data.itemIdxList.Count)
             {
-                int currentIndex = 0;
-                for (int i = 0; i < data.itemIdxList.Count; i++)
-                {
-                    if (data.isAddList[i])
-                    {
-                        currentIndex = data.itemIdxList[i];
-                        break;
-                    }
-                }
+                InventoryManager.Instance.AddItem(data.itemIdxList[currentIndex], data.itemNumList[currentIndex]);
+
                 UIData.name = itemDataBase.dataKeyDictionary[currentIndex].name;
                 UIData.script = data.getDescription;
                 UIData.sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items",
                     itemDataBase.dataKeyDictionary[currentIndex].spriteName));
+
+                currentIndex++;
                 
                 UIWindow.InteractWithData(UIData);
-                interacted = true;
                 return false;
             }
             else
             {
                 UIWindow.CloseWindow();
-                interacted = false;
+                currentIndex = 0;
                 return true;
             }
         }

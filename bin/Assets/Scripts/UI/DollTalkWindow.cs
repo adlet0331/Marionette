@@ -33,9 +33,14 @@ namespace UI
         [SerializeField] private List<ADollTalkWindowTab> windowTabs;
         [SerializeField] private GameObject chatBoxL, chatBoxR;
         [SerializeField] private Text chatText;
+        [SerializeField] private GameObject next;
 
         [SerializeField] private TypePerSelectionStrings tabSelecting;
 
+        public void ActivateNext(bool isAc)
+        {
+            next.SetActive(isAc);
+        }
         public void SetChatText(bool isLeft, string text)
         {
             chatBoxL.SetActive(isLeft);

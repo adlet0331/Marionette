@@ -59,7 +59,7 @@ namespace UI
                     // Coroutine 이 실행중이 아닐때
                     else
                     {
-                        _currentCoroutine = printScript(currentScriptIndex);
+                        _currentCoroutine = _printScript(currentScriptIndex);
                         StartCoroutine(_currentCoroutine); 
                     }
                     return;
@@ -67,13 +67,14 @@ namespace UI
                     return;
             }
         }
-        private IEnumerator printScript(int index)
+        private IEnumerator _printScript(int index)
         {
             blocked = true;
+            WindowManager.Instance.dollTalkWindow.ActivateNext(false);
             var text = "";
             var isLeft = dollTalkData.isGirlTalkingList[index];
             var printText = dollTalkData.scriptList[index];
-            WindowManager.Instance.dollTalkWindow.SetChatText(isLeft, printText);
+            WindowManager.Instance.dollTalkWindow.SetChatText(isLeft, text);
             yield return new WaitForSeconds(0.01f);
             for (int i = 0; i <= printText.Length; i++)
             {
@@ -98,6 +99,7 @@ namespace UI
                 WindowManager.Instance.dollTalkWindow.ChangeWindowTab(DollTalkWindowType.TabSelecting);
                 currentScriptIndex = 0;
             }
+            WindowManager.Instance.dollTalkWindow.ActivateNext(true);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace DataBaseScripts
     {
         public List<int> itemIdxList;
         public List<int> itemNumList;
-        public List<bool> isAddList;
         public string getDescription;
     };
 

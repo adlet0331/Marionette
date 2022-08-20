@@ -218,15 +218,10 @@ namespace Managers
             
             if (interactionEnd)
             {
-                PlayerManager.Instance.interactingPlayer.UnblockInteract();
                 obj.gameObject.SetActive(!obj.DisableAfterInteract);
-                SLManager.Instance.OnNotify(SLManager.SaveDataType.InteractionObject, obj.DisableAfterInteract, obj.Idx);
-                PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
                 
-            }
-            else
-            {
-                PlayerManager.Instance.interactingPlayer.BlockInteract();
+                SLManager.Instance.OnNotify(obj.DisableAfterInteract, obj.Idx);
+                PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
             }
         }
     }

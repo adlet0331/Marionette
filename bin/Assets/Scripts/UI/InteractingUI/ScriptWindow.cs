@@ -26,6 +26,8 @@ namespace UI
 
     public class ScriptWindow : UIControlWindow<ScriptUIData>
     {
+        [SerializeField] private GameObject nameBox;
+        [SerializeField] private GameObject nextButton;
         [SerializeField] private Text name;
         [SerializeField] private Text script;
         [SerializeField] private Image image;
@@ -42,6 +44,14 @@ namespace UI
 
         public override void Interact()
         {
+            if (data.name == "" || data.name == " ")
+            {
+                nameBox.SetActive(false);
+            }
+            else
+            {
+                nameBox.SetActive(true);
+            }
             name.text = data.name;
             script.text = data.script;
             image.sprite = data.sprite;
@@ -53,6 +63,11 @@ namespace UI
             {
                 image.gameObject.SetActive(true);
             }
+        }
+
+        public void ActivateNext(bool isAv)
+        {
+            nextButton.SetActive(isAv);
         }
     }
 }
