@@ -488,6 +488,36 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
+            false
+        ],
+        "idx": 30,
+        "idxList": [
+            24
+        ],
+        "initStatus": true,
+        "name": "W1E1\uadf8\ub0e5\uc2dc\uccb4",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 31,
+        "idxList": [
+            24
+        ],
+        "initStatus": false,
+        "name": "W1E1\uc2dc\uccb4\ubcf8\uc774\ud6c4",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
             true
         ],
         "idx": 50001,
