@@ -398,7 +398,7 @@
             false,
             true
         ],
-        "idx": 24,
+        "idx": 29,
         "idxList": [
             28,
             0
@@ -451,6 +451,36 @@
         ],
         "initStatus": false,
         "name": "W0\uac8c\uc774\ud2b8\uc5f4\ub9bc",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": true,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 28,
+        "idxList": [
+            23
+        ],
+        "initStatus": true,
+        "name": "W1E2\uc2dc\uccb4\ubc1c\uacac\ud2b8\ub9ac\uac70",
+        "typeList": [
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 24,
+        "idxList": [
+            24
+        ],
+        "initStatus": false,
+        "name": "W1E\uc2dc\uccb4\ubcf8\uc774\ud6c4",
         "typeList": [
             3
         ]

@@ -82,10 +82,14 @@
     {
         "idx": 4,
         "leftSpriteList": [
+            "none",
+            "none",
             "none"
         ],
         "name": "W1-R1_\uc695\uc870",
         "rightSpriteList": [
+            "none",
+            "none",
             "none"
         ],
         "scriptList": [
@@ -141,10 +145,12 @@
         "idx": 7,
         "leftSpriteList": [
             "none",
+            "girl_idle",
             "girl_idle"
         ],
         "name": "W1-E2_\uc120\ubc18",
         "rightSpriteList": [
+            "none",
             "none",
             "none"
         ],
@@ -155,6 +161,7 @@
         ],
         "titleList": [
             " ",
+            "\uc18c\ub140",
             "\uc18c\ub140"
         ]
     },
@@ -439,10 +446,12 @@
     {
         "idx": 21,
         "leftSpriteList": [
+            "none",
             "none"
         ],
         "name": "W1-R2_\uc2a4\ud154\ub77c(\ube5b)",
         "rightSpriteList": [
+            "none",
             "none"
         ],
         "scriptList": [
@@ -464,6 +473,9 @@
         ],
         "name": "W1-R2_\uc804\uc6d0\uc774\ucf1c\uc9c4\ub178\ud2b8\ubd81(\uccab\uc870\uc0ac)\ubbf8\ubc1c\uacac",
         "rightSpriteList": [
+            "none",
+            "none",
+            "none",
             "none"
         ],
         "scriptList": [
