@@ -42,8 +42,8 @@ namespace Managers
             // Inventory
             public List<ItemData> itemList;
             // Stella List
-            public List<int> stellaLevelList;
-            public List<int> stellaExpList;
+            [ArrayElementTitle("name")]
+            public List<StellaInfo> stellaInfoList;
             // SceneObjects
             public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
         }
@@ -62,7 +62,16 @@ namespace Managers
 
             newData.setting = "init";
         
-            newData.itemList = InventoryManager.Instance.GetItemList();
+            newData.itemList = new List<ItemData>();
+            InventoryManager.Instance.Load(newData.itemList);
+
+            newData.stellaInfoList = new List<StellaInfo>();
+            var stellaDataBaseDict = DataBaseManager.Instance.stellaDataBase.dataKeyDictionary;
+            foreach (var stellaData in stellaDataBaseDict)
+            {
+                newData.stellaInfoList.Add(new StellaInfo(stellaData.Value, 0, 0));
+            }
+            StellaManager.Instance.Load(newData.stellaInfoList);
 
             var interactingObjectStatusList = new List<InteractionStatus>();
 
@@ -128,9 +137,8 @@ namespace Managers
             currentSaveData.sceneName = SceneSwitchManager.Instance.currentScene;
             currentSaveData.sceneString = SceneSwitchManager.Instance.CurrentSceneInfo.sceneString;
             currentSaveData.itemList = InventoryManager.Instance.GetItemList();
-            currentSaveData.stellaLevelList = StellaManager.Instance.GetStellaLevelList();
-            currentSaveData.stellaExpList = StellaManager.Instance.GetStellaExpCountList();
-            
+            currentSaveData.stellaInfoList = StellaManager.Instance.GetStellaInfoList();
+
             currentSaveData.playerLocalPos = PlayerManager.Instance.moveablePlayerObject.transform.localPosition;
         }
         

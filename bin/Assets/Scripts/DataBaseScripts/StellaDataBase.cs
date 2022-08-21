@@ -11,7 +11,6 @@ namespace DataBaseScripts
     {
         public int maxLevel;
         public List<int> levelUpCountList;
-        public int initStatus;
         public List<string> descriptionList;
         public string spriteName;
     }

@@ -100,7 +100,11 @@ namespace Managers
         }
 
         [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeInvocation")]
-        private void Update() {
+        private void Update()
+        {
+            if (!isInputAvaliable)
+                return;
+            
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.F))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)

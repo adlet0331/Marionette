@@ -8,6 +8,11 @@ namespace Managers
     {
         [SerializeField] private List<ItemData> itemList;
 
+        public void Load(List<ItemData> list)
+        {
+            itemList = list;
+        }
+        
         public bool CheckItemIsIn(int idx)
         {
             foreach (ItemData item in itemList)

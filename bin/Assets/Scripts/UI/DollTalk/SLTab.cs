@@ -4,12 +4,12 @@
     {
         public override void OpenTab()
         {
-            throw new System.NotImplementedException();
+            gameObject.SetActive(true);
         }
 
         public override void CloseTab()
         {
-            throw new System.NotImplementedException();
+            gameObject.SetActive(false);
         }
 
         public override void GetInput(InputType input)

@@ -60,6 +60,7 @@ namespace Tools
         [Header("님이 설정해야할 것들")]
         public int idx = 0;
         public InteractionObjectType type;
+        public bool closeAfterCreate = false;
         
         // For Showing
         [Header("For Showing")]
@@ -71,12 +72,42 @@ namespace Tools
         {
             DisplayWizard<InteractionObjectTool>("Create InteractionObject", "Create", "Get DataName");
         }
+        
+        private void OnWizardOtherButton()
+        {
+            _initializeDataBase();
+            _loadDataBase();
+            InteractionData interactionData = InteractionDataBase.dataKeyDictionary[idx];
+            
+            ControlObjectNameList = new List<string>();
+            ControlObjectNameList.Clear();
+            interactionObjectName = interactionData.name;
+            for (int i = 0; i < interactionData.typeList.Count; i++)
+            {
+                int type = interactionData.typeList[i];
+                int index = interactionData.idxList[i];
 
-        private string prefabPath(string name)
+                string name = type + "." + (_getInteractingObjectName(type, index) != null ? _getInteractingObjectName(type, index) : interactionData.name) + "_" + index;
+                ControlObjectNameList.Add(name);
+            }
+        }
+
+        private void OnWizardCreate()
+        {
+            isValid = closeAfterCreate;
+            
+            _initializeDataBase();
+
+            OnWizardOtherButton();
+            
+            CreateObject(this.type, this.idx);
+        }
+        
+        private string _prefabPath(string name)
         {
             return Path.Combine("Prefabs", "InteractObject", name);
         }
-        private string getInteractingObjectName(int typeInt, int index)
+        private string _getInteractingObjectName(int typeInt, int index)
         {
             // 대사 Script
             if (typeInt == 3)
@@ -125,7 +156,7 @@ namespace Tools
                 return null;
             }
         }
-        private void setInteractingObject(GameObject gameObject, int typeInt, int index)
+        private void _setInteractingObject(GameObject gameObject, int typeInt, int index)
         {
             InteractionData interactionData = InteractionDataBase.dataKeyDictionary[idx];
             // 대사 Script
@@ -174,7 +205,7 @@ namespace Tools
             }
         }
 
-        private void initializeDataBase()
+        private void _initializeDataBase()
         {
             ScriptDataBase = Resources.Load(Path.Combine("DataBase", "3_ScriptDataBase"), typeof(ScriptDataBase)) as ScriptDataBase;
             ChooseDataBase = Resources.Load(Path.Combine("DataBase", "4_ChooseDataBase"), typeof(ChooseDataBase)) as ChooseDataBase;
@@ -188,7 +219,7 @@ namespace Tools
             InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
         }
 
-        private void loadDataBase()
+        private void _loadDataBase()
         {
             ScriptDataBase.LoadJson();
             ChooseDataBase.LoadJson();
@@ -202,29 +233,10 @@ namespace Tools
             InteractionDataBase.LoadJson();
         }
 
-        private void OnWizardOtherButton()
-        {
-            initializeDataBase();
-            loadDataBase();
-            InteractionData interactionData = InteractionDataBase.dataKeyDictionary[idx];
-            
-            ControlObjectNameList = new List<string>();
-            ControlObjectNameList.Clear();
-            interactionObjectName = interactionData.name;
-            for (int i = 0; i < interactionData.typeList.Count; i++)
-            {
-                int type = interactionData.typeList[i];
-                int index = interactionData.idxList[i];
-
-                string name = type + "." + (getInteractingObjectName(type, index) != null ? getInteractingObjectName(type, index) : interactionData.name) + "_" + index;
-                ControlObjectNameList.Add(name);
-            }
-        }
-
         private GameObject CreateObject(InteractionObjectType interactionObjectType, int interactionIdx)
         {
-            initializeDataBase();
-            loadDataBase();
+            _initializeDataBase();
+            _loadDataBase();
             
             Transform interactionGroupsTransform = GameObject.FindGameObjectWithTag("GroupInteraction")?.GetComponent<Transform>();
             if (!interactionGroupsTransform)
@@ -235,7 +247,7 @@ namespace Tools
             }
             
             string interactingObjectName = interactionObjectType.ToString();
-            GameObject interactingObject = Instantiate(Resources.Load<GameObject>(prefabPath(interactingObjectName)), interactionGroupsTransform, true);
+            GameObject interactingObject = Instantiate(Resources.Load<GameObject>(_prefabPath(interactingObjectName)), interactionGroupsTransform, true);
 
             InteractionData interactionData = InteractionDataBase.dataKeyDictionary[interactionIdx];
             
@@ -250,11 +262,11 @@ namespace Tools
                 int type = interactionData.typeList[i];
                 int index = interactionData.idxList[i];
 
-                prefabObject = Instantiate(Resources.Load<GameObject>(prefabPath(typeNameDictionary[type])), 
+                prefabObject = Instantiate(Resources.Load<GameObject>(_prefabPath(typeNameDictionary[type])), 
                     interactingObject.transform, true);
-                prefabObject.name = type + "." + (getInteractingObjectName(type, index) != null ? getInteractingObjectName(type, index) : interactionData.name) + "_" + index;
+                prefabObject.name = type + "." + (_getInteractingObjectName(type, index) != null ? _getInteractingObjectName(type, index) : interactionData.name) + "_" + index;
                 
-                setInteractingObject(prefabObject, type, index);
+                _setInteractingObject(prefabObject, type, index);
                 interactionObjectScript.AddInteractingObject(prefabObject);
                 
                 // 선택지
@@ -281,15 +293,6 @@ namespace Tools
             }
 
             return interactingObject;
-        }
-
-        private void OnWizardCreate()
-        {
-            initializeDataBase();
-
-            OnWizardOtherButton();
-            
-            CreateObject(this.type, this.idx);
         }
     }
 }

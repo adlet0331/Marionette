@@ -40962,7 +40962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 50004
   dataType: 0a00000005000000
-  goNextImmediatly: 0001
+  goNextImmediatly: 0101
   interactingObjectList:
   - {fileID: 1836660320}
   - {fileID: 1290757718}
@@ -43559,7 +43559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idx: 50006
   dataType: 0a00000005000000
-  goNextImmediatly: 0001
+  goNextImmediatly: 0101
   interactingObjectList:
   - {fileID: 1979545859}
   - {fileID: 1206863901}

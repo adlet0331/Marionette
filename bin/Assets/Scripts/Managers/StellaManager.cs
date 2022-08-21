@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DataBaseScripts;
 using UnityEngine;
@@ -5,47 +6,70 @@ using UnityEngine.Serialization;
 
 namespace Managers
 {
+    [Serializable]
+    public class StellaInfo
+    {
+        public int idx;
+        public string name;
+        public string spriteName;
+        public List<string> descriptionList;
+        public int level;
+        public int exp;
+
+        public StellaInfo(StellaData stellaData, int level, int exp)
+        {
+            this.idx = stellaData.idx;
+            this.name = stellaData.name;
+            this.spriteName = stellaData.spriteName;
+            descriptionList = stellaData.descriptionList;
+            this.level = level;
+            this.exp = exp;
+        }
+    }
     public class StellaManager : Singleton<StellaManager>
     {
-        [FormerlySerializedAs("animaAbilityDataBase")] [SerializeField] private StellaDataBase stellaDataBase;
-        [SerializeField] private List<int> stellaLevelList;
-        [SerializeField] private List<int> stellaExpCountList;
+        [SerializeField] private int firstEquipedStellaIndex;
+        [SerializeField] private int secondEquipedStellaIndex;
+        [SerializeField] private List<StellaInfo> stellaInfoList;
     
-        private void Start()
-        {
-            stellaLevelList.Clear();
-            stellaExpCountList.Clear();
-        
-            stellaLevelList.Add(-1);
-            stellaExpCountList.Add(-1);
-        
-            for (int i = 1; i < stellaDataBase.dataKeyDictionary.Count; i++)
-            {
-                stellaLevelList.Add(stellaDataBase.dataKeyDictionary[i].initStatus);
-                stellaExpCountList.Add(0);
-            }
-        }
-        
-        public List<int> GetStellaLevelList()
-        {
-            return stellaLevelList.ConvertAll(o => o);
-        }
-        
-        public List<int> GetStellaExpCountList()
-        {
-            return stellaExpCountList.ConvertAll(o => o);
-        }
-
         public void IncrementStella(int idx, int count)
         {
-            stellaExpCountList[idx] += count;
-            var currentAbilityInfo = stellaDataBase.dataKeyDictionary[idx];
-            int currentLevel = stellaLevelList[idx];
-            if (stellaExpCountList[idx] > currentAbilityInfo.levelUpCountList[currentLevel] && currentLevel < currentAbilityInfo.maxLevel)
+            var currentStellaStaticInfo = DataBaseManager.Instance.stellaDataBase.dataKeyDictionary[idx];
+            var currentStellaInfo = _getStellaInfo(idx);
+            
+            currentStellaInfo.exp += count;
+            // Level Up 판정
+            int currentLevel = currentStellaInfo.level;
+            if (currentStellaInfo.exp >= currentStellaStaticInfo.levelUpCountList[currentLevel] && currentLevel < currentStellaStaticInfo.maxLevel)
             {
-                stellaExpCountList[idx] -= stellaDataBase.dataKeyDictionary[idx].levelUpCountList[currentLevel];
-                stellaDataBase.dataKeyDictionary[idx].levelUpCountList[currentLevel] += 1;
+                currentStellaInfo.exp -= DataBaseManager.Instance.stellaDataBase.dataKeyDictionary[idx].levelUpCountList[currentLevel];
+                currentStellaInfo.level += 1;
             }
+        }
+        
+        public void Load(List<StellaInfo> list)
+        {
+            stellaInfoList = list;
+        }
+        
+        public List<StellaInfo> GetStellaInfoList()
+        {
+            return stellaInfoList.ConvertAll(o => o);
+        }
+
+        public StellaInfo GetStellaInfoFromIdx(int idx)
+        {
+            return _getStellaInfo(idx);
+        }
+
+        private StellaInfo _getStellaInfo(int idx)
+        {
+            foreach (var stella in stellaInfoList)
+            {
+                if (stella.idx == idx)
+                    return stella;
+            }
+            return null;
         }
     }
 }

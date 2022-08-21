@@ -7,8 +7,29 @@ namespace UI
     public class StellaSlot : MonoBehaviour
     {
         [SerializeField] private Image stellaImage;
-        [SerializeField] private bool isSelected;
-        [SerializeField] private float currentExp;
+        [SerializeField] private GameObject selectedBoard;
+        [SerializeField] private Slider expSlider;
+
+        public void SetSelected(bool isSelect)
+        {
+            selectedBoard.SetActive(isSelect);
+        }
+
+        public void SetCurrentExp(float value)
+        {
+            expSlider.value = value;
+        }
+
+        public void SetStellaImage(Sprite sprite)
+        {
+            if (!sprite)
+            {
+                stellaImage.gameObject.SetActive(false);
+                return;
+            }
+            stellaImage.gameObject.SetActive(true);
+            stellaImage.sprite = sprite;
+        }
     }
 }
 
