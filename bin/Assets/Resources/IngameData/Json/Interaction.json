@@ -685,5 +685,20 @@
         "typeList": [
             11
         ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 200000,
+        "idxList": [
+            0
+        ],
+        "initStatus": true,
+        "name": "\ucef7\uc52c \ub354\ubbf8",
+        "typeList": [
+            12
+        ]
     }
 ]

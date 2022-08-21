@@ -32,17 +32,17 @@
     {
         "destinationScene": 5,
         "idx": 6,
-        "name": "W1_Hall\uc5d0\uc11c W1_C\ub85c(\ub354\ubbf8)"
+        "name": "W1_Hall\uc5d0\uc11c W1_C\ub85c"
     },
     {
         "destinationScene": 6,
         "idx": 7,
-        "name": "W1_Hall\uc5d0\uc11c W1_R2\ub85c(\ub354\ubbf8)"
+        "name": "W1_Hall\uc5d0\uc11c W1_R2\ub85c"
     },
     {
         "destinationScene": 7,
         "idx": 8,
-        "name": "W1_Hall\uc5d0\uc11c W1_I\ub85c(\ub354\ubbf8)"
+        "name": "W1_Hall\uc5d0\uc11c W1_I\ub85c"
     },
     {
         "destinationScene": 3,
@@ -62,16 +62,16 @@
     {
         "destinationScene": 3,
         "idx": 12,
-        "name": "W1_C\uc5d0\uc11c W1_Hall\ub85c(\ub354\ubbf8)"
+        "name": "W1_C\uc5d0\uc11c W1_Hall\ub85c"
     },
     {
         "destinationScene": 3,
         "idx": 13,
-        "name": "W1_R2\uc5d0\uc11c W1_Hall\ub85c(\ub354\ubbf8)"
+        "name": "W1_R2\uc5d0\uc11c W1_Hall\ub85c"
     },
     {
         "destinationScene": 3,
         "idx": 14,
-        "name": "W1_I\uc5d0\uc11c W1_Hall\ub85c(\ub354\ubbf8)"
+        "name": "W1_I\uc5d0\uc11c W1_Hall\ub85c"
     }
 ]
