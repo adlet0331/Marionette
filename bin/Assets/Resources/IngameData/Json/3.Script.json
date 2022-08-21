@@ -419,16 +419,20 @@
     {
         "idx": 20,
         "leftSpriteList": [
+            "none",
             "none"
         ],
         "name": "W1-C_\ube44\uc0c1\uc804\uc6d0\ucc28\ub2e8",
         "rightSpriteList": [
+            "none",
             "none"
         ],
         "scriptList": [
-            "\ubcbd\uba74\uc5d0 \uc804\uae30 \ubaa8\uc591\uc774 \ub9c8\ud06c\uac00 \uadf8\ub824\uc838 \uc788\ub2e4."
+            "\ubcbd\uba74\uc5d0 \uc804\uae30 \ubaa8\uc591\uc774 \ub9c8\ud06c\uac00 \uadf8\ub824\uc838 \uc788\ub2e4.",
+            "\uc2a4\uc704\uce58\ub97c \ub0b4\ub9b4\uae4c?"
         ],
         "titleList": [
+            " ",
             " "
         ]
     },
@@ -458,7 +462,7 @@
             "girl_thinking",
             "girl_idle"
         ],
-        "name": "W1-R2_\uc804\uc6d0\uc774\ucf1c\uc9c4\ub178\ud2b8\ubd81(\uccab\uc870\uc0ac)",
+        "name": "W1-R2_\uc804\uc6d0\uc774\ucf1c\uc9c4\ub178\ud2b8\ubd81(\uccab\uc870\uc0ac)\ubbf8\ubc1c\uacac",
         "rightSpriteList": [
             "none"
         ],
@@ -521,7 +525,7 @@
             "girl_embarass",
             "girl_worried"
         ],
-        "name": "W1-E1_\uc2dc\uc791\ud2b8\ub9ac\uac70\ub300\uc0ac",
+        "name": "W1-E1_\uc785\uc7a5\ud2b8\ub9ac\uac70\ub300\uc0ac",
         "rightSpriteList": [
             "none",
             "none"
@@ -542,8 +546,11 @@
             "girl_thinking",
             "girl_idle"
         ],
-        "name": "W1-R2_\uc804\uc6d0\uc774\ucf1c\uc9c4\ub178\ud2b8\ubd81(\uccab\uc870\uc0ac)",
+        "name": "W1-R2_\uc804\uc6d0\uc774\ucf1c\uc9c4\ub178\ud2b8\ubd81(\uccab\uc870\uc0ac)\ubc1c\uacac",
         "rightSpriteList": [
+            "none",
+            "none",
+            "none",
             "none"
         ],
         "scriptList": [
@@ -557,6 +564,97 @@
             " ",
             "\uc18c\ub140",
             "\uc18c\ub140"
+        ]
+    },
+    {
+        "idx": 27,
+        "leftSpriteList": [
+            "girl_worried",
+            "girl_embarrass"
+        ],
+        "name": "W1-C_\uac8c\uc774\ud2b8\uc548\uc5f4\ub54c\ub300\uc0ac",
+        "rightSpriteList": [
+            "none",
+            "none"
+        ],
+        "scriptList": [
+            "\u2026\uc77c\ub2e8 \uc870\uae08\ub9cc \ub354 \ub458\ub7ec\ubcf4\uc790..",
+            "\uc544\uae4c\ucc98\ub7fc \uadf8\ub7f0 \uad34\ubb3c\ub4e4\uc774 \ub354 \uc788\uc744\uc9c0\ub3c4 \ubaa8\ub974\ub2c8\uae50.."
+        ],
+        "titleList": [
+            "\uc18c\ub140"
+        ]
+    },
+    {
+        "idx": 28,
+        "leftSpriteList": [
+            "girl_worried_2",
+            "none",
+            "girl_worried"
+        ],
+        "name": "W1-C_\uac8c\uc774\ud2b8\uc5f4\ub54c\ub300\uc0ac",
+        "rightSpriteList": [
+            "none",
+            "none",
+            "none"
+        ],
+        "scriptList": [
+            "\ud6c4..",
+            "\ucc28\ub2e8\uae30\uac00 \uc62c\ub77c\uac00\ub294 \uc18c\ub9ac\uac00 \ub4e4\ub9b0\ub2e4.",
+            "\u2026\uac00\uc790"
+        ],
+        "titleList": [
+            "\uc18c\ub140",
+            " ",
+            "\uc18c\ub140"
+        ]
+    },
+    {
+        "idx": 29,
+        "leftSpriteList": [
+            "none"
+        ],
+        "name": "W1-C_\uc804\uc6d0\ucc28\ub2e8Y",
+        "rightSpriteList": [
+            "none"
+        ],
+        "scriptList": [
+            "\ub354 \uc774\uc0c1 \uc804\ub958\uac00 \ud750\ub974\uc9c0 \uc54a\ub294\ub2e4."
+        ],
+        "titleList": [
+            " "
+        ]
+    },
+    {
+        "idx": 30,
+        "leftSpriteList": [
+            "none"
+        ],
+        "name": "W1-W0\uac8c\uc774\ud2b8_\ub2eb\ud798",
+        "rightSpriteList": [
+            "none"
+        ],
+        "scriptList": [
+            "\ube44\uc0c1 \ucc28\ub2e8 \ubc14\ub9ac\ucf00\uc774\ub4dc. \uc5f4\ub9ac\uc9c0 \uc54a\ub294\ub2e4."
+        ],
+        "titleList": [
+            " "
+        ]
+    },
+    {
+        "idx": 31,
+        "leftSpriteList": [
+            "none"
+        ],
+        "name": "W1-W0\uac8c\uc774\ud2b8_\uc5f4\ub9bc",
+        "rightSpriteList": [
+            "none"
+        ],
+        "scriptList": [
+            "\uc800\ud76c\ub4e4\uc774 \uc900\ube44\ud55c \uac8c\uc784\uc740 \uc5ec\uae30\uae4c\uc9c0\uc785\ub2c8\ub2e4!\n\uc990\uaca8\uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4 (_ _)"
+        ],
+        "titleList": [
+            " "
         ]
     }
 ]
