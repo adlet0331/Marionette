@@ -6,6 +6,7 @@ using DataBaseScripts;
 using InGameObjects.Interaction;
 using Newtonsoft.Json;
 using SerializableManager;
+using UI;
 using UnityEngine;
 using Random = System.Random;
 
@@ -37,6 +38,7 @@ namespace Managers
             public string sceneString;
             public SceneSwitchManager.SceneName sceneName;
             public Vector3 playerLocalPos;
+            public float timePassed;
             // Settings
             public string setting;
             // Inventory
@@ -47,18 +49,38 @@ namespace Managers
             // SceneObjects
             public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
         }
-        
+
         public void OnNotify(bool disableAfterInteract, int idx)
         {
             currentSaveData.interactingObjectStatusDictionary[idx].CurrentStatus = !disableAfterInteract;
+        }
+
+        public SaveInfo GetSaveDataInfo(int index)
+        {
+            if (!sLDataBase.dataKeyDictionary.ContainsKey(index))
+            {
+                return new SaveInfo("", 0.0f);
+            }
+            else
+            {
+                sLDataBase.LoadJson();
+                currentSaveDataName = sLDataBase.dataList[index].name;
+                string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
+                string json = File.ReadAllText(saveDataPath);
+                Debug.Log(json);
+                var saveInfo = JsonConvert.DeserializeObject<SaveInfo>(json);
+                return saveInfo;
+            }
         }
         
         public void InitSaveData()
         {
             SaveData newData = new SaveData();
 
+            newData.sceneString = "서측 1실험동 - 소녀의 방";
             newData.sceneName = SceneSwitchManager.SceneName.Girl_room;
-            currentSaveData.playerLocalPos = new Vector3(0, 0, 0);
+            newData.playerLocalPos = new Vector3(0, 0, 0);
+            newData.timePassed = 0.0f;
 
             newData.setting = "init";
         
@@ -136,10 +158,11 @@ namespace Managers
         {
             currentSaveData.sceneName = SceneSwitchManager.Instance.currentScene;
             currentSaveData.sceneString = SceneSwitchManager.Instance.CurrentSceneInfo.sceneString;
+            currentSaveData.playerLocalPos = PlayerManager.Instance.moveablePlayerObject.transform.localPosition;
+            currentSaveData.timePassed += Time.time;
+
             currentSaveData.itemList = InventoryManager.Instance.GetItemList();
             currentSaveData.stellaInfoList = StellaManager.Instance.GetStellaInfoList();
-
-            currentSaveData.playerLocalPos = PlayerManager.Instance.moveablePlayerObject.transform.localPosition;
         }
         
         private void saveCurrentFileAsJson()
@@ -167,6 +190,12 @@ namespace Managers
                 var gameObjectStatus = currentSaveData.interactingObjectStatusDictionary[interactingObject.Idx].CurrentStatus;
                 interactingObject.gameObject.SetActive(gameObjectStatus);
             }
+        }
+
+        private void Start()
+        {
+            sLDataBase = Resources.Load(Path.Combine("DataBase", "SLDataBase"), typeof(SLDataBase)) as SLDataBase;
+            sLDataBase.LoadJson();
         }
     }
 }
