@@ -41,7 +41,8 @@ namespace Tools
             { 8, "8.ItemControl" },
             { 9, "9.Stress" },
             { 10, "10.Lock" },
-            { 11, "11.StellaControl" }
+            { 11, "11.StellaControl" },
+            { 12, "12.CutSceneControl"}
         };
 
         [Header("DataBase")]
@@ -53,6 +54,7 @@ namespace Tools
         public StressControlDataBase StressControlDataBase;
         public LockDataBase LockDataBase;
         public StellaControlDataBase StellaControlDataBase;
+        public CutSceneDataBase CutSceneDataBase;
         public InteractionDataBase InteractionDataBase;
 
         [Header("님이 설정해야할 것들")]
@@ -114,6 +116,10 @@ namespace Tools
             {
                 return StellaControlDataBase.dataKeyDictionary[index].name;
             }
+            else if (typeInt == 12)
+            {
+                return CutSceneDataBase.dataKeyDictionary[index].name;
+            }
             else
             {
                 return null;
@@ -161,6 +167,11 @@ namespace Tools
             {
                 gameObject.GetComponent<StellaControl>().data = StellaControlDataBase.dataKeyDictionary[index];
             }
+            // CutScene 
+            else if (typeInt == 12)
+            {
+                gameObject.GetComponent<CutSceneControl>().data = CutSceneDataBase.dataKeyDictionary[index];
+            }
         }
 
         private void initializeDataBase()
@@ -173,6 +184,7 @@ namespace Tools
             StressControlDataBase = Resources.Load(Path.Combine("DataBase", "9_StressControlDataBase"), typeof(StressControlDataBase)) as StressControlDataBase;
             LockDataBase = Resources.Load(Path.Combine("DataBase", "10_LockDataBase"), typeof(LockDataBase)) as LockDataBase;
             StellaControlDataBase = Resources.Load(Path.Combine("DataBase", "11_StellaControlDataBase"), typeof(StellaControlDataBase)) as StellaControlDataBase;
+            CutSceneDataBase = Resources.Load(Path.Combine("DataBase", "12_CutSceneDataBase"), typeof(CutSceneDataBase)) as CutSceneDataBase;
             InteractionDataBase = Resources.Load(Path.Combine("DataBase", "InteractionDataBase"), typeof(InteractionDataBase)) as InteractionDataBase;
         }
 
@@ -186,6 +198,7 @@ namespace Tools
             StressControlDataBase.LoadJson();
             LockDataBase.LoadJson();
             StellaControlDataBase.LoadJson();
+            CutSceneDataBase.LoadJson();
             InteractionDataBase.LoadJson();
         }
 

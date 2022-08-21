@@ -42,6 +42,7 @@ namespace Managers
         public ItemGotWindow itemGotWindow;
         public LockWindow lockWindow;
         public StellaGotWindow stellaGotWindow;
+        public CutSceneWindow cutSceneWindow;
         [Header("Doll Talk Window")]
         public DollTalkWindow dollTalkWindow;
         public DollTalkSelectionWindow dollTalkSelectionWindowInnerTab;

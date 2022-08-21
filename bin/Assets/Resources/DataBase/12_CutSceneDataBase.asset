@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44a0950271247d2a3f76136319dc081, type: 3}
   m_Name: 12_CutSceneDataBase
   m_EditorClassIdentifier: 
-  databaseName: 
+  databaseName: 12.CutSceneControl
   dataList: []

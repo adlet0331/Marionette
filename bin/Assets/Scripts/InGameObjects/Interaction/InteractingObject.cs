@@ -128,6 +128,11 @@ namespace InGameObjects.Interaction
             {
                 isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<StellaControl>().Interact();
             }
+            // 컷씬
+            else if (dataType[currentInteractIndex] == 12)
+            {
+                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<CutSceneControl>().Interact();
+            }
             // IInteractionObjectWithUI 실행
             else
             {

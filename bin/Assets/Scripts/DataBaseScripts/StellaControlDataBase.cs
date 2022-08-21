@@ -15,7 +15,7 @@ namespace DataBaseScripts
         public string getDescription;
     }
 
-    [CreateAssetMenu(fileName = "11_StellaControlDataBase", menuName = "ScriptableObjects/11.StellaControlDataBase", order = 4)]
+    [CreateAssetMenu(fileName = "11_StellaControlDataBase", menuName = "ScriptableObjects/11.StellaControlDataBase", order = 11)]
     public class StellaControlDataBase : DataBase<StellaControlData>
     {
     }
