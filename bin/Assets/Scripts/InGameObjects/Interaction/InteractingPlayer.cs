@@ -33,6 +33,21 @@ namespace InGameObjects.Interaction
                 InteractingObject currentFirstObj = interactionObjList[0];
                 var pointerWorldVec2 = InputManager.Instance.GetWorldPointerVec2();
 
+                var removeList = new List<InteractingObject>();
+                
+                foreach (InteractingObject interObj in interactionObjList)
+                {
+                    if (!interObj.gameObject.activeSelf || !interObj.GetComponent<InteractionObject>())
+                    {
+                        removeList.Add(interObj);
+                    }
+                }
+                
+                foreach (InteractingObject interObj in removeList)
+                {
+                    interactionObjList.Remove(interObj);
+                }
+
                 foreach (InteractingObject interObj in interactionObjList)
                 {
                     var objectWorldPosition = interObj.transform.localToWorldMatrix * interObj.transform.localPosition - transform.localToWorldMatrix * transform.localPosition;

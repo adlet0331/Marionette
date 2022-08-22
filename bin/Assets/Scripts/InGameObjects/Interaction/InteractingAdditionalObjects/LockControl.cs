@@ -9,7 +9,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     public class LockControl : IInteractionObjectWithUI<LockData, string>
     {
         [SerializeField] private bool UIOpened;
-        [SerializeField] private bool UnLocked = false;
+        [SerializeField] public bool UnLocked = false;
         
         protected override void GetUIWindowAndInit()
         {
@@ -24,9 +24,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                 UIOpened = false;
                 WindowManager.Instance.lockWindow.CloseWindow();
                 if (UnLocked)
-                {
                     gameObject.SetActive(false);
-                }
                 return true;
             }
             UIOpened = true;
@@ -37,7 +35,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                 {
                     // 일단 하나 없애는걸로 구현
                     if (data.needItemList[i] == -1 || 
-                        InventoryManager.Instance.GetItemNumInInventory(data.needItemList[i]) > data.needItemNumList[i])
+                        InventoryManager.Instance.GetItemNumInInventory(data.needItemList[i]) < data.needItemNumList[i])
                     {
                         UnLocked = false;
                         break;
@@ -51,8 +49,8 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                 {
                     if (data.needTypeList[i] == 0)
                     {
-                        // 일단 하나 없애는걸로 구현
-                        InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
+                        // 있는지 체크만 하는 걸로 구현. 나중에 없애는것도 구현
+                        //InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
                     }
                 }
                 UIWindow.InteractWithData(data.unLockString);

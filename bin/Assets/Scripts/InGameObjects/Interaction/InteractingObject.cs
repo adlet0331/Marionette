@@ -116,10 +116,11 @@ namespace InGameObjects.Interaction
             // 잠김 Lock
             else if (dataType[currentInteractIndex] == 10)
             {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<LockControl>().Interact();
-                if (!isInteractionEnd)
+                var lockControl = interactingObjectList[currentInteractIndex].GetComponent<LockControl>();
+                isInteractionEnd = await lockControl.Interact();
+                if (isInteractionEnd && !lockControl.UnLocked)
                 {
-                    return true;
+                    currentInteractIndex = dataType.Count;
                 }
             }
             // 이벤트 Event
@@ -142,7 +143,7 @@ namespace InGameObjects.Interaction
             {
                 currentInteractIndex++;
                 // 데이터의 끝
-                if (currentInteractIndex == dataType.Count)
+                if (currentInteractIndex >= dataType.Count)
                 {
                     currentInteractIndex = 0;
                     PlayerManager.Instance.interactingPlayer.UnblockInteract();

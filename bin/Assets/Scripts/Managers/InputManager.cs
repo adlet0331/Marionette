@@ -226,15 +226,7 @@ namespace Managers
                 obj.SetActiveNotify(!obj.DisableAfterInteract);
                 
                 SLManager.Instance.OnNotify(!obj.DisableAfterInteract, obj.Idx);
-                var interactionComponent = obj.GetComponent<InteractionObject>();
-                if (interactionComponent)
-                {
-                    PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
-                }
-                else
-                {
-                    PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
-                }
+                PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
             }
         }
     }
