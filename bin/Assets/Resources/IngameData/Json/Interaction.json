@@ -287,7 +287,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 18,
@@ -305,7 +305,7 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 19,
@@ -323,7 +323,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 20,
@@ -341,7 +341,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 21,
@@ -359,7 +359,7 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 22,
@@ -377,7 +377,7 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 23,
@@ -395,7 +395,7 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false,
+            true,
             true
         ],
         "idx": 29,
@@ -413,7 +413,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 25,
         "idxList": [
@@ -428,7 +428,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 26,
         "idxList": [
@@ -443,7 +443,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 27,
         "idxList": [
@@ -458,7 +458,7 @@
     {
         "disableAfterInteract": true,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 28,
         "idxList": [
@@ -473,7 +473,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 24,
         "idxList": [
@@ -488,7 +488,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 30,
         "idxList": [
@@ -503,7 +503,7 @@
     {
         "disableAfterInteract": false,
         "goNextImmediately": [
-            false
+            true
         ],
         "idx": 31,
         "idxList": [
