@@ -22,7 +22,7 @@ namespace Managers
             moveablePlayerObject = mPO;
             var vec = SLManager.Instance.PlayerPosVec;
             if (vec.x != 0 && vec.y != 0)
-                mPO.transform.localPosition = vec;
+                moveablePlayerObject.transform.localPosition = vec;
             interactingPlayer = mPO.GetComponent<InteractingPlayer>();
             moveablePlayerCollider = moveablePlayerObject.GetComponent<BoxCollider2D>();
             InputManager.Instance.SetMovingComponent(mPO.GetComponent<MovingObject>());

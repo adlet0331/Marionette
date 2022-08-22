@@ -53,7 +53,7 @@ namespace Managers
             public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
         }
 
-        public Vector3 PlayerPosVec => new Vector3(currentSaveData.playerLocalPosX, currentSaveData.playerLocalPosX, 0);
+        public Vector3 PlayerPosVec => new Vector3(currentSaveData.playerLocalPosX, currentSaveData.playerLocalPosY, 0);
 
         public void OnNotify(bool activate, int idx)
         {
