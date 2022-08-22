@@ -805,5 +805,38 @@
         "typeList": [
             12
         ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            true,
+            true
+        ],
+        "idx": 50000,
+        "idxList": [
+            2,
+            32
+        ],
+        "initStatus": true,
+        "name": "W1_Hall\uc5d0\uc11c W1_E1\ub85c_\uc0c1\ub2e8_\ub370\ubaa8\uc5d4\ub529",
+        "typeList": [
+            10,
+            3
+        ]
+    },
+    {
+        "disableAfterInteract": false,
+        "goNextImmediately": [
+            false
+        ],
+        "idx": 119999,
+        "idxList": [
+            1
+        ],
+        "initStatus": true,
+        "name": "\uba85\uba78_\ub354\ubbf8",
+        "typeList": [
+            11
+        ]
     }
 ]
