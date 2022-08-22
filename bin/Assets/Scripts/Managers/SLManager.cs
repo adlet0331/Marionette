@@ -37,7 +37,8 @@ namespace Managers
             // Player Info
             public string sceneString;
             public SceneSwitchManager.SceneName sceneName;
-            public Vector3 playerLocalPos;
+            public float playerLocalPosX;
+            public float playerLocalPosY;
             public float timePassed;
             // Settings
             public string setting;
@@ -50,9 +51,11 @@ namespace Managers
             public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
         }
 
-        public void OnNotify(bool disableAfterInteract, int idx)
+        public Vector3 PlayerPosVec => new Vector3(currentSaveData.playerLocalPosX, currentSaveData.playerLocalPosX, 0);
+
+        public void OnNotify(bool activate, int idx)
         {
-            currentSaveData.interactingObjectStatusDictionary[idx].CurrentStatus = !disableAfterInteract;
+            currentSaveData.interactingObjectStatusDictionary[idx].CurrentStatus = activate;
         }
 
         public SaveInfo GetSaveDataInfo(int index)
@@ -79,7 +82,8 @@ namespace Managers
 
             newData.sceneString = "서측 1실험동 - 소녀의 방";
             newData.sceneName = SceneSwitchManager.SceneName.Girl_room;
-            newData.playerLocalPos = new Vector3(0, 0, 0);
+            currentSaveData.playerLocalPosX = 0;
+            currentSaveData.playerLocalPosY = 0;
             newData.timePassed = 0.0f;
 
             newData.setting = "init";
@@ -91,7 +95,14 @@ namespace Managers
             var stellaDataBaseDict = DataBaseManager.Instance.stellaDataBase.dataKeyDictionary;
             foreach (var stellaData in stellaDataBaseDict)
             {
-                newData.stellaInfoList.Add(new StellaInfo(stellaData.Value, 0, 0));
+                var newStellaInfo = new StellaInfo();
+                newStellaInfo.idx = stellaData.Value.idx;
+                newStellaInfo.name = stellaData.Value.name;
+                newStellaInfo.spriteName = stellaData.Value.spriteName;
+                newStellaInfo.descriptionList = stellaData.Value.descriptionList;
+                newStellaInfo.level = 0;
+                newStellaInfo.exp = 0;
+                newData.stellaInfoList.Add(newStellaInfo);
             }
             StellaManager.Instance.Load(newData.stellaInfoList);
 
@@ -150,6 +161,8 @@ namespace Managers
             string json = File.ReadAllText(saveDataPath);
             Debug.Log(json);
             currentSaveData = JsonConvert.DeserializeObject<SaveData>(json);
+            InventoryManager.Instance.Load(currentSaveData.itemList);
+            StellaManager.Instance.Load(currentSaveData.stellaInfoList);
 
             SceneSwitchManager.Instance.SwitchScene(currentSaveData.sceneName, -1);
         }
@@ -158,7 +171,8 @@ namespace Managers
         {
             currentSaveData.sceneName = SceneSwitchManager.Instance.currentScene;
             currentSaveData.sceneString = SceneSwitchManager.Instance.CurrentSceneInfo.sceneString;
-            currentSaveData.playerLocalPos = PlayerManager.Instance.moveablePlayerObject.transform.localPosition;
+            currentSaveData.playerLocalPosX = PlayerManager.Instance.moveablePlayerObject.transform.localPosition.x;
+            currentSaveData.playerLocalPosY = PlayerManager.Instance.moveablePlayerObject.transform.localPosition.y;
             currentSaveData.timePassed += Time.time;
 
             currentSaveData.itemList = InventoryManager.Instance.GetItemList();

@@ -15,16 +15,6 @@ namespace Managers
         public List<string> descriptionList;
         public int level;
         public int exp;
-
-        public StellaInfo(StellaData stellaData, int level, int exp)
-        {
-            this.idx = stellaData.idx;
-            this.name = stellaData.name;
-            this.spriteName = stellaData.spriteName;
-            descriptionList = stellaData.descriptionList;
-            this.level = level;
-            this.exp = exp;
-        }
     }
     public class StellaManager : Singleton<StellaManager>
     {

@@ -2815,8 +2815,6 @@ MonoBehaviour:
   typePerSelectionStrings:
     type: 2
     strings:
-    - "2\uBC88\uC5D0 \uAE30\uB85D\uD574\uC918"
-    - "2\uBC88\uC73C\uB85C \uB3CC\uC544\uAC08\uB798"
     - "1\uBC88\uC5D0 \uAE30\uB85D\uD574\uC918"
     - "1\uBC88\uC73C\uB85C \uB3CC\uC544\uAC08\uB798"
   slotList:
@@ -8284,7 +8282,8 @@ MonoBehaviour:
   currentSaveData:
     sceneString: 
     sceneName: 0
-    playerLocalPos: {x: 0, y: 0, z: 0}
+    playerLocalPosX: 0
+    playerLocalPosY: 0
     timePassed: 0
     setting: 
     itemList: []
@@ -9870,7 +9869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6896443420182557712, guid: 9601dc20fd554034f883c26e122d15d3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6896443420182557715, guid: 9601dc20fd554034f883c26e122d15d3, type: 3}
       propertyPath: m_Pivot.x

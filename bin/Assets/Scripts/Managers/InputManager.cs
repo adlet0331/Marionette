@@ -218,21 +218,22 @@ namespace Managers
             
             bool interactionEnd = await obj.InteractAsync();
             
-            if (obj == null)
+            if (obj == null)                              
                 return;
             
             if (interactionEnd)
             {
                 obj.SetActiveNotify(!obj.DisableAfterInteract);
                 
-                SLManager.Instance.OnNotify(obj.DisableAfterInteract, obj.Idx);
-                if (obj.GetComponent<InteractionObject>() == null)
+                SLManager.Instance.OnNotify(!obj.DisableAfterInteract, obj.Idx);
+                var interactionComponent = obj.GetComponent<InteractionObject>();
+                if (interactionComponent)
                 {
-                    PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
+                    PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
                 }
                 else
                 {
-                    PlayerManager.Instance.interactingPlayer.ChangeFstInteractObj(obj);
+                    PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
                 }
             }
         }

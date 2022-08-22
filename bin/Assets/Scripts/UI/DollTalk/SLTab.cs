@@ -52,20 +52,15 @@ namespace UI
                     var selectionIdx = dollTalkSelectionWindow.GetInputIdx(InputType.Space);
                     switch (selectionIdx)
                     {
-                        case 0: // 2번 저장
-                            SLManager.Instance.Save(2);
-                            break;
-                        case 1: // 2번 로드
-                            SLManager.Instance.Load(2);
-                            break;
-                        case 2: // 1번 저장
+                        case 0: // 1번 저장
+                            WindowManager.Instance.dollTalkWindow.CloseWindow();
                             SLManager.Instance.Save(1);
                             break;
-                        case 3: // 1번 로드
-                            SLManager.Instance.Load(2); 
+                        case 1: // 1번 로드
+                            WindowManager.Instance.dollTalkWindow.CloseWindow();
+                            SLManager.Instance.Load(1);
                             break;
                     }
-                    return;
                     return;
             }
             
