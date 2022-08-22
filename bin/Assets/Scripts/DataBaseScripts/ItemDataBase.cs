@@ -19,12 +19,9 @@ namespace DataBaseScripts
     }
 
     [CreateAssetMenu(fileName = "ItemDataBase", menuName = "ScriptableObjects/ItemDataBase", order = 100)]
-    public class ItemDataBase : DataBase<ItemData>
-    {
-    }
-
+    public class ItemDataBase : DataBase<ItemData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(ItemDataBase))]
-    public class ItemDataBaseEditor : DataBaseEditor<ItemDataBase, ItemData>
-    {
-    }
+    public class ItemDataBaseEditor : DataBaseEditor<ItemDataBase, ItemData> { }
+#endif
 }

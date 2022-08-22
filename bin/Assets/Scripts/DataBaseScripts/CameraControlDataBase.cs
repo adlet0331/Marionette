@@ -26,9 +26,8 @@ namespace DataBaseScripts
     public class CameraControlDataBase : DataBase<CameraControlData>
     {
     }
-
+#if UNITY_EDITOR
     [CustomEditor(typeof(CameraControlDataBase))]
-    public class CameraControlDataBaseEditor : DataBaseEditor<CameraControlDataBase, CameraControlData>
-    {
-    }
+    public class CameraControlDataBaseEditor : DataBaseEditor<CameraControlDataBase, CameraControlData> { }
+#endif
 }

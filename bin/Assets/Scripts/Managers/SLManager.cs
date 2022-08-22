@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using DataBaseScripts;
+using EditorHelper;
 using InGameObjects.Interaction;
 using Newtonsoft.Json;
-using SerializableManager;
 using UI;
 using UnityEngine;
 using Random = System.Random;
@@ -45,7 +45,9 @@ namespace Managers
             // Inventory
             public List<ItemData> itemList;
             // Stella List
+#if UNITY_EDITOR
             [ArrayElementTitle("name")]
+#endif
             public List<StellaInfo> stellaInfoList;
             // SceneObjects
             public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
@@ -60,7 +62,7 @@ namespace Managers
 
         public SaveInfo GetSaveDataInfo(int index)
         {
-            if (!sLDataBase.dataKeyDictionary.ContainsKey(index))
+            if (sLDataBase || !sLDataBase.dataKeyDictionary.ContainsKey(index))
             {
                 return new SaveInfo("", 0.0f);
             }
@@ -68,7 +70,7 @@ namespace Managers
             {
                 sLDataBase.LoadJson();
                 currentSaveDataName = sLDataBase.dataList[index].name;
-                string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
+                string saveDataPath = Path.Combine(Application.persistentDataPath, $"{currentSaveDataName}.json");
                 string json = File.ReadAllText(saveDataPath);
                 Debug.Log(json);
                 var saveInfo = JsonConvert.DeserializeObject<SaveInfo>(json);
@@ -126,8 +128,13 @@ namespace Managers
         public void Save(int index) 
         {
             Debug.Log("SAVE");
-            string sLDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData.json");
-            TextAsset json = Resources.Load<TextAsset>(sLDataPath);
+            string sLDataPath = Path.Combine(Application.persistentDataPath, "SaveData.json");
+            if (!File.Exists(sLDataPath))
+            {
+                string defaultPath = Path.Combine("IngameData", "Json", "SaveData");
+                string defaultSaveData = Resources.Load<TextAsset>(defaultPath).ToString();
+                File.WriteAllText(sLDataPath, defaultSaveData);
+            }
             sLDataBase.LoadJson();
             saveCurrentStatus();
             List<SLData> saveData = sLDataBase.dataList;
@@ -137,7 +144,7 @@ namespace Managers
                 // Already Exist
                 if (sLDataBase.dataList[slotIndex].idx == index)
                 {
-                    File.Delete(Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{sLDataBase.dataList[slotIndex].name}.json"));
+                    File.Delete(Path.Combine(Application.persistentDataPath, $"{sLDataBase.dataList[slotIndex].name}.json"));
                     saveCurrentFileAsJson();
                     sLDataBase.dataList[slotIndex].name = currentSaveDataName;
                     File.WriteAllText(sLDataPath, JsonConvert.SerializeObject(sLDataBase.dataList, Formatting.Indented));
@@ -157,7 +164,7 @@ namespace Managers
         {
             sLDataBase.LoadJson();
             currentSaveDataName = sLDataBase.dataList[index].name;
-            string saveDataPath = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
+            string saveDataPath = Path.Combine(Application.persistentDataPath, $"{currentSaveDataName}.json");
             string json = File.ReadAllText(saveDataPath);
             Debug.Log(json);
             currentSaveData = JsonConvert.DeserializeObject<SaveData>(json);
@@ -181,7 +188,7 @@ namespace Managers
         
         private void saveCurrentFileAsJson()
         {
-            string path = Path.Combine(Application.dataPath, "Resources", "IngameData", "Json", "SaveData", $"{currentSaveDataName}.json");
+            string path = Path.Combine(Application.persistentDataPath, $"{currentSaveDataName}.json");
             File.WriteAllText(path, JsonConvert.SerializeObject(currentSaveData, Formatting.Indented));
         }
 
@@ -209,7 +216,8 @@ namespace Managers
         private void Start()
         {
             sLDataBase = Resources.Load(Path.Combine("DataBase", "SLDataBase"), typeof(SLDataBase)) as SLDataBase;
-            sLDataBase.LoadJson();
+            sLDataBase.dataList = new List<SLData>();
+            sLDataBase.dataKeyDictionary = new Dictionary<int, SLData>();
         }
     }
 }

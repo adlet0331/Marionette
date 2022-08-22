@@ -20,12 +20,9 @@ namespace DataBaseScripts
     }
 
     [CreateAssetMenu(fileName = "3_ScriptDataBase", menuName = "ScriptableObjects/3.ScriptDataBase", order = 3)]
-    public class ScriptDataBase : DataBase<ScriptData>
-    {
-    }
-
+    public class ScriptDataBase : DataBase<ScriptData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(ScriptDataBase))]
-    public class ScriptDataBaseEditor : DataBaseEditor<ScriptDataBase, ScriptData>
-    {
-    }
+    public class ScriptDataBaseEditor : DataBaseEditor<ScriptDataBase, ScriptData> { }
+#endif
 }

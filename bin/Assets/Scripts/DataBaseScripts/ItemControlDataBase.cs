@@ -15,12 +15,9 @@ namespace DataBaseScripts
     };
 
     [CreateAssetMenu(fileName = "8_ItemControlDataBase", menuName = "ScriptableObjects/8.ItemControlDataBase", order = 8)]
-    public class ItemControlDataBase : DataBase<ItemControlData>
-    {
-    }
-
+    public class ItemControlDataBase : DataBase<ItemControlData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(ItemControlDataBase))]
-    public class ItemControlDataBaseEditor : DataBaseEditor<ItemControlDataBase, ItemControlData>
-    {
-    }
+    public class ItemControlDataBaseEditor : DataBaseEditor<ItemControlDataBase, ItemControlData> { }
+#endif
 }

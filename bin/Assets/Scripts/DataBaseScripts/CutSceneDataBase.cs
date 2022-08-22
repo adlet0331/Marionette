@@ -15,6 +15,8 @@ namespace DataBaseScripts
     }
     [CreateAssetMenu(fileName = "12_CutSceneDataBase", menuName = "ScriptableObjects/12.CutSceneDataBase", order = 12)]
     public class CutSceneDataBase: DataBase<CutSceneData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(CutSceneDataBase))]
     public class CutSceneDataBaseEditor : DataBaseEditor<CutSceneDataBase, CutSceneData>{ }
+#endif
 }

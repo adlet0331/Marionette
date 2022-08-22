@@ -12,12 +12,9 @@ namespace DataBaseScripts
     };
 
     [CreateAssetMenu(fileName = "9_StressControlDataBase", menuName = "ScriptableObjects/9.StressControlDataBase", order = 9)]
-    public class StressControlDataBase : DataBase<StressControlData>
-    {
-    }
-
+    public class StressControlDataBase : DataBase<StressControlData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(StressControlDataBase))]
-    public class StressControlDataBaseEditor : DataBaseEditor<StressControlDataBase, StressControlData>
-    {
-    }
+    public class StressControlDataBaseEditor : DataBaseEditor<StressControlDataBase, StressControlData> { }
+#endif
 }

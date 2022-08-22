@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: SLDataBase
   m_EditorClassIdentifier: 
   databaseName: SaveData
-  dataList: []
+  dataList:
+  - idx: 0
+    name: dummy
+  - idx: 1
+    name: gDEWyGAKOJ
+  needToBeWritable: 1

@@ -17,6 +17,8 @@ namespace DataBaseScripts
     }
     [CreateAssetMenu(fileName = "AnimaDataBase", menuName = "ScriptableObjects/AnimaDataBase", order = 1)]
     public class AnimaDataBase: DataBase<AnimaData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(AnimaDataBase))]
     public class AnimaDataBaseEditor : DataBaseEditor<AnimaDataBase, AnimaData>{ }
+#endif
 }

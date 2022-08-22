@@ -19,9 +19,8 @@ namespace DataBaseScripts
     public class ChooseDataBase : DataBase<ChooseData>
     {
     }
-
+#if UNITY_EDITOR
     [CustomEditor(typeof(ChooseDataBase))]
-    public class ChooseDataBaseEditor : DataBaseEditor<ChooseDataBase, ChooseData>
-    {
-    }
+    public class ChooseDataBaseEditor : DataBaseEditor<ChooseDataBase, ChooseData> { }
+#endif
 }

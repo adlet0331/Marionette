@@ -19,12 +19,9 @@ namespace DataBaseScripts
     }
 
     [CreateAssetMenu(fileName = "DollTalkDataBase", menuName = "ScriptableObjects/DollTalkDataBase", order = 1)]
-    public class DollTalkDataBase : DataBase<DollTalkData>
-    {
-    }
-
+    public class DollTalkDataBase : DataBase<DollTalkData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(DollTalkDataBase))]
-    public class DollTalkDataBaseEditor : DataBaseEditor<DollTalkDataBase, DollTalkData>
-    {
-    }
+    public class DollTalkDataBaseEditor : DataBaseEditor<DollTalkDataBase, DollTalkData> { }
+#endif
 }

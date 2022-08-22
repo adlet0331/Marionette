@@ -16,6 +16,8 @@ namespace DataBaseScripts
     }
     [CreateAssetMenu(fileName = "StellaDataBase", menuName = "ScriptableObjects/StellaDataBase", order = 100)]
     public class StellaDataBase: DataBase<StellaData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(StellaDataBase))]
     public class StellaAbilityDataBaseEditor : DataBaseEditor<StellaDataBase, StellaData>{ }
+#endif
 }

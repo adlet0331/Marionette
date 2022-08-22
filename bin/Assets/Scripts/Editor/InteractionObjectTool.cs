@@ -7,7 +7,7 @@ using InGameObjects.Interaction.InteractingAdditionalObjects;
 using UnityEditor;
 using UnityEngine;
 
-namespace Tools
+namespace Editor
 {
     public class InteractionObjectTool : ScriptableWizard
     {

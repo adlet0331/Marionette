@@ -18,12 +18,9 @@ namespace DataBaseScripts
     };
 
     [CreateAssetMenu(fileName = "10_LockDataBase", menuName = "ScriptableObjects/10.LockDataBase", order = 10)]
-    public class LockDataBase : DataBase<LockData>
-    {
-    }
-
+    public class LockDataBase : DataBase<LockData> { }
+#if UNITY_EDITORs
     [CustomEditor(typeof(LockDataBase))]
-    public class LockDataBaseEditor : DataBaseEditor<LockDataBase, LockData>
-    {
-    }
+    public class LockDataBaseEditor : DataBaseEditor<LockDataBase, LockData> { }
+#endif
 }

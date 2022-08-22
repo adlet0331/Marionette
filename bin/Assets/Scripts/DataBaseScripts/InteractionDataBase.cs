@@ -17,12 +17,9 @@ namespace DataBaseScripts
     }
     
     [CreateAssetMenu(fileName = "InteractionDataBase", menuName = "ScriptableObjects/InteractionDataBase", order = 1)]
-    public class InteractionDataBase : DataBase<InteractionData>
-    {
-    }
-
+    public class InteractionDataBase : DataBase<InteractionData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(InteractionDataBase))]
-    public class InteractionDataBaseEditor : DataBaseEditor<InteractionDataBase, InteractionData>
-    {
-    }
+    public class InteractionDataBaseEditor : DataBaseEditor<InteractionDataBase, InteractionData> { }
+#endif
 }

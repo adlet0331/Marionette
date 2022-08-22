@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using EditorHelper;
 using InGameObjects.Scene;
-using SerializableManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,7 +34,9 @@ namespace Managers
         
         [SerializeField] public SceneName currentScene;
         [SerializeField] public SceneName beforeScene;
+#if UNITY_EDITOR
         [ArrayElementTitle("sceneString")]
+#endif
         [SerializeField] public List<SceneInfo> sceneInfoList;
         public SceneInfo CurrentSceneInfo => FindSceneInfo(currentScene);
         private void Start()

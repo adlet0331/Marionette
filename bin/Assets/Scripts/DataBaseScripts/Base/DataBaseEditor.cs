@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace DataBaseScripts.Base
 {
+#if UNITY_EDITOR
     public class DataBaseEditor<T1, T2> : Editor where T1 : DataBase<T2> where T2 : DataType
     {
         public T1 scriptDataManager;
@@ -18,7 +19,6 @@ namespace DataBaseScripts.Base
                 scriptDataManager = null;
             }
         }
-
         public override void OnInspectorGUI()
         {
             EditorGUILayout.Space();
@@ -37,4 +37,5 @@ namespace DataBaseScripts.Base
             base.OnInspectorGUI();
         }
     }
+#endif
 }

@@ -1,8 +1,9 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace SerializableManager
+namespace EditorHelper
 {
+    #if UNITY_EDITOR
     //Attribute
     //https://gist.github.com/bbangwon/b92709a9e2e1977ef7095c860fc7a793
     public class ArrayElementTitleAttribute : PropertyAttribute
@@ -95,4 +96,5 @@ namespace SerializableManager
             return "";
         }
     }
+#endif
 }

@@ -11,12 +11,9 @@ namespace DataBaseScripts
     }
 
     [CreateAssetMenu(fileName = "SLDataBase", menuName = "ScriptableObjects/SLDataBase", order = 1)]
-    public class SLDataBase : DataBase<SLData>
-    {
-    }
-
+    public class SLDataBase : DataBase<SLData> { }
+#if UNITY_EDITOR
     [CustomEditor(typeof(SLDataBase))]
-    public class SLDataBasesEditor : DataBaseEditor<SLDataBase, SLData>
-    {
-    }
+    public class SLDataBasesEditor : DataBaseEditor<SLDataBase, SLData> { }
+#endif
 }
