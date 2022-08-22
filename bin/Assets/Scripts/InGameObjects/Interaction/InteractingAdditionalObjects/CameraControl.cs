@@ -1,6 +1,5 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
 using DataBaseScripts;
 using Managers;
 using UnityEngine;

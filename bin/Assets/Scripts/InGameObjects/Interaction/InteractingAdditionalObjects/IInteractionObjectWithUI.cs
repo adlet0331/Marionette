@@ -1,6 +1,4 @@
-﻿using System;
-using DataBaseScripts.Base;
-using Managers;
+﻿using DataBaseScripts.Base;
 using UI;
 using UnityEngine;
 

@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 /* Window 매니저 Singleton

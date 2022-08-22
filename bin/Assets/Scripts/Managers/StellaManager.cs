@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using DataBaseScripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Managers
 {

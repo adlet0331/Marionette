@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using DataBaseScripts.Base;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
 using Managers;
-using UnityEngine;
 
 namespace InGameObjects.Object
 {

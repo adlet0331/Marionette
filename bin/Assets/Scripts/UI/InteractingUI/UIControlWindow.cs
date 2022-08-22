@@ -1,5 +1,4 @@
-﻿using DataBaseScripts.Base;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UI
 {

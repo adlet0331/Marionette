@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using DataBaseScripts;
-using DataBaseScripts.Base;
 using InGameObjects.Interaction;
 using InGameObjects.Interaction.InteractingAdditionalObjects;
-using Managers;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Tools
 {

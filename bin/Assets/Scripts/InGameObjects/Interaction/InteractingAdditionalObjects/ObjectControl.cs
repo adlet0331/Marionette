@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using DataBaseScripts.Base;
-using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {

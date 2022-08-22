@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using DataBaseScripts;
 using Managers;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace UI
 {
     public enum DollTalkWindowType

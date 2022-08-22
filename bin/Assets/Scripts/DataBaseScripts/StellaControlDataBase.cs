@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using DataBaseScripts.Base;
-using InGameObjects.Interaction;
 using UnityEditor;
 using UnityEngine;
 

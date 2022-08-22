@@ -1,6 +1,5 @@
 ﻿using Managers;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 /*
  * 게임 내 Window 오브젝트 
