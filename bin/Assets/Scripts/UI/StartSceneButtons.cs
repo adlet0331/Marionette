@@ -25,12 +25,12 @@ namespace UI
 
         public void LoadGameButton()
         {
-            SLManager.Instance.Load(1);
+            //SLManager.Instance.Load(1);
         }
 
         public void SettingButton()
         {
-            WindowManager.Instance.settingWindow.Activate();
+            //WindowManager.Instance.settingWindow.Activate();
         }
     }
 }

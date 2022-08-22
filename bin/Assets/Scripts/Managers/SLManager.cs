@@ -166,7 +166,6 @@ namespace Managers
             currentSaveDataName = sLDataBase.dataList[index].name;
             string saveDataPath = Path.Combine(Application.persistentDataPath, $"{currentSaveDataName}.json");
             string json = File.ReadAllText(saveDataPath);
-            Debug.Log(json);
             currentSaveData = JsonConvert.DeserializeObject<SaveData>(json);
             InventoryManager.Instance.Load(currentSaveData.itemList);
             StellaManager.Instance.Load(currentSaveData.stellaInfoList);

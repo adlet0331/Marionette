@@ -20,7 +20,7 @@ namespace UI
         public override void OpenTab()
         {
             gameObject.SetActive(true);
-            int randomIndex = new System.Random().Next(3);
+            int randomIndex = new System.Random().Next(2);
             //Random chat of doll
             blocked = false;
             currentScriptIndex = 0;

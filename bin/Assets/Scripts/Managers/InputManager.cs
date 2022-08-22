@@ -131,7 +131,7 @@ namespace Managers
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (false && Input.GetKeyDown(KeyCode.Escape))
             {
                 switch (WindowManager.Instance.CurrentOpenWindowTypeString)
                 {
