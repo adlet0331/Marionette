@@ -17,7 +17,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         public List<GameObjectSetActivate> gameObjectSetActivateList;
     }
     [Serializable]
-    public class ObjectControl : IInteractionObject<GameObjectSetActiveList>
+    public class ObjectControl : ADataInteractionObject<GameObjectSetActiveList>
     {
         public override async UniTask<bool> Interact()
         {

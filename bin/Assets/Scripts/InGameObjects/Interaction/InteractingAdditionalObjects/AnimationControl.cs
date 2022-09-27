@@ -9,7 +9,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     {
         
     }
-    public class AnimationControl : IInteractionObject<AnimationData>
+    public class AnimationControl : ADataInteractionObject<AnimationData>
     {
         public override async UniTask<bool> Interact()
         {

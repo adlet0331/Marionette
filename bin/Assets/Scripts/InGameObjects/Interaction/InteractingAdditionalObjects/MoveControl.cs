@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public sealed class MoveControl : IInteractionObject<MoveControlData>
+    public sealed class MoveControl : ADataInteractionObject<MoveControlData>
     {
         public override async UniTask<bool> Interact()
         {

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public class StellaControl : IInteractionObjectWithUI<StellaControlData, StellaGotUIData>
+    public class StellaControl : ADataInteractionObjectWithUI<StellaControlData, StellaGotUIData>
     {
         [SerializeField] private bool interacted;
         private StellaDataBase stellaControlDataBase;

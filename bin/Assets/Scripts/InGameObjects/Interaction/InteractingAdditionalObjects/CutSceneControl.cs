@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public class CutSceneControl : IInteractionObjectWithUI<CutSceneData, CutSceneUIData>
+    public class CutSceneControl : ADataInteractionObjectWithUI<CutSceneData, CutSceneUIData>
     {
         [SerializeField] private int currentIndex;
         protected override void GetUIWindowAndInit()

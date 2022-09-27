@@ -11,7 +11,7 @@ namespace InGameObjects.Object
     {
         public int upCount = 1;
     }
-    public class AnimaControl : IInteractionObjectWithUI<AnimaObjectData, AnimaObjectData>
+    public class AnimaControl : ADataInteractionObjectWithUI<AnimaObjectData, AnimaObjectData>
     {
         protected override void GetUIWindowAndInit()
         {

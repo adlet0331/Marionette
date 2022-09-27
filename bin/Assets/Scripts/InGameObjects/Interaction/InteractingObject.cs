@@ -78,65 +78,15 @@ namespace InGameObjects.Interaction
             PlayerManager.Instance.interactingPlayer.BlockInteract();
             // GameObject 생성/제거
             bool isInteractionEnd;
-            if (dataType[currentInteractIndex] == 2)
+            isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<AInteractionObject>().Interact();
+            
+            // Lock이 해제 되었는지 확인
+            if (dataType[currentInteractIndex] == 10)
             {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ObjectControl>().Interact();
-            }
-            // 대사 Script
-            else if (dataType[currentInteractIndex] == 3)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
-            }
-            // 선택지 Choose
-            else if (dataType[currentInteractIndex] == 4)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ChooseControl>().Interact();
-            }
-            // Move
-            else if (dataType[currentInteractIndex] == 5)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<MoveControl>().Interact();
-            }
-            // Camera Walk
-            else if (dataType[currentInteractIndex] == 7)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<CameraControl>().Interact();
-            }
-
-            // ItemControl
-            else if (dataType[currentInteractIndex] == 8)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ItemControl>().Interact();
-            }
-            // Stress Control
-            else if (dataType[currentInteractIndex] == 9)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<ScriptControl>().Interact();
-            }
-            // 잠김 Lock
-            else if (dataType[currentInteractIndex] == 10)
-            {
-                var lockControl = interactingObjectList[currentInteractIndex].GetComponent<LockControl>();
-                isInteractionEnd = await lockControl.Interact();
-                if (isInteractionEnd && !lockControl.UnLocked)
+                if (isInteractionEnd && !interactingObjectList[currentInteractIndex].GetComponent<LockControl>().UnLocked)
                 {
                     currentInteractIndex = dataType.Count;
                 }
-            }
-            // 이벤트 Event
-            else if (dataType[currentInteractIndex] == 11)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<StellaControl>().Interact();
-            }
-            // 컷씬
-            else if (dataType[currentInteractIndex] == 12)
-            {
-                isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<CutSceneControl>().Interact();
-            }
-            // IInteractionObjectWithUI 실행
-            else
-            {
-                throw new InteractTypeNotDefinedException(this.currentInteractIndex, currentInteractIndex);
             }
 
             if (isInteractionEnd)

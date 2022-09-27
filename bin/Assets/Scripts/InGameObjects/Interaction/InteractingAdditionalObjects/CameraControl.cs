@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public class CameraControl : IInteractionObject<CameraControlData>
+    public class CameraControl : ADataInteractionObject<CameraControlData>
     {
         public override async UniTask<bool> Interact()
         {

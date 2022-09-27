@@ -4,7 +4,7 @@ using Managers;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public class StressControl : IInteractionObject<StressControlData>
+    public class StressControl : ADataInteractionObject<StressControlData>
     {
         public override async UniTask<bool> Interact()
         {

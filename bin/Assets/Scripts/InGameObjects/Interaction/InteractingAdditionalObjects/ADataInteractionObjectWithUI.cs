@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public abstract class IInteractionObjectWithUI<DataBaseType, UIDataType>  : IInteractionObject<DataBaseType> where DataBaseType : DataType
+    public abstract class ADataInteractionObjectWithUI<DataBaseType, UIDataType>  : ADataInteractionObject<DataBaseType> where DataBaseType : DataType
     {
         [SerializeField] protected UIControlWindow<UIDataType>  UIWindow;
         [SerializeField] protected UIDataType UIData;

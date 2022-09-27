@@ -6,7 +6,7 @@ using UI;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public class ChooseControl : IInteractionObjectWithUI<ChooseData, ChooseUIData>
+    public class ChooseControl : ADataInteractionObjectWithUI<ChooseData, ChooseUIData>
     {
         protected override void GetUIWindowAndInit()
         {

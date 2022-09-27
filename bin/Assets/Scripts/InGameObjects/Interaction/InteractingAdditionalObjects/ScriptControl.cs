@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
-    public class ScriptControl : IInteractionObjectWithUI<ScriptData, ScriptUIData>
+    public class ScriptControl : ADataInteractionObjectWithUI<ScriptData, ScriptUIData>
     {
         [SerializeField] private int currentIndex;
         [SerializeField] private bool blocked;

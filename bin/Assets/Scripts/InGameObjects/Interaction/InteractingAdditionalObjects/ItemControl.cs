@@ -9,7 +9,7 @@ using UnityEngine;
 namespace InGameObjects.Interaction.InteractingAdditionalObjects
 {
     [Serializable]
-    public class ItemControl : IInteractionObjectWithUI<ItemControlData, ItemGotUIData>
+    public class ItemControl : ADataInteractionObjectWithUI<ItemControlData, ItemGotUIData>
     {
         [SerializeField] private int currentIndex = 0;
         private ItemDataBase itemDataBase;
