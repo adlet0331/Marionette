@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dcfc68cb7acf346b117537a7267fbf, type: 3}
+  m_Name: 10_LockDataBase
+  m_EditorClassIdentifier: 
+  databaseName: 10.LockControl
+  dataList:
+  - idx: 0
+    name: "\uB354\uBBF8"
+    needTypeList: 00000000
+    needItemList: ffffffff
+    needItemNumList: 01000000
+    lockedString: "\uB354\uBBF8\uC784"
+    unLockString: "\uC5F4\uB824\uC11C\uB294 \uC548\uB428"
+  - idx: 1
+    name: "W1-R1 \uBB38"
+    needTypeList: 00000000
+    needItemList: ffffffff
+    needItemNumList: 01000000
+    lockedString: "\uBB34\uC5C7\uC778\uAC00\uC5D0 \uC758\uD574 \uBB38\uC774 \uC5F4\uB9AC\uC9C0
+      \uC54A\uC544."
+    unLockString: "\uC5F4\uB824\uC11C\uB294 \uC548\uB428"
+  - idx: 2
+    name: "W1-E2 \uBB38"
+    needTypeList: 00000000
+    needItemList: ffffffff
+    needItemNumList: 01000000
+    lockedString: "\uBB34\uC5C7\uC778\uAC00\uC5D0 \uC758\uD574 \uBB38\uC774 \uC5F4\uB9AC\uC9C0
+      \uC54A\uC544."
+    unLockString: "\uC5F4\uB824\uC11C\uB294 \uC548\uB428"
+  - idx: 3
+    name: "W1-C \uBB38"
+    needTypeList: 00000000
+    needItemList: 01000000
+    needItemNumList: 01000000
+    lockedString: "\uAD00\uB9AC\uC790 \uAD8C\uD55C\uC774 \uC5C6\uC5B4 \uC9C0\uB098\uAC08
+      \uC218 \uC5C6\uC5B4."
+    unLockString: "\uCE74\uB4DC\uD0A4\uB85C \uBB38\uC744 \uC5F4\uC5C8\uB2E4"

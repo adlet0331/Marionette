@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 739d80127ba02ed4688e853f61b2dea0
+  - enabled: 1
+    path: Assets/Scenes/Girl_room.unity
+    guid: 06fb8fe9aca9913499752383af5328c5
+  - enabled: 1
+    path: Assets/Scenes/W1_E2.unity
+    guid: 77b90524ba60f7c4287069cb50f8887f
+  - enabled: 1
+    path: Assets/Scenes/W1_Hall.unity
+    guid: 5d1e699951915a346a648612fcaa89c2
+  - enabled: 0
+    path: Assets/Scenes/W1_E1.unity
+    guid: 97bba50b6812d2243a20ce314deafba3
+  - enabled: 0
+    path: Assets/Scenes/W1_C.unity
+    guid: 2bb6566320e26264b8c0f52c6a41854f
+  - enabled: 0
+    path: Assets/Scenes/W1_R2.unity
+    guid: bf96f39456536c945be5c90009fe900a
+  m_configObjects: {}

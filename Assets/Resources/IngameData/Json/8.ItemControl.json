@@ -1,0 +1,48 @@
+[
+    {
+        "getDescription": "\ubb50 \uc544\ubb34\ud2bc \ub354\ubbf8\uc785\ub2c8\ub2e4",
+        "idx": 0,
+        "itemIdxList": [
+            0,
+            1
+        ],
+        "itemNumList": [
+            1,
+            2
+        ],
+        "name": "\ub5a8\uc5b4\uc838 \uc788\ub294 \ub354\ubbf8 \ubb49\uce58"
+    },
+    {
+        "getDescription": "\uc5c4\uc900\uc2dd\uc740\uc0b4\uc544\uc787\ub2e4",
+        "idx": 1,
+        "itemIdxList": [
+            2
+        ],
+        "itemNumList": [
+            1
+        ],
+        "name": "\ub354\ubbf8 \ud3ec\uc158 \ucd9c\ub825\ub418\uba74 \uc548\ub428"
+    },
+    {
+        "getDescription": "\"\uc11c\uce21 1\uc2e4\ud5d8\ub3d9 1\uc2e4\ud5d8\uc2e4\" \uc774\ub77c\uace0 \uc801\ud78c \ud0a4\uce74\ub4dc",
+        "idx": 2,
+        "itemIdxList": [
+            3
+        ],
+        "itemNumList": [
+            1
+        ],
+        "name": "W1-E1 \ud0a4\uce74\ub4dc"
+    },
+    {
+        "getDescription": "\"\uc11c\uce21 1\uc2e4\ud5d8\ub3d9 \uc81c\uc5b4\uc2e4\" \uc774\ub77c\uace0 \uc801\ud78c \ud0a4\uce74\ub4dc",
+        "idx": 3,
+        "itemIdxList": [
+            4
+        ],
+        "itemNumList": [
+            1
+        ],
+        "name": "W1-C \ud0a4\uce74\ub4dc"
+    }
+]
