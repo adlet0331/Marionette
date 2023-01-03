@@ -28,7 +28,7 @@ namespace UI
     {
         [SerializeField] private GameObject nameBox;
         [SerializeField] private GameObject nextButton;
-        [SerializeField] private Text name;
+        [SerializeField] private Text talkerName;
         [SerializeField] private Text script;
         [SerializeField] private Image image;
 
@@ -52,7 +52,7 @@ namespace UI
             {
                 nameBox.SetActive(true);
             }
-            name.text = data.name;
+            talkerName.text = data.name;
             script.text = data.script;
             image.sprite = data.sprite;
             if (data.sprite == null)

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using DataBaseScripts;
 using EditorHelper;
 using InGameObjects.Interaction;
@@ -170,7 +171,7 @@ namespace Managers
             InventoryManager.Instance.Load(currentSaveData.itemList);
             StellaManager.Instance.Load(currentSaveData.stellaInfoList);
 
-            SceneSwitchManager.Instance.SwitchScene(currentSaveData.sceneName, -1);
+            SceneSwitchManager.Instance.SwitchScene(currentSaveData.sceneName, -1).Forget();
         }
 
         private void saveCurrentStatus()

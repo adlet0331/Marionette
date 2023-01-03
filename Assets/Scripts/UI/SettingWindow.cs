@@ -8,7 +8,7 @@ namespace UI
     {
 
         [SerializeField]
-        private GameObject gameObject;
+        private GameObject settingWindow;
         [SerializeField]
         private int currentWindow;
         [SerializeField]

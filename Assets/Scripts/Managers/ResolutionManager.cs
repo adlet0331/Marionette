@@ -29,7 +29,7 @@ namespace Managers
                 }
             }
 
-            int optionNum = 0;
+            // int optionNum = 0;
             // resolutionDropdown.options.Clear();
             // foreach (Resolution item in resolutionList)
             // {
