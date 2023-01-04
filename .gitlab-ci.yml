@@ -93,17 +93,17 @@ get-activation-file:
 #     BUILD_TARGET: StandaloneLinux64
 #     SCRIPTING_BACKEND: IL2CPP
 
-build-StandaloneOSX:
-  <<: *build
-  image: $IMAGE:$UNITY_VERSION-mac-mono-$IMAGE_VERSION
-  variables:
-    BUILD_TARGET: StandaloneOSX
+# build-StandaloneOSX:
+#   <<: *build
+#   image: $IMAGE:$UNITY_VERSION-mac-mono-$IMAGE_VERSION
+#   variables:
+#     BUILD_TARGET: StandaloneOSX
 
-# Note: build target names changed in recent versions, use this for versions < 2017.2:
-build-StandaloneOSXUniversal:
-  <<: *build
-  variables:
-    BUILD_TARGET: StandaloneOSXUniversal
+# # Note: build target names changed in recent versions, use this for versions < 2017.2:
+# build-StandaloneOSXUniversal:
+#   <<: *build
+#   variables:
+#     BUILD_TARGET: StandaloneOSXUniversal
 
 build-StandaloneWindows64:
   <<: *build
@@ -122,23 +122,23 @@ build-StandaloneWindows64:
 #   variables:
 #     BUILD_TARGET: WebGL
 
-build-android:
-  <<: *build
-  image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
-  variables:
-    BUILD_TARGET: Android
-    BUILD_APP_BUNDLE: "true"
-  tags:
-    - daegunju-docker
+# build-android:
+#   <<: *build
+#   image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
+#   variables:
+#     BUILD_TARGET: Android
+#     BUILD_APP_BUNDLE: "true"
+#   tags:
+#     - daegunju-docker
 
-build-android-apk:
-  <<: *build
-  image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
-  variables:
-    BUILD_TARGET: Android
-    BUILD_APP_BUNDLE: "false"
-  tags:
-    - daegunju-docker
+# build-android-apk:
+#   <<: *build
+#   image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
+#   variables:
+#     BUILD_TARGET: Android
+#     BUILD_APP_BUNDLE: "false"
+#   tags:
+#     - daegunju-docker
 
 # build-android-il2cpp:
 #   <<: *build
