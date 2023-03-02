@@ -2992,7 +2992,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
   nameBox: {fileID: 176873621}
   nextButton: {fileID: 1278745542}
-  name: {fileID: 55092896}
+  talkerName: {fileID: 55092896}
   script: {fileID: 146667109}
   image: {fileID: 3504795126098222945}
 --- !u!1001 &299248007
@@ -13258,7 +13258,7 @@ MonoBehaviour:
   moveableWhileOpen: 0
   inputableWhileOpen: 1
   profileShowingWhileOpen: 0
-  gameObject: {fileID: 1569470504}
+  settingWindow: {fileID: 0}
   currentWindow: 1
   Object_AnimaLibrary: {fileID: 1537792403}
   Object_StoryLine: {fileID: 719118619}
