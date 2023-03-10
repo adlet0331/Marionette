@@ -18,10 +18,6 @@ namespace Managers
                         Debug.Log("Error! " + typeof(T).ToString() + " have more than one Components");
                     }
                     _instance = componentList[0];
-                    GameObject singletonObject = this.gameObject;
-
-                    DontDestroyOnLoad(singletonObject);
-                    //Debug.Log(typeof(T).ToString() + "Singleton well made.");
                 }
             }
         }

@@ -41,7 +41,7 @@ namespace Editor
             { 12, "12.CutSceneControl"}
         };
 
-        [Header("DataBase")]
+        [Header("DataBase: None으로 되어있을 시 ◎ 클릭 후 하나 있는 Scriptable Object 클릭 해서 적용.")]
         public ScriptDataBase ScriptDataBase;
         public ChooseDataBase ChooseDataBase;
         public MoveControlDataBase MoveControlDataBase;
