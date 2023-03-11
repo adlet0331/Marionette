@@ -50,7 +50,7 @@ get-unity-version:
 .unity_defaults: &unity_defaults
   <<:
     - *unity_before_script
-    - *cache
+    # - *cache # Delete Cache Because of Shader Error in Build Process
     - *license
 
 # run this job when you need to request a license
