@@ -17,7 +17,7 @@ namespace InGameObjects.Interaction
         {
             if(collision.gameObject.CompareTag("Player"))
             {
-                PlayerManager.Instance.interactingPlayer.SetFstInteractObj(this);
+                GamePlayManager.Instance.AddInteractingObject(this);
                 await InteractAsync();
             }
         }

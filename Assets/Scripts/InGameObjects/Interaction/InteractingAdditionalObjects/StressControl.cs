@@ -8,7 +8,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
     {
         public override async UniTask<bool> Interact()
         {
-            StressManager.Instance.AddStress(data.stressAdd);
+            GamePlayManager.Instance.AddStress(data.stressAdd);
             return true;
         }
     }

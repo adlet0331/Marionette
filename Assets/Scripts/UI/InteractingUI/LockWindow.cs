@@ -1,7 +1,3 @@
-using System;
-using DataBaseScripts;
-using InGameObjects.Interaction.InteractingAdditionalObjects;
-using Managers;
 using UnityEngine;
 using UnityEngine.UI;
 

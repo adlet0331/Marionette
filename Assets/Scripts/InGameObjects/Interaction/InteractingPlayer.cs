@@ -13,6 +13,22 @@ namespace InGameObjects.Interaction
         [SerializeField] private bool isBlocked = false;
         [SerializeField] private bool currentInteractable;
         [SerializeField] private InteractingObject currentInteractObj;
+
+        public InteractingObject CurrentInteractObj
+        {
+            get
+            {
+                if (interactionObjList.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return currentInteractObj;
+                }
+            }
+        }
+
         [SerializeField] private List<InteractingObject> interactionObjList;
         [Header("Update 주기")]
         [SerializeField] private int updateFrameCount;
@@ -21,129 +37,89 @@ namespace InGameObjects.Interaction
         {
             interactionObjList = new List<InteractingObject>();
         }
-        private void updateFstIdx()
+
+        private void UpdateInteractableWindow(bool isInteractable)
+        {
+            if (isInteractable && !GamePlayManager.Instance.WindowsInstances.interactableWindow.IsOpened)
+                GamePlayManager.Instance.WindowsInstances.interactableWindow.Activate();
+            else if (!isInteractable && GamePlayManager.Instance.WindowsInstances.interactableWindow.IsOpened)
+                GamePlayManager.Instance.WindowsInstances.interactableWindow.CloseWindow();
+        }
+        
+        private void UpdateInteractionQueue()
         {
             if (interactionObjList.Count == 0 || isBlocked)
             {
                 currentInteractable = false;
+                UpdateInteractableWindow(currentInteractable);
             }
             else
             {
-                float angle = 180.0f, cnt;
-                InteractingObject currentFirstObj = interactionObjList[0];
-                var pointerWorldVec2 = InputManager.Instance.GetWorldPointerVec2();
-
+                // Check Unreachable Interacting Objects
                 var removeList = new List<InteractingObject>();
-                
+
                 foreach (InteractingObject interObj in interactionObjList)
                 {
-                    if (!interObj.gameObject.activeSelf || !interObj.GetComponent<InteractionObject>())
+                    if (!interObj.gameObject || !interObj.gameObject.activeSelf || !interObj.GetComponent<InteractionObject>())
                     {
                         removeList.Add(interObj);
                     }
                 }
-                
+
                 foreach (InteractingObject interObj in removeList)
                 {
                     interactionObjList.Remove(interObj);
                 }
 
-                foreach (InteractingObject interObj in interactionObjList)
+                // 다시 남아있는지 확인
+                if (interactionObjList.Count == 0)
                 {
-                    var objectWorldPosition = interObj.transform.localToWorldMatrix * interObj.transform.localPosition - transform.localToWorldMatrix * transform.localPosition;
-                    var objectWorldVec2 = new Vector2(objectWorldPosition.x, objectWorldPosition.y);
-                    cnt = Vector2.Angle(objectWorldVec2, pointerWorldVec2);
-                    if (cnt < angle)
-                    {
-                        angle = cnt;
-                        currentFirstObj = interObj;
-                    }
+                    currentInteractable = false;
+                    currentInteractObj = null;
+                    UpdateInteractableWindow(currentInteractable);
+                    return;
                 }
-                currentInteractObj = currentFirstObj;
+
+                // 가장 마지막으로 들어온 애를 설정
+                // 우선순위가 생긴다면 currentInteractObj 선정하는 로직이 들어갈 자리
+                currentInteractObj = interactionObjList[^1];
                 currentInteractable = true;
                 foreach (InteractingObject interObj in interactionObjList)
                 {
-                    interObj.GetComponent<InteractionObject>()?.SetSelecting(interObj.Idx == currentFirstObj.Idx);
+                    interObj.GetComponent<InteractionObject>()?.SetSelecting(interObj.Idx == currentInteractObj.Idx);
                 }
-            }
-        }
-        private void Update()
-        {
-            if (this.isBlocked)
-                return;
-
-            updateFrameCount++;
-            if (updateFrameCount < 10)
-                return;
-            updateFrameCount = 0;
-
-            updateFstIdx();
-            
-            if (!currentInteractable)
-            {
-                if (WindowManager.Instance.interactableWindow.IsOpened)
-                    WindowManager.Instance.interactableWindow.CloseWindow();
-            }
-            else
-            {
-                if (!WindowManager.Instance.interactableWindow.IsOpened)
-                    WindowManager.Instance.interactableWindow.Activate();
+                UpdateInteractableWindow(currentInteractable);
             }
         }
         public void BlockInteract()
         {
             isBlocked = true;
-            WindowManager.Instance.interactableWindow.CloseWindow();
+            GamePlayManager.Instance.WindowsInstances.interactableWindow.CloseWindow();
             foreach (InteractingObject interObj in interactionObjList)
             {
                 interObj.GetComponent<InteractionObject>()?.SetSelecting(false);
             }
         }
-        public void UnblockInteract()
+        public void UnBlockInteract()
         {
             this.isBlocked = false;
         }
-        public void ClearScriptableObjList()
+        public void ClearInteractingObjList()
         {
             interactionObjList.Clear();
+            UpdateInteractionQueue();
         }
-        public void SetFstInteractObj(InteractingObject interactingObject)
+        public void AddInteractingObject(InteractingObject interactingObject)
         {
-            currentInteractObj = interactingObject;
-            var list = new List<InteractingObject>();
-            list.Add(interactingObject);
-            foreach (var var in interactionObjList)
-            {
-                list.Add(var);
-            }
-            interactionObjList = list;
+            interactionObjList.Add(interactingObject);
+            UpdateInteractionQueue();
         }
 
-        public void ChangeFstInteractObj(InteractingObject interactingObject)
-        {
-            interactionObjList[0] = interactingObject;
-        }
-        public InteractingObject GetFstInteractObj()
-        {
-            if (interactionObjList.Count == 0)
-            {
-                return null;
-            }
-            else
-            {
-                updateFstIdx();
-                return currentInteractObj;
-            }
-        }
-        public void AddInteractionList(InteractingObject interactionObj)
-        {
-            interactionObjList.Add(interactionObj);
-        }
-
-        public void RemoveInteractionObj(InteractingObject interactionObj)
+        public void RemoveInteractionObject(InteractingObject interactionObj)
         {
             interactionObj.GetComponent<InteractionObject>().SetSelecting(false);
             interactionObjList.Remove(interactionObj);
+            UpdateInteractionQueue();
         }
     }
 }

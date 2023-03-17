@@ -53,7 +53,7 @@ namespace UI
 
         private bool checkStellaAvaliable(int index)
         {
-            var stellaInfoList = StellaManager.Instance.GetStellaInfoList();
+            var stellaInfoList = GamePlayManager.Instance.StellaInfoList;
             if (index >= stellaInfoList.Count - 1 ||
                 stellaInfoList[index + 1].level == 0)
             {
@@ -63,26 +63,26 @@ namespace UI
         }
         private void updateStellaSlotsSelection(int currentIndex)
         {
-            var stellaInfoList = StellaManager.Instance.GetStellaInfoList();
+            var stellaInfoList = GamePlayManager.Instance.StellaInfoList;
             
             if (checkStellaAvaliable(currentIndex))
             {
                 var info = stellaInfoList[currentIndex + 1];
-                WindowManager.Instance.dollTalkWindow.SetChatText(false, info.descriptionList[info.level - 1]);
+                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, info.descriptionList[info.level - 1]);
             }
             else
             {
-                WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
+                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "");
             }
         }
         public override void OpenTab()
         {
             currentColumn = 0;
             cururentRow = 0;
-            WindowManager.Instance.dollTalkWindow.ActivateNext(false);
-            WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ActivateNext(false);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "");
             gameObject.SetActive(true);
-            var stellaInfoList = StellaManager.Instance.GetStellaInfoList();
+            var stellaInfoList = GamePlayManager.Instance.StellaInfoList;
 
             for (int i = 0; i < stellaSlots.Length; i++)
             {
@@ -102,7 +102,7 @@ namespace UI
 
         public override void GetInput(InputType input)
         {
-            var dollTalkSelectionWindow = WindowManager.Instance.dollTalkSelectionWindowInnerTab;
+            var dollTalkSelectionWindow = GamePlayManager.Instance.WindowsInstances.dollTalkSelectionWindowInnerTab;
             switch (input)
             {
                 case InputType.Left:
@@ -148,14 +148,14 @@ namespace UI
                             case 1:
                                 dollTalkSelectionWindow.Close();
                                 isChooseAvaliable = false;
-                                var itemList = InventoryManager.Instance.GetItemList();
+                                var itemList = GamePlayManager.Instance.InventoryItemList;
                                 if (!itemList[currentIndex].isUsable)
                                 {
-                                    WindowManager.Instance.dollTalkWindow.SetChatText(false, "사용할 수 없는 아이템이야...");
+                                    GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "사용할 수 없는 아이템이야...");
                                 }
                                 else
                                 {
-                                    // TODO 아이템 별 사용 코드
+                                    // TODO : 아이템 사용 처리
                                 }
                                 break;
                         }

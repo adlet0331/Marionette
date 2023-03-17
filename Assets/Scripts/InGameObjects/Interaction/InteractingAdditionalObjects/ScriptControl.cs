@@ -18,7 +18,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             currentIndex = 0;
             blocked = false;
             currentCoroutine = null;
-            UIWindow = WindowManager.Instance.scriptWindow;
+            UIWindow = GamePlayManager.Instance.WindowsInstances.scriptWindow;
         }
         public override async UniTask<bool> Interact()
         {

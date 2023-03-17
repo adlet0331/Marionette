@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using InGameObjects.Interaction;
-using InGameObjects.Object;
+using InGameObjects.SceneObject.Player;
 using UI;
 using UnityEngine;
 
@@ -14,14 +10,8 @@ using UnityEngine;
  */
 namespace Managers
 {
-    public enum DirectionArrowType
-    {
-        Left = 1, 
-        Right = 2,
-        Up = 3, 
-        Down = 4
-    }
-    public class InputManager : Singleton<InputManager>
+    [Serializable]
+    public class InputManager : AGameManager
     {
         // 움직임, Keyboard Input
         [SerializeField] private bool isMoveable;
@@ -33,7 +23,7 @@ namespace Managers
         [SerializeField] private bool isItemSelectionPannelOn = false;
         [SerializeField] private int moveH, moveV;
         [SerializeField] private bool isRun, isSlowWalk;
-        [SerializeField] private MovingObject playerMovingComponent;
+        [SerializeField] private PlayerWithHandLight playerMovingComponent;
 
         [SerializeField] private float mouseCursorWorldX;
         [SerializeField] private float mouseCursorWorldY;
@@ -41,27 +31,18 @@ namespace Managers
         [SerializeField] private float characterWorldX;
         [SerializeField] private float characterWorldY;
 
-        public void SetOptions(bool isMv, bool isAv)
+        public void SetInputOptions(bool isMv, bool isAv)
         {
             isMoveable = isMv;
             isInputAvaliable = isAv;
         }
-        public void SetInventWind(bool tf)
-        {
-            isInventoryWindowOn = tf;
-        }
-        public void SetItemSelectionPannel(bool tf)
-        {
-            isItemSelectionPannelOn = tf;
-        }
-        public void SetMovingComponent(MovingObject mo)
+        public void SetPlayerControlComponent(PlayerWithHandLight mo)
         {
             playerMovingComponent = mo;
         }
-
-        public Vector2 GetWorldPointerVec2()
+        public Vector2 GetMousePointerInWorld()
         {
-            var mouseCursorWorldPos = CameraManager.Instance.GetMouseCursorWorldPointVec2();
+            var mouseCursorWorldPos = GamePlayManager.Instance.MouseCursorWorldPosition;
             var characterTransform = playerMovingComponent.transform;
             var characterWorldPos = characterTransform.localPosition;
 
@@ -73,11 +54,11 @@ namespace Managers
         
             return new Vector2(mouseCursorWorldPos.x - characterWorldPos.x, mouseCursorWorldPos.y - characterWorldPos.y);
         }
-
+        
         /// <summary>
-        /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+        /// FixedUpdate Loop
         /// </summary>
-        private void FixedUpdate()
+        public void HandlePlayerMoveInput()
         {
             // Move
             if (!playerMovingComponent)
@@ -91,7 +72,7 @@ namespace Managers
 
                 playerMovingComponent.Move(moveH, moveV, isRun, isSlowWalk);
             
-                playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), GetWorldPointerVec2()));
+                playerMovingComponent.UpdateHandLightRotate(Vector2.SignedAngle(new Vector2(0, 1), GetMousePointerInWorld()));
             }
             else
             {
@@ -99,18 +80,17 @@ namespace Managers
             }
         }
 
-        [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeInvocation")]
-        private void Update()
+        public void HandlePlayerInteractInput()
         {
             if (!isInputAvaliable)
                 return;
             
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.F))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Space);
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.Space);
                         return;
                     default:
                         Interact().Forget();
@@ -120,36 +100,36 @@ namespace Managers
             
             if (Input.GetKeyDown((KeyCode.C)))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact(InputType.C);
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.C);
                         return;
                     default:
-                        WindowManager.Instance.dollTalkWindow.Activate();
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Activate();
                         return;
                 }
             }
 
             if (false && Input.GetKeyDown(KeyCode.Escape))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.SettingWindow":
-                        WindowManager.Instance.settingWindow.CloseWindow();
+                        GamePlayManager.Instance.WindowsInstances.settingWindow.CloseWindow();
                         return;
                     default:
-                        WindowManager.Instance.settingWindow.Activate();
+                        GamePlayManager.Instance.WindowsInstances.settingWindow.Activate();
                         return;
                 }
             }
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.SettingWindow":
-                        WindowManager.Instance.settingWindow.tabInput();
+                        GamePlayManager.Instance.WindowsInstances.settingWindow.tabInput();
                         return;
                     default:
                         return;
@@ -158,10 +138,10 @@ namespace Managers
 
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Up);
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.Up);
                         return;
                     default:
                         return;
@@ -170,10 +150,10 @@ namespace Managers
             
             if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Down);
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.Down);
                         return;
                     default:
                         return;
@@ -182,10 +162,10 @@ namespace Managers
             
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Left);
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.Left);
                         return;
                     default:
                         return;
@@ -194,10 +174,10 @@ namespace Managers
             
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
-                switch (WindowManager.Instance.CurrentOpenWindowTypeString)
+                switch (GamePlayManager.Instance.CurrentOpenWindowType)
                 {
                     case "UI.DollTalkWindow":
-                        WindowManager.Instance.dollTalkWindow.Interact(InputType.Right);
+                        GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.Right);
                         return;
                     default:
                         return;
@@ -205,13 +185,12 @@ namespace Managers
             }
         }
         
-        // ReSharper disable Unity.PerformanceAnalysis
         private async UniTask Interact()
         {
             if (!isInteractable)
                 return;
             
-            var obj = PlayerManager.Instance.interactingPlayer.GetFstInteractObj();
+            var obj = GamePlayManager.Instance.CurrentInteractObj;
             
             if (obj == null)
                 return;
@@ -225,9 +204,14 @@ namespace Managers
             {
                 obj.SetActiveNotify(!obj.DisableAfterInteract);
                 
-                SLManager.Instance.OnNotify(!obj.DisableAfterInteract, obj.Idx);
-                PlayerManager.Instance.interactingPlayer.ClearScriptableObjList();
+                GamePlayManager.Instance.InteractionStatusChangedNotify(!obj.DisableAfterInteract, obj.Idx);
+                GamePlayManager.Instance.ClearInteractingObjList();
             }
+        }
+
+        public override void Start()
+        {
+            
         }
     }
 }

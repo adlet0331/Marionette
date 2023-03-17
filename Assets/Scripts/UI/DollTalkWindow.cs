@@ -76,7 +76,7 @@ namespace UI
                 var changingTab = dollTalkSelectionWindow.GetInputIdx(input);
                 if (input == InputType.Space)
                 {
-                    WindowManager.Instance.dollTalkWindow.ChangeWindowTab((DollTalkWindowType)changingTab);
+                    GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ChangeWindowTab((DollTalkWindowType)changingTab);
                 }
                 return;
             }

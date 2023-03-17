@@ -9,12 +9,12 @@ using UnityEngine;
  */
 namespace InGameObjects.Object
 {
- [RequireComponent(typeof(BoxCollider2D))]
- public class CameraBorderWithCollider : MonoBehaviour
- {
-  private void Start()
-  {
-   CameraManager.Instance.SetMap(this.gameObject);
-  }
- }
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class CameraBorderWithCollider : MonoBehaviour
+    {
+        private void Start()
+        {
+            GamePlayManager.Instance.SetMapCameraBorder(this.gameObject);
+        }
+    }
 }

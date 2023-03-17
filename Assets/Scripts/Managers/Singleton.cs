@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-/* 게임 전체에서 한 개만 존재하는 Singleton 오브젝트에 부착
- * 씬이 넘어가도 파괴 안됨
+/*
+ * 게임 전체에서 한 개만 존재하는 Singleton 오브젝트에 부착
+ * 현재는 GamePlayManager 한 곳에만 존재
  * 
  */
 namespace Managers
@@ -15,11 +16,12 @@ namespace Managers
                 if (_instance == null) {
                     T[] componentList = GetComponents<T>();
                     if (componentList.Length != 0 && componentList.Length > 1) {
-                        Debug.Log("Error! " + typeof(T).ToString() + " have more than one Components");
+                        Debug.Log("Error! " + typeof(T).ToString() + " have more than one Instance!");
                     }
                     _instance = componentList[0];
                 }
             }
+            DontDestroyOnLoad(this);
         }
 
         public static T Instance {

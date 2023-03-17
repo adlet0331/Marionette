@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using Cysharp.Threading.Tasks;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;

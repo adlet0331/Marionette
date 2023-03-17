@@ -16,7 +16,7 @@ namespace UI
         {
             equipedItemIdx = itemIdx;
             if (equipedItemIdx >= 0)
-                equipedItemSlot.SetImage(InventoryManager.Instance.GetItem(itemIdx).spriteName);
+                equipedItemSlot.SetImage(GamePlayManager.Instance.GetItemDataWithIdx(itemIdx).spriteName);
             else
                 equipedItemSlot.SetImage(null);
         }

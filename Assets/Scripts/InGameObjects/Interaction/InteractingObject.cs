@@ -57,8 +57,8 @@ namespace InGameObjects.Interaction
         
         public void SetActiveNotify(bool isAc)
         {
-            SLManager.Instance.OnNotify(isAc, idx);
             gameObject.SetActive(isAc);
+            GamePlayManager.Instance.InteractionStatusChangedNotify(isAc, idx);
 
             var groupInteraction = FindObjectOfType<GroupInteraction>();
             var interactionObjects = groupInteraction.GetComponentsInChildren<InteractingObject>();
@@ -75,7 +75,7 @@ namespace InGameObjects.Interaction
          */
         public async UniTask<bool> InteractAsync()
         {
-            PlayerManager.Instance.interactingPlayer.BlockInteract();
+            GamePlayManager.Instance.BlockInteract();
             // GameObject 생성/제거
             bool isInteractionEnd;
             isInteractionEnd = await interactingObjectList[currentInteractIndex].GetComponent<AInteractionObject>().Interact();
@@ -96,7 +96,7 @@ namespace InGameObjects.Interaction
                 if (currentInteractIndex >= dataType.Count)
                 {
                     currentInteractIndex = 0;
-                    PlayerManager.Instance.interactingPlayer.UnblockInteract();
+                    GamePlayManager.Instance.UnBlockInteract();
                     return true;
                 }
                 

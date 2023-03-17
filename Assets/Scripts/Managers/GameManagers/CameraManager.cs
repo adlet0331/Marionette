@@ -8,25 +8,29 @@ using UnityEngine;
  */
 namespace Managers
 {
-    public class CameraManager : Singleton<CameraManager>
+    [Serializable]
+    public class CameraManager : AGameManager
     {
-        [SerializeField] private Camera currentCamera;
-        public void SetCamera(Camera camera)
+        [SerializeField] private Camera currentGameCamera;
+        public void SetGameCamera(Camera camera)
         {
-            currentCamera = camera;
+            currentGameCamera = camera;
         }
 
-        public Vector2 GetMouseCursorWorldPointVec2()
+        public Vector2 MouseCursorWorldPosition
         {
-            if (!currentCamera)
-                return new Vector2(0, 0);
-            var mouseCursorPos = Input.mousePosition;
-            return (Vector2) currentCamera.ScreenToWorldPoint(mouseCursorPos);
+            get
+            {
+                if (!currentGameCamera)
+                    return new Vector2(0, 0);
+                var mouseCursorPos = Input.mousePosition;
+                return (Vector2) currentGameCamera.ScreenToWorldPoint(mouseCursorPos);
+            }
         }
-
+        
         [SerializeField] private GameObject currentMap;
         private BoxCollider2D currentMapCollider;
-        public void SetMap(GameObject map)
+        public void SetMapCameraBorder(GameObject map)
         {
             currentMap = map;
             // 첫번째 콜라이더만. Map의 사이즈를 위함 - Istrigger = true
@@ -40,68 +44,73 @@ namespace Managers
         }
 
         [SerializeField] private int currentMode;
+        public int CurrentMode
+        {
+            get => currentMode;
+            set
+            {
+                currentMode = value;
+                
+                if (!currentGameCamera)
+                    return;
+                
+                if (currentMode == 0)
+                    return;
+                if (currentMode == 1)
+                {
+                    currentGameCamera.transform.position = CameraMode1GetPosition();
+                }
+            }
+        }
+        
         [SerializeField] private string currentModeString;
         [SerializeField] private string[] modeList;
         private Resolution currentResolution;
-        public int GetCameraMode()
-        {
-            return currentMode;
-        }
         public void SetCameraMode(int mode)
         {
-            Debug.Assert(mode != 2, "SetCameraMode's mode cannot be 2. Use SetCameraModeMovingTarget");
-            
             if (modeList[mode] == null)
             {
                 return;
             }
 
-            currentMode = mode;
+            CurrentMode = mode;
             currentModeString = modeList[mode];
             return;
         }
 
         public async UniTask CameraMoveTargetAsync(Vector3 startVector3, Vector3 destinationVector3, float totalTimeMiliSecond, float timeIntervalSecond)
         {
-            int beforeMode = currentMode;
-            currentMode = 2;
+            int beforeMode = CurrentMode;
+            CurrentMode = 2;
 
             float milisecondPassed = 0.0f;
             while (milisecondPassed <= totalTimeMiliSecond)
             {
-                gameObject.transform.localPosition = Vector3.Lerp(startVector3, destinationVector3,
+                currentGameCamera.transform.localPosition = Vector3.Lerp(startVector3, destinationVector3,
                     milisecondPassed / totalTimeMiliSecond);
                 await UniTask.Delay(TimeSpan.FromSeconds(timeIntervalSecond));
                 milisecondPassed += timeIntervalSecond * 1000.0f;
             }
             
-            currentMode = beforeMode;
+            CurrentMode = beforeMode;
         }
 
-        private void Start() {
-            SetCameraMode(1);
-        }
-        private void LateUpdate()
+        public void UpdateCameraPosition()
         {
-            if (!currentCamera)
-                return;
-            if (currentMode == 0)
-            {
-                return;
-            }
             if (currentMode == 1)
             {
-                currentCamera.transform.position = CameraMode1GetPosition();
+                currentGameCamera.transform.position = CameraMode1GetPosition();
             }
         }
+        
         [SerializeField] private double CameraSize_X;
         [SerializeField] private double CameraSize_Y;
         [SerializeField] private double ScreenSize_X;
         [SerializeField] private double ScreenSize_Y;
 
         private void _debug() {
-            CameraSize_X = currentCamera.orthographicSize * Screen.width / Screen.height;
-            CameraSize_Y = currentCamera.orthographicSize;
+            CameraSize_X = currentGameCamera.orthographicSize * Screen.width / Screen.height;
+            CameraSize_Y = currentGameCamera.orthographicSize;
             ScreenSize_X = Screen.width;
             ScreenSize_Y = Screen.height;
         }
@@ -111,8 +120,8 @@ namespace Managers
                 return new Vector3(0,0,-1);
             double posx = followingObject.transform.position.x;
             double posy = followingObject.transform.position.y;
-            double cameraWidth = currentCamera.orthographicSize * Screen.width / Screen.height;
-            double cameraHeight = currentCamera.orthographicSize;
+            double cameraWidth = currentGameCamera.orthographicSize * Screen.width / Screen.height;
+            double cameraHeight = currentGameCamera.orthographicSize;
 
             Vector3 mapScale = currentMap.transform.localScale;
             double colliderx = currentMapCollider.transform.position.x;
@@ -135,6 +144,15 @@ namespace Managers
             }
 
             return new Vector3((float)posx, (float)posy, -1);
+        }
+
+        public override void Start()
+        {
+            modeList = new string[]
+            {
+                "Static", "FollowingCharacter"
+            };
+            SetCameraMode(0);
         }
     }
 }

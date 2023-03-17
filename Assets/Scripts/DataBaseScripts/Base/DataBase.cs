@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using EditorHelper;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace DataBaseScripts.Base
@@ -27,7 +26,7 @@ namespace DataBaseScripts.Base
         {
             string json;
             string path;
-            if (needToBeWritable) // 리소스 바깥
+            if (needToBeWritable) // 프로젝트 바깥, 기기에 저장될 아이들
             {
                 path = Path.Combine(Application.persistentDataPath, databaseName+".json");
                 using (StreamReader file = File.OpenText(path))
@@ -37,7 +36,7 @@ namespace DataBaseScripts.Base
                     dataKeyDictionary = dataList.ToDictionary(x => x.idx);
                 }
             }
-            else // 리소스 안
+            else // 프로젝트 안, StaticData
             {
                 path = Path.Combine("IngameData", "Json", databaseName);
                 json = Resources.Load<TextAsset>(path).ToString();

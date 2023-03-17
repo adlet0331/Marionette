@@ -12,15 +12,15 @@ namespace UI
         [SerializeField] private Button settingButton;
         private void Start()
         {
-            startButton.onClick.AddListener(async () => await NewGameButton());
+            startButton.onClick.AddListener(() => NewGameButton().Forget());
             loadButton.onClick.AddListener(LoadGameButton);
             settingButton.onClick.AddListener(SettingButton);
         }
 
         public async UniTask NewGameButton()
         {
-            SLManager.Instance.InitSaveData();
-            await SceneSwitchManager.Instance.SwitchScene(SceneSwitchManager.SceneName.Girl_room, 0);
+            GamePlayManager.Instance.InitNewData();
+            await GamePlayManager.Instance.SwitchScene(SceneName.Girl_room, 0);
         }
 
         public void LoadGameButton()

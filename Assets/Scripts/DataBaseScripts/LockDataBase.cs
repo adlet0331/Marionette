@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataBaseScripts.Base;
-using UnityEditor;
 using UnityEngine;
 
 namespace DataBaseScripts

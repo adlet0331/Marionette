@@ -40,7 +40,7 @@ namespace InGameObjects.Enemy
                 return;
 
             lastUpdateTime = Time.realtimeSinceStartup;
-            agent.destination = PlayerManager.Instance.moveablePlayerObject.transform.position;
+            agent.destination = GamePlayManager.Instance.MoveablePlayerObjectPosition;
             
             var movingVector = agent.velocity;
 

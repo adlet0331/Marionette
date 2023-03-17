@@ -12,7 +12,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         {
             UIData.scriptList = new List<string>();
             UIData.interactingObjectList = new List<InteractingObject>();
-            UIWindow = WindowManager.Instance.chooseWindow;
+            UIWindow = GamePlayManager.Instance.WindowsInstances.chooseWindow;
         }
         public override async UniTask<bool> Interact()
         {

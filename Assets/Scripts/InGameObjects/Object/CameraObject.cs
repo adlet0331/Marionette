@@ -13,9 +13,7 @@ namespace InGameObjects.Object
         {
             if (isMainCamera)
             {
-                CameraManager.Instance.SetCamera(this.GetComponent<Camera>());
-                if (SceneObjManager.Instance.canvas)
-                    SceneObjManager.Instance.canvas.GetComponent<Canvas>().worldCamera = this.GetComponent<Camera>();
+                GamePlayManager.Instance.SetGameCamera(this.GetComponent<Camera>());
             }
         }
     }

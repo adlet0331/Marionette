@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using Cysharp.Threading.Tasks;
+using Managers;
 using UnityEngine;
 
 /*
@@ -22,25 +23,25 @@ namespace UI
                 return;
             gameObject.SetActive(true);
             transform.SetAsLastSibling();
-            WindowManager.Instance.SetCurrentWindow(this);
-            InputManager.Instance.SetOptions(moveableWhileOpen, inputableWhileOpen);
+            GamePlayManager.Instance.SetCurrentWindow(this);
+            GamePlayManager.Instance.SetInputOptions(moveableWhileOpen, inputableWhileOpen);
             if (!profileShowingWhileOpen)
             {
-                WindowManager.Instance.profileWindow.gameObject.SetActive(false);
+                GamePlayManager.Instance.WindowsInstances.profileWindow.gameObject.SetActive(false);
             }
         }
         // ReSharper disable Unity.PerformanceAnalysis
         public void CloseWindow()
         {
             gameObject.SetActive(false);
-            WindowManager.Instance.RemoveWindow(this);
-            if (WindowManager.Instance.CurrentOpenWindowTypeString == "")
+            GamePlayManager.Instance.RemoveWindow(this);
+            if (GamePlayManager.Instance.CurrentOpenWindowType == "")
             {
-                SceneSwitchManager.Instance.returnToOriginalSceneSetting();
+                GamePlayManager.Instance.ApplySceneSetting().Forget();
             }
             if (!profileShowingWhileOpen)
             {
-                WindowManager.Instance.profileWindow.gameObject.SetActive(true);
+                GamePlayManager.Instance.WindowsInstances.profileWindow.gameObject.SetActive(true);
             }
         }
     }

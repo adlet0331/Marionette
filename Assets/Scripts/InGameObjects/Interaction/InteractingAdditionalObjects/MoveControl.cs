@@ -19,14 +19,14 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                 {
                     if (sceneMovePointobj.GetComponent<SceneMovePoint>().idx == data.idx)
                     {
-                        PlayerManager.Instance.moveablePlayerObject.transform.localPosition = sceneMovePointobj.gameObject.transform.localPosition;
+                        GamePlayManager.Instance.MoveCharacterPosition(sceneMovePointobj.transform.localPosition);
                         return true;
                     }
                 }
             }
             else
             {
-                await SceneSwitchManager.Instance.SwitchScene(data.destinationScene, data.idx);
+                await GamePlayManager.Instance.SwitchScene(data.destinationScene, data.idx);
             }
             return true;
         }

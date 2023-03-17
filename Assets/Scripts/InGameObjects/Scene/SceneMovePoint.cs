@@ -10,7 +10,7 @@ namespace InGameObjects.Scene
 {
     public class SceneMovePoint : MonoBehaviour
     {
-        public SceneSwitchManager.SceneName sourceSceneName;
+        public SceneName sourceSceneName;
         public int idx;
     }
 }

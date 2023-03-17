@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 
-/* 움직이는 오브젝트 관리
- * 
+/* 플레이어 키 입력으로 움직이는 물체 관리
  */
 namespace InGameObjects.Object
 {
     public class MovingObject : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D playerRigidBody;
-        [SerializeField] private Light2D handLight;
 
         [SerializeField] private bool isActive = true;
         [SerializeField] private float slowWalkSpeed = 300.0f;
@@ -25,12 +22,7 @@ namespace InGameObjects.Object
         public void MovingObjectStart() 
         {
             animator = GetComponent<Animator>();
-        }
-        public void UpdateHandLightRotate(float zRotate)
-        {
-            if (!handLight)
-                return;
-            handLight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, zRotate));
+            playerRigidBody = GetComponent<Rigidbody2D>();
         }
         private void FixedUpdate() 
         {
@@ -77,10 +69,6 @@ namespace InGameObjects.Object
             dirX = hor;
             dirY = ver;
             return;
-        }
-        public void SetIsActive(bool isActive) 
-        {
-            this.isActive = isActive;
         }
     }
 }

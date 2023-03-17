@@ -15,7 +15,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         {
             UIOpened = false;
             UnLocked = false;
-            UIWindow = WindowManager.Instance.lockWindow;
+            UIWindow = GamePlayManager.Instance.WindowsInstances.lockWindow;
         }
         public override async UniTask<bool> Interact()
         {
@@ -27,7 +27,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             if (UIOpened)
             {
                 UIOpened = false;
-                WindowManager.Instance.lockWindow.CloseWindow();
+                GamePlayManager.Instance.WindowsInstances.lockWindow.CloseWindow();
                 return true;
             }
             UnLocked = true;
@@ -40,7 +40,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                 {
                     // 일단 하나 없애는걸로 구현
                     if (data.needItemList[i] == -1 || 
-                        InventoryManager.Instance.GetItemNumInInventory(data.needItemList[i]) < data.needItemNumList[i])
+                        GamePlayManager.Instance.GetItemNumInInventory(data.needItemList[i]) < data.needItemNumList[i])
                     {
                         UnLocked = false;
                         break;
@@ -56,7 +56,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
                     if (data.needTypeList[i] == 0)
                     {
                         // 있는지 체크만 하는 걸로 구현. 나중에 없애는것도 구현
-                        InventoryManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
+                        GamePlayManager.Instance.DeleteItem(data.needItemList[i], data.needItemNumList[i]);
                     }
                 }
                 uiString = data.unLockString;

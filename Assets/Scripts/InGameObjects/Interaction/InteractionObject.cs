@@ -40,7 +40,7 @@ namespace InGameObjects.Interaction
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerManager.Instance.interactingPlayer.AddInteractionList(this);
+                GamePlayManager.Instance.AddInteractingObject(this);
             }
         }
 
@@ -48,7 +48,7 @@ namespace InGameObjects.Interaction
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerManager.Instance.interactingPlayer.RemoveInteractionObj(this);
+                GamePlayManager.Instance.RemoveInteractionObject(this);
             }
         }
     }

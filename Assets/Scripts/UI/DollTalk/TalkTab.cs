@@ -24,7 +24,7 @@ namespace UI
             //Random chat of doll
             blocked = false;
             currentScriptIndex = 0;
-            dollTalkData = DataBaseManager.Instance.dollTalkDataBase.dataKeyDictionary[randomIndex];
+            dollTalkData = GamePlayManager.Instance.dataBaseCollection.dollTalkDataBase.dataKeyDictionary[randomIndex];
             GetInput(InputType.Space);
         }
 
@@ -68,16 +68,16 @@ namespace UI
         private IEnumerator _printScript(int index)
         {
             blocked = true;
-            WindowManager.Instance.dollTalkWindow.ActivateNext(false);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ActivateNext(false);
             var text = "";
             var isLeft = dollTalkData.isGirlTalkingList[index];
             var printText = dollTalkData.scriptList[index];
-            WindowManager.Instance.dollTalkWindow.SetChatText(isLeft, text);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(isLeft, text);
             yield return new WaitForSeconds(0.01f);
             for (int i = 0; i <= printText.Length; i++)
             {
                 text = printText.Substring(0, i);
-                WindowManager.Instance.dollTalkWindow.SetChatText(isLeft, text);
+                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(isLeft, text);
                 yield return new WaitForSeconds(0.02f);
             }
             _endScript(index);
@@ -89,15 +89,15 @@ namespace UI
                 Debug.LogAssertion("index : " + index.ToString() + " CurrentIndex : " + currentScriptIndex.ToString());
             
             blocked = false;
-            WindowManager.Instance.dollTalkWindow.SetChatText(dollTalkData.isGirlTalkingList[index], dollTalkData.scriptList[index]);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(dollTalkData.isGirlTalkingList[index], dollTalkData.scriptList[index]);
             currentScriptIndex++;
             // checkIsLastAndOpenDollTalkSelectionWindow
             if (currentScriptIndex >= dollTalkData.scriptList.Count)
             {
-                WindowManager.Instance.dollTalkWindow.ChangeWindowTab(DollTalkWindowType.TabSelecting);
+                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ChangeWindowTab(DollTalkWindowType.TabSelecting);
                 currentScriptIndex = 0;
             }
-            WindowManager.Instance.dollTalkWindow.ActivateNext(true);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ActivateNext(true);
         }
     }
 }

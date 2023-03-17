@@ -12,7 +12,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         protected override void GetUIWindowAndInit()
         {
             currentIndex = 0;
-            UIWindow = WindowManager.Instance.cutSceneWindow;
+            UIWindow = GamePlayManager.Instance.WindowsInstances.cutSceneWindow;
         }
         
         public override async UniTask<bool> Interact()

@@ -9,7 +9,7 @@ namespace DataBaseScripts
     [Serializable]
     public class MoveControlData : DataType
     {
-        public SceneSwitchManager.SceneName destinationScene;
+        public SceneName destinationScene;
     };
 
     [CreateAssetMenu(fileName = "5_MoveControlDataBase", menuName = "ScriptableObjects/5.MoveControlDataBase", order = 5)]

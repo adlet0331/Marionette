@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
-using System.Net.Mime;
-using DataBaseScripts;
 using UnityEngine;
 using UnityEngine.UI;
 

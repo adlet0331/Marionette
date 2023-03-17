@@ -9,7 +9,13 @@ namespace InGameObjects.Interaction
         void Start()
         {
             var interactingObjects = GetComponentsInChildren<InteractingObject>(this.gameObject);
-            SLManager.Instance.InitsceneInteractingObjects(interactingObjects);
+            var dictionary = GamePlayManager.Instance.CurrentInteractingObjectStatusDict;
+            foreach (var interactingObject in interactingObjects)
+            {
+                var status = dictionary[interactingObject.Idx].CurrentStatus;
+                
+                interactingObject.gameObject.SetActive(status);
+            }
         }
     }
 }

@@ -16,8 +16,8 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         protected override void GetUIWindowAndInit()
         {
             currentIndex = 0;
-            itemDataBase = DataBaseManager.Instance.itemDataBase; 
-            UIWindow = WindowManager.Instance.itemGotWindow;
+            itemDataBase = GamePlayManager.Instance.dataBaseCollection.itemDataBase; 
+            UIWindow = GamePlayManager.Instance.WindowsInstances.itemGotWindow;
         }
         public override async UniTask<bool> Interact()
         {
@@ -25,7 +25,7 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
             {
                 var idx = data.itemIdxList[currentIndex];
                 var itemNum = data.itemNumList[currentIndex];
-                InventoryManager.Instance.AddItem(idx, itemNum);
+                GamePlayManager.Instance.AddItem(idx, itemNum);
 
                 UIData.name = itemDataBase.dataKeyDictionary[idx].name;
                 UIData.script = data.getDescription;

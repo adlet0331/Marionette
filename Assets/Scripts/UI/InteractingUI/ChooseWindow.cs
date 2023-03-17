@@ -1,14 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Cysharp.Threading.Tasks;
-using DataBaseScripts;
 using InGameObjects.Interaction;
 using Managers;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace UI {
@@ -68,7 +64,8 @@ namespace UI {
 
 		private async UniTask InteractWithIndexAsync(int idx)
         {
-	        PlayerManager.Instance.interactingPlayer.SetFstInteractObj(data.interactingObjectList[idx]);
+	        // TODO: 반드시 봐야할 것 
+	        GamePlayManager.Instance.AddInteractingObject(data.interactingObjectList[idx]);
 	        DeActivate();
 	        await data.interactingObjectList[idx].InteractAsync();
         }

@@ -12,11 +12,6 @@ namespace UI
             sceneString = name;
             timePassed = t;
         }
-
-        public SaveInfo()
-        {
-            
-        }
     }
     public class SLTab : ADollTalkWindowTab
     {
@@ -26,10 +21,10 @@ namespace UI
             gameObject.SetActive(true);
             for (int i = 1; i <= slotList.Length; i++)
             {
-                var info = SLManager.Instance.GetSaveDataInfo(i);
+                var info = GamePlayManager.Instance.GetSaveDataInfo(i);
                 slotList[i-1].SetSaveInfos(info);
             }
-            WindowManager.Instance.dollTalkSelectionWindowInnerTab.OpenWithType(typePerSelectionStrings);
+            GamePlayManager.Instance.WindowsInstances.dollTalkSelectionWindowInnerTab.OpenWithType(typePerSelectionStrings);
         }
 
         public override void CloseTab()
@@ -39,7 +34,7 @@ namespace UI
 
         public override void GetInput(InputType input)
         {
-            var dollTalkSelectionWindow = WindowManager.Instance.dollTalkSelectionWindowInnerTab;
+            var dollTalkSelectionWindow = GamePlayManager.Instance.WindowsInstances.dollTalkSelectionWindowInnerTab;
             switch (input)
             {
                 case InputType.Up:
@@ -53,12 +48,12 @@ namespace UI
                     switch (selectionIdx)
                     {
                         case 0: // 1번 저장
-                            WindowManager.Instance.dollTalkWindow.CloseWindow();
-                            SLManager.Instance.Save(1);
+                            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.CloseWindow();
+                            GamePlayManager.Instance.SaveCurrentData(1);
                             break;
                         case 1: // 1번 로드
-                            WindowManager.Instance.dollTalkWindow.CloseWindow();
-                            SLManager.Instance.Load(1);
+                            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.CloseWindow();
+                            GamePlayManager.Instance.LoadSavedData(1);
                             break;
                     }
                     return;

@@ -1,0 +1,65 @@
+[
+    {
+        "CameraMode": 0,
+        "idx": 0,
+        "isCharacterExist": false,
+        "isInputAvaliable": true,
+        "isMovable": false,
+        "isProfileActivate": false,
+        "sceneString": "StartScene"
+    },
+    {
+        "CameraMode": 1,
+        "idx": 1,
+        "isCharacterExist": true,
+        "isInputAvaliable": true,
+        "isMovable": true,
+        "isProfileActivate": true,
+        "sceneString": "Girl_room"
+    },
+    {
+        "CameraMode": 1,
+        "idx": 2,
+        "isCharacterExist": true,
+        "isInputAvaliable": true,
+        "isMovable": true,
+        "isProfileActivate": true,
+        "sceneString": "W1_E2"
+    },
+    {
+        "CameraMode": 1,
+        "idx": 3,
+        "isCharacterExist": true,
+        "isInputAvaliable": true,
+        "isMovable": true,
+        "isProfileActivate": true,
+        "sceneString": "W1_Hall"
+    },
+    {
+        "CameraMode": 1,
+        "idx": 4,
+        "isCharacterExist": true,
+        "isInputAvaliable": true,
+        "isMovable": true,
+        "isProfileActivate": true,
+        "sceneString": "W1_E1"
+    },
+    {
+        "CameraMode": 1,
+        "idx": 5,
+        "isCharacterExist": true,
+        "isInputAvaliable": true,
+        "isMovable": true,
+        "isProfileActivate": true,
+        "sceneString": "W1_C"
+    },
+    {
+        "CameraMode": 1,
+        "idx": 6,
+        "isCharacterExist": true,
+        "isInputAvaliable": true,
+        "isMovable": true,
+        "isProfileActivate": true,
+        "sceneString": "W1_R2"
+    }
+]

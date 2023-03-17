@@ -14,8 +14,8 @@ namespace InGameObjects.Interaction.InteractingAdditionalObjects
         protected override void GetUIWindowAndInit()
         {
             interacted = false;
-            stellaControlDataBase = DataBaseManager.Instance.stellaDataBase;
-            UIWindow = WindowManager.Instance.stellaGotWindow;
+            stellaControlDataBase = GamePlayManager.Instance.dataBaseCollection.stellaDataBase;
+            UIWindow = GamePlayManager.Instance.WindowsInstances.stellaGotWindow;
         }
         public override async UniTask<bool> Interact()
         {

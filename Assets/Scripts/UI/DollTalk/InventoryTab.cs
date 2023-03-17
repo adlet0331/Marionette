@@ -55,19 +55,19 @@ namespace UI
 
         private void updateInventorySlots(int currentIndex)
         {
-            var itemList = InventoryManager.Instance.GetItemList();
+            var itemList = GamePlayManager.Instance.InventoryItemList;
             if (currentIndex >= itemList.Count)
             {
-                WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
+                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "");
                 return;
             }
-            WindowManager.Instance.dollTalkWindow.SetChatText(false, itemList[currentIndex].itemInfo);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, itemList[currentIndex].itemInfo);
         }
         public override void OpenTab()
         {
             gameObject.SetActive(true);
-            WindowManager.Instance.dollTalkWindow.SetChatText(false, "");
-            WindowManager.Instance.dollTalkWindow.ActivateNext(false);
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "");
+            GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ActivateNext(false);
             inventorySlots[currentIndex].SetAvaliableBoard(true);
             isChooseAvaliable = false;
 
@@ -75,7 +75,7 @@ namespace UI
             {
                 slot.SetSprite(null);
             }
-            var itemList = InventoryManager.Instance.GetItemList();
+            var itemList = GamePlayManager.Instance.InventoryItemList;
             for (int i = 0; i < itemList.Count; i++)
             {
                 var sprite = Resources.Load<Sprite>(Path.Combine("Sprites", "Items", itemList[i].spriteName));
@@ -91,7 +91,7 @@ namespace UI
         }
         public override void GetInput(InputType input)
         {
-            var dollTalkSelectionWindow = WindowManager.Instance.dollTalkSelectionWindowInnerTab;
+            var dollTalkSelectionWindow = GamePlayManager.Instance.WindowsInstances.dollTalkSelectionWindowInnerTab;
             switch (input)
             {
                 case InputType.Left:
@@ -137,10 +137,10 @@ namespace UI
                             case 1:
                                 dollTalkSelectionWindow.Close();
                                 isChooseAvaliable = false;
-                                var itemList = InventoryManager.Instance.GetItemList();
+                                var itemList = GamePlayManager.Instance.InventoryItemList;
                                 if (!itemList[currentIndex].isUsable)
                                 {
-                                    WindowManager.Instance.dollTalkWindow.SetChatText(false, "사용할 수 없는 아이템이야...");
+                                    GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "사용할 수 없는 아이템이야...");
                                 }
                                 else
                                 {
@@ -151,7 +151,7 @@ namespace UI
                         return;
                     }
 
-                    if (InventoryManager.Instance.GetItemList().Count <= currentIndex)
+                    if (GamePlayManager.Instance.InventoryItemList.Count <= currentIndex)
                         return;
                     dollTalkSelectionWindow.OpenWithType(typePerSelectionStrings);
                     isChooseAvaliable = true;
