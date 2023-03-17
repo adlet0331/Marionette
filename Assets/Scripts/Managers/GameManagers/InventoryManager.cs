@@ -71,7 +71,7 @@ namespace Managers
                     {
                         for (int j = 0; j < num; j++)
                         {
-                            inventoryItemList.Remove(inventoryItemList[itemIdx]);
+                            inventoryItemList.Remove(inventoryItemList[i]);
                         }
                         return true;
                     }

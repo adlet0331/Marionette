@@ -60,7 +60,7 @@ namespace InGameObjects.Interaction
 
                 foreach (InteractingObject interObj in interactionObjList)
                 {
-                    if (!interObj.gameObject || !interObj.gameObject.activeSelf || !interObj.GetComponent<InteractionObject>())
+                    if (!interObj.gameObject || !interObj.gameObject.activeSelf)
                     {
                         removeList.Add(interObj);
                     }

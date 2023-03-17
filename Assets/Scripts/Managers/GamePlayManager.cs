@@ -40,6 +40,7 @@ namespace Managers
         [SerializeField] private InputManager inputManager;
         public void SetPlayerControlComponent(PlayerWithHandLight playerComponent) => inputManager.SetPlayerControlComponent(playerComponent);
         public void SetInputOptions(bool movable, bool inputable) => inputManager.SetInputOptions(movable, inputable);
+        public async UniTask PlayerInteraction() => inputManager.PlayerInteraction();
 
         /// <summary>
         /// Handle Camera

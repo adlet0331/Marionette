@@ -93,7 +93,7 @@ namespace Managers
                         GamePlayManager.Instance.WindowsInstances.dollTalkWindow.Interact(InputType.Space);
                         return;
                     default:
-                        Interact().Forget();
+                        PlayerInteraction().Forget();
                         return;
                 }
             }
@@ -185,7 +185,7 @@ namespace Managers
             }
         }
         
-        private async UniTask Interact()
+        public async UniTask PlayerInteraction()
         {
             if (!isInteractable)
                 return;

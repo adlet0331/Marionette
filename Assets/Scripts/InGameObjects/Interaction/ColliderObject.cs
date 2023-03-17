@@ -18,7 +18,7 @@ namespace InGameObjects.Interaction
             if(collision.gameObject.CompareTag("Player"))
             {
                 GamePlayManager.Instance.AddInteractingObject(this);
-                await InteractAsync();
+                GamePlayManager.Instance.PlayerInteraction().Forget();
             }
         }
     }
