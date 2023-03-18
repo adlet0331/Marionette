@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using DataBaseScripts;
-using EditorHelper;
 using Newtonsoft.Json;
 using UI;
 using UnityEngine;
-using UnityEngine.Collections.Generic;
 using Random = System.Random;
 
 namespace Managers

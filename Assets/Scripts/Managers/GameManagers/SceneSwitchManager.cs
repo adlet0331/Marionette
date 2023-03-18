@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using DataBaseScripts.Base;
-using EditorHelper;
 using UnityEngine;
 
 namespace Managers
@@ -35,9 +34,6 @@ namespace Managers
     public class SceneSwitchManager : AGameManager
     {
         [SerializeField] private SceneName currentSceneName;
-#if UNITY_EDITOR
-        [ArrayElementTitle("SceneName")]
-#endif
         [SerializeField] public List<SceneInfo> sceneInfoList;
         public SceneInfo CurrentSceneInfo => FindSceneInfo(currentSceneName);
         public SceneName SetCurrentSceneNameAndReturnBeforeSceneName(SceneName newSceneName)
