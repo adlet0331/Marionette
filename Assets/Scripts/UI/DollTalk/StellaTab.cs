@@ -53,22 +53,17 @@ namespace UI
 
         private bool checkStellaAvaliable(int index)
         {
-            var stellaInfoList = GamePlayManager.Instance.StellaInfoList;
-            if (index >= stellaInfoList.Count - 1 ||
-                stellaInfoList[index + 1].level == 0)
-            {
-                return false;
-            }
-            return true;
+            var stellaInfoDictionary = GamePlayManager.Instance.StellaInfoDictionary;
+            return stellaInfoDictionary.ContainsKey(index);
         }
         private void updateStellaSlotsSelection(int currentIndex)
         {
-            var stellaInfoList = GamePlayManager.Instance.StellaInfoList;
+            var stellaInfoDictionary = GamePlayManager.Instance.StellaInfoDictionary;
             
             if (checkStellaAvaliable(currentIndex))
             {
-                var info = stellaInfoList[currentIndex + 1];
-                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, info.descriptionList[info.level - 1]);
+                var stellaInfo = stellaInfoDictionary[currentIndex];
+                GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, stellaInfo.descriptionList[stellaInfo.level]);
             }
             else
             {
@@ -82,15 +77,15 @@ namespace UI
             GamePlayManager.Instance.WindowsInstances.dollTalkWindow.ActivateNext(false);
             GamePlayManager.Instance.WindowsInstances.dollTalkWindow.SetChatText(false, "");
             gameObject.SetActive(true);
-            var stellaInfoList = GamePlayManager.Instance.StellaInfoList;
+            var stellaInfoList = GamePlayManager.Instance.StellaInfoDictionary;
 
-            for (int i = 0; i < stellaSlots.Length; i++)
+            for (int i = 1; i <= stellaSlots.Length; i++)
             {
                 var av = checkStellaAvaliable(i);
                 if (av)
                 {
                     stellaSlots[i].SetStellaImage(Resources.Load<Sprite>(
-                        Path.Combine("Sprites", "Stella", stellaInfoList[i+1].spriteName)));
+                        Path.Combine("Sprites", "Stella", stellaInfoList[i].spriteName)));
                 }
             }
         }

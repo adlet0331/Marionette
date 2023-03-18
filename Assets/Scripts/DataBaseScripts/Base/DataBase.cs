@@ -36,7 +36,7 @@ namespace DataBaseScripts.Base
                     dataKeyDictionary = dataList.ToDictionary(x => x.idx);
                 }
             }
-            else // 프로젝트 안, StaticData
+            else // 프로젝트 안, 변하지 않을 데이터, StaticData
             {
                 path = Path.Combine("IngameData", "Json", databaseName);
                 json = Resources.Load<TextAsset>(path).ToString();

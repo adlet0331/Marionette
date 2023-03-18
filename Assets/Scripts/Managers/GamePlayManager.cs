@@ -7,6 +7,7 @@ using InGameObjects.Scene;
 using InGameObjects.SceneObject.Player;
 using UI;
 using UnityEngine;
+using UnityEngine.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace Managers
@@ -78,7 +79,7 @@ namespace Managers
         /// </summary>
         [SerializeField] private StellaManager stellaManager;
         public void IncrementStella(int idx, int count) => stellaManager.IncrementStella(idx, count);
-        public List<StellaInfo> StellaInfoList => stellaManager.StellaInfoList;
+        public Dictionary<int, StellaInfo> StellaInfoDictionary => stellaManager.StellaInfoDictionary;
 
         /// <summary>
         /// Manage Player's Inventory
@@ -96,7 +97,7 @@ namespace Managers
         /// Canvas, EventSystem, Player, Interacting Object 
         /// </summary>
         [SerializeField] private SceneObjManager sceneObjManager;
-        public Dictionary<int, InteractionStatus> CurrentInteractingObjectStatusDict => sceneObjManager.InteractingObjectStatusDictionary;
+        public UDictionary<int, InteractionStatus> CurrentInteractingObjectStatusDict => sceneObjManager.InteractingObjectStatusDictionary;
         public void InteractionStatusChangedNotify(bool activate, int idx) => sceneObjManager.InteractionStatusChangedNotify(activate, idx);
 
         
@@ -114,7 +115,7 @@ namespace Managers
                 timePassed = 0, // TODO 
                 setting = "TODO", // TODO
                 itemList = inventoryManager.InitInventoryList(),
-                stellaInfoList = stellaManager.InitStellaInfoList(),
+                stellaInfoDictionary = stellaManager.InitStellaInfoList(),
                 interactingObjectStatusDictionary = sceneObjManager.InitInteractionObjectStatusDictionary()
             };
             slManager.InitSaveData(gameStateDatas);
@@ -131,8 +132,8 @@ namespace Managers
                 timePassed = 0, // TODO 
                 setting = "TODO", // TODO
                 itemList = inventoryManager.InventoryItemList,
-                stellaInfoList = stellaManager.StellaInfoList,
-                interactingObjectStatusDictionary = sceneObjManager.InteractingObjectStatusDictionary
+                stellaInfoDictionary = stellaManager.StellaInfoDictionary,
+                interactingObjectStatusDictionary = new Dictionary<int, InteractionStatus>(sceneObjManager.InteractingObjectStatusDictionary)
             };
             slManager.SaveData(index, saveData);
         }
@@ -142,7 +143,7 @@ namespace Managers
             // Struct Deep Copy
             var loadedData = slManager.LoadSavedData(index);
 
-            stellaManager.LoadStellaInfoList(loadedData.stellaInfoList);
+            stellaManager.LoadStellaInfoDictionary(loadedData.stellaInfoDictionary);
             inventoryManager.LoadInventoryList(loadedData.itemList);
             sceneObjManager.LoadInteractingObjectStatusDictionary(loadedData.interactingObjectStatusDictionary);
             

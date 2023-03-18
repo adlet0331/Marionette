@@ -8258,7 +8258,7 @@ MonoBehaviour:
     interactionDataBase: {fileID: 0}
     dollTalkDataBase: {fileID: 0}
     animaDataBase: {fileID: 0}
-    stellaDataBase: {fileID: 0}
+    stellaDataBase: {fileID: 11400000, guid: f176881911a1ad74c9b8b78c2eb3b353, type: 2}
     itemDataBase: {fileID: 0}
   slManager:
     sLDataBase: {fileID: 0}
@@ -8279,7 +8279,6 @@ MonoBehaviour:
       timePassed: 0
       setting: 
       itemList: []
-      stellaInfoList: []
   windowManager:
     currentOpenWindowType: 
     currentOpenWindowList: []
@@ -8330,9 +8329,11 @@ MonoBehaviour:
     interactingPlayer: {fileID: 0}
     stress: 0
   stellaManager:
-    firstEquipedStellaIndex: 0
-    secondEquipedStellaIndex: 0
-    stellaInfoList: []
+    firstEquipedStellaIdx: 0
+    secondEquipedStellaIdx: 0
+    stellaInfoUDictionary:
+      m_keys: 
+      m_values: []
   inventoryManager:
     inventoryItemList: []
   sceneObjManager:
@@ -8340,6 +8341,9 @@ MonoBehaviour:
     eventSystem: {fileID: 0}
     playerExist: 0
     playerObj: {fileID: 0}
+    interactingObjectStatusDictionary:
+      m_keys: 
+      m_values: []
 --- !u!1 &1033003516
 GameObject:
   m_ObjectHideFlags: 0

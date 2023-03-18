@@ -203,8 +203,6 @@ namespace Managers
             if (interactionEnd)
             {
                 obj.SetActiveNotify(!obj.DisableAfterInteract);
-                
-                GamePlayManager.Instance.InteractionStatusChangedNotify(!obj.DisableAfterInteract, obj.Idx);
                 GamePlayManager.Instance.ClearInteractingObjList();
             }
         }

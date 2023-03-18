@@ -11,7 +11,7 @@ using UnityEngine;
     3. 대사 - Script
     4. 선택지 - Choose
     5. 맵 이동 - Teleport
-        6. 애니메이션 - Animation
+    6. 애니메이션 - Animation
     7. 카메라 워크 - CameraWalk
     8. 아이템 획득, 삭제 - ItemControl
     9. 스트레스 수치 조정 - StressControl
@@ -31,16 +31,8 @@ namespace InGameObjects.Interaction
         [SerializeField] private List<GameObject> interactingObjectList;
         [SerializeField] private bool disableAfterInteract;
         [SerializeField] private int currentInteractIndex = 0;
-
-        public int Idx
-        {
-            get => idx;
-        }
-
-        public bool DisableAfterInteract
-        {
-            get => disableAfterInteract;
-        }
+        public int Idx => idx;
+        public bool DisableAfterInteract => disableAfterInteract;
 
         public void AddInteractingObject(GameObject gameObject)
         {

@@ -6,6 +6,7 @@ using EditorHelper;
 using Newtonsoft.Json;
 using UI;
 using UnityEngine;
+using UnityEngine.Collections.Generic;
 using Random = System.Random;
 
 namespace Managers
@@ -24,10 +25,7 @@ namespace Managers
         // Inventory
         public List<ItemData> itemList;
         // Stella List
-#if UNITY_EDITOR
-        [ArrayElementTitle("name")]
-#endif
-        public List<StellaInfo> stellaInfoList;
+        public Dictionary<int, StellaInfo> stellaInfoDictionary;
         // SceneObjects
         public Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Collections.Generic;
 using UnityEngine.EventSystems;
 using Object = UnityEngine.Object;
 
@@ -24,25 +25,25 @@ namespace Managers
         
         [SerializeField] private bool playerExist;
         [SerializeField] private GameObject playerObj;
-        [SerializeField] private Dictionary<int, InteractionStatus> interactingObjectStatusDictionary;
-        public Dictionary<int, InteractionStatus> InteractingObjectStatusDictionary => new Dictionary<int, InteractionStatus>(interactingObjectStatusDictionary);
+        [Header("DO NOT Control UDictionary MANUALLY")]
+        [SerializeField] private UDictionary<int, InteractionStatus> interactingObjectStatusDictionary;
+        public UDictionary<int, InteractionStatus> InteractingObjectStatusDictionary => new UDictionary<int, InteractionStatus>(interactingObjectStatusDictionary);
 
         public Dictionary<int, InteractionStatus> InitInteractionObjectStatusDictionary()
         {
-            interactingObjectStatusDictionary = 
-                    GamePlayManager.Instance.dataBaseCollection.interactionDataBase.dataList.ToDictionary(
-                        keySelector: interactionData => interactionData.idx, 
-                        elementSelector: interactionData => new InteractionStatus()
-                        {
-                            CurrentStatus = interactionData.initStatus,
-                        }
-                    );
+            interactingObjectStatusDictionary = new UDictionary<int, InteractionStatus>(GamePlayManager.Instance.dataBaseCollection.interactionDataBase.dataList.ToDictionary(
+                keySelector: interactionData => interactionData.idx,
+                elementSelector: interactionData => new InteractionStatus()
+                {
+                    CurrentStatus = interactionData.initStatus,
+                }
+            ));
             return new Dictionary<int, InteractionStatus>(interactingObjectStatusDictionary);
         }
 
         public void LoadInteractingObjectStatusDictionary(Dictionary<int, InteractionStatus> dictionary)
         {
-            interactingObjectStatusDictionary = dictionary;
+            interactingObjectStatusDictionary = new UDictionary<int, InteractionStatus>(dictionary);
         }
         
         public void InteractionStatusChangedNotify(bool activate, int idx)

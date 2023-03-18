@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Collections.Generic;
+using UnityEngine.Serialization;
 
 namespace Managers
 {
     [Serializable]
     public class StellaInfo
     {
-        public int idx;
         public string name;
         public string spriteName;
         public List<string> descriptionList;
@@ -17,15 +18,18 @@ namespace Managers
     [Serializable]
     public class StellaManager : AGameManager
     {
-        [SerializeField] private int firstEquipedStellaIndex;
-        [SerializeField] private int secondEquipedStellaIndex;
-        [SerializeField] private List<StellaInfo> stellaInfoList;
-        public List<StellaInfo> StellaInfoList => stellaInfoList.ConvertAll(o => o);
+        [SerializeField] private int firstEquipedStellaIdx;
+        [SerializeField] private int secondEquipedStellaIdx;
+        [FormerlySerializedAs("stellaInfoDictionary")]
+        [FormerlySerializedAs("stellaInfoList")]
+        [Header("DO NOT Control UDictionary MANUALLY")]
+        [SerializeField] private UDictionary<int, StellaInfo> stellaInfoUDictionary;
+        public Dictionary<int, StellaInfo> StellaInfoDictionary => new Dictionary<int, StellaInfo>(stellaInfoUDictionary);
     
         public void IncrementStella(int idx, int count)
         {
             var currentStellaStaticInfo = GamePlayManager.Instance.dataBaseCollection.stellaDataBase.dataKeyDictionary[idx];
-            var currentStellaInfo = _getStellaInfo(idx);
+            var currentStellaInfo = stellaInfoUDictionary[idx];
             
             currentStellaInfo.exp += count;
             // Level Up 판정
@@ -37,37 +41,26 @@ namespace Managers
             }
         }
         
-        public List<StellaInfo> InitStellaInfoList()
+        public Dictionary<int, StellaInfo> InitStellaInfoList()
         {
-            stellaInfoList = new List<StellaInfo>();
+            stellaInfoUDictionary = new UDictionary<int, StellaInfo>();
             var stellaDataBaseDict = GamePlayManager.Instance.dataBaseCollection.stellaDataBase.dataKeyDictionary;
             foreach (var stellaData in stellaDataBaseDict)
             {
                 var newStellaInfo = new StellaInfo();
-                newStellaInfo.idx = stellaData.Value.idx;
                 newStellaInfo.name = stellaData.Value.name;
                 newStellaInfo.spriteName = stellaData.Value.spriteName;
                 newStellaInfo.descriptionList = stellaData.Value.descriptionList;
                 newStellaInfo.level = 0;
                 newStellaInfo.exp = 0;
-                stellaInfoList.Add(newStellaInfo);
+                stellaInfoUDictionary[stellaData.Value.idx] = newStellaInfo;
             }
-            return new List<StellaInfo>(stellaInfoList);
+            return new Dictionary<int, StellaInfo>(stellaInfoUDictionary);
         }
 
-        public void LoadStellaInfoList(List<StellaInfo> pStellaInfoList)
+        public void LoadStellaInfoDictionary(Dictionary<int, StellaInfo> pStellaInfoList)
         {
-            stellaInfoList = pStellaInfoList;
-        }
-
-        private StellaInfo _getStellaInfo(int idx)
-        {
-            foreach (var stella in stellaInfoList)
-            {
-                if (stella.idx == idx)
-                    return stella;
-            }
-            return null;
+            stellaInfoUDictionary = new UDictionary<int, StellaInfo>(pStellaInfoList);
         }
         public override void Start()
         {
