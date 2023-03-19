@@ -10,29 +10,11 @@ namespace InGameObjects.Interaction
 {
     public class InteractingPlayer : MonoBehaviour
     {
-        [SerializeField] private bool isBlocked = false;
-        [SerializeField] private bool currentInteractable;
-        [SerializeField] private InteractingObject currentInteractObj;
-
-        public InteractingObject CurrentInteractObj
-        {
-            get
-            {
-                if (interactionObjList.Count == 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    return currentInteractObj;
-                }
-            }
-        }
-
+        [SerializeField] private bool isBlocked = false; // 상호작용 막혀있는지 여부
+        [SerializeField] private bool currentInteractable; // 실제로 지금 상호작용 가능한지
         [SerializeField] private List<InteractingObject> interactionObjList;
-        [Header("Update 주기")]
-        [SerializeField] private int updateFrameCount;
-
+        [SerializeField] private InteractingObject currentInteractObj;
+        public InteractingObject CurrentInteractObj => interactionObjList.Count == 0 ? null : currentInteractObj;
         private void Start()
         {
             interactionObjList = new List<InteractingObject>();
@@ -45,7 +27,7 @@ namespace InGameObjects.Interaction
             else if (!isInteractable && GamePlayManager.Instance.WindowsInstances.interactableWindow.IsOpened)
                 GamePlayManager.Instance.WindowsInstances.interactableWindow.CloseWindow();
         }
-        
+         
         private void UpdateInteractionQueue()
         {
             if (interactionObjList.Count == 0 || isBlocked)
@@ -55,7 +37,7 @@ namespace InGameObjects.Interaction
             }
             else
             {
-                // Check Unreachable Interacting Objects
+                // Check Unreachable Interacting Objects and Remove
                 var removeList = new List<InteractingObject>();
 
                 foreach (InteractingObject interObj in interactionObjList)
